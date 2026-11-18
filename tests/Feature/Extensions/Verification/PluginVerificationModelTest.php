@@ -24,7 +24,7 @@ it('stores a report with its findings', function () {
         ->and($verification->risk)->toBe(RiskLevel::High)
         ->and($verification->score)->toBe(25)
         ->and($verification->source)->toBe('upload')
-        ->and($verification->findings)->toBe([['rule' => 'php.shell', 'severity' => 'high', 'message' => 'exec() runs a shell command.', 'file' => 'src/Backup.php', 'line' => 12]])
+        ->and($verification->findings)->toEqual([['rule' => 'php.shell', 'severity' => 'high', 'message' => 'exec() runs a shell command.', 'file' => 'src/Backup.php', 'line' => 12]])
         ->and($verification->report()->findings[0]->rule)->toBe('php.shell')
         ->and($verification->toReportArray())->toMatchArray(['risk' => 'high', 'source' => 'upload', 'installedAt' => null]);
 });

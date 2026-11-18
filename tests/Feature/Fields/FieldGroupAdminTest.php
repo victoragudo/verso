@@ -13,7 +13,8 @@ use Illuminate\Http\UploadedFile;
 use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function () {
-    $this->admin = User::factory()->admin()->create();
+    // A fixed name: a random one like "Rita Dickinson" would show up in the user search below.
+    $this->admin = User::factory()->admin()->create(['name' => 'Inês Duarte']);
 });
 
 // What the builder form sends for a new group.

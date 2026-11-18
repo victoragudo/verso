@@ -35,6 +35,20 @@ function fakeServer(Closure $answer): FakePdoConnector
     return $connector;
 }
 
+// Runs the callback with another default connection, like a machine with other DB_* values.
+// The test database comes back after, even when an assertion fails, so later tests keep working.
+function withDefaultConnection(string $connection, Closure $callback): void
+{
+    $original = config('database.default');
+    config(['database.default' => $connection]);
+
+    try {
+        $callback();
+    } finally {
+        config(['database.default' => $original]);
+    }
+}
+
 function mysqlForm(array $overrides = []): array
 {
     return $overrides + [
@@ -84,7 +98,8 @@ it('passes the server checks', function () {
 });
 
 it('lists drivers with their state and suggests SQLite', function () {
-    $this->withSession(wizardDone(['welcome', 'requirements']))->get('/install/database')
+    // CI runs the suite on MySQL and Postgres too, so the test sets the machine default itself.
+    withDefaultConnection('sqlite', fn () => $this->withSession(wizardDone(['welcome', 'requirements']))->get('/install/database')
         ->assertInertia(fn (Assert $page) => $page
             ->where('values.driver', 'sqlite')
             ->where('values.database', 'database/database.sqlite')
@@ -92,7 +107,7 @@ it('lists drivers with their state and suggests SQLite', function () {
             ->where('drivers.0.available', true)
             ->where('drivers.1.port', 3306)
             ->where('drivers.3.port', 5432)
-            ->where('detected', null));
+            ->where('detected', null)));
 });
 
 it('saves a SQLite database in a writable folder', function () {
@@ -199,7 +214,6 @@ it('offers working DB_* settings from the environment in one click', function ()
     fakeServer(fn () => FakePdoConnector::server('8.4.3'));
     // Every DB_* value is set here, so the test does not depend on the DB_* variables of the machine.
     config([
-        'database.default' => 'mysql',
         'database.connections.mysql.host' => 'mysql',
         'database.connections.mysql.port' => '3306',
         'database.connections.mysql.database' => 'verso',
@@ -207,7 +221,7 @@ it('offers working DB_* settings from the environment in one click', function ()
         'database.connections.mysql.password' => 'from-docker-secret',
     ]);
 
-    try {
+    withDefaultConnection('mysql', function () {
         $this->withSession(wizardDone(['welcome', 'requirements']))->get('/install/database')
             ->assertInertia(fn (Assert $page) => $page
                 ->where('values.driver', 'mysql')
@@ -220,10 +234,7 @@ it('offers working DB_* settings from the environment in one click', function ()
             ->post('/install/database', ['use_detected' => true])
             ->assertRedirect('/install/site')
             ->assertSessionHas('verso_install.steps.database.password', 'from-docker-secret');
-    } finally {
-        // Give the test database back even when an assertion fails, so later tests keep working.
-        config(['database.default' => 'sqlite']);
-    }
+    });
 });
 
 it('validates the site and admin account', function (array $input, array $errors) {
