@@ -130,8 +130,17 @@ it('accepts MariaDB 10.11 even when the user picked MySQL', function () {
         ->and($report->serverKind)->toBe('mariadb');
 });
 
+// Answers for the "does this table hold rows" queries of the tester.
+function filledTables(array $tables): array
+{
+    return array_combine(
+        array_map(fn (string $table): string => 'select 1 from `'.$table.'` limit 1', $tables),
+        array_fill(0, count($tables), ['1']),
+    );
+}
+
 it('warns about Verso tables and respects the table prefix', function () {
-    [$tester] = tester(fn () => FakePdoConnector::server('8.4.3', ['users', 'entries', 'settings', 'wp_posts']));
+    [$tester] = tester(fn () => FakePdoConnector::server('8.4.3', ['users', 'entries', 'settings', 'wp_posts'], filledTables(['users', 'entries', 'settings'])));
 
     $clash = $tester->test(mysqlSettings());
     $prefixed = $tester->test(mysqlSettings(['prefix' => 'vs_']));
@@ -142,6 +151,45 @@ it('warns about Verso tables and respects the table prefix', function () {
         ->and($prefixed->hasVersoTables())->toBeFalse()
         ->and($prefixed->tableCount)->toBe(4)
         ->and($prefixed->message)->toContain('4 other tables');
+});
+
+it('accepts Verso tables that were only migrated and hold no rows', function () {
+    [$tester] = tester(fn () => FakePdoConnector::server('8.4.3', ['migrations', 'users', 'entries', 'settings'], filledTables(['migrations'])));
+
+    $report = $tester->test(mysqlSettings());
+
+    expect($report->ok)->toBeTrue()
+        ->and($report->hasVersoTables())->toBeFalse()
+        ->and($report->message)->toContain('The Verso tables are there but empty');
+});
+
+it('only reports the Verso tables that hold rows', function () {
+    [$tester] = tester(fn () => FakePdoConnector::server('8.4.3', ['users', 'entries', 'settings'], filledTables(['entries'])));
+
+    $report = $tester->test(mysqlSettings());
+
+    expect($report->versoTables)->toBe(['entries'])
+        ->and($report->message)->toContain('already holds Verso tables (entries)');
+});
+
+it('checks for rows in a real SQLite file of a fresh project', function () {
+    $path = storage_path('framework/testing/fresh-project-'.uniqid().'.sqlite');
+    $pdo = new PDO('sqlite:'.$path);
+    $pdo->exec('create table users (id integer primary key, email text)');
+    $pdo->exec('create table entries (id integer primary key)');
+    [$tester] = tester(fn (PdoConnection $connection) => new PDO($connection->dsn));
+
+    try {
+        $empty = $tester->test(new DatabaseSettings('sqlite', $path));
+        $pdo->exec("insert into users (email) values ('ines@lisbonfood.example')");
+        $used = $tester->test(new DatabaseSettings('sqlite', $path));
+    } finally {
+        @unlink($path);
+    }
+
+    expect($empty->ok)->toBeTrue()
+        ->and($empty->hasVersoTables())->toBeFalse()
+        ->and($used->versoTables)->toBe(['users']);
 });
 
 it('accepts a SQLite file that does not exist yet in a writable folder', function () {

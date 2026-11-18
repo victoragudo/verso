@@ -724,6 +724,7 @@
     "Confirm password": "Подтвердите пароль",
     "Confirm with passkey": "Подтвердить ключом доступа",
     "Confirming...": "Подтверждение...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "Подключено к :server :version. Таблицы Verso уже есть, но пусты, поэтому установка будет использовать их.",
     "Connected to :server :version. The database is empty.": "Подключено к :server :version. База данных пуста.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "Подключено к {server} {version}. В базе данных {count, plural, one {# сторонняя таблица} few {# сторонние таблицы} many {# сторонних таблиц} other {# сторонней таблицы}}; Verso добавит свои.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "Подключение есть, но в этой базе данных уже есть таблицы Verso (:tables). Используйте префикс таблиц или пустую базу данных.",

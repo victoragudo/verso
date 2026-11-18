@@ -871,6 +871,9 @@ return [
             'queue' => 'sync',
         ],
 
+        // Session cookie name while the installer runs. It must not change when .env changes.
+        'session_cookie' => env('VERSO_INSTALL_SESSION_COOKIE', 'verso_install_session'),
+
         // Lowest PHP version Verso runs on.
         'php_version' => env('VERSO_INSTALL_PHP_VERSION', '8.4.0'),
 

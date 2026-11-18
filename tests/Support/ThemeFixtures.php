@@ -3,6 +3,7 @@
 namespace Tests\Support;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\SplFileInfo;
 
 // Fixture themes for the theme verification tests, copied to temporary folders when a test changes them.
@@ -24,7 +25,7 @@ class ThemeFixtures
      */
     public static function copy(string $slug, array $files = []): string
     {
-        $root = storage_path('framework/testing/theme-verify-'.uniqid());
+        $root = storage_path('framework/testing/theme-verify-'.Str::lower(Str::random(16)));
         $path = $root.'/'.$slug;
         self::$created[] = $root;
 

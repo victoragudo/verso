@@ -5,6 +5,7 @@ namespace Tests\Support;
 use App\Verso\Core\Settings\Settings;
 use App\Verso\Theme\ThemeManager;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 // A throwaway themes folder with a copy of the default theme, for template and child theme tests.
 class ThemeSandbox
@@ -13,7 +14,7 @@ class ThemeSandbox
 
     public static function create(): self
     {
-        $sandbox = new self(storage_path('framework/testing/themes-'.uniqid()));
+        $sandbox = new self(storage_path('framework/testing/themes-'.Str::lower(Str::random(16))));
 
         File::copyDirectory(base_path('themes/default'), $sandbox->root.'/default');
 

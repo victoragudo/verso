@@ -724,6 +724,7 @@
     "Confirm password": "Konfirmasi kata sandi",
     "Confirm with passkey": "Konfirmasi dengan passkey",
     "Confirming...": "Mengonfirmasi...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "Terhubung ke :server :version. Tabel Verso sudah ada tetapi kosong, jadi instalasi akan memakainya.",
     "Connected to :server :version. The database is empty.": "Terhubung ke :server :version. Basis data kosong.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "Terhubung ke {server} {version}. Basis data berisi {count, plural, other {# tabel lain}}; Verso akan menambahkan tabelnya sendiri.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "Terhubung, tetapi basis data ini sudah berisi tabel Verso (:tables). Gunakan prefiks tabel atau basis data kosong.",

@@ -724,6 +724,7 @@
     "Confirm password": "비밀번호 확인",
     "Confirm with passkey": "패스키로 확인",
     "Confirming...": "확인 중...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": ":server :version에 연결했습니다. Verso 테이블이 있지만 비어 있으므로 설치에서 그대로 사용합니다.",
     "Connected to :server :version. The database is empty.": ":server :version에 연결했어요. 데이터베이스가 비어 있어요.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "{server} {version}에 연결했어요. 데이터베이스에 {count, plural, other {다른 테이블이 #개}} 있어요. Verso는 자체 테이블을 추가해요.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "연결했지만 이 데이터베이스에 이미 Verso 테이블(:tables)이 있어요. 테이블 접두사를 사용하거나 빈 데이터베이스를 사용하세요.",

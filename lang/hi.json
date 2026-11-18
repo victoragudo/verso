@@ -724,6 +724,7 @@
     "Confirm password": "पासवर्ड कन्फ़र्म करें",
     "Confirm with passkey": "पासकी से कन्फ़र्म करें",
     "Confirming...": "कन्फ़र्म हो रहा है...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": ":server :version से जुड़ गए। Verso की टेबल मौजूद हैं पर खाली हैं, इसलिए इंस्टॉल उन्हीं का उपयोग करेगा।",
     "Connected to :server :version. The database is empty.": ":server :version से कनेक्ट हुआ। डेटाबेस खाली है।",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "{server} {version} से कनेक्ट हुआ। डेटाबेस में {count, plural, one {# दूसरी टेबल है} other {# दूसरी टेबल हैं}}; Verso अपनी टेबल जोड़ेगा।",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "कनेक्ट हुआ, पर इस डेटाबेस में पहले से Verso की टेबल (:tables) हैं। टेबल प्रीफ़िक्स या खाली डेटाबेस इस्तेमाल करें।",

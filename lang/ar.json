@@ -724,6 +724,7 @@
     "Confirm password": "تأكيد كلمة المرور",
     "Confirm with passkey": "التأكيد بمفتاح المرور",
     "Confirming...": "جارٍ التأكيد...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "تم الاتصال بـ :server :version. جداول Verso موجودة لكنها فارغة، لذلك سيستخدمها التثبيت.",
     "Connected to :server :version. The database is empty.": "تم الاتصال بـ :server :version. قاعدة البيانات فارغة.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "تم الاتصال بـ {server} {version}. تحتوي قاعدة البيانات على {count, plural, zero {# جدول آخر} one {جدول آخر واحد} two {جدولين آخرين} few {# جداول أخرى} many {# جدولًا آخر} other {# جدول آخر}}؛ وسيضيف Verso جداوله الخاصة.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "تم الاتصال، لكن قاعدة البيانات تحتوي بالفعل على جداول Verso (:tables). استخدم بادئة جداول أو قاعدة بيانات فارغة.",

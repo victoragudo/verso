@@ -724,6 +724,7 @@
     "Confirm password": "Confirmer le mot de passe",
     "Confirm with passkey": "Confirmer avec une clé d’accès",
     "Confirming...": "Confirmation…",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "Connecté à :server :version. Les tables de Verso existent mais sont vides, l'installation va donc les utiliser.",
     "Connected to :server :version. The database is empty.": "Connecté à :server :version. La base de données est vide.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "Connecté à {server} {version}. La base de données contient {count, plural, one {# autre table} other {# autres tables}} ; Verso ajoutera les siennes.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "Connecté, mais cette base de données contient déjà des tables Verso (:tables). Utilisez un préfixe de table ou une base de données vide.",

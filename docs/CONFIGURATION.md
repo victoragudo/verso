@@ -259,6 +259,7 @@ Why: a wrong value would lock you out, leak secrets, let an attacker who steals 
 | `verso.install.env_example` | `VERSO_INSTALL_ENV_EXAMPLE` | <base>/.env.example |  | File copied to .env when it is missing. |
 | `verso.install.env_permissions` | `VERSO_INSTALL_ENV_PERMISSIONS` | 0640 (octal) |  | Permissions for the written .env file (octal). It holds secrets. |
 | `verso.install.redirect` | `VERSO_INSTALL_REDIRECT` | true |  | Send every web request to /install while Verso is not installed. |
+| `verso.install.session_cookie` | `VERSO_INSTALL_SESSION_COOKIE` | verso_install_session |  | Session cookie name while the installer runs. A fixed name keeps the wizard answers when the install writes APP_NAME to .env. |
 | `verso.install.safe_drivers.session` |  | file |  | Drivers forced while the installer runs, because the database may not exist yet. |
 | `verso.install.safe_drivers.cache` |  | file |  |  |
 | `verso.install.safe_drivers.queue` |  | sync |  |  |
