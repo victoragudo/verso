@@ -4,7 +4,7 @@
 
 - Requirements: PHP 8.4 or newer; SQLite, MySQL or PostgreSQL.
 - Stack: Laravel 13, Inertia 3, React 19, Tailwind 4, shadcn/ui, Tiptap, Blade themes.
-- Install: download the release zip or clone the repository, then follow the web install wizard.
+- Install: `composer create-project victoragudo/verso my-site`, or upload the release zip (dependencies included), then follow the web install wizard.
 - Updates: signed releases on GitHub; sites check daily and can update automatically.
 
 ## Docs

@@ -53,6 +53,22 @@ Verso runs on ordinary PHP-FPM hosting. Octane is optional.
 
 ## Install
 
+### With Composer (recommended)
+
+```bash
+composer create-project victoragudo/verso my-site
+cd my-site
+php artisan serve
+```
+
+Composer downloads Verso and its dependencies, creates `.env`, links the storage folder and builds the admin assets (this step needs Node.js 22 or newer). Then open http://localhost:8000: the install wizard asks for the database, your admin account and what your site is for.
+
+### Download a release (shared hosting)
+
+Download `verso-<version>.zip` from the [latest release](https://github.com/victoragudo/verso/releases/latest). It already includes `vendor` and the built assets, so no Composer or Node.js is needed. Upload it, point the web root at the `public` folder and open the site to start the wizard.
+
+### From source (contributors)
+
 ```bash
 git clone https://github.com/victoragudo/verso.git
 cd verso
