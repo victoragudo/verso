@@ -1,0 +1,9 @@
+{
+    "name": "Half Built",
+    "slug": "half-built",
+    "version": "1.2.0",
+    "description": "An unfinished portfolio theme with only a home page and a layout.",
+    "author": "Priya Raman",
+    "requires": "^0.1",
+    "php": "^8.4"
+}

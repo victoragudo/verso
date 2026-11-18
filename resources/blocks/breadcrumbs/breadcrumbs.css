@@ -1,0 +1,7 @@
+/* Breadcrumbs: separators come from CSS, the current page is bold and stays a link. */
+.verso-breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.9rem; }
+.verso-breadcrumbs li + li::before { content: "/" / ""; margin-inline-end: 0.5rem; opacity: 0.6; }
+.verso-breadcrumbs a { text-underline-offset: 0.2em; }
+.verso-breadcrumbs a:focus-visible { position: relative; z-index: 1; }
+.verso-breadcrumbs [aria-current="page"] { font-weight: 700; text-decoration: none; color: inherit; }
+@media (forced-colors: active) { .verso-breadcrumbs [aria-current="page"] { text-decoration: underline; } }

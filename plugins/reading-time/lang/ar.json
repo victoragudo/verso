@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "متوسط الكلمات المقروءة في الدقيقة، يُستخدم لحساب الدقائق.",
+    "Minutes": "الدقائق",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "يُستخدم فقط عند عرض الكتلة خارج عنصر. داخل العنصر يُحسب الوقت تلقائيًا.",
+    "Reading Time": "وقت القراءة",
+    "Reading speed": "سرعة القراءة",
+    "Reading time": "وقت القراءة",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "يعرض عدد الدقائق اللازمة لقراءة عنصر، ككتلة وفي API العامة.",
+    "Shows how many minutes the entry takes to read.": "يعرض عدد الدقائق اللازمة لقراءة العنصر.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, zero {أقل من دقيقة للقراءة} one {دقيقة واحدة للقراءة} two {دقيقتان للقراءة} few {# دقائق للقراءة} many {# دقيقة للقراءة} other {# دقيقة للقراءة}}"
+}

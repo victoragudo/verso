@@ -1,0 +1,16 @@
+{
+    "A colored box with a short message.": "Цветной блок с коротким сообщением.",
+    "Builder Example": "Пример конструктора",
+    "Info": "Сведения",
+    "Keep the message short: one sentence works best.": "Пишите кратко: лучше всего одно предложение.",
+    "Message": "Сообщение",
+    "Notice": "Уведомление",
+    "Notice tips": "Советы по уведомлению",
+    "Opacity": "Непрозрачность",
+    "Rotate": "Поворот",
+    "Shows how to extend the block builder: a notice block, an opacity style, a tips panel and a drop rule.": "Показывает, как расширить конструктор блоков: блок уведомления, стиль непрозрачности, панель советов и правило перетаскивания.",
+    "Success": "Успех",
+    "Tone": "Тон",
+    "Warning": "Предупреждение",
+    "Warnings catch the eye. Use them for things people must not miss.": "Предупреждения привлекают внимание. Используйте их для того, что нельзя пропустить."
+}

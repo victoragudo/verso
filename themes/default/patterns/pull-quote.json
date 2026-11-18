@@ -1,0 +1,12 @@
+{
+    "name": "pull-quote",
+    "title": "Pull quote between separators",
+    "category": "Text",
+    "description": "A quote with its source, framed by two separators.",
+    "keywords": ["quote", "testimonial"],
+    "blocks": [
+        { "type": "separator", "attrs": {} },
+        { "type": "quote", "attrs": { "citation": "A reader from Gothenburg" }, "content": "<p>The best travel advice I found this year, written by people who clearly walked every trail.</p>" },
+        { "type": "separator", "attrs": {} }
+    ]
+}

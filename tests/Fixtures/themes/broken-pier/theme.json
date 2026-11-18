@@ -1,0 +1,9 @@
+{
+    "name": "Broken Pier",
+    "slug": "broken-pier",
+    "version": "1.2.0",
+    "description": "A photo blog theme with a featured story strip on the home page.",
+    "author": "Ana Kovac",
+    "requires": "^0.1",
+    "php": "^8.4"
+}

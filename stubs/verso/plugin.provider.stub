@@ -1,0 +1,38 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Verso\Plugins\Filters\BodyClassFilter;
+use App\Verso\Plugins\PluginServiceProvider;
+use App\Verso\Plugins\Slots\AdminSlot;
+use App\Verso\Plugins\Slots\SlotItem;
+
+// Boots the {{ name }} plugin.
+class {{ class }}ServiceProvider extends PluginServiceProvider
+{
+    public function register(): void
+    {
+        //
+    }
+
+    public function boot(): void
+    {
+        // Admin pages. The "admin" part of verso.json puts them in the sidebar under Tools > {{ name }}.
+        $this->loadAdminRoutes('routes/admin.php');
+
+        // A typed filter: add a class to the <body> of every public page.
+        $this->addFilter(BodyClassFilter::class, fn (array $classes): array => [...$classes, 'with-{{ slug }}']);
+
+        // An admin slot: a dashboard card. The React component is registered in resources/js/index.tsx.
+        $this->addAdminSlot(new SlotItem(
+            slot: AdminSlot::DashboardWidgets,
+            key: '{{ slug }}',
+            component: '{{ slug }}.widget',
+            label: '{{ name }}',
+            props: ['message' => '{{ name }} is running.'],
+        ));
+
+        // Add blocks with $this->registerBlock() and more filters with $this->addFilter().
+        // Add admin links to the "admin" part of verso.json.
+    }
+}

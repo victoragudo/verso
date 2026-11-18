@@ -1,0 +1,15 @@
+{
+    "name": "Backup Runner",
+    "slug": "backup-runner",
+    "version": "1.2.0",
+    "description": "Backs up your database and uploads every night.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\BackupRunner\\BackupRunnerServiceProvider",
+    "requires": "^0.1",
+    "permissions": ["upload_files"],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\BackupRunner\\": "src/"
+        }
+    }
+}

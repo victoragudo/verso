@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "每分钟平均阅读字数，用于计算分钟数。",
+    "Minutes": "分钟",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "仅在区块显示于内容之外时使用。在内容中会自动计算时间。",
+    "Reading Time": "阅读时间",
+    "Reading speed": "阅读速度",
+    "Reading time": "阅读时间",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "以区块形式及在公开 API 中显示阅读内容所需的分钟数。",
+    "Shows how many minutes the entry takes to read.": "显示阅读内容所需的分钟数。",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, other {阅读需 # 分钟}}"
+}

@@ -1,0 +1,71 @@
+# Builds the release package when a version tag (v*) is pushed and attaches it to the GitHub release.
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Build and attach the package
+    # Only the main Verso repository publishes releases.
+    if: github.repository == 'victoragudo/verso'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_sqlite, gd, intl, sodium, zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+
+      # The tag must match the VERSION file, so the updater finds the right package.
+      - name: Check the tag
+        run: |
+          version="$(tr -d '[:space:]' < VERSION)"
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match VERSION ${version}." >&2
+            exit 1
+          fi
+
+      - name: Build the package
+        env:
+          VERSO_RELEASE_SIGNING_KEY: ${{ secrets.VERSO_RELEASE_SIGNING_KEY }}
+        run: scripts/build-release.sh "${GITHUB_REF_NAME}"
+
+      # Create the release when it does not exist yet (a tag with a pre-release version is marked as one), then attach the files.
+      - name: Attach the files to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            flags=()
+            case "${GITHUB_REF_NAME}" in *-*) flags+=(--prerelease) ;; esac
+            gh release create "${GITHUB_REF_NAME}" --verify-tag --generate-notes --title "Verso ${GITHUB_REF_NAME#v}" "${flags[@]}"
+          fi
+          gh release upload "${GITHUB_REF_NAME}" dist/verso-*.zip dist/verso-*.zip.sha256 --clobber
+          if ls dist/verso-*.zip.sig >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" dist/verso-*.zip.sig --clobber
+          fi

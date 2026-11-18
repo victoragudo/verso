@@ -1,0 +1,10 @@
+{
+    "name": "Orphan Tide",
+    "slug": "orphan-tide",
+    "version": "1.2.0",
+    "description": "A child theme of Seaside Base with a wider text column.",
+    "author": "Marta Ibanez",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "parent": "seaside-base"
+}

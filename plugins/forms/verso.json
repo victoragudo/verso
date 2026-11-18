@@ -1,0 +1,89 @@
+{
+    "name": "Forms",
+    "slug": "forms",
+    "version": "1.0.0",
+    "description": "Contact forms with a form builder, a submissions inbox, CSV export, email notifications and spam protection without third parties.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\Forms\\FormsServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "edit_any_entry",
+        "manage_settings"
+    ],
+    "capabilities": [
+        {
+            "key": "forms.manage",
+            "label": "Build forms",
+            "description": "Create, change and delete forms.",
+            "risk": "medium",
+            "roles": [
+                "editor"
+            ]
+        },
+        {
+            "key": "forms.messages",
+            "label": "Read form messages",
+            "description": "Read, export and delete the messages people send. They hold personal data.",
+            "risk": "high",
+            "roles": [
+                "editor"
+            ]
+        }
+    ],
+    "network": [
+        "challenges.cloudflare.com",
+        "js.hcaptcha.com",
+        "api.hcaptcha.com"
+    ],
+    "admin": {
+        "group": "tools",
+        "icon": "forms",
+        "keywords": [
+            "contact",
+            "formularios"
+        ],
+        "items": [
+            {
+                "key": "forms",
+                "label": "Forms",
+                "route": "admin.forms.index",
+                "icon": "forms",
+                "keywords": [
+                    "form builder",
+                    "contact form",
+                    "formularios"
+                ]
+            },
+            {
+                "key": "messages",
+                "label": "Messages",
+                "route": "admin.forms.submissions.index",
+                "icon": "comments",
+                "keywords": [
+                    "submissions",
+                    "entries",
+                    "inbox",
+                    "replies",
+                    "mensajes"
+                ]
+            },
+            {
+                "key": "settings",
+                "label": "Settings",
+                "route": "admin.forms.settings.edit",
+                "icon": "settings",
+                "keywords": [
+                    "spam",
+                    "captcha",
+                    "notifications",
+                    "email"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\Forms\\": "src/"
+        }
+    }
+}

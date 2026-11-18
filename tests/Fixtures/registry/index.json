@@ -1,0 +1,45 @@
+{
+    "extensions": [
+        {
+            "type": "plugin",
+            "name": "Tour Dates",
+            "slug": "tour-dates",
+            "version": "1.4.0",
+            "description": "Lists upcoming concerts and links to ticket shops.",
+            "download_url": "https://registry.verso.example/packages/tour-dates-1.4.0.zip",
+            "sha256": "__TOUR_DATES_SHA__"
+        },
+        {
+            "type": "theme",
+            "name": "Lighthouse",
+            "slug": "lighthouse",
+            "version": "2.0.0",
+            "description": "A quiet theme for coastal travel stories.",
+            "download_url": "https://registry.verso.example/packages/lighthouse-2.0.0.zip",
+            "sha256": "__LIGHTHOUSE_SHA__"
+        },
+        {
+            "name": "Recipe Cards",
+            "slug": "recipe-cards",
+            "version": "0.9.1",
+            "description": "Printable recipe cards with ingredients and steps.",
+            "download_url": "https://registry.verso.example/packages/recipe-cards-0.9.1.zip",
+            "sha256": "9f2c1a7e5b3d4c6f8a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f"
+        },
+        {
+            "name": "Plain Download",
+            "slug": "plain-download",
+            "version": "1.0.0",
+            "download_url": "http://insecure.example/plain-download.zip",
+            "sha256": "9f2c1a7e5b3d4c6f8a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f"
+        },
+        {
+            "name": "Broken Entry",
+            "slug": "Broken Entry",
+            "version": "latest",
+            "download_url": "https://registry.verso.example/broken.zip",
+            "sha256": "not-a-hash"
+        },
+        "not an object"
+    ]
+}

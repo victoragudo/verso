@@ -1,0 +1,18 @@
+/* Progress bar: a native <progress> with a custom look. */
+.verso-progress { display: grid; gap: 0.35rem; }
+.verso-progress__label { display: flex; justify-content: space-between; gap: 1rem; font-weight: 600; }
+.verso-progress__value { font-variant-numeric: tabular-nums; }
+.verso-progress__bar {
+    appearance: none;
+    inline-size: 100%;
+    block-size: 0.75rem;
+    border: 0 solid;
+    border-radius: 999px;
+    overflow: clip;
+    background: color-mix(in srgb, currentColor 15%, transparent);
+    color: var(--verso-color-accent, currentColor);
+}
+.verso-progress__bar::-webkit-progress-bar { background: transparent; }
+.verso-progress__bar::-webkit-progress-value { background: var(--verso-color-accent, currentColor); border-radius: 999px; }
+.verso-progress__bar::-moz-progress-bar { background: var(--verso-color-accent, currentColor); border-radius: 999px; }
+@media (forced-colors: active) { .verso-progress__bar { border-width: 1px; } }

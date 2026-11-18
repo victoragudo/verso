@@ -1,0 +1,336 @@
+:root {
+    --paper-light: #fdfcfa;
+    --paper-dark: #15181c;
+    --ink-light: #1f2328;
+    --ink-dark: #e8e6e1;
+    --panel-light: #f1efea;
+    --panel-dark: #1f2329;
+    --line-light: #d9d5cc;
+    --line-dark: #3a3f47;
+    --accent-light: #0b5c8a;
+    --accent-dark: #7cc4f0;
+
+    --paper: var(--paper-light);
+    --ink: var(--ink-light);
+    --panel: var(--panel-light);
+    --line: var(--line-light);
+    --accent: var(--accent-light);
+
+    @media (prefers-color-scheme: dark) {
+        --paper: var(--paper-dark);
+        --ink: var(--ink-dark);
+        --panel: var(--panel-dark);
+        --line: var(--line-dark);
+        --accent: var(--accent-dark);
+    }
+
+    @supports (color: light-dark(white, black)) {
+        --paper: light-dark(var(--paper-light), var(--paper-dark));
+        --ink: light-dark(var(--ink-light), var(--ink-dark));
+        --panel: light-dark(var(--panel-light), var(--panel-dark));
+        --line: light-dark(var(--line-light), var(--line-dark));
+        --accent: light-dark(var(--accent-light), var(--accent-dark));
+    }
+
+    --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --measure: 42rem;
+    --wide: 72rem;
+    --radius: 6px;
+
+    color-scheme: light dark;
+    accent-color: var(--accent);
+
+    &:has(> head > meta[name='color-scheme'][content='dark']) {
+        color-scheme: dark;
+    }
+
+    &:has(> head > meta[name='color-scheme'][content='light']) {
+        color-scheme: light;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 1.0625rem/1.65 var(--font-body);
+}
+
+a {
+    color: var(--accent);
+    text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+img,
+video {
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.wrap {
+    inline-size: min(100% - 2rem, var(--wide));
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -10rem;
+    padding: 0.75rem 1rem;
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.skip-link:focus {
+    inset-block-start: 1rem;
+}
+
+main:focus {
+    outline: none;
+}
+
+.site-header,
+.site-footer {
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--line);
+}
+
+.site-footer {
+    margin-block-start: 4rem;
+    border-block-start: 1px solid var(--line);
+    border-block-end: 0;
+}
+
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: inline-block;
+    min-block-size: 24px;
+    padding-block: 0.25rem;
+}
+
+.entry,
+.prose {
+    max-inline-size: var(--measure);
+}
+
+.entry--wide,
+.entry--wide .prose {
+    max-inline-size: none;
+}
+
+.entry-list {
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.meta {
+    color: color-mix(in srgb, var(--ink) 70%, transparent);
+    font-size: 0.9375rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: 2rem;
+}
+
+.prose blockquote {
+    margin-inline: 0;
+    padding-inline-start: 1rem;
+    border-inline-start: 4px solid var(--accent);
+}
+
+.prose pre {
+    overflow-x: auto;
+    padding: 1rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+}
+
+.prose hr {
+    border: 0;
+    border-block-start: 1px solid var(--line);
+}
+
+.verso-image,
+.verso-gallery,
+.verso-video,
+.verso-embed,
+.verso-table {
+    margin-inline: 0;
+}
+
+.verso-table {
+    overflow-x: auto;
+}
+
+.verso-table table {
+    border-collapse: collapse;
+    inline-size: 100%;
+}
+
+.verso-table :is(th, td) {
+    padding: 0.5rem;
+    border-block-end: 1px solid var(--line);
+    text-align: start;
+}
+
+.verso-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+    gap: 0.75rem;
+}
+
+.verso-gallery__item {
+    margin: 0;
+}
+
+.verso-embed__frame iframe {
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+.verso-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.verso-column {
+    flex: 1 1 14rem;
+}
+
+.verso-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.verso-button {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--paper);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.verso-button--secondary {
+    background: var(--panel);
+    border-color: var(--panel);
+    color: var(--ink);
+}
+
+.verso-button--outline {
+    background: transparent;
+    color: var(--accent);
+}
+
+.verso-section {
+    padding-block: 2rem;
+}
+
+.verso-scheme-toggle {
+    min-block-size: 2.5rem;
+    min-inline-size: 2.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.verso-scheme-toggle[hidden],
+.verso-scheme-toggle__to-light {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .verso-scheme-toggle__to-dark {
+        display: none;
+    }
+
+    .verso-scheme-toggle__to-light {
+        display: inline;
+    }
+}
+
+:root:has(> head > meta[name='color-scheme'][content='light']) .verso-scheme-toggle__to-dark,
+:root:has(> head > meta[name='color-scheme'][content='dark']) .verso-scheme-toggle__to-light {
+    display: inline;
+}
+
+:root:has(> head > meta[name='color-scheme'][content='light']) .verso-scheme-toggle__to-light,
+:root:has(> head > meta[name='color-scheme'][content='dark']) .verso-scheme-toggle__to-dark {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (forced-colors: active) {
+    .verso-button,
+    .verso-scheme-toggle {
+        border-color: ButtonText;
+    }
+}

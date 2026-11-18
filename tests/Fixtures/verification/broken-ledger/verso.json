@@ -1,0 +1,15 @@
+{
+    "name": "Broken Ledger",
+    "slug": "broken-ledger",
+    "version": "1.2.0",
+    "description": "Keeps a ledger of donations, but its migration has a bug.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\BrokenLedger\\BrokenLedgerServiceProvider",
+    "requires": "^0.1",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\BrokenLedger\\": "src/"
+        }
+    }
+}

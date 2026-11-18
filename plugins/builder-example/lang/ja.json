@@ -1,0 +1,16 @@
+{
+    "A colored box with a short message.": "短いメッセージを表示する色付きのボックス。",
+    "Builder Example": "ビルダーのサンプル",
+    "Info": "情報",
+    "Keep the message short: one sentence works best.": "メッセージは短くしてください。1文がおすすめです。",
+    "Message": "メッセージ",
+    "Notice": "お知らせ",
+    "Notice tips": "お知らせのヒント",
+    "Opacity": "不透明度",
+    "Rotate": "回転",
+    "Shows how to extend the block builder: a notice block, an opacity style, a tips panel and a drop rule.": "ブロックビルダーの拡張方法を紹介します: お知らせブロック、不透明度のスタイル、ヒントパネル、ドロップルール。",
+    "Success": "成功",
+    "Tone": "トーン",
+    "Warning": "警告",
+    "Warnings catch the eye. Use them for things people must not miss.": "警告は目を引きます。見落としてはいけない内容に使ってください。"
+}

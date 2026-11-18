@@ -1,0 +1,12 @@
+{
+    "name": "call-to-action",
+    "title": "Call to action",
+    "category": "Call to action",
+    "description": "A short heading, one line of text and a button.",
+    "keywords": ["button", "signup", "banner"],
+    "blocks": [
+        { "type": "heading", "attrs": { "level": 2 }, "content": "Plan your next trip with us" },
+        { "type": "paragraph", "attrs": {}, "content": "<p>Get our seasonal guides with ferry times, quiet beaches and places to eat.</p>" },
+        { "type": "button", "attrs": { "label": "Read the guides", "url": "/blog", "style": "primary" } }
+    ]
+}

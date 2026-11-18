@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/victoragudo/verso/discussions
+    about: Ask how to do something, share a theme or plugin, or talk about an idea first.
+  - name: Security problem
+    url: https://github.com/victoragudo/verso/security/advisories/new
+    about: Report a vulnerability privately.

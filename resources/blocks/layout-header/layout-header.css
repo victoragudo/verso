@@ -1,0 +1,19 @@
+/* Theme builder headers and footers: sticky, transparent over the first section, and changes on scroll. */
+.verso-header, .verso-footer { position: relative; z-index: 40; background: var(--verso-color-background, Canvas); }
+.verso-header--sticky, .verso-footer--sticky { position: sticky; z-index: 40; }
+.verso-header--sticky { inset-block-start: var(--verso-adminbar-height, 0px); }
+.verso-footer--sticky { inset-block-end: 0; }
+.verso-header--transparent { position: absolute; inset-inline: 0; background: transparent; }
+.verso-header--transparent.verso-header--sticky { position: fixed; inset-block-start: var(--verso-adminbar-height, 0px); }
+.verso-header.is-scrolled[data-scroll="solid"], .verso-header.is-scrolled[data-scroll="shrink"] {
+    background: var(--verso-color-background, Canvas);
+    box-shadow: 0 1px 0 color-mix(in srgb, currentColor 15%, transparent), 0 6px 20px rgb(0 0 0 / 0.06);
+}
+.verso-header.is-scrolled[data-scroll="shrink"] > * { padding-block: 0.4rem; }
+.verso-header.is-hidden[data-scroll="hide"] { translate: 0 -100%; }
+.verso-header.is-hidden[data-scroll="hide"]:focus-within { translate: none; }
+@media (prefers-reduced-motion: no-preference) {
+    .verso-header { transition: background-color 0.25s, box-shadow 0.25s, translate 0.25s; }
+    .verso-header > * { transition: padding 0.25s; }
+}
+html:has(.verso-header--sticky) { scroll-padding-block-start: 6rem; }

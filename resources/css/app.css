@@ -1,0 +1,815 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@import './select.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Figtree, self-hosted variable font (SIL Open Font License). */
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 300 900;
+    font-display: swap;
+    src: url('/fonts/figtree/figtree-latin-ext.woff2') format('woff2');
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 300 900;
+    font-display: swap;
+    src: url('/fonts/figtree/figtree-latin.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+    --font-sans:
+        'Figtree', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-body: var(--body);
+    --color-brand: var(--brand);
+    --color-brand-soft: var(--brand-soft);
+
+    --color-success-soft: var(--success-soft);
+    --color-success-text: var(--success-text);
+    --color-warning-soft: var(--warning-soft);
+    --color-warning-text: var(--warning-text);
+    --color-danger-soft: var(--danger-soft);
+    --color-danger-text: var(--danger-text);
+    --color-neutral-soft: var(--neutral-soft);
+    --color-neutral-text: var(--neutral-text);
+    --color-info-soft: var(--info-soft);
+    --color-info-text: var(--info-text);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    /*
+     * Light and dark values of every color token. The tokens below pick one with
+     * light-dark(), so they follow color-scheme on the root and on any element.
+     * Light: zinc grays, white surfaces, one blue accent. Dark: deep zinc, a lighter blue accent.
+     */
+    --background-light: oklch(0.985 0 0);
+    --background-dark: oklch(0.141 0.005 285.823);
+    --foreground-light: oklch(0.21 0.006 285.885);
+    --foreground-dark: oklch(0.985 0 0);
+    --body-light: oklch(0.37 0.013 285.805);
+    --body-dark: oklch(0.871 0.006 286.286);
+    --card-light: oklch(1 0 0);
+    --card-dark: oklch(0.21 0.006 285.885);
+    --card-foreground-light: oklch(0.21 0.006 285.885);
+    --card-foreground-dark: oklch(0.985 0 0);
+    --popover-light: oklch(1 0 0);
+    --popover-dark: oklch(0.21 0.006 285.885);
+    --popover-foreground-light: oklch(0.21 0.006 285.885);
+    --popover-foreground-dark: oklch(0.985 0 0);
+    --primary-light: oklch(0.21 0.006 285.885);
+    --primary-dark: oklch(0.985 0 0);
+    --primary-foreground-light: oklch(1 0 0);
+    --primary-foreground-dark: oklch(0.21 0.006 285.885);
+    --secondary-light: oklch(0.967 0.001 286.375);
+    --secondary-dark: oklch(0.274 0.006 286.033);
+    --secondary-foreground-light: oklch(0.21 0.006 285.885);
+    --secondary-foreground-dark: oklch(0.985 0 0);
+    --muted-light: oklch(0.967 0.001 286.375);
+    --muted-dark: oklch(0.274 0.006 286.033);
+    --muted-foreground-light: oklch(0.52 0.016 285.938);
+    --muted-foreground-dark: oklch(0.705 0.015 286.067);
+    --accent-light: oklch(0.967 0.001 286.375);
+    --accent-dark: oklch(0.274 0.006 286.033);
+    --accent-foreground-light: oklch(0.21 0.006 285.885);
+    --accent-foreground-dark: oklch(0.985 0 0);
+    --brand-light: oklch(0.546 0.245 262.881);
+    --brand-dark: oklch(0.707 0.165 254.624);
+    --brand-soft-light: oklch(0.97 0.014 254.604);
+    --brand-soft-dark: oklch(0.282 0.091 267.935);
+    --destructive-light: oklch(0.577 0.245 27.325);
+    --destructive-dark: oklch(0.396 0.141 25.723);
+    --destructive-foreground-light: oklch(0.505 0.213 27.518);
+    --destructive-foreground-dark: oklch(0.704 0.191 22.216);
+    --border-light: oklch(0.92 0.004 286.32);
+    --border-dark: oklch(0.274 0.006 286.033);
+    --input-light: oklch(0.871 0.006 286.286);
+    --input-dark: oklch(0.37 0.013 285.805);
+    --ring-light: oklch(0.546 0.245 262.881);
+    --ring-dark: oklch(0.707 0.165 254.624);
+    --success-soft-light: oklch(0.982 0.018 155.826);
+    --success-soft-dark: oklch(0.266 0.065 152.934);
+    --success-text-light: oklch(0.448 0.119 151.328);
+    --success-text-dark: oklch(0.871 0.15 154.449);
+    --warning-soft-light: oklch(0.987 0.022 95.277);
+    --warning-soft-dark: oklch(0.279 0.077 45.635);
+    --warning-text-light: oklch(0.473 0.137 46.201);
+    --warning-text-dark: oklch(0.905 0.182 98.111);
+    --danger-soft-light: oklch(0.971 0.013 17.38);
+    --danger-soft-dark: oklch(0.258 0.092 26.042);
+    --danger-text-light: oklch(0.505 0.213 27.518);
+    --danger-text-dark: oklch(0.808 0.114 19.571);
+    --neutral-soft-light: oklch(0.967 0.001 286.375);
+    --neutral-soft-dark: oklch(0.274 0.006 286.033);
+    --neutral-text-light: oklch(0.37 0.013 285.805);
+    --neutral-text-dark: oklch(0.871 0.006 286.286);
+    --info-soft-light: oklch(0.97 0.014 254.604);
+    --info-soft-dark: oklch(0.282 0.091 267.935);
+    --info-text-light: oklch(0.488 0.243 264.376);
+    --info-text-dark: oklch(0.809 0.105 251.813);
+    --chart-1-light: oklch(0.546 0.245 262.881);
+    --chart-1-dark: oklch(0.707 0.165 254.624);
+    --chart-2-light: oklch(0.696 0.17 162.48);
+    --chart-2-dark: oklch(0.696 0.17 162.48);
+    --chart-3-light: oklch(0.769 0.188 70.08);
+    --chart-3-dark: oklch(0.769 0.188 70.08);
+    --chart-4-light: oklch(0.552 0.016 285.938);
+    --chart-4-dark: oklch(0.705 0.015 286.067);
+    --chart-5-light: oklch(0.637 0.237 25.331);
+    --chart-5-dark: oklch(0.645 0.246 16.439);
+    --sidebar-light: oklch(1 0 0);
+    --sidebar-dark: oklch(0.21 0.006 285.885);
+    --sidebar-foreground-light: oklch(0.37 0.013 285.805);
+    --sidebar-foreground-dark: oklch(0.871 0.006 286.286);
+    --sidebar-primary-light: oklch(0.546 0.245 262.881);
+    --sidebar-primary-dark: oklch(0.707 0.165 254.624);
+    --sidebar-primary-foreground-light: oklch(1 0 0);
+    --sidebar-primary-foreground-dark: oklch(0.141 0.005 285.823);
+    --sidebar-accent-light: oklch(0.967 0.001 286.375);
+    --sidebar-accent-dark: oklch(0.274 0.006 286.033);
+    --sidebar-accent-foreground-light: oklch(0.21 0.006 285.885);
+    --sidebar-accent-foreground-dark: oklch(0.985 0 0);
+    --sidebar-border-light: oklch(0.92 0.004 286.32);
+    --sidebar-border-dark: oklch(0.274 0.006 286.033);
+    --sidebar-ring-light: oklch(0.546 0.245 262.881);
+    --sidebar-ring-dark: oklch(0.707 0.165 254.624);
+
+    --background: var(--background-light);
+    --foreground: var(--foreground-light);
+    --body: var(--body-light);
+    --card: var(--card-light);
+    --card-foreground: var(--card-foreground-light);
+    --popover: var(--popover-light);
+    --popover-foreground: var(--popover-foreground-light);
+    --primary: var(--primary-light);
+    --primary-foreground: var(--primary-foreground-light);
+    --secondary: var(--secondary-light);
+    --secondary-foreground: var(--secondary-foreground-light);
+    --muted: var(--muted-light);
+    --muted-foreground: var(--muted-foreground-light);
+    --accent: var(--accent-light);
+    --accent-foreground: var(--accent-foreground-light);
+    --brand: var(--brand-light);
+    --brand-soft: var(--brand-soft-light);
+    --destructive: var(--destructive-light);
+    --destructive-foreground: var(--destructive-foreground-light);
+    --border: var(--border-light);
+    --input: var(--input-light);
+    --ring: var(--ring-light);
+    --success-soft: var(--success-soft-light);
+    --success-text: var(--success-text-light);
+    --warning-soft: var(--warning-soft-light);
+    --warning-text: var(--warning-text-light);
+    --danger-soft: var(--danger-soft-light);
+    --danger-text: var(--danger-text-light);
+    --neutral-soft: var(--neutral-soft-light);
+    --neutral-text: var(--neutral-text-light);
+    --info-soft: var(--info-soft-light);
+    --info-text: var(--info-text-light);
+    --chart-1: var(--chart-1-light);
+    --chart-2: var(--chart-2-light);
+    --chart-3: var(--chart-3-light);
+    --chart-4: var(--chart-4-light);
+    --chart-5: var(--chart-5-light);
+    --sidebar: var(--sidebar-light);
+    --sidebar-foreground: var(--sidebar-foreground-light);
+    --sidebar-primary: var(--sidebar-primary-light);
+    --sidebar-primary-foreground: var(--sidebar-primary-foreground-light);
+    --sidebar-accent: var(--sidebar-accent-light);
+    --sidebar-accent-foreground: var(--sidebar-accent-foreground-light);
+    --sidebar-border: var(--sidebar-border-light);
+    --sidebar-ring: var(--sidebar-ring-light);
+    --radius: 0.5rem;
+
+    /* The appearance setting: light by default, dark, or the system choice. The server
+       writes it to the color-scheme meta tag, so the page has the right colors before any script. */
+    color-scheme: light;
+
+    &:has(> head > meta[name='color-scheme'][content='light dark']) {
+        color-scheme: light dark;
+    }
+
+    &:has(> head > meta[name='color-scheme'][content='dark']) {
+        color-scheme: dark;
+    }
+
+    accent-color: var(--brand);
+}
+
+/* The dark class is still set (for dark: utilities), so it also sets the scheme. */
+.dark {
+    color-scheme: dark;
+}
+
+@supports (color: light-dark(white, black)) {
+    :root {
+        --background: light-dark(var(--background-light), var(--background-dark));
+        --foreground: light-dark(var(--foreground-light), var(--foreground-dark));
+        --body: light-dark(var(--body-light), var(--body-dark));
+        --card: light-dark(var(--card-light), var(--card-dark));
+        --card-foreground: light-dark(var(--card-foreground-light), var(--card-foreground-dark));
+        --popover: light-dark(var(--popover-light), var(--popover-dark));
+        --popover-foreground: light-dark(var(--popover-foreground-light), var(--popover-foreground-dark));
+        --primary: light-dark(var(--primary-light), var(--primary-dark));
+        --primary-foreground: light-dark(var(--primary-foreground-light), var(--primary-foreground-dark));
+        --secondary: light-dark(var(--secondary-light), var(--secondary-dark));
+        --secondary-foreground: light-dark(var(--secondary-foreground-light), var(--secondary-foreground-dark));
+        --muted: light-dark(var(--muted-light), var(--muted-dark));
+        --muted-foreground: light-dark(var(--muted-foreground-light), var(--muted-foreground-dark));
+        --accent: light-dark(var(--accent-light), var(--accent-dark));
+        --accent-foreground: light-dark(var(--accent-foreground-light), var(--accent-foreground-dark));
+        --brand: light-dark(var(--brand-light), var(--brand-dark));
+        --brand-soft: light-dark(var(--brand-soft-light), var(--brand-soft-dark));
+        --destructive: light-dark(var(--destructive-light), var(--destructive-dark));
+        --destructive-foreground: light-dark(var(--destructive-foreground-light), var(--destructive-foreground-dark));
+        --border: light-dark(var(--border-light), var(--border-dark));
+        --input: light-dark(var(--input-light), var(--input-dark));
+        --ring: light-dark(var(--ring-light), var(--ring-dark));
+        --success-soft: light-dark(var(--success-soft-light), var(--success-soft-dark));
+        --success-text: light-dark(var(--success-text-light), var(--success-text-dark));
+        --warning-soft: light-dark(var(--warning-soft-light), var(--warning-soft-dark));
+        --warning-text: light-dark(var(--warning-text-light), var(--warning-text-dark));
+        --danger-soft: light-dark(var(--danger-soft-light), var(--danger-soft-dark));
+        --danger-text: light-dark(var(--danger-text-light), var(--danger-text-dark));
+        --neutral-soft: light-dark(var(--neutral-soft-light), var(--neutral-soft-dark));
+        --neutral-text: light-dark(var(--neutral-text-light), var(--neutral-text-dark));
+        --info-soft: light-dark(var(--info-soft-light), var(--info-soft-dark));
+        --info-text: light-dark(var(--info-text-light), var(--info-text-dark));
+        --chart-1: light-dark(var(--chart-1-light), var(--chart-1-dark));
+        --chart-2: light-dark(var(--chart-2-light), var(--chart-2-dark));
+        --chart-3: light-dark(var(--chart-3-light), var(--chart-3-dark));
+        --chart-4: light-dark(var(--chart-4-light), var(--chart-4-dark));
+        --chart-5: light-dark(var(--chart-5-light), var(--chart-5-dark));
+        --sidebar: light-dark(var(--sidebar-light), var(--sidebar-dark));
+        --sidebar-foreground: light-dark(var(--sidebar-foreground-light), var(--sidebar-foreground-dark));
+        --sidebar-primary: light-dark(var(--sidebar-primary-light), var(--sidebar-primary-dark));
+        --sidebar-primary-foreground: light-dark(var(--sidebar-primary-foreground-light), var(--sidebar-primary-foreground-dark));
+        --sidebar-accent: light-dark(var(--sidebar-accent-light), var(--sidebar-accent-dark));
+        --sidebar-accent-foreground: light-dark(var(--sidebar-accent-foreground-light), var(--sidebar-accent-foreground-dark));
+        --sidebar-border: light-dark(var(--sidebar-border-light), var(--sidebar-border-dark));
+        --sidebar-ring: light-dark(var(--sidebar-ring-light), var(--sidebar-ring-dark));
+    }
+}
+
+/* Browsers without light-dark() use the dark values under the dark class. */
+@supports not (color: light-dark(white, black)) {
+    .dark {
+        --background: var(--background-dark);
+        --foreground: var(--foreground-dark);
+        --body: var(--body-dark);
+        --card: var(--card-dark);
+        --card-foreground: var(--card-foreground-dark);
+        --popover: var(--popover-dark);
+        --popover-foreground: var(--popover-foreground-dark);
+        --primary: var(--primary-dark);
+        --primary-foreground: var(--primary-foreground-dark);
+        --secondary: var(--secondary-dark);
+        --secondary-foreground: var(--secondary-foreground-dark);
+        --muted: var(--muted-dark);
+        --muted-foreground: var(--muted-foreground-dark);
+        --accent: var(--accent-dark);
+        --accent-foreground: var(--accent-foreground-dark);
+        --brand: var(--brand-dark);
+        --brand-soft: var(--brand-soft-dark);
+        --destructive: var(--destructive-dark);
+        --destructive-foreground: var(--destructive-foreground-dark);
+        --border: var(--border-dark);
+        --input: var(--input-dark);
+        --ring: var(--ring-dark);
+        --success-soft: var(--success-soft-dark);
+        --success-text: var(--success-text-dark);
+        --warning-soft: var(--warning-soft-dark);
+        --warning-text: var(--warning-text-dark);
+        --danger-soft: var(--danger-soft-dark);
+        --danger-text: var(--danger-text-dark);
+        --neutral-soft: var(--neutral-soft-dark);
+        --neutral-text: var(--neutral-text-dark);
+        --info-soft: var(--info-soft-dark);
+        --info-text: var(--info-text-dark);
+        --chart-1: var(--chart-1-dark);
+        --chart-2: var(--chart-2-dark);
+        --chart-3: var(--chart-3-dark);
+        --chart-4: var(--chart-4-dark);
+        --chart-5: var(--chart-5-dark);
+        --sidebar: var(--sidebar-dark);
+        --sidebar-foreground: var(--sidebar-foreground-dark);
+        --sidebar-primary: var(--sidebar-primary-dark);
+        --sidebar-primary-foreground: var(--sidebar-primary-foreground-dark);
+        --sidebar-accent: var(--sidebar-accent-dark);
+        --sidebar-accent-foreground: var(--sidebar-accent-foreground-dark);
+        --sidebar-border: var(--sidebar-border-dark);
+        --sidebar-ring: var(--sidebar-ring-dark);
+    }
+}
+
+@layer base {
+    /* A label and its control stay together at the top of their cell, even when the row is taller. */
+    :where(.grid:has(> label, > [data-slot='label'])) {
+        align-content: start;
+    }
+
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-body;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply text-foreground;
+    }
+
+    /* Everything you can click shows a hand; disabled controls show a "not allowed" sign. */
+    :where(
+            button,
+            [role='button'],
+            [role='tab'],
+            [role='menuitem'],
+            [role='menuitemcheckbox'],
+            [role='menuitemradio'],
+            [role='option'],
+            [role='switch'],
+            [role='checkbox'],
+            [role='radio'],
+            [role='combobox'],
+            summary,
+            label[for],
+            select,
+            input:is([type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='range'])
+        ) {
+        cursor: pointer;
+    }
+
+    ::file-selector-button {
+        cursor: pointer;
+    }
+
+    :where(
+            :disabled,
+            [aria-disabled='true'],
+            [data-disabled]:not([data-disabled='false'])
+        ) {
+        cursor: not-allowed;
+    }
+
+    :disabled::file-selector-button {
+        cursor: not-allowed;
+    }
+
+    /* A clear ring for keyboard focus on controls that do not draw their own. */
+    :where(a[href], button, summary, [role='button'], [role='tab'], [role='option'], [tabindex]:not([tabindex='-1'])):focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+
+    /* Open and close rows give a quiet hint under the pointer. */
+    :where(summary):hover {
+        color: var(--foreground);
+    }
+
+    /* Icons that point a way (back, next, open a sub menu) are mirrored in right to left languages. */
+    :where([dir='rtl'])
+        :is(
+            .lucide-chevron-right,
+            .lucide-chevron-left,
+            .lucide-chevrons-right,
+            .lucide-chevrons-left,
+            .lucide-arrow-right,
+            .lucide-arrow-left,
+            .lucide-undo-2,
+            .lucide-redo-2,
+            .lucide-log-out,
+            .lucide-panel-right,
+            .lucide-panel-left,
+            [data-icon-direction]
+        ) {
+        scale: -1 1;
+    }
+
+    /* Numbers line up in tables, stats and inputs. */
+    table,
+    input[type='number'],
+    time {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+/* Side and top space of admin pages. It grows a little on wide screens. */
+@utility admin-gutter {
+    padding-inline: clamp(1rem, 0.5rem + 2vw, 3.5rem);
+    padding-block: clamp(1.5rem, 1rem + 1vw, 2.5rem);
+}
+
+/*
+ * A card grid that adds a column each time there is room for one more.
+ * Set --grid-min to the smallest card width, for example [--grid-min:18rem].
+ */
+@utility auto-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(var(--grid-min, 16rem), 100%), 1fr)
+    );
+}
+
+/* Like auto-grid, but the cards in a short last row stretch to fill it. */
+@utility auto-fit-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(var(--grid-min, 16rem), 100%), 1fr)
+    );
+}
+
+/*
+ * Masonry of cards with different heights: cards stack in columns, so a short
+ * card leaves no hole under it. There are never more columns than cards, so
+ * the cards always fill the whole width. Set --grid-min to the smallest column width.
+ */
+@utility masonry-grid {
+    --masonry-cols: 1;
+    --masonry-gap: 1rem;
+    columns: var(--grid-min, 24rem) var(--masonry-cols);
+    column-gap: var(--masonry-gap);
+
+    & > * {
+        break-inside: avoid;
+        margin-block-end: var(--masonry-gap);
+    }
+
+    &:has(> :nth-child(2)) {
+        --masonry-cols: 2;
+    }
+    &:has(> :nth-child(3)) {
+        --masonry-cols: 3;
+    }
+    &:has(> :nth-child(4)) {
+        --masonry-cols: 4;
+    }
+    &:has(> :nth-child(5)) {
+        --masonry-cols: 5;
+    }
+    &:has(> :nth-child(6)) {
+        --masonry-cols: 6;
+    }
+}
+
+/*
+ * Settings forms: section cards in a masonry, so short cards leave no holes.
+ * The last child (the save row) takes the full width under all columns.
+ */
+@utility section-grid {
+    --masonry-cols: 1;
+    --masonry-gap: 1rem;
+    columns: var(--grid-min, 32rem) var(--masonry-cols);
+    column-gap: var(--masonry-gap);
+
+    & > * {
+        break-inside: avoid;
+        margin-block-end: var(--masonry-gap);
+    }
+
+    /* A column drops the margin of its last card, so the save row adds its own. */
+    & > :last-child {
+        column-span: all;
+        margin-block: var(--masonry-gap) 0;
+    }
+
+    /* Count only the cards: the save row is not a column. */
+    &:has(> :nth-child(3)) {
+        --masonry-cols: 2;
+    }
+    &:has(> :nth-child(4)) {
+        --masonry-cols: 3;
+    }
+    &:has(> :nth-child(5)) {
+        --masonry-cols: 4;
+    }
+    &:has(> :nth-child(6)) {
+        --masonry-cols: 5;
+    }
+}
+
+/* A fine paper grid for the sign in brand panel, faded toward the edges. */
+.auth-paper {
+    background-image:
+        linear-gradient(
+            to right,
+            color-mix(in oklab, var(--foreground) 7%, transparent) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            color-mix(in oklab, var(--foreground) 7%, transparent) 1px,
+            transparent 1px
+        );
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+    mask-image: radial-gradient(
+        ellipse 80% 70% at 30% 45%,
+        black 20%,
+        transparent 75%
+    );
+}
+
+/* The sign in card fades in once; it also rises when motion is allowed. */
+@keyframes auth-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes auth-rise-in {
+    from {
+        opacity: 0;
+        translate: 0 12px;
+        filter: blur(4px);
+    }
+}
+
+.auth-enter {
+    animation: auth-fade-in 300ms ease-out both;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .auth-enter {
+        animation-name: auth-rise-in;
+    }
+}
+
+/* A sidebar item that was just added, like a plugin page. The ring stays, so the cue does not depend on motion. */
+.nav-highlight {
+    box-shadow: inset 0 0 0 2px var(--brand);
+    background-color: var(--brand-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .nav-highlight {
+        animation: nav-highlight-pulse 1.2s ease-in-out 3;
+    }
+}
+
+@keyframes nav-highlight-pulse {
+    50% {
+        box-shadow: inset 0 0 0 2px transparent;
+    }
+}
+
+/* Native modal dialogs (like the guided start confirmation): the page behind does not scroll. */
+dialog.verso-dialog:modal {
+    overscroll-behavior: contain;
+}
+
+dialog.verso-dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgb(9 9 11 / 0.45);
+}
+
+/*
+ * Native modal dialogs and sheets (components/ui/dialog.tsx). They fade in
+ * from @starting-style and fade out while data-state is "closed"; the script
+ * waits for that before it calls close(). Movement only without reduced motion.
+ */
+:where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content']) {
+    opacity: 1;
+    transition-property: opacity, scale, translate;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+
+    @starting-style {
+        opacity: 0;
+    }
+
+    &[data-state='closed'] {
+        opacity: 0;
+    }
+
+    &:modal {
+        overscroll-behavior: contain;
+    }
+
+    &::backdrop {
+        overflow: hidden;
+        overscroll-behavior: contain;
+        background-color: rgb(9 9 11 / 0.4);
+        transition: background-color 200ms ease-out;
+    }
+
+    &[data-state='closed']::backdrop {
+        background-color: transparent;
+    }
+}
+
+:where(.dark) :where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content'])::backdrop {
+    background-color: rgb(0 0 0 / 0.6);
+}
+
+:where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content'])[data-state='open']::backdrop {
+    @starting-style {
+        background-color: transparent;
+    }
+}
+
+:where(dialog[data-slot='sheet-content']) {
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+
+    &[data-state='closed'] {
+        transition-duration: 300ms;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :where(dialog[data-slot='dialog-content']) {
+        scale: 1;
+
+        @starting-style {
+            scale: 0.95;
+        }
+
+        &[data-state='closed'] {
+            scale: 0.95;
+        }
+    }
+
+    :where(dialog[data-slot='sheet-content']) {
+        --sheet-from: 100% 0;
+        translate: 0 0;
+
+        &[data-side='left']:dir(ltr),
+        &[data-side='right']:dir(rtl) {
+            --sheet-from: -100% 0;
+        }
+
+        &[data-side='top'] {
+            --sheet-from: 0 -100%;
+        }
+
+        &[data-side='bottom'] {
+            --sheet-from: 0 100%;
+        }
+
+        @starting-style {
+            translate: var(--sheet-from);
+        }
+
+        &[data-state='closed'] {
+            translate: var(--sheet-from);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content']),
+    :where(dialog[data-slot='sheet-content'])[data-state='closed'] {
+        transition-duration: 100ms;
+    }
+}
+
+/*
+ * Radix menus, selects and tooltips are shown as manual popovers in the top
+ * layer (promoteToTopLayer in components/ui/top-layer.tsx). Radix still sets
+ * the position, so drop the popover box styles of the browser.
+ */
+[data-radix-popper-content-wrapper][popover] {
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    overflow: visible;
+}
+
+/*
+ * Admin page changes (lib/page-transitions.ts) cross fade quickly. The side
+ * bar and the top bar keep their own names, so they stay still while the page
+ * content changes. Script turns transitions off for reduced motion; the
+ * media query below is a second guard.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 150ms;
+}
+
+[data-slot='admin-sidebar'] {
+    view-transition-name: admin-sidebar;
+}
+
+[data-slot='admin-top-bar'] {
+    view-transition-name: admin-top-bar;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none;
+    }
+}
+
+/*
+ * Forced colors (Windows high contrast) do not draw box shadows, and the
+ * focus rings and the current nav item use them. Show real outlines there.
+ */
+@media (forced-colors: active) {
+    :focus-visible {
+        outline: 2px solid Highlight !important;
+        outline-offset: 2px;
+    }
+
+    [aria-current='page'],
+    [role='tab'][aria-selected='true'],
+    [role='option'][aria-selected='true'],
+    [role='menuitem'][data-highlighted] {
+        outline: 1px solid Highlight;
+        outline-offset: -1px;
+    }
+
+    [data-slot='badge'],
+    [data-slot='status-badge'] {
+        border: 1px solid CanvasText;
+    }
+}
+
+/* Zoomed out view of the block editor: the whole page at half size, to see and move big parts.
+   CSS zoom keeps the layout and the pointer in step; text fields stay usable. */
+.verso-canvas-zoomed {
+    zoom: 0.5;
+}
+@supports not (zoom: 0.5) {
+    .verso-canvas-zoomed {
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+}

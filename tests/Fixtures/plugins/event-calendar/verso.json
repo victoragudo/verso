@@ -1,0 +1,20 @@
+{
+    "name": "Event Calendar",
+    "slug": "event-calendar",
+    "version": "2.3.1",
+    "description": "Adds events with dates and venues to your site.",
+    "provider": "Verso\\Plugins\\EventCalendar\\EventCalendarServiceProvider",
+    "requires": "^0.1",
+    "permissions": ["manage_terms", "upload_files"],
+    "capabilities": [
+        { "key": "event-calendar.manage", "label": "Manage events", "description": "Create and change events and venues.", "risk": "medium", "roles": ["editor"] }
+    ],
+    "roles": [
+        { "slug": "event_host", "name": "Event host", "description": "Runs the events calendar.", "capabilities": ["event-calendar.manage", "upload_files"] }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\EventCalendar\\": "src/"
+        }
+    }
+}

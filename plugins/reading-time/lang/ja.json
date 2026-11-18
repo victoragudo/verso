@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "1分間に読む平均単語数。分数の計算に使います。",
+    "Minutes": "分",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "ブロックをコンテンツの外で表示する場合にのみ使います。コンテンツ内では時間が自動で計算されます。",
+    "Reading Time": "読了時間",
+    "Reading speed": "読む速さ",
+    "Reading time": "読了時間",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "コンテンツを読むのにかかる分数を、ブロックと公開APIで表示します。",
+    "Shows how many minutes the entry takes to read.": "コンテンツを読むのにかかる分数を表示します。",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, other {約#分で読めます}}"
+}

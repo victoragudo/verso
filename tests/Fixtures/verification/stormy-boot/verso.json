@@ -1,0 +1,15 @@
+{
+    "name": "Stormy Boot",
+    "slug": "stormy-boot",
+    "version": "1.2.0",
+    "description": "Adds storm warnings, but its provider fails to boot.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\StormyBoot\\StormyBootServiceProvider",
+    "requires": "^0.1",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\StormyBoot\\": "src/"
+        }
+    }
+}

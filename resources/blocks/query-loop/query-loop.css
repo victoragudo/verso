@@ -1,0 +1,14 @@
+/* Query loop: a grid or a list of entries, and the page links. */
+.verso-query__items { display: grid; gap: var(--verso-spacing-large, 1.5rem); margin: 0; padding: 0; list-style: none; }
+.verso-query__items--grid { grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr)); }
+@media (min-width: 64rem) {
+    .verso-query__items--grid.verso-query__items--columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .verso-query__items--grid.verso-query__items--columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .verso-query__items--grid.verso-query__items--columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.verso-query__item { display: grid; gap: 0.5rem; align-content: start; min-inline-size: 0; }
+.verso-query__item > * { margin: 0; }
+.verso-query__item img { inline-size: 100%; block-size: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--verso-radius-base, 6px); }
+.verso-query__pages ul { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.verso-query__pages a { display: inline-grid; place-items: center; min-inline-size: 2.5rem; min-block-size: 2.5rem; padding-inline: 0.6rem; border-radius: 999px; }
+.verso-query__pages [aria-current="page"] { font-weight: 700; outline: 2px solid currentColor; }

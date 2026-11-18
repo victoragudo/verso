@@ -1,0 +1,64 @@
+{
+    "name": "Memberships",
+    "slug": "memberships",
+    "version": "1.0.0",
+    "description": "Membership plans with access levels, members only content and a teaser for visitors.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\Memberships\\MembershipsServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "manage_users",
+        "manage_settings"
+    ],
+    "capabilities": [
+        {
+            "key": "memberships.manage",
+            "label": "Manage members and plans",
+            "description": "Give and take memberships and change plans.",
+            "risk": "high"
+        }
+    ],
+    "admin": {
+        "group": "tools",
+        "label": "Members",
+        "icon": "memberships",
+        "keywords": [
+            "memberships",
+            "subscriptions",
+            "paywall",
+            "miembros",
+            "socios"
+        ],
+        "items": [
+            {
+                "key": "members",
+                "label": "Members",
+                "route": "admin.memberships.members.index",
+                "icon": "users",
+                "keywords": [
+                    "memberships",
+                    "subscribers",
+                    "access",
+                    "miembros"
+                ]
+            },
+            {
+                "key": "plans",
+                "label": "Plans",
+                "route": "admin.memberships.plans.index",
+                "icon": "memberships",
+                "keywords": [
+                    "levels",
+                    "pricing",
+                    "tiers",
+                    "planes"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\Memberships\\": "src/"
+        }
+    }
+}

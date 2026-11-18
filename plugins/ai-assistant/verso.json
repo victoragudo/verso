@@ -1,0 +1,40 @@
+{
+    "name": "AI Assistant",
+    "slug": "ai-assistant",
+    "version": "1.0.0",
+    "description": "Writing help in the entry editor with Claude: outlines, rewrites, excerpts, SEO tags, alt text and translations. Nothing is saved until you accept it.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\AiAssistant\\AiAssistantServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "ai.use"
+    ],
+    "network": [
+        "api.anthropic.com"
+    ],
+    "admin": {
+        "group": "settings",
+        "icon": "sparkles",
+        "items": [
+            {
+                "key": "settings",
+                "label": "AI Assistant",
+                "route": "admin.ai-assistant.index",
+                "icon": "sparkles",
+                "keywords": [
+                    "ai",
+                    "claude",
+                    "writing help",
+                    "api key",
+                    "asistente",
+                    "inteligencia artificial"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\AiAssistant\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "Dakikayı hesaplamak için kullanılan, dakikada okunan ortalama sözcük sayısı.",
+    "Minutes": "Dakika",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "Yalnızca blok bir içeriğin dışında gösterildiğinde kullanılır. İçerik içinde süre sizin için hesaplanır.",
+    "Reading Time": "Okuma süresi",
+    "Reading speed": "Okuma hızı",
+    "Reading time": "Okuma süresi",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "Bir içeriği okumanın kaç dakika sürdüğünü blok olarak ve herkese açık API'de gösterir.",
+    "Shows how many minutes the entry takes to read.": "İçeriği okumanın kaç dakika sürdüğünü gösterir.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, one {# dk okuma} other {# dk okuma}}"
+}

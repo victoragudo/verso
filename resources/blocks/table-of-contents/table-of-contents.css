@@ -1,0 +1,6 @@
+/* Table of contents: the part being read is marked with a line and bold text, not only a color. */
+.verso-toc { padding: 1rem; border-radius: var(--verso-radius-base, 6px); background: var(--verso-color-surface, color-mix(in srgb, currentColor 6%, transparent)); }
+.verso-toc__title { margin: 0 0 0.5rem; font-weight: 700; }
+.verso-toc__list, .verso-toc__list ol { margin: 0; padding-inline-start: 1.25rem; display: grid; gap: 0.25rem; }
+.verso-toc a { text-decoration: underline; text-underline-offset: 0.2em; }
+.verso-toc a[aria-current="true"] { font-weight: 700; text-decoration-thickness: 2px; }

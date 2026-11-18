@@ -1,0 +1,17 @@
+{
+    "name": "Calendar Clash",
+    "slug": "calendar-clash",
+    "version": "1.2.0",
+    "description": "An event calendar that reuses names already taken on this site.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\CalendarClash\\CalendarClashServiceProvider",
+    "requires": "^9.0",
+    "php": ">=99.0",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\CalendarClash\\": "src/",
+            "Verso\\Plugins\\ReadingTime\\": "lib/"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "two-column-feature",
+    "title": "Two column feature",
+    "category": "Layout",
+    "description": "Two side by side columns, each with a heading, a paragraph and a link.",
+    "keywords": ["columns", "features", "side by side"],
+    "blocks": [
+        {
+            "type": "columns",
+            "attrs": {},
+            "content": "",
+            "children": [
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "heading", "attrs": { "level": 3 }, "content": "Field notes" },
+                        { "type": "paragraph", "attrs": {}, "content": "<p>Short dispatches from trains, markets and mountain paths, written on the day.</p>" },
+                        { "type": "button", "attrs": { "label": "Read the travel notes", "url": "/category/travel", "style": "secondary" } }
+                    ]
+                },
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "heading", "attrs": { "level": 3 }, "content": "Kitchen table" },
+                        { "type": "paragraph", "attrs": {}, "content": "<p>Recipes we have cooked at least ten times, with the mistakes we made on the way.</p>" },
+                        { "type": "button", "attrs": { "label": "Browse the recipes", "url": "/category/food", "style": "secondary" } }
+                    ]
+                }
+            ]
+        }
+    ]
+}

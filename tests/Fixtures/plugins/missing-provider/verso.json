@@ -1,0 +1,9 @@
+{
+    "name": "Missing Provider",
+    "slug": "missing-provider",
+    "version": "1.0.0",
+    "description": "Points to a provider class that does not exist.",
+    "provider": "Verso\\Plugins\\MissingProvider\\MissingProviderServiceProvider",
+    "requires": "*",
+    "permissions": []
+}

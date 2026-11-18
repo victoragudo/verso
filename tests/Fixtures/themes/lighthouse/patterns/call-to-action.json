@@ -1,0 +1,12 @@
+{
+    "name": "call-to-action",
+    "title": "Call to action",
+    "category": "Call to action",
+    "description": "A heading, one line of text and a button.",
+    "keywords": ["button", "signup"],
+    "blocks": [
+        { "type": "heading", "attrs": { "level": 2 }, "content": "Get the harbor newsletter" },
+        { "type": "paragraph", "attrs": {}, "content": "<p>Tide times, ferry news and one good walk, every Friday.</p>" },
+        { "type": "button", "attrs": { "label": "Sign up", "url": "/newsletter", "style": "primary" } }
+    ]
+}

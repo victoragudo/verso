@@ -1,0 +1,30 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Verso\Content\Models\Entry;
+use App\Verso\Plugins\Contracts\PluginBlock;
+
+// The "{{ type }}" block.
+class {{ class }} implements PluginBlock
+{
+    public function name(): string
+    {
+        return '{{ type }}';
+    }
+
+    public function label(): string
+    {
+        return '{{ label }}';
+    }
+
+    /**
+     * @param  array<mixed>  $block
+     */
+    public function render(array $block, ?Entry $entry = null): string
+    {
+        $content = is_string($block['content'] ?? null) ? $block['content'] : '';
+
+        return '<div class="block-{{ type }}">'.e($content).'</div>';
+    }
+}

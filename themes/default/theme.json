@@ -1,0 +1,202 @@
+{
+    "name": "Verso Default",
+    "slug": "default",
+    "version": "1.1.0",
+    "description": "A calm, fast and accessible theme for reading. Plain CSS, no JavaScript, light and dark mode.",
+    "author": "The Verso contributors",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "templates": {
+        "full-width": {
+            "label": "Full width",
+            "description": "Text uses the whole layout width. Good for landing pages and wide tables.",
+            "types": [
+                "page"
+            ]
+        },
+        "landing": {
+            "label": "Landing page",
+            "description": "Full width page with the minimal header, so visitors stay on the page.",
+            "view": "templates.full-width",
+            "types": [
+                "page"
+            ],
+            "parts": {
+                "header": "minimal"
+            }
+        }
+    },
+    "parts": {
+        "header": {
+            "label": "Header",
+            "default": "standard",
+            "variants": {
+                "standard": {
+                    "label": "Standard",
+                    "description": "Site name on the left, main menu on the right."
+                },
+                "minimal": {
+                    "label": "Minimal",
+                    "description": "Only the site name, no menu. Good for landing pages."
+                }
+            }
+        }
+    },
+    "styles": {
+        "color": {
+            "accent": {
+                "label": "Accent",
+                "help": "Links and buttons.",
+                "setting": "accent_color",
+                "use": "--accent"
+            },
+            "background": {
+                "label": "Background",
+                "setting": "background_color",
+                "use": "--bg"
+            },
+            "text": {
+                "label": "Text",
+                "setting": "text_color",
+                "use": "--text"
+            },
+            "surface": {
+                "label": "Panels",
+                "default": "#f3f1ec",
+                "css": "--surface-light",
+                "use": "--surface"
+            },
+            "border": {
+                "label": "Lines",
+                "default": "#e2ded5",
+                "css": "--border-light",
+                "use": "--border"
+            }
+        },
+        "font": {
+            "body": {
+                "label": "Text",
+                "setting": "body_font"
+            },
+            "ui": {
+                "label": "Menus and buttons",
+                "setting": "ui_font"
+            }
+        },
+        "spacing": {
+            "small": {
+                "label": "Small",
+                "default": "0.5rem"
+            },
+            "medium": {
+                "label": "Medium",
+                "default": "1rem"
+            },
+            "large": {
+                "label": "Large",
+                "default": "1.5rem"
+            },
+            "x-large": {
+                "label": "Extra large",
+                "default": "3rem"
+            }
+        },
+        "radius": {
+            "base": {
+                "label": "Corners",
+                "default": "6px",
+                "css": "--radius"
+            }
+        },
+        "width": {
+            "wide": {
+                "label": "Page width",
+                "setting": "layout_width"
+            },
+            "content": {
+                "label": "Text column",
+                "setting": "text_width"
+            }
+        }
+    },
+    "settings": {
+        "accent_color": {
+            "type": "color",
+            "label": "Accent color",
+            "help": "Links, buttons and highlights in light mode. Dark mode keeps its own light accent.",
+            "default": "#9a3412",
+            "css": "--accent-light"
+        },
+        "background_color": {
+            "type": "color",
+            "label": "Background color",
+            "help": "Background in light mode. Dark mode keeps its own dark background.",
+            "default": "#fbfaf7",
+            "css": "--bg-light"
+        },
+        "text_color": {
+            "type": "color",
+            "label": "Text color",
+            "help": "Text in light mode. Dark mode keeps its own light text.",
+            "default": "#23211d",
+            "css": "--text-light"
+        },
+        "body_font": {
+            "type": "font",
+            "label": "Body font",
+            "help": "Used for articles and long text.",
+            "default": "charter",
+            "options": [
+                "charter",
+                "georgia",
+                "system",
+                "humanist"
+            ],
+            "css": "--font-text"
+        },
+        "ui_font": {
+            "type": "font",
+            "label": "Heading and menu font",
+            "default": "system",
+            "options": [
+                "system",
+                "humanist",
+                "charter",
+                "georgia"
+            ],
+            "css": "--font-ui"
+        },
+        "logo": {
+            "type": "media",
+            "label": "Logo",
+            "help": "Shown before the site name in the header."
+        },
+        "layout_width": {
+            "type": "size",
+            "label": "Layout width",
+            "help": "Widest size of the header, lists and footer.",
+            "default": 62,
+            "min": 48,
+            "max": 80,
+            "unit": "rem",
+            "css": "--wide"
+        },
+        "text_width": {
+            "type": "size",
+            "label": "Text width",
+            "help": "Line length of articles. Shorter lines are easier to read.",
+            "default": 40,
+            "min": 32,
+            "max": 52,
+            "unit": "rem",
+            "css": "--measure"
+        },
+        "footer_text": {
+            "type": "text",
+            "label": "Footer text",
+            "help": "A short line under the site name, like a copyright note.",
+            "default": "",
+            "max_length": 200
+        }
+    }
+}

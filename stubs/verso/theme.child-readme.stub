@@ -1,0 +1,10 @@
+# {{ name }}
+
+A child theme of `{{ parent }}`. Verso looks for every view here first, then in `{{ parent }}`, then in the default theme.
+
+- Copy a view from the parent into `views/` to change it, like `views/parts/header.blade.php`.
+- Add page templates to `templates` in `theme.json` and their views to `views/templates/`.
+- Add block patterns as JSON files in `patterns/`.
+- `assets/theme.css` loads after the CSS of the parent theme.
+
+See docs/THEMES.md in Verso for the template hierarchy.

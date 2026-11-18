@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "분당 평균 읽는 단어 수로, 시간을 계산하는 데 사용해요.",
+    "Minutes": "분",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "블록이 콘텐츠 밖에 표시될 때만 사용해요. 콘텐츠 안에서는 시간이 자동으로 계산돼요.",
+    "Reading Time": "읽는 시간",
+    "Reading speed": "읽기 속도",
+    "Reading time": "읽는 시간",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "콘텐츠를 읽는 데 걸리는 시간(분)을 블록과 공개 API로 보여 줘요.",
+    "Shows how many minutes the entry takes to read.": "콘텐츠를 읽는 데 걸리는 시간(분)을 보여 줘요.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, other {#분 분량}}"
+}

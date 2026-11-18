@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "প্রতি মিনিটে গড়ে পড়া শব্দ, মিনিট গোনার জন্য ব্যবহৃত।",
+    "Minutes": "মিনিট",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "শুধু এন্ট্রির বাইরে ব্লক দেখানো হলে ব্যবহৃত হয়। এন্ট্রির ভেতরে সময় আপনার জন্য গোনা হয়।",
+    "Reading Time": "পড়ার সময়",
+    "Reading speed": "পড়ার গতি",
+    "Reading time": "পড়ার সময়",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "একটি এন্ট্রি পড়তে কত মিনিট লাগে তা ব্লক হিসেবে ও পাবলিক API তে দেখায়।",
+    "Shows how many minutes the entry takes to read.": "এন্ট্রিটি পড়তে কত মিনিট লাগে তা দেখায়।",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, one {# মিনিটের পড়া} other {# মিনিটের পড়া}}"
+}

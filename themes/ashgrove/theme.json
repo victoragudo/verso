@@ -1,0 +1,232 @@
+{
+    "name": "Ashgrove",
+    "slug": "ashgrove",
+    "version": "1.0.0",
+    "description": "An editorial blog theme: a large lead story, a calm grid of recent posts, a table of contents, author boxes and related posts. Light and dark mode, self-hosted fonts, no build step.",
+    "author": "The Verso contributors",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "templates": {
+        "wide": {
+            "label": "Wide page",
+            "description": "No narrow text column. Good for galleries, tables and landing pages.",
+            "types": [
+                "page"
+            ]
+        },
+        "landing": {
+            "label": "Landing page",
+            "description": "Wide page with the minimal header, so visitors stay on the page.",
+            "view": "templates.wide",
+            "types": [
+                "page"
+            ],
+            "parts": {
+                "header": "minimal"
+            }
+        }
+    },
+    "menus": {
+        "social": "Social links",
+        "legal": "Legal links"
+    },
+    "parts": {
+        "header": {
+            "label": "Header",
+            "default": "classic",
+            "variants": {
+                "classic": {
+                    "label": "Classic",
+                    "description": "Logo on the left, menu and search on the right."
+                },
+                "centered": {
+                    "label": "Centered",
+                    "description": "Logo in the middle with the menu below it."
+                },
+                "minimal": {
+                    "label": "Minimal",
+                    "description": "Only the logo, no menu. Good for landing pages."
+                }
+            }
+        },
+        "footer": {
+            "label": "Footer",
+            "default": "simple",
+            "variants": {
+                "simple": {
+                    "label": "Simple",
+                    "description": "Site name, footer menu and copyright in one row."
+                },
+                "four-columns": {
+                    "label": "Four columns",
+                    "description": "About, menu, reading links and copyright in four columns."
+                }
+            }
+        }
+    },
+    "styles": {
+        "color": {
+            "accent": {
+                "label": "Accent",
+                "help": "Links, buttons and category names.",
+                "setting": "accent_color",
+                "use": "--accent"
+            },
+            "background": {
+                "label": "Background",
+                "default": "#f6f7f3",
+                "css": "--paper-light",
+                "use": "--paper"
+            },
+            "text": {
+                "label": "Text",
+                "default": "#1b2420",
+                "css": "--ink-light",
+                "use": "--ink"
+            },
+            "muted": {
+                "label": "Quiet text",
+                "help": "Dates, captions and other small text.",
+                "default": "#545f59",
+                "css": "--muted-light",
+                "use": "--muted"
+            },
+            "surface": {
+                "label": "Panels",
+                "help": "Footer and boxes.",
+                "default": "#eceee8",
+                "css": "--surface-light",
+                "use": "--surface"
+            }
+        },
+        "font": {
+            "heading": {
+                "label": "Headings",
+                "setting": "heading_font"
+            },
+            "body": {
+                "label": "Text",
+                "setting": "body_font"
+            },
+            "ui": {
+                "label": "Menus and buttons",
+                "default": "instrument-sans",
+                "css": "--font-ui"
+            }
+        },
+        "spacing": {
+            "small": {
+                "label": "Small",
+                "default": "0.5rem",
+                "css": "--space-1"
+            },
+            "medium": {
+                "label": "Medium",
+                "default": "1rem",
+                "css": "--space-2"
+            },
+            "large": {
+                "label": "Large",
+                "default": "1.5rem",
+                "css": "--space-3"
+            },
+            "x-large": {
+                "label": "Extra large",
+                "default": "2.5rem",
+                "css": "--space-4"
+            }
+        },
+        "radius": {
+            "base": {
+                "label": "Corners",
+                "help": "Roundness of images, buttons and boxes.",
+                "default": "3px",
+                "css": "--radius"
+            }
+        },
+        "width": {
+            "wide": {
+                "label": "Page width",
+                "setting": "layout_width"
+            },
+            "content": {
+                "label": "Text column",
+                "help": "Width of the text in posts and pages.",
+                "default": "36rem",
+                "css": "--measure"
+            }
+        }
+    },
+    "settings": {
+        "accent_color": {
+            "type": "color",
+            "label": "Accent color",
+            "help": "Links, buttons and category names. Pick a dark color: it must stay readable on the light background.",
+            "default": "#2e5e4e",
+            "css": "--accent-light"
+        },
+        "heading_font": {
+            "type": "font",
+            "label": "Heading font",
+            "help": "Titles and headings.",
+            "default": "newsreader",
+            "options": [
+                "newsreader",
+                "instrument-sans",
+                "charter",
+                "georgia",
+                "system"
+            ],
+            "css": "--font-heading"
+        },
+        "body_font": {
+            "type": "font",
+            "label": "Body font",
+            "help": "Articles and long text.",
+            "default": "newsreader",
+            "options": [
+                "newsreader",
+                "charter",
+                "georgia",
+                "instrument-sans",
+                "system",
+                "humanist"
+            ],
+            "css": "--font-body"
+        },
+        "logo": {
+            "type": "media",
+            "label": "Logo",
+            "help": "Shown instead of the site name in the header. The site name stays as hidden text."
+        },
+        "layout_width": {
+            "type": "size",
+            "label": "Layout width",
+            "help": "Widest size of the header, the post grid and the footer.",
+            "default": 76,
+            "min": 60,
+            "max": 96,
+            "unit": "rem",
+            "css": "--wide"
+        },
+        "show_author_box": {
+            "type": "toggle",
+            "label": "Show the author box",
+            "help": "A short bio and photo of the author under each post.",
+            "default": true
+        },
+        "footer_text": {
+            "type": "text",
+            "label": "Footer text",
+            "help": "A short line about the site, shown in the footer.",
+            "default": "",
+            "max_length": 240
+        }
+    },
+    "easy": {
+        "fontFiles": {
+            "newsreader": "fonts/newsreader-roman.woff2",
+            "instrument-sans": "fonts/instrument-sans.woff2"
+        }
+    }
+}

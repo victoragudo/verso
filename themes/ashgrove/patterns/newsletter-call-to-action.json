@@ -1,0 +1,13 @@
+{
+    "name": "newsletter-call-to-action",
+    "title": "Newsletter call to action",
+    "category": "Call to action",
+    "description": "A short invitation and the newsletter signup form. Shown only when the Newsletter plugin is on.",
+    "keywords": ["newsletter", "email", "subscribe", "signup"],
+    "blocks": [
+        { "type": "separator", "attrs": {} },
+        { "type": "heading", "attrs": { "level": 2 }, "content": "One letter a month, no noise" },
+        { "type": "paragraph", "attrs": {}, "content": "<p>The best new posts, one recipe we keep cooking and a short reading list. You can leave with one click.</p>" },
+        { "type": "newsletter-signup", "attrs": { "title": "Get the monthly letter", "button": "Subscribe", "askName": false } }
+    ]
+}

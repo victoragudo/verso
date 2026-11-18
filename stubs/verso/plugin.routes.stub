@@ -1,0 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+// Admin pages of {{ name }}, under /{{ admin_prefix }}/tools/{{ slug }}. Route names start with "admin.".
+// The first page sends people to the plugin details. Replace it with your own page.
+Route::redirect('tools/{{ slug }}', '/{{ admin_prefix }}/plugins/{{ slug }}')->name('{{ slug }}.index');

@@ -1,0 +1,33 @@
+{
+    "name": "about-the-author",
+    "title": "About the author",
+    "category": "Text",
+    "description": "A portrait next to a short bio, in two columns.",
+    "keywords": ["author", "bio", "profile", "about"],
+    "blocks": [
+        {
+            "type": "columns",
+            "attrs": {},
+            "content": "",
+            "children": [
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "heading", "attrs": { "level": 3 }, "content": "Hello, I am Clara" },
+                        { "type": "paragraph", "attrs": {}, "content": "<p>I cook, garden on a narrow balcony and write this journal from Lisbon. Before that I spent ten years planning trains for other people.</p>" }
+                    ]
+                },
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "list", "attrs": { "ordered": false }, "content": "<ul><li>Writes about food and gardens</li><li>Bakes bread every Sunday</li><li>Answers every email, slowly</li></ul>" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

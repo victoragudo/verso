@@ -1,0 +1,13 @@
+{
+    "name": "Not A Provider",
+    "slug": "not-a-provider",
+    "version": "1.0.0",
+    "description": "Its provider class does not extend PluginServiceProvider.",
+    "provider": "Verso\\Plugins\\NotAProvider\\Greeter",
+    "requires": ">=0.1.0",
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\NotAProvider\\": "src/"
+        }
+    }
+}

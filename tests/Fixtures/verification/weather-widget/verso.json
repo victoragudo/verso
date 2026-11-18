@@ -1,0 +1,16 @@
+{
+    "name": "Weather Widget",
+    "slug": "weather-widget",
+    "version": "1.2.0",
+    "description": "Shows the local weather forecast in a sidebar block.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\WeatherWidget\\WeatherWidgetServiceProvider",
+    "requires": "^0.1",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\WeatherWidget\\": "src/"
+        }
+    },
+    "network": ["api.open-meteo.com"]
+}

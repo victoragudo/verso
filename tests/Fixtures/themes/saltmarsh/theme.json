@@ -1,0 +1,10 @@
+{
+    "name": "Saltmarsh",
+    "slug": "saltmarsh",
+    "version": "1.2.0",
+    "description": "A child of the default theme with a green accent and a shorter home page.",
+    "author": "Tomas Lindqvist",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "parent": "default"
+}

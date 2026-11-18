@@ -1,0 +1,13 @@
+{
+    "name": "hero-intro",
+    "title": "Hero introduction",
+    "category": "Intro",
+    "description": "A large welcome heading, one paragraph about the site and two buttons.",
+    "keywords": ["hero", "welcome", "intro", "about"],
+    "blocks": [
+        { "type": "heading", "attrs": { "level": 2 }, "content": "Slow travel, honest food and the small rituals in between" },
+        { "type": "paragraph", "attrs": {}, "content": "<p>We write about the places we walk through, the bread we bake on Sundays and the habits that make ordinary weeks feel good. New stories every Thursday.</p>" },
+        { "type": "button", "attrs": { "label": "Start with the latest posts", "url": "/blog", "style": "primary" } },
+        { "type": "button", "attrs": { "label": "About us", "url": "/about", "style": "secondary" } }
+    ]
+}

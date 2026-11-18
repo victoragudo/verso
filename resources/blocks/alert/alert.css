@@ -1,0 +1,18 @@
+/* Alert: the kind is said in words and shown with an icon and a side line, not only with a color. */
+.verso-alert {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--verso-alert) 40%, transparent);
+    border-inline-start: 4px solid var(--verso-alert);
+    border-radius: var(--verso-radius-base, 6px);
+    background: color-mix(in srgb, var(--verso-alert) 8%, transparent);
+    --verso-alert: #2563eb;
+}
+.verso-alert--success { --verso-alert: #15803d; }
+.verso-alert--warning { --verso-alert: #b45309; }
+.verso-alert--error { --verso-alert: #b91c1c; }
+.verso-alert__icon { color: var(--verso-alert); margin-block-start: 0.1rem; }
+.verso-alert__body > * { margin: 0; }
+.verso-alert__body > * + * { margin-block-start: 0.4rem; }
+.verso-alert__title { font-weight: 700; }

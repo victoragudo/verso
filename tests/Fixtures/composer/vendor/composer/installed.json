@@ -1,0 +1,52 @@
+{
+    "packages": [
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "2.7.0",
+            "type": "library",
+            "install-path": "../guzzlehttp/psr7"
+        },
+        {
+            "name": "harbor/podcast-player",
+            "version": "v1.4.2",
+            "type": "library",
+            "extra": {
+                "verso": {
+                    "name": "Podcast Player",
+                    "description": "Plays podcast episodes inside your posts.",
+                    "provider": "Harbor\\PodcastPlayer\\PodcastPlayerServiceProvider",
+                    "requires": "^0.1",
+                    "permissions": ["upload_files"],
+                    "autoload": {
+                        "psr-4": {
+                            "Harbor\\PodcastPlayer\\": "src/"
+                        }
+                    }
+                }
+            },
+            "install-path": "../harbor/podcast-player"
+        },
+        {
+            "name": "harbor/newsletter-signup",
+            "version": "dev-main",
+            "type": "library",
+            "extra": {
+                "verso": true
+            },
+            "install-path": "../harbor/newsletter-signup"
+        },
+        {
+            "name": "harbor/broken-banner",
+            "version": "0.2.0",
+            "type": "library",
+            "extra": {
+                "verso": {
+                    "name": "Broken Banner"
+                }
+            },
+            "install-path": "../harbor/broken-banner"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

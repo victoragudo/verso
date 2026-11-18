@@ -1,0 +1,18 @@
+import type { SlotComponentProps, SlotRegistry } from '@/components/verso/slots';
+import { SectionCard } from '@/components/verso/ui';
+
+// The dashboard card of {{ name }}. Its props come from the SlotItem in the service provider.
+function Widget({ item, props }: SlotComponentProps) {
+    return (
+        <SectionCard title={item.label ?? '{{ name }}'}>
+            <p className="text-sm text-muted-foreground">
+                {String(props.message ?? '')}
+            </p>
+        </SectionCard>
+    );
+}
+
+// Registers the admin components of {{ name }}. Run "npm run build" after changes.
+export default function register(registry: SlotRegistry): void {
+    registry.registerSlotComponent('{{ slug }}.widget', Widget);
+}

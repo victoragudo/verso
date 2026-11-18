@@ -1,0 +1,431 @@
+{
+    "minimums": {
+        "body": 4.5,
+        "large": 3.0
+    },
+    "checks": [
+        "text-background",
+        "muted-background",
+        "accent-background",
+        "text-surface"
+    ],
+    "ratios": [
+        {
+            "foreground": "#000000",
+            "background": "#ffffff",
+            "ratio": 21.0
+        },
+        {
+            "foreground": "#ffffff",
+            "background": "#ffffff",
+            "ratio": 1.0
+        },
+        {
+            "foreground": "#777777",
+            "background": "#ffffff",
+            "ratio": 4.48
+        },
+        {
+            "foreground": "#767676",
+            "background": "#ffffff",
+            "ratio": 4.54
+        },
+        {
+            "foreground": "#2e5e4e",
+            "background": "#f6f7f3",
+            "ratio": 6.9
+        },
+        {
+            "foreground": "#9a3412",
+            "background": "#fbfaf7",
+            "ratio": 7.0
+        },
+        {
+            "foreground": "#fff",
+            "background": "#000",
+            "ratio": 21.0
+        },
+        {
+            "foreground": "#e11d48",
+            "background": "#ffffff",
+            "ratio": 4.7
+        },
+        {
+            "foreground": "#f5d0a9",
+            "background": "#1b2420",
+            "ratio": 10.97
+        },
+        {
+            "foreground": "#0ea5e9",
+            "background": "#0f172a",
+            "ratio": 6.44
+        }
+    ],
+    "reviews": [
+        {
+            "name": "Harbor Lane Bakery, readable",
+            "colors": {
+                "accent": "#2e5e4e",
+                "background": "#f6f7f3",
+                "text": "#1b2420",
+                "muted": "#545f59",
+                "surface": "#eceee8"
+            },
+            "warnings": []
+        },
+        {
+            "name": "Pale grey text on cream",
+            "colors": {
+                "accent": "#2e5e4e",
+                "background": "#fbfaf7",
+                "text": "#b8b5ad",
+                "muted": "#c9c6bf",
+                "surface": "#f3f1ec"
+            },
+            "warnings": [
+                {
+                    "key": "text-background",
+                    "fix": "text",
+                    "direction": "darker",
+                    "message": "The text is hard to read on this background. Try a darker text color."
+                },
+                {
+                    "key": "muted-background",
+                    "fix": "muted",
+                    "direction": "darker",
+                    "message": "Quiet text, like dates and captions, is hard to read on this background. Try a darker quiet text color."
+                }
+            ]
+        },
+        {
+            "name": "Yellow buttons on white",
+            "colors": {
+                "accent": "#facc15",
+                "background": "#ffffff",
+                "text": "#111827",
+                "muted": "#4b5563",
+                "surface": "#f3f4f6"
+            },
+            "warnings": [
+                {
+                    "key": "accent-background",
+                    "fix": "accent",
+                    "direction": "darker",
+                    "message": "Links and buttons are hard to see on this background. Try a darker accent color."
+                }
+            ]
+        },
+        {
+            "name": "Night mode with dark panels",
+            "colors": {
+                "accent": "#38bdf8",
+                "background": "#0f172a",
+                "text": "#e2e8f0",
+                "muted": "#94a3b8",
+                "surface": "#f1f5f9"
+            },
+            "warnings": [
+                {
+                    "key": "text-surface",
+                    "fix": "surface",
+                    "direction": "darker",
+                    "message": "Text on panels is hard to read. Try a darker panel color."
+                }
+            ]
+        },
+        {
+            "name": "Only text and background",
+            "colors": {
+                "background": "#1b2420",
+                "text": "#2b3a33"
+            },
+            "warnings": [
+                {
+                    "key": "text-background",
+                    "fix": "text",
+                    "direction": "lighter",
+                    "message": "The text is hard to read on this background. Try a lighter text color."
+                }
+            ]
+        },
+        {
+            "name": "Pale captions on white",
+            "colors": {
+                "accent": "#1d4ed8",
+                "background": "#ffffff",
+                "text": "#18181b",
+                "muted": "#a3a3a3",
+                "surface": "#f4f4f5"
+            },
+            "warnings": [
+                {
+                    "key": "muted-background",
+                    "fix": "muted",
+                    "direction": "darker",
+                    "message": "Quiet text, like dates and captions, is hard to read on this background. Try a darker quiet text color."
+                }
+            ]
+        }
+    ],
+    "fixes": [
+        {
+            "color": "#b8b5ad",
+            "other": "#fbfaf7",
+            "minimum": 4.5,
+            "expected": "#72706b"
+        },
+        {
+            "color": "#facc15",
+            "other": "#ffffff",
+            "minimum": 3.0,
+            "expected": "#af8f0f"
+        },
+        {
+            "color": "#2b3a33",
+            "other": "#1b2420",
+            "minimum": 4.5,
+            "expected": "#848d89"
+        },
+        {
+            "color": "#f1f5f9",
+            "other": "#e2e8f0",
+            "minimum": 4.5,
+            "expected": "#656769"
+        },
+        {
+            "color": "#2e5e4e",
+            "other": "#f6f7f3",
+            "minimum": 3.0,
+            "expected": "#2e5e4e"
+        },
+        {
+            "color": "#808080",
+            "other": "#808080",
+            "minimum": 4.5,
+            "expected": "#171717"
+        }
+    ],
+    "sections": {
+        "colors": {
+            "color.accent": "#2e5e4e",
+            "color.background": "#f6f7f3",
+            "color.text": "#1b2420",
+            "color.muted": "#545f59",
+            "color.surface": "#eceee8"
+        },
+        "cases": [
+            {
+                "name": "Default text on an accent background",
+                "blocks": [
+                    {
+                        "id": "b_hero0001",
+                        "type": "section",
+                        "attrs": {
+                            "tag": "section",
+                            "design": {
+                                "color": {
+                                    "background": "var:color.accent"
+                                }
+                            }
+                        },
+                        "content": "",
+                        "children": [
+                            {
+                                "id": "b_title001",
+                                "type": "heading",
+                                "attrs": {
+                                    "level": 2
+                                },
+                                "content": "Fresh bread on Harbor Lane",
+                                "children": []
+                            },
+                            {
+                                "id": "b_text0001",
+                                "type": "paragraph",
+                                "attrs": {},
+                                "content": "<p>Baked at five, gone by noon.</p>",
+                                "children": []
+                            }
+                        ]
+                    }
+                ],
+                "warnings": [
+                    {
+                        "sectionId": "b_hero0001",
+                        "groups": [
+                            {
+                                "originId": "b_hero0001",
+                                "foreground": "#1b2420",
+                                "background": "#2e5e4e",
+                                "minimum": 4.5
+                            }
+                        ]
+                    }
+                ],
+                "fixed": {
+                    "b_hero0001": "var:color.background"
+                }
+            },
+            {
+                "name": "Pale hex heading on the page background",
+                "blocks": [
+                    {
+                        "id": "b_serv0001",
+                        "type": "section",
+                        "attrs": {
+                            "tag": "section"
+                        },
+                        "content": "",
+                        "children": [
+                            {
+                                "id": "b_title002",
+                                "type": "heading",
+                                "attrs": {
+                                    "level": 2,
+                                    "design": {
+                                        "color": {
+                                            "text": {
+                                                "base": "#e2dfd2",
+                                                "mobile": "#1b2420"
+                                            }
+                                        }
+                                    }
+                                },
+                                "content": "What we bake",
+                                "children": []
+                            }
+                        ]
+                    }
+                ],
+                "warnings": [
+                    {
+                        "sectionId": "b_serv0001",
+                        "groups": [
+                            {
+                                "originId": "b_title002",
+                                "foreground": "#e2dfd2",
+                                "background": "#f6f7f3",
+                                "minimum": 3.0
+                            }
+                        ]
+                    }
+                ],
+                "fixed": {
+                    "b_title002": "var:color.text"
+                }
+            },
+            {
+                "name": "Button text close to the accent",
+                "blocks": [
+                    {
+                        "id": "b_book0001",
+                        "type": "section",
+                        "attrs": {
+                            "tag": "section"
+                        },
+                        "content": "",
+                        "children": [
+                            {
+                                "id": "b_button01",
+                                "type": "button",
+                                "attrs": {
+                                    "label": "Book a table",
+                                    "url": "/visit-us",
+                                    "style": "primary",
+                                    "design": {
+                                        "color": {
+                                            "text": "#3b6b5b"
+                                        }
+                                    }
+                                },
+                                "content": "",
+                                "children": []
+                            }
+                        ]
+                    }
+                ],
+                "warnings": [
+                    {
+                        "sectionId": "b_book0001",
+                        "groups": [
+                            {
+                                "originId": "b_button01",
+                                "foreground": "#3b6b5b",
+                                "background": "#2e5e4e",
+                                "minimum": 4.5
+                            }
+                        ]
+                    }
+                ],
+                "fixed": {
+                    "b_button01": "var:color.background"
+                }
+            },
+            {
+                "name": "Readable text on a panel",
+                "blocks": [
+                    {
+                        "id": "b_hours001",
+                        "type": "section",
+                        "attrs": {
+                            "tag": "section",
+                            "design": {
+                                "color": {
+                                    "background": "var:color.surface"
+                                }
+                            }
+                        },
+                        "content": "",
+                        "children": [
+                            {
+                                "id": "b_text0002",
+                                "type": "paragraph",
+                                "attrs": {},
+                                "content": "<p>Open Monday to Saturday, 7:00 to 15:00.</p>",
+                                "children": []
+                            }
+                        ]
+                    }
+                ],
+                "warnings": [],
+                "fixed": {}
+            },
+            {
+                "name": "Colors the editor cannot read are skipped",
+                "blocks": [
+                    {
+                        "id": "b_wash0001",
+                        "type": "section",
+                        "attrs": {
+                            "tag": "section",
+                            "design": {
+                                "color": {
+                                    "background": "var:color.brand-wash"
+                                }
+                            }
+                        },
+                        "content": "",
+                        "children": [
+                            {
+                                "id": "b_title003",
+                                "type": "heading",
+                                "attrs": {
+                                    "level": 2,
+                                    "design": {
+                                        "color": {
+                                            "text": "#e2dfd2"
+                                        }
+                                    }
+                                },
+                                "content": "Our story",
+                                "children": []
+                            }
+                        ]
+                    }
+                ],
+                "warnings": [],
+                "fixed": {}
+            }
+        ]
+    }
+}

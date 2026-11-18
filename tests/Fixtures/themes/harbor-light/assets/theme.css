@@ -1,0 +1,4 @@
+:root { --accent: #0f766e; }
+body { font-family: Charter, Georgia, serif; color: #1f2937; background: #fdfcf9; }
+.skip-link { position: absolute; left: -999px; }
+.skip-link:focus { left: 1rem; }

@@ -1,0 +1,75 @@
+{
+    "name": "Newsletter",
+    "slug": "newsletter",
+    "version": "1.0.0",
+    "description": "Subscribers with double opt-in, lists, campaigns written with blocks and sent in batches.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\Newsletter\\NewsletterServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "edit_any_entry",
+        "manage_settings"
+    ],
+    "capabilities": [
+        {
+            "key": "newsletter.manage",
+            "label": "Manage the newsletter",
+            "description": "Write and send campaigns and manage subscribers and lists.",
+            "risk": "high",
+            "roles": [
+                "editor"
+            ]
+        }
+    ],
+    "admin": {
+        "group": "tools",
+        "icon": "newsletter",
+        "keywords": [
+            "email",
+            "mailing",
+            "boletín"
+        ],
+        "items": [
+            {
+                "key": "campaigns",
+                "label": "Campaigns",
+                "route": "admin.newsletter.campaigns.index",
+                "icon": "newsletter",
+                "keywords": [
+                    "send",
+                    "mailing",
+                    "emails",
+                    "campañas"
+                ]
+            },
+            {
+                "key": "subscribers",
+                "label": "Subscribers",
+                "route": "admin.newsletter.subscribers.index",
+                "icon": "users",
+                "keywords": [
+                    "lists",
+                    "audience",
+                    "contacts",
+                    "suscriptores"
+                ]
+            },
+            {
+                "key": "settings",
+                "label": "Settings",
+                "route": "admin.newsletter.settings.edit",
+                "icon": "settings",
+                "keywords": [
+                    "sender",
+                    "double opt-in",
+                    "smtp"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\Newsletter\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Book Club",
+    "slug": "book-club",
+    "version": "1.2.0",
+    "description": "Lets readers vote for the next book of the month.",
+    "provider": "Verso\\Plugins\\BookClub\\BookClubServiceProvider",
+    "requires": "^0.1",
+    "permissions": ["moderate_comments"],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\BookClub\\": "src/"
+        }
+    }
+}

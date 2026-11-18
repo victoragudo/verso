@@ -1,0 +1,16 @@
+{
+    "A colored box with a short message.": "Una caja de color con un mensaje breve.",
+    "Builder Example": "Ejemplo de constructor",
+    "Info": "Información",
+    "Keep the message short: one sentence works best.": "Que el mensaje sea breve: una frase funciona mejor.",
+    "Message": "Mensaje",
+    "Notice": "Aviso",
+    "Notice tips": "Consejos del aviso",
+    "Opacity": "Opacidad",
+    "Rotate": "Rotar",
+    "Shows how to extend the block builder: a notice block, an opacity style, a tips panel and a drop rule.": "Muestra cómo ampliar el constructor de bloques: un bloque de aviso, un estilo de opacidad, un panel de consejos y una regla para soltar.",
+    "Success": "Éxito",
+    "Tone": "Tono",
+    "Warning": "Advertencia",
+    "Warnings catch the eye. Use them for things people must not miss.": "Las advertencias llaman la atención. Úsalas para lo que nadie debe pasar por alto."
+}

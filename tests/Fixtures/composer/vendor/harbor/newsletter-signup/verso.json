@@ -1,0 +1,8 @@
+{
+    "name": "Newsletter Signup",
+    "slug": "newsletter-signup",
+    "version": "0.9.0",
+    "description": "Adds a newsletter signup box to the theme.",
+    "provider": "Harbor\\NewsletterSignup\\NewsletterSignupServiceProvider",
+    "requires": "^0.1"
+}

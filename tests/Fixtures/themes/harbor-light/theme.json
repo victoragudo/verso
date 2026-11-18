@@ -1,0 +1,20 @@
+{
+    "name": "Harbor Light",
+    "slug": "harbor-light",
+    "version": "1.2.0",
+    "description": "A bright theme for coastal travel journals, with large type and calm colors.",
+    "author": "Ines Duarte",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "network": [
+        "cdn.jsdelivr.net"
+    ],
+    "settings": {
+        "accent_color": {
+            "type": "color",
+            "label": "Accent color",
+            "default": "#0f766e",
+            "css": "--accent"
+        }
+    }
+}

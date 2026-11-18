@@ -1,0 +1,46 @@
+{
+    "name": "Analytics",
+    "slug": "analytics",
+    "version": "1.0.0",
+    "description": "Privacy first visitor stats with no cookies and no personal data. Respects Do Not Track and Global Privacy Control.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\Analytics\\AnalyticsServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "manage_settings"
+    ],
+    "capabilities": [
+        {
+            "key": "analytics.view",
+            "label": "See site analytics",
+            "description": "Open the Analytics tab of the dashboard and the visitors stat.",
+            "risk": "low"
+        }
+    ],
+    "admin": {
+        "group": "dashboard",
+        "icon": "analytics",
+        "items": [
+            {
+                "key": "overview",
+                "label": "Analytics",
+                "route": "admin.analytics.index",
+                "icon": "analytics",
+                "keywords": [
+                    "stats",
+                    "statistics",
+                    "visitors",
+                    "traffic",
+                    "views",
+                    "estadísticas",
+                    "visitas"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\Analytics\\": "src/"
+        }
+    }
+}

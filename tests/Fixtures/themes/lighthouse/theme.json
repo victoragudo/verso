@@ -1,0 +1,88 @@
+{
+    "name": "Lighthouse",
+    "slug": "lighthouse",
+    "version": "1.0.0",
+    "description": "A small, fast theme for reading, with light and dark colors.",
+    "author": "Marta Ibarra",
+    "requires": "^0.1",
+    "php": "^8.4",
+    "templates": {
+        "wide": {
+            "label": "Wide page",
+            "description": "The text uses the full page width.",
+            "types": ["page"]
+        }
+    },
+    "styles": {
+        "color": {
+            "accent": { "label": "Accent", "setting": "accent_color", "use": "--accent" },
+            "background": { "label": "Background", "default": "#fdfcfa", "css": "--paper-light", "use": "--paper" },
+            "text": { "label": "Text", "default": "#1f2328", "css": "--ink-light", "use": "--ink" },
+            "surface": { "label": "Panels", "default": "#f1efea", "css": "--panel-light", "use": "--panel" }
+        },
+        "font": {
+            "body": { "label": "Text", "setting": "body_font" }
+        },
+        "spacing": {
+            "small": { "label": "Small", "default": "0.5rem" },
+            "medium": { "label": "Medium", "default": "1rem" },
+            "large": { "label": "Large", "default": "1.5rem" },
+            "x-large": { "label": "Extra large", "default": "3rem" }
+        },
+        "radius": {
+            "base": { "label": "Corners", "default": "6px", "css": "--radius" }
+        },
+        "width": {
+            "content": { "label": "Text column", "setting": "text_width" }
+        }
+    },
+    "settings": {
+        "accent_color": {
+            "type": "color",
+            "label": "Accent color",
+            "help": "Links and buttons in light mode.",
+            "default": "#0b5c8a",
+            "css": "--accent-light"
+        },
+        "body_font": {
+            "type": "font",
+            "label": "Text font",
+            "default": "system",
+            "options": ["system", "humanist", "charter", "georgia"],
+            "css": "--font-body"
+        },
+        "text_width": {
+            "type": "length",
+            "label": "Text width",
+            "help": "Line length of posts and pages.",
+            "default": "42rem",
+            "unit": "rem",
+            "units": ["rem", "ch", "px"],
+            "css": "--measure"
+        },
+        "page_width": {
+            "type": "size",
+            "label": "Page width",
+            "default": 72,
+            "min": 56,
+            "max": 90,
+            "unit": "rem",
+            "css": "--wide"
+        },
+        "logo": {
+            "type": "media",
+            "label": "Logo"
+        },
+        "show_excerpts": {
+            "type": "toggle",
+            "label": "Show excerpts in lists",
+            "default": true
+        },
+        "footer_text": {
+            "type": "text",
+            "label": "Footer text",
+            "default": "",
+            "max_length": 200
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "A colored box with a short message.": "带简短消息的彩色框。",
+    "Builder Example": "构建器示例",
+    "Info": "信息",
+    "Keep the message short: one sentence works best.": "消息请保持简短：一句话最好。",
+    "Message": "消息",
+    "Notice": "通知",
+    "Notice tips": "通知提示",
+    "Opacity": "不透明度",
+    "Rotate": "旋转",
+    "Shows how to extend the block builder: a notice block, an opacity style, a tips panel and a drop rule.": "演示如何扩展区块构建器：通知区块、不透明度样式、提示面板和放置规则。",
+    "Success": "成功",
+    "Tone": "语气",
+    "Warning": "警告",
+    "Warnings catch the eye. Use them for things people must not miss.": "警告很醒目。用于不能错过的重要信息。"
+}

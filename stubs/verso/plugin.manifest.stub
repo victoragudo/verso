@@ -1,0 +1,27 @@
+{
+    "name": "{{ name }}",
+    "slug": "{{ slug }}",
+    "version": "0.1.0",
+    "description": "{{ description }}",
+    "author": "{{ author }}",
+    "provider": "{{ namespace_json }}\\{{ class }}ServiceProvider",
+    "requires": "{{ requires }}",
+    "permissions": [],
+    "admin": {
+        "group": "tools",
+        "icon": "plugins",
+        "items": [
+            {
+                "key": "overview",
+                "label": "Overview",
+                "route": "admin.{{ slug }}.index",
+                "keywords": ["{{ slug }}"]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ namespace_json }}\\": "src/"
+        }
+    }
+}

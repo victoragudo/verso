@@ -1,0 +1,936 @@
+{
+    "units": {
+        "common": [
+            "px",
+            "rem",
+            "em",
+            "%",
+            "vw",
+            "vh"
+        ],
+        "lengthGroups": {
+            "absolute": [
+                "px",
+                "cm",
+                "mm",
+                "Q",
+                "in",
+                "pc",
+                "pt"
+            ],
+            "font": [
+                "em",
+                "rem",
+                "ex",
+                "rex",
+                "cap",
+                "rcap",
+                "ch",
+                "rch",
+                "ic",
+                "ric",
+                "lh",
+                "rlh"
+            ],
+            "viewport": [
+                "vw",
+                "vh",
+                "vi",
+                "vb",
+                "vmin",
+                "vmax",
+                "svw",
+                "svh",
+                "svi",
+                "svb",
+                "svmin",
+                "svmax",
+                "lvw",
+                "lvh",
+                "lvi",
+                "lvb",
+                "lvmin",
+                "lvmax",
+                "dvw",
+                "dvh",
+                "dvi",
+                "dvb",
+                "dvmin",
+                "dvmax"
+            ],
+            "container": [
+                "cqw",
+                "cqh",
+                "cqi",
+                "cqb",
+                "cqmin",
+                "cqmax"
+            ],
+            "percent": [
+                "%"
+            ]
+        },
+        "angle": [
+            "deg",
+            "rad",
+            "grad",
+            "turn"
+        ],
+        "time": [
+            "s",
+            "ms"
+        ],
+        "keywords": [
+            "auto",
+            "fit-content",
+            "min-content",
+            "max-content",
+            "none",
+            "normal"
+        ],
+        "functions": [
+            "calc",
+            "clamp",
+            "min",
+            "max",
+            "var"
+        ],
+        "maxLength": 200,
+        "maxDepth": 6
+    },
+    "rules": {
+        "length": {
+            "type": "length"
+        },
+        "width": {
+            "type": "length",
+            "keywords": [
+                "auto",
+                "fit-content",
+                "min-content",
+                "max-content"
+            ],
+            "negative": false
+        },
+        "lineHeight": {
+            "type": "length",
+            "keywords": [
+                "normal"
+            ],
+            "unitless": true,
+            "negative": false
+        },
+        "padding": {
+            "type": "length",
+            "negative": false
+        },
+        "angle": {
+            "type": "angle"
+        },
+        "time": {
+            "type": "time"
+        },
+        "number": {
+            "type": "number"
+        },
+        "pxRem": {
+            "type": "length",
+            "units": [
+                "px",
+                "rem"
+            ]
+        },
+        "remOnly": {
+            "type": "length",
+            "units": [
+                "rem"
+            ]
+        },
+        "noCustom": {
+            "type": "length",
+            "custom": false
+        }
+    },
+    "cases": [
+        {
+            "name": "length \"1.5rem\"",
+            "rule": "length",
+            "value": "1.5rem",
+            "css": "1.5rem"
+        },
+        {
+            "name": "length \"24px\"",
+            "rule": "length",
+            "value": "24px",
+            "css": "24px"
+        },
+        {
+            "name": "length \"24PX\"",
+            "rule": "length",
+            "value": "24PX",
+            "css": "24px"
+        },
+        {
+            "name": "length \"1q\"",
+            "rule": "length",
+            "value": "1q",
+            "css": "1Q"
+        },
+        {
+            "name": "length \"-0.5rem\"",
+            "rule": "length",
+            "value": "-0.5rem",
+            "css": "-0.5rem"
+        },
+        {
+            "name": "length \".75em\"",
+            "rule": "length",
+            "value": ".75em",
+            "css": "0.75em"
+        },
+        {
+            "name": "length \"+2px\"",
+            "rule": "length",
+            "value": "+2px",
+            "css": "2px"
+        },
+        {
+            "name": "length \"0\"",
+            "rule": "length",
+            "value": "0",
+            "css": "0"
+        },
+        {
+            "name": "length 0",
+            "rule": "length",
+            "value": 0,
+            "css": "0"
+        },
+        {
+            "name": "length 24",
+            "rule": "length",
+            "value": 24,
+            "css": "24px"
+        },
+        {
+            "name": "length \"24\"",
+            "rule": "length",
+            "value": "24",
+            "css": "24px"
+        },
+        {
+            "name": "length 1.5",
+            "rule": "length",
+            "value": 1.5,
+            "css": "1.5px"
+        },
+        {
+            "name": "length \"-0px\"",
+            "rule": "length",
+            "value": "-0px",
+            "css": "0px"
+        },
+        {
+            "name": "length \"50%\"",
+            "rule": "length",
+            "value": "50%",
+            "css": "50%"
+        },
+        {
+            "name": "length \"10dvh\"",
+            "rule": "length",
+            "value": "10dvh",
+            "css": "10dvh"
+        },
+        {
+            "name": "length \"5cqi\"",
+            "rule": "length",
+            "value": "5cqi",
+            "css": "5cqi"
+        },
+        {
+            "name": "length \"2rlh\"",
+            "rule": "length",
+            "value": "2rlh",
+            "css": "2rlh"
+        },
+        {
+            "name": "length \"3ric\"",
+            "rule": "length",
+            "value": "3ric",
+            "css": "3ric"
+        },
+        {
+            "name": "length \"1in\"",
+            "rule": "length",
+            "value": "1in",
+            "css": "1in"
+        },
+        {
+            "name": "length \"12pt\"",
+            "rule": "length",
+            "value": "12pt",
+            "css": "12pt"
+        },
+        {
+            "name": "length \" 2rem \"",
+            "rule": "length",
+            "value": " 2rem ",
+            "css": "2rem"
+        },
+        {
+            "name": "length \"100svmin\"",
+            "rule": "length",
+            "value": "100svmin",
+            "css": "100svmin"
+        },
+        {
+            "name": "length \"2cap\"",
+            "rule": "length",
+            "value": "2cap",
+            "css": "2cap"
+        },
+        {
+            "name": "length \"12 apples\"",
+            "rule": "length",
+            "value": "12 apples",
+            "css": null
+        },
+        {
+            "name": "length \"2 rem\"",
+            "rule": "length",
+            "value": "2 rem",
+            "css": null
+        },
+        {
+            "name": "length \"auto\"",
+            "rule": "length",
+            "value": "auto",
+            "css": null
+        },
+        {
+            "name": "length \"red\"",
+            "rule": "length",
+            "value": "red",
+            "css": null
+        },
+        {
+            "name": "length \"1e3px\"",
+            "rule": "length",
+            "value": "1e3px",
+            "css": null
+        },
+        {
+            "name": "length \"1234567px\"",
+            "rule": "length",
+            "value": "1234567px",
+            "css": null
+        },
+        {
+            "name": "length \"1.12345rem\"",
+            "rule": "length",
+            "value": "1.12345rem",
+            "css": null
+        },
+        {
+            "name": "length \"10deg\"",
+            "rule": "length",
+            "value": "10deg",
+            "css": null
+        },
+        {
+            "name": "length \"2fr\"",
+            "rule": "length",
+            "value": "2fr",
+            "css": null
+        },
+        {
+            "name": "length true",
+            "rule": "length",
+            "value": true,
+            "css": null
+        },
+        {
+            "name": "length null",
+            "rule": "length",
+            "value": null,
+            "css": null
+        },
+        {
+            "name": "length []",
+            "rule": "length",
+            "value": [],
+            "css": null
+        },
+        {
+            "name": "length \"\"",
+            "rule": "length",
+            "value": "",
+            "css": null
+        },
+        {
+            "name": "length \"px\"",
+            "rule": "length",
+            "value": "px",
+            "css": null
+        },
+        {
+            "name": "length \"--2px\"",
+            "rule": "length",
+            "value": "--2px",
+            "css": null
+        },
+        {
+            "name": "length \"1px 2px\"",
+            "rule": "length",
+            "value": "1px 2px",
+            "css": null
+        },
+        {
+            "name": "length \"calc(100% - 2rem)\"",
+            "rule": "length",
+            "value": "calc(100% - 2rem)",
+            "css": "calc(100% - 2rem)"
+        },
+        {
+            "name": "length \"CALC(100%  -  2rem)\"",
+            "rule": "length",
+            "value": "CALC(100%  -  2rem)",
+            "css": "calc(100% - 2rem)"
+        },
+        {
+            "name": "length \"clamp(1rem,2vw+1rem,3rem)\"",
+            "rule": "length",
+            "value": "clamp(1rem,2vw+1rem,3rem)",
+            "css": "clamp(1rem, 2vw + 1rem, 3rem)"
+        },
+        {
+            "name": "length \"min(100%, 40rem)\"",
+            "rule": "length",
+            "value": "min(100%, 40rem)",
+            "css": "min(100%, 40rem)"
+        },
+        {
+            "name": "length \"max(1rem, 2vh)\"",
+            "rule": "length",
+            "value": "max(1rem, 2vh)",
+            "css": "max(1rem, 2vh)"
+        },
+        {
+            "name": "length \"var(--gap)\"",
+            "rule": "length",
+            "value": "var(--gap)",
+            "css": "var(--gap)"
+        },
+        {
+            "name": "length \"var(--gap, 1rem)\"",
+            "rule": "length",
+            "value": "var(--gap, 1rem)",
+            "css": "var(--gap, 1rem)"
+        },
+        {
+            "name": "length \"calc(var(--gap) * 2)\"",
+            "rule": "length",
+            "value": "calc(var(--gap) * 2)",
+            "css": "calc(var(--gap) * 2)"
+        },
+        {
+            "name": "length \"calc((100% - 2rem) / 3)\"",
+            "rule": "length",
+            "value": "calc((100% - 2rem) / 3)",
+            "css": "calc((100% - 2rem) / 3)"
+        },
+        {
+            "name": "length \"calc(-1 * 2rem)\"",
+            "rule": "length",
+            "value": "calc(-1 * 2rem)",
+            "css": "calc(-1 * 2rem)"
+        },
+        {
+            "name": "length \"calc(.5rem + 1px)\"",
+            "rule": "length",
+            "value": "calc(.5rem + 1px)",
+            "css": "calc(0.5rem + 1px)"
+        },
+        {
+            "name": "length \"min(calc(100% - 4rem), 72rem)\"",
+            "rule": "length",
+            "value": "min(calc(100% - 4rem), 72rem)",
+            "css": "min(calc(100% - 4rem), 72rem)"
+        },
+        {
+            "name": "length \"clamp(1rem, 0.5rem + 2.5cqi, 2rem)\"",
+            "rule": "length",
+            "value": "clamp(1rem, 0.5rem + 2.5cqi, 2rem)",
+            "css": "clamp(1rem, 0.5rem + 2.5cqi, 2rem)"
+        },
+        {
+            "name": "length \"calc(100dvh - var(--header-height, 4rem))\"",
+            "rule": "length",
+            "value": "calc(100dvh - var(--header-height, 4rem))",
+            "css": "calc(100dvh - var(--header-height, 4rem))"
+        },
+        {
+            "name": "length \"clamp(1rem, 2vw)\"",
+            "rule": "length",
+            "value": "clamp(1rem, 2vw)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px, 2px)\"",
+            "rule": "length",
+            "value": "calc(1px, 2px)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(100% - 2rem\"",
+            "rule": "length",
+            "value": "calc(100% - 2rem",
+            "css": null
+        },
+        {
+            "name": "length \"calc(100% - 2rem))\"",
+            "rule": "length",
+            "value": "calc(100% - 2rem))",
+            "css": null
+        },
+        {
+            "name": "length \"url(x.png)\"",
+            "rule": "length",
+            "value": "url(x.png)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px + url(a))\"",
+            "rule": "length",
+            "value": "calc(1px + url(a))",
+            "css": null
+        },
+        {
+            "name": "length \"expression(alert(1))\"",
+            "rule": "length",
+            "value": "expression(alert(1))",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px);color:red\"",
+            "rule": "length",
+            "value": "calc(1px);color:red",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px)}body{\"",
+            "rule": "length",
+            "value": "calc(1px)}body{",
+            "css": null
+        },
+        {
+            "name": "length \"var(gap)\"",
+            "rule": "length",
+            "value": "var(gap)",
+            "css": null
+        },
+        {
+            "name": "length \"var(--gap) 1px\"",
+            "rule": "length",
+            "value": "var(--gap) 1px",
+            "css": null
+        },
+        {
+            "name": "length \"1px + 2px\"",
+            "rule": "length",
+            "value": "1px + 2px",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px +)\"",
+            "rule": "length",
+            "value": "calc(1px +)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(2deg)\"",
+            "rule": "length",
+            "value": "calc(2deg)",
+            "css": null
+        },
+        {
+            "name": "length \"attr(data-x)\"",
+            "rule": "length",
+            "value": "attr(data-x)",
+            "css": null
+        },
+        {
+            "name": "length \"env(safe-area-inset-top)\"",
+            "rule": "length",
+            "value": "env(safe-area-inset-top)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px /* x */)\"",
+            "rule": "length",
+            "value": "calc(1px /* x */)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(calc(calc(calc(calc(calc(calc(1px)))))))\"",
+            "rule": "length",
+            "value": "calc(calc(calc(calc(calc(calc(calc(1px)))))))",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px)\"",
+            "rule": "length",
+            "value": "calc(1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px + 1px)",
+            "css": null
+        },
+        {
+            "name": "length \"\\\"calc(1px)\\\"\"",
+            "rule": "length",
+            "value": "\"calc(1px)\"",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px \\\\2c 2px)\"",
+            "rule": "length",
+            "value": "calc(1px \\2c 2px)",
+            "css": null
+        },
+        {
+            "name": "length \"calc()\"",
+            "rule": "length",
+            "value": "calc()",
+            "css": null
+        },
+        {
+            "name": "length \"var(--)\"",
+            "rule": "length",
+            "value": "var(--)",
+            "css": null
+        },
+        {
+            "name": "length \"calc(1px * * 2)\"",
+            "rule": "length",
+            "value": "calc(1px * * 2)",
+            "css": null
+        },
+        {
+            "name": "length \"min()\"",
+            "rule": "length",
+            "value": "min()",
+            "css": null
+        },
+        {
+            "name": "length \"calc(10px)<style>\"",
+            "rule": "length",
+            "value": "calc(10px)<style>",
+            "css": null
+        },
+        {
+            "name": "width \"auto\"",
+            "rule": "width",
+            "value": "auto",
+            "css": "auto"
+        },
+        {
+            "name": "width \"AUTO\"",
+            "rule": "width",
+            "value": "AUTO",
+            "css": "auto"
+        },
+        {
+            "name": "width \"fit-content\"",
+            "rule": "width",
+            "value": "fit-content",
+            "css": "fit-content"
+        },
+        {
+            "name": "width \"max-content\"",
+            "rule": "width",
+            "value": "max-content",
+            "css": "max-content"
+        },
+        {
+            "name": "width \"none\"",
+            "rule": "width",
+            "value": "none",
+            "css": null
+        },
+        {
+            "name": "width \"-10px\"",
+            "rule": "width",
+            "value": "-10px",
+            "css": null
+        },
+        {
+            "name": "width \"-0px\"",
+            "rule": "width",
+            "value": "-0px",
+            "css": "0px"
+        },
+        {
+            "name": "width \"100%\"",
+            "rule": "width",
+            "value": "100%",
+            "css": "100%"
+        },
+        {
+            "name": "lineHeight 1.1",
+            "rule": "lineHeight",
+            "value": 1.1,
+            "css": "1.1"
+        },
+        {
+            "name": "lineHeight \"1.5\"",
+            "rule": "lineHeight",
+            "value": "1.5",
+            "css": "1.5"
+        },
+        {
+            "name": "lineHeight 2",
+            "rule": "lineHeight",
+            "value": 2,
+            "css": "2"
+        },
+        {
+            "name": "lineHeight \"normal\"",
+            "rule": "lineHeight",
+            "value": "normal",
+            "css": "normal"
+        },
+        {
+            "name": "lineHeight \"24px\"",
+            "rule": "lineHeight",
+            "value": "24px",
+            "css": "24px"
+        },
+        {
+            "name": "lineHeight \"-1\"",
+            "rule": "lineHeight",
+            "value": "-1",
+            "css": null
+        },
+        {
+            "name": "lineHeight \"calc(1em + 4px)\"",
+            "rule": "lineHeight",
+            "value": "calc(1em + 4px)",
+            "css": "calc(1em + 4px)"
+        },
+        {
+            "name": "lineHeight \"auto\"",
+            "rule": "lineHeight",
+            "value": "auto",
+            "css": null
+        },
+        {
+            "name": "padding \"-1rem\"",
+            "rule": "padding",
+            "value": "-1rem",
+            "css": null
+        },
+        {
+            "name": "padding \"calc(-1rem)\"",
+            "rule": "padding",
+            "value": "calc(-1rem)",
+            "css": "calc(-1rem)"
+        },
+        {
+            "name": "padding \"1rem\"",
+            "rule": "padding",
+            "value": "1rem",
+            "css": "1rem"
+        },
+        {
+            "name": "angle \"45deg\"",
+            "rule": "angle",
+            "value": "45deg",
+            "css": "45deg"
+        },
+        {
+            "name": "angle \"0.25turn\"",
+            "rule": "angle",
+            "value": "0.25turn",
+            "css": "0.25turn"
+        },
+        {
+            "name": "angle \"1.2rad\"",
+            "rule": "angle",
+            "value": "1.2rad",
+            "css": "1.2rad"
+        },
+        {
+            "name": "angle \"10grad\"",
+            "rule": "angle",
+            "value": "10grad",
+            "css": "10grad"
+        },
+        {
+            "name": "angle \"-90DEG\"",
+            "rule": "angle",
+            "value": "-90DEG",
+            "css": "-90deg"
+        },
+        {
+            "name": "angle \"0\"",
+            "rule": "angle",
+            "value": "0",
+            "css": null
+        },
+        {
+            "name": "angle \"10px\"",
+            "rule": "angle",
+            "value": "10px",
+            "css": null
+        },
+        {
+            "name": "angle 45",
+            "rule": "angle",
+            "value": 45,
+            "css": null
+        },
+        {
+            "name": "angle \"calc(90deg - 15deg)\"",
+            "rule": "angle",
+            "value": "calc(90deg - 15deg)",
+            "css": "calc(90deg - 15deg)"
+        },
+        {
+            "name": "time \"200ms\"",
+            "rule": "time",
+            "value": "200ms",
+            "css": "200ms"
+        },
+        {
+            "name": "time \"0.3s\"",
+            "rule": "time",
+            "value": "0.3s",
+            "css": "0.3s"
+        },
+        {
+            "name": "time \"1S\"",
+            "rule": "time",
+            "value": "1S",
+            "css": "1s"
+        },
+        {
+            "name": "time \"1\"",
+            "rule": "time",
+            "value": "1",
+            "css": null
+        },
+        {
+            "name": "time \"calc(1s + 200ms)\"",
+            "rule": "time",
+            "value": "calc(1s + 200ms)",
+            "css": "calc(1s + 200ms)"
+        },
+        {
+            "name": "number \"1\"",
+            "rule": "number",
+            "value": "1",
+            "css": "1"
+        },
+        {
+            "name": "number 3",
+            "rule": "number",
+            "value": 3,
+            "css": "3"
+        },
+        {
+            "name": "number \"0.5\"",
+            "rule": "number",
+            "value": "0.5",
+            "css": "0.5"
+        },
+        {
+            "name": "number \"-1\"",
+            "rule": "number",
+            "value": "-1",
+            "css": "-1"
+        },
+        {
+            "name": "number \"2px\"",
+            "rule": "number",
+            "value": "2px",
+            "css": null
+        },
+        {
+            "name": "number \"calc(1 + 2)\"",
+            "rule": "number",
+            "value": "calc(1 + 2)",
+            "css": "calc(1 + 2)"
+        },
+        {
+            "name": "number \"auto\"",
+            "rule": "number",
+            "value": "auto",
+            "css": null
+        },
+        {
+            "name": "pxRem \"2rem\"",
+            "rule": "pxRem",
+            "value": "2rem",
+            "css": "2rem"
+        },
+        {
+            "name": "pxRem \"2em\"",
+            "rule": "pxRem",
+            "value": "2em",
+            "css": null
+        },
+        {
+            "name": "pxRem \"calc(1px + 1rem)\"",
+            "rule": "pxRem",
+            "value": "calc(1px + 1rem)",
+            "css": "calc(1px + 1rem)"
+        },
+        {
+            "name": "pxRem \"calc(1px + 1em)\"",
+            "rule": "pxRem",
+            "value": "calc(1px + 1em)",
+            "css": null
+        },
+        {
+            "name": "pxRem \"24\"",
+            "rule": "pxRem",
+            "value": "24",
+            "css": "24px"
+        },
+        {
+            "name": "pxRem \"50%\"",
+            "rule": "pxRem",
+            "value": "50%",
+            "css": null
+        },
+        {
+            "name": "remOnly 24",
+            "rule": "remOnly",
+            "value": 24,
+            "css": null
+        },
+        {
+            "name": "remOnly 0",
+            "rule": "remOnly",
+            "value": 0,
+            "css": "0"
+        },
+        {
+            "name": "remOnly \"3rem\"",
+            "rule": "remOnly",
+            "value": "3rem",
+            "css": "3rem"
+        },
+        {
+            "name": "noCustom \"calc(1px)\"",
+            "rule": "noCustom",
+            "value": "calc(1px)",
+            "css": null
+        },
+        {
+            "name": "noCustom \"4px\"",
+            "rule": "noCustom",
+            "value": "4px",
+            "css": "4px"
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "harbourlights/calendar-clash",
+    "require": {
+        "php": ">=8.4",
+        "stripe/stripe-php": "^15.0",
+        "ext-imaginary_maps": "*"
+    }
+}

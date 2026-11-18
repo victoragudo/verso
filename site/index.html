@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verso, the open source Laravel CMS</title>
+<meta name="description" content="Verso is a free, open source WordPress alternative built on Laravel: a visual site builder, forms, SEO, a shop, newsletters, roles and 15 languages in one install.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#09090b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Verso, the open source Laravel CMS">
+<meta property="og:description" content="WordPress power. Laravel engineering. A visual builder, forms, SEO, a shop and 15 languages in one install.">
+<meta property="og:image" content="assets/dashboard.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+<nav class="wrap nav" aria-label="Main">
+<a href="#content" class="brand">
+<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#fafafa"/><path d="M5.5 6.5h3.4L12 15l3.1-8.5h3.4l-4.9 11.5h-3.2z" fill="#09090b"/></svg>
+Verso
+</a>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#plugins">Plugins</a>
+<a href="#themes">Themes</a>
+<a href="#stack">Stack</a>
+<a href="https://github.com/victoragudo/verso/blob/main/docs/README.md">Docs</a>
+</div>
+<div class="nav-actions">
+<a href="https://github.com/victoragudo/verso" class="icon-link" aria-label="Verso on GitHub">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+</a>
+<a href="#install" class="btn btn-nav">Get started</a>
+</div>
+</nav>
+</header>
+
+<main id="content" tabindex="-1">
+
+<section class="wrap hero" aria-labelledby="hero-title">
+<p class="pill"><span class="pill-tag">New</span> Site Editor 2: theme builder, popups and 20 new blocks</p>
+<h1 id="hero-title" class="h1">WordPress power. Laravel engineering.</h1>
+<p class="lead">Verso is an open source CMS with a visual builder, forms, SEO, a shop, newsletters, roles and 15 languages in one install. Your clients build without plugins. You extend it with the Laravel you already know.</p>
+<div class="btn-row">
+<a href="#install" class="btn btn-primary">Install Verso
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</a>
+<a href="https://github.com/victoragudo/verso" class="btn btn-ghost">Star on GitHub</a>
+</div>
+<p class="hero-note mono">MIT licensed · PHP 8.4+ · SQLite, MySQL or PostgreSQL</p>
+<figure class="shot-frame">
+<img src="assets/dashboard.webp" width="1600" height="1000" fetchpriority="high" alt="The Verso admin dashboard with a launch checklist and the main menu">
+</figure>
+</section>
+
+<section class="wrap stats" aria-label="Verso in numbers">
+<dl class="cols">
+<div class="stat"><dt class="body">automated tests</dt><dd>7,000+</dd></div>
+<div class="stat"><dt class="body">admin languages, right to left included</dt><dd>15</dd></div>
+<div class="stat"><dt class="body">plugins in the box</dt><dd>8</dd></div>
+<div class="stat"><dt class="body">forever, MIT licensed</dt><dd>0 €</dd></div>
+</dl>
+</section>
+
+<section id="features" class="wrap section" aria-labelledby="features-title">
+<p class="eyebrow">Features</p>
+<h2 id="features-title" class="h2" style="max-width: 18ch">Everything a site needs. Nothing to install twice.</h2>
+<p class="lead" style="margin-top: 20px; max-width: 36em">The plugins most WordPress sites add on day one are part of Verso, as tested modules you can turn off.</p>
+
+<div class="bento">
+<article class="card card-media span-8">
+<div class="text">
+<h3>Visual builder and theme builder</h3>
+<p class="body">Drag and drop blocks, tabs, sliders and pricing tables. Design headers, footers, templates and popups that show by condition.</p>
+</div>
+<div class="media"><img src="assets/theme-hero.webp" width="1260" height="530" loading="lazy" alt="A ceramics shop home page built with the Ashgrove theme"></div>
+</article>
+
+<article class="card card-pad span-4">
+<h3>Easy mode</h3>
+<p class="body">For people who never touched a CMS. Answer one question and get a full starter site.</p>
+<ul class="steps-mini">
+<li><span class="dot" aria-hidden="true"></span>What is your site for?</li>
+<li><span class="dot" aria-hidden="true"></span>Colors taken from your logo</li>
+<li><span class="dot" aria-hidden="true"></span>Edit text right on the page</li>
+<li><span class="dot dot-off" aria-hidden="true"></span>Launch checklist, 6 of 9 done</li>
+</ul>
+</article>
+
+<article class="card card-pad span-4">
+<h3>Checked before it runs</h3>
+<p class="body">Every plugin and theme zip is scanned in a sandbox before install.</p>
+<div class="report">
+<div class="report-head"><span class="mono" style="color: var(--muted)">bookings.zip</span><span class="badge-ok">Low risk</span></div>
+<ul>
+<li>✓ No risky PHP calls</li>
+<li>✓ Output escaped</li>
+<li>✓ Declared hosts only</li>
+</ul>
+</div>
+</article>
+
+<article class="card card-media span-8">
+<div class="text">
+<h3>SEO without an SEO plugin</h3>
+<p class="body">Friendly URLs, sitemap, structured data, live analysis with snippet previews, broken link checks and a 404 monitor that suggests redirects.</p>
+</div>
+<div class="media"><img src="assets/seo.webp" width="1600" height="1000" loading="lazy" alt="Permalinks and SEO settings with URL patterns for posts and products"></div>
+</article>
+
+<article class="card card-pad span-3">
+<h3>Roles and permissions</h3>
+<p class="body">A role matrix, custom roles, per user grants and "View as Editor".</p>
+</article>
+<article class="card card-pad span-3">
+<h3>15 languages</h3>
+<p class="body">Each person picks the admin language. Arabic mirrors the whole admin.</p>
+<p class="langs mono">en es de fr it pt ru ar hi bn zh ja ko id tr</p>
+</article>
+<article class="card card-pad span-3">
+<h3>Fast by default</h3>
+<p class="body">Page cache with ETags, CSS per page, block JavaScript only where used.</p>
+</article>
+<article class="card card-pad span-3">
+<h3>One click updates</h3>
+<p class="body">Update from the admin with a backup first. Import from WordPress.</p>
+</article>
+</div>
+</section>
+
+<section id="compare" class="band-soft" aria-labelledby="compare-title">
+<div class="wrap section split">
+<div>
+<p class="eyebrow">Why Verso</p>
+<h2 id="compare-title" class="h2">One install instead of a plugin stack.</h2>
+<p class="lead" style="margin-top: 20px">WordPress is great and huge. Verso keeps what people love and moves the usual plugins into the core, on a modern framework with a real test suite.</p>
+</div>
+<div class="auto-cards" style="--min: 280px">
+<div class="card card-pad" style="background: var(--bg)">
+<h3 class="card-label">A typical WordPress site</h3>
+<ul class="compare-list body">
+<li>Core, plus a page builder plugin</li>
+<li>An SEO plugin</li>
+<li>A forms plugin and an anti-spam plugin</li>
+<li>A roles editor plugin</li>
+<li>A popup plugin</li>
+<li>A redirects plugin</li>
+<li>Each one updated and audited on its own</li>
+</ul>
+</div>
+<div class="card card-pad card-accent">
+<h3 class="card-label">Verso</h3>
+<ul class="compare-list check">
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Builder and theme builder</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>SEO analysis and 404 monitor</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Forms with spam checks</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Roles matrix with "View as role"</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Popups, banners and cookie notice</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Redirects and permalinks</li>
+<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>One update, 7,000+ tests</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="plugins" class="wrap section" aria-labelledby="plugins-title">
+<div class="split">
+<div>
+<p class="eyebrow">Plugins</p>
+<h2 id="plugins-title" class="h2">Extend it like any Laravel app.</h2>
+<p class="lead" style="margin-top: 20px">A plugin is a folder with a verso.json, a service provider and your code. Routes, models, migrations and React screens work the way you already write them.</p>
+<div class="card" style="margin-top: 32px">
+<p class="code-title mono" style="margin: 0">plugins/bookings/verso.json</p>
+<pre class="code">{
+  <span class="k">"name"</span>: <span class="s">"Bookings"</span>,
+  <span class="k">"slug"</span>: <span class="s">"bookings"</span>,
+  <span class="k">"version"</span>: <span class="s">"1.0.0"</span>,
+  <span class="k">"admin"</span>: { <span class="k">"group"</span>: <span class="s">"tools"</span> },
+  <span class="k">"capabilities"</span>: [<span class="s">"bookings.manage"</span>]
+}</pre>
+</div>
+</div>
+<div>
+<p class="eyebrow" style="color: var(--muted)">In the box</p>
+<ul class="auto-cards">
+<li class="card mini-card"><p>Forms</p><p class="body">Builder, inbox, CSV export and spam checks.</p></li>
+<li class="card mini-card"><p>Shop</p><p class="body">Cart, checkout, orders, bank transfer and Stripe.</p></li>
+<li class="card mini-card"><p>Newsletter</p><p class="body">Double opt-in, lists, campaigns made with blocks.</p></li>
+<li class="card mini-card"><p>Memberships</p><p class="body">Plans, access levels, members only content.</p></li>
+<li class="card mini-card"><p>Analytics</p><p class="body">Visitor stats with no cookies, no personal data.</p></li>
+<li class="card mini-card"><p>AI Assistant</p><p class="body">Rewrites, SEO tags, alt text and translation.</p></li>
+<li class="card mini-card"><p>Reading Time</p><p class="body">Minutes to read, as a block and in the API.</p></li>
+<li class="card mini-card"><p>Builder Example</p><p class="body">A starter that adds a block, a style and a panel.</p></li>
+</ul>
+<ol class="auto-cards numbered" style="margin-top: 32px">
+<li><p class="num mono">01</p><p style="font-weight: 600">Upload a zip</p><p class="body small" style="margin-top: 4px">Or drop the folder in plugins/.</p></li>
+<li><p class="num mono">02</p><p style="font-weight: 600">Read the report</p><p class="body small" style="margin-top: 4px">A risk level before anything runs.</p></li>
+<li><p class="num mono">03</p><p style="font-weight: 600">Turn it on</p><p class="body small" style="margin-top: 4px">The menu shows where it lives.</p></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="themes" class="band" aria-labelledby="themes-title">
+<div class="wrap section split">
+<div>
+<p class="eyebrow">Themes</p>
+<h2 id="themes-title" class="h2">A theme in an afternoon.</h2>
+<p class="lead" style="margin-top: 20px">Plain Blade views, one theme.json and your CSS. Verso checks your theme and renders it with demo content before you ship it.</p>
+<ol class="theme-paths">
+<li class="card"><p class="num mono">01</p><div><p style="font-weight: 600">No code</p><p class="body small" style="margin-top: 4px">Style Ashgrove in the Site Editor, then "Create child theme".</p></div></li>
+<li class="card"><p class="num mono">02</p><div><p style="font-weight: 600">Child theme</p><p class="body small" style="margin-top: 4px">Set a parent and override only the views you want.</p></div></li>
+<li class="card"><p class="num mono">03</p><div><p style="font-weight: 600">From scratch</p><p class="body small" style="margin-top: 4px">Generate the skeleton and write seven views.</p></div></li>
+</ol>
+<a href="https://github.com/victoragudo/verso/blob/main/docs/THEME-GUIDE.md" class="text-link">Read the theme guide <span aria-hidden="true">→</span></a>
+</div>
+
+<div class="card tabs">
+<div class="tablist" role="tablist" data-tabs focusgroup="tablist nomemory" aria-label="Theme example files">
+<button type="button" role="tab" id="tab-terminal" data-panel="panel-terminal" aria-selected="true" focusgroupstart>terminal</button>
+<button type="button" role="tab" id="tab-json" data-panel="panel-json" aria-selected="false">theme.json</button>
+<button type="button" role="tab" id="tab-blade" data-panel="panel-blade" aria-selected="false">home.blade.php</button>
+</div>
+<div class="panels">
+<div role="tabpanel" id="panel-terminal" aria-labelledby="tab-terminal" tabindex="0"><pre class="code"><span class="c">$</span> php artisan verso:make-theme harbor
+<span class="ok">✓</span> Created themes/harbor
+
+<span class="c">$</span> php artisan verso:verify-theme themes/harbor
+<span class="ok">✓</span> Required views found
+<span class="ok">✓</span> No risky code
+<span class="ok">✓</span> Home, entry and archive rendered
+Risk: <span class="ok">low</span></pre></div>
+<div role="tabpanel" id="panel-json" aria-labelledby="tab-json" hidden="until-found"><pre class="code">{
+  <span class="k">"name"</span>: <span class="s">"Harbor Dusk"</span>,
+  <span class="k">"slug"</span>: <span class="s">"harbor-dusk"</span>,
+  <span class="k">"parent"</span>: <span class="s">"harbor"</span>,
+  <span class="k">"version"</span>: <span class="s">"1.0.0"</span>,
+  <span class="k">"editor"</span>: { <span class="k">"units"</span>: [<span class="s">"px"</span>, <span class="s">"rem"</span>, <span class="s">"%"</span>] }
+}</pre></div>
+<div role="tabpanel" id="panel-blade" aria-labelledby="tab-blade" hidden="until-found"><pre class="code"><span class="d">@extends</span>(<span class="s">'theme::layouts.app'</span>)
+
+<span class="d">@section</span>(<span class="s">'content'</span>)
+    <span class="d">@include</span>(<span class="s">'theme::partials.post-grid'</span>, [<span class="s">'entries'</span> =&gt; $entries])
+<span class="d">@endsection</span></pre></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="stack" class="band-soft" aria-labelledby="stack-title">
+<div class="wrap section">
+<p class="eyebrow">Tech stack</p>
+<h2 id="stack-title" class="h2" style="max-width: 18ch">Tools you already know.</h2>
+<ul class="cols" style="margin-top: 48px">
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Laravel 13 · PHP 8.4+</p><p class="body small" style="margin-top: 6px">Routing, queues, cache, mail</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Inertia 3 · React 19</p><p class="body small" style="margin-top: 6px">A fast single page admin</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Tailwind 4 · shadcn/ui</p><p class="body small" style="margin-top: 6px">Accessible components</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Tiptap · CodeMirror 6</p><p class="body small" style="margin-top: 6px">Visual and code editing</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Blade themes</p><p class="body small" style="margin-top: 6px">Server rendered, cache friendly</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">SQLite · MySQL · Postgres</p><p class="body small" style="margin-top: 6px">Picked in the install wizard</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Pest · Vitest · Playwright</p><p class="body small" style="margin-top: 6px">Unit, feature and end to end</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">PHPStan · Pint</p><p class="body small" style="margin-top: 6px">Strict types, one code style</p></li>
+</ul>
+</div>
+</section>
+
+<section id="install" class="wrap section install" aria-labelledby="install-title">
+<h2 id="install-title" class="h2">Up and running in five minutes.</h2>
+<p class="lead">Clone it, build it, open the browser. The wizard asks for the database, your admin account and what your site is for.</p>
+<div class="card">
+<pre class="code"><span class="c">$</span> git clone https://github.com/victoragudo/verso.git
+<span class="c">$</span> cd verso
+<span class="c">$</span> composer install &amp;&amp; npm ci &amp;&amp; npm run build
+<span class="c">$</span> php artisan serve</pre>
+</div>
+<div class="btn-row">
+<a href="https://github.com/victoragudo/verso" class="btn btn-primary">Get Verso on GitHub</a>
+<a href="https://github.com/victoragudo/verso/blob/main/docs/README.md" class="btn btn-ghost">Read the docs</a>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap footer-inner">
+<div>
+<p class="brand" style="margin: 0">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#fafafa"/><path d="M5.5 6.5h3.4L12 15l3.1-8.5h3.4l-4.9 11.5h-3.2z" fill="#09090b"/></svg>
+Verso
+</p>
+<p class="body small" style="margin-top: 12px; max-width: 300px">A free, open source CMS on Laravel. MIT licensed.</p>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<div>
+<h2>Docs</h2>
+<ul>
+<li><a href="https://github.com/victoragudo/verso/blob/main/docs/THEME-GUIDE.md">Theme guide</a></li>
+<li><a href="https://github.com/victoragudo/verso/blob/main/docs/EXTENDING.md">Extending Verso</a></li>
+<li><a href="https://github.com/victoragudo/verso/blob/main/docs/ARCHITECTURE.md">Architecture</a></li>
+</ul>
+</div>
+<div>
+<h2>Project</h2>
+<ul>
+<li><a href="https://github.com/victoragudo/verso">Source code</a></li>
+<li><a href="https://github.com/victoragudo/verso/issues">Report an issue</a></li>
+<li><a href="https://github.com/victoragudo/verso/blob/main/LICENSE">MIT license</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</footer>
+</body>
+</html>

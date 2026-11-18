@@ -1,0 +1,37 @@
+{
+    "texts": [
+        "Verso",
+        "WordPress",
+        "SQLite",
+        "MySQL",
+        "MariaDB",
+        "PostgreSQL",
+        "Redis",
+        "Stripe",
+        "Claude",
+        "Anthropic",
+        "GitHub",
+        "Glide",
+        "Imagick",
+        "Markdown",
+        "JavaScript",
+        "WebP",
+        "AVIF",
+        "JPEG",
+        "Figtree",
+        "Cmd",
+        "Ctrl",
+        "Esc",
+        "Enter",
+        "Shift",
+        "Alt",
+        "Tab",
+        "Google Search Console",
+        "Bing Webmaster Tools",
+        "IndexNow",
+        "Aa"
+    ],
+    "files": [
+        "resources/js/components/verso/icons/index.tsx"
+    ]
+}

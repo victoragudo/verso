@@ -1,0 +1,16 @@
+/* Shared by every builder block. */
+.verso-visually-hidden {
+    position: absolute !important;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+.verso-icon {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+    flex: none;
+    vertical-align: -0.2em;
+}
+[data-verso-block-ready] [hidden][data-js-only] { display: none; }

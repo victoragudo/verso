@@ -1,0 +1,55 @@
+/* Image comparison. Without JavaScript the two pictures stand side by side. */
+.verso-compare { margin: 0; }
+.verso-compare__frame { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; position: relative; }
+.verso-compare__img { display: block; inline-size: 100%; block-size: auto; }
+.verso-compare__before, .verso-compare__after { position: relative; }
+.verso-compare__before { order: -1; }
+.verso-compare__tag {
+    position: absolute;
+    inset-block-start: 0.75rem;
+    inset-inline-start: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.65);
+    color: #fff;
+    font-size: 0.85rem;
+}
+.verso-compare__tag--end { inset-inline-start: auto; inset-inline-end: 0.75rem; }
+[data-ready] > .verso-compare__frame { display: block; overflow: hidden; }
+[data-ready] .verso-compare__before {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 calc(100% - var(--verso-compare, 50%)) 0 0);
+}
+[data-ready] .verso-compare__before:dir(rtl) { clip-path: inset(0 0 0 calc(100% - var(--verso-compare, 50%))); }
+[data-ready] .verso-compare__before .verso-compare__img { block-size: 100%; object-fit: cover; }
+.verso-compare__range {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    appearance: none;
+    background: transparent;
+    cursor: ew-resize;
+}
+.verso-compare__range::-webkit-slider-runnable-track { block-size: 100%; background: transparent; }
+.verso-compare__range::-webkit-slider-thumb {
+    appearance: none;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    margin-block-start: calc(50% - 1.375rem);
+    border-radius: 999px;
+    border: 3px solid #fff;
+    background: rgb(0 0 0 / 0.55);
+    box-shadow: 0 0 0 100vmax transparent;
+}
+.verso-compare__range::-moz-range-track { block-size: 100%; background: transparent; }
+.verso-compare__range::-moz-range-thumb {
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border-radius: 999px;
+    border: 3px solid #fff;
+    background: rgb(0 0 0 / 0.55);
+}
+.verso-compare__range:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }

@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "Среднее число слов, прочитанных в минуту, для подсчёта минут.",
+    "Minutes": "Минуты",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "Используется, только когда блок показан вне материала. Внутри материала время считается автоматически.",
+    "Reading Time": "Время чтения",
+    "Reading speed": "Скорость чтения",
+    "Reading time": "Время чтения",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "Показывает, сколько минут нужно на чтение материала, в виде блока и в публичном API.",
+    "Shows how many minutes the entry takes to read.": "Показывает, сколько минут нужно на чтение материала.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, one {# мин чтения} few {# мин чтения} many {# мин чтения} other {# мин чтения}}"
+}

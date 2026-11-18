@@ -1,0 +1,851 @@
+{
+    "breakpoints": {
+        "tablet": 1024,
+        "mobile": 640
+    },
+    "customCssMax": 2000,
+    "options": {
+        "spacing.margin.top": [
+            "margin-top",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "spacing.margin.right": [
+            "margin-right",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "spacing.margin.bottom": [
+            "margin-bottom",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "spacing.margin.left": [
+            "margin-left",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "spacing.padding.top": [
+            "padding-top",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "spacing.padding.right": [
+            "padding-right",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "spacing.padding.bottom": [
+            "padding-bottom",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "spacing.padding.left": [
+            "padding-left",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "size.width": [
+            "width",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "size.minWidth": [
+            "min-width",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "size.maxWidth": [
+            "max-width",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "none",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "size.height": [
+            "height",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "size.minHeight": [
+            "min-height",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "size.maxHeight": [
+            "max-height",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "none",
+                    "fit-content",
+                    "min-content",
+                    "max-content"
+                ],
+                "negative": false
+            }
+        ],
+        "layout.display": [
+            "display",
+            "display"
+        ],
+        "layout.direction": [
+            "flex-direction",
+            "direction"
+        ],
+        "layout.wrap": [
+            "flex-wrap",
+            "wrap"
+        ],
+        "layout.gap": [
+            "gap",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "normal"
+                ],
+                "negative": false
+            }
+        ],
+        "layout.align": [
+            "align-items",
+            "align"
+        ],
+        "layout.justify": [
+            "justify-content",
+            "justify"
+        ],
+        "layout.columns": [
+            "grid-template-columns",
+            "columns"
+        ],
+        "typography.fontFamily": [
+            "font-family",
+            "token"
+        ],
+        "typography.fontSize": [
+            "font-size",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "typography.fontWeight": [
+            "font-weight",
+            "weight"
+        ],
+        "typography.lineHeight": [
+            "line-height",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "normal"
+                ],
+                "unitless": true,
+                "negative": false
+            }
+        ],
+        "typography.letterSpacing": [
+            "letter-spacing",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "normal"
+                ]
+            }
+        ],
+        "typography.transform": [
+            "text-transform",
+            "transform"
+        ],
+        "color.text": [
+            "color",
+            "color"
+        ],
+        "color.background": [
+            "background-color",
+            "color"
+        ],
+        "color.gradient": [
+            "background-image",
+            "gradient"
+        ],
+        "color.overlay": [
+            "box-shadow",
+            "overlay"
+        ],
+        "background.image": [
+            "background-image",
+            "image"
+        ],
+        "background.position": [
+            "background-position",
+            "focal"
+        ],
+        "background.size": [
+            "background-size",
+            "bgSize"
+        ],
+        "background.repeat": [
+            "background-repeat",
+            "bgRepeat"
+        ],
+        "background.attachment": [
+            "background-attachment",
+            "bgAttachment"
+        ],
+        "border.width": [
+            "border-width",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "border.style": [
+            "border-style",
+            "borderStyle"
+        ],
+        "border.radius": [
+            "border-radius",
+            "length",
+            {
+                "type": "length",
+                "negative": false
+            }
+        ],
+        "border.color": [
+            "border-color",
+            "color"
+        ],
+        "shadow": [
+            "box-shadow",
+            "token"
+        ],
+        "position.sticky": [
+            "position",
+            "sticky"
+        ],
+        "position.top": [
+            "top",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "position.right": [
+            "right",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "position.bottom": [
+            "bottom",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "position.left": [
+            "left",
+            "length",
+            {
+                "type": "length",
+                "keywords": [
+                    "auto"
+                ]
+            }
+        ],
+        "position.zIndex": [
+            "z-index",
+            "zIndex"
+        ],
+        "visibility.hidden": [
+            "display",
+            "hidden"
+        ]
+    },
+    "cases": [
+        {
+            "name": "hero section with responsive padding and token background",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": {
+                                "base": "6rem",
+                                "tablet": "4rem",
+                                "mobile": "2.5rem"
+                            },
+                            "left": "var:spacing.lg",
+                            "right": "var:spacing.lg"
+                        }
+                    },
+                    "color": {
+                        "background": "var:color.surface",
+                        "text": "#1F2A24"
+                    }
+                }
+            },
+            "css": ".vs-x{padding-top:6rem;padding-right:var(--verso-spacing-lg);padding-left:var(--verso-spacing-lg);color:#1f2a24;background-color:var(--verso-color-surface)}@media (max-width:1024px){.vs-x{padding-top:4rem}}@media (max-width:640px){.vs-x{padding-top:2.5rem}}"
+        },
+        {
+            "name": "three column grid that stacks on phones",
+            "attrs": {
+                "design": {
+                    "layout": {
+                        "display": "grid",
+                        "columns": {
+                            "base": 3,
+                            "tablet": 2,
+                            "mobile": 1
+                        },
+                        "gap": "2rem",
+                        "justify": "between",
+                        "align": "center"
+                    }
+                }
+            },
+            "css": ".vs-x{display:grid;gap:2rem;align-items:center;justify-content:space-between;grid-template-columns:repeat(3, minmax(0, 1fr))}@media (max-width:1024px){.vs-x{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (max-width:640px){.vs-x{grid-template-columns:repeat(1, minmax(0, 1fr))}}"
+        },
+        {
+            "name": "card with border, radius, shadow and overlay",
+            "attrs": {
+                "design": {
+                    "border": {
+                        "width": "1px",
+                        "style": "solid",
+                        "color": "#D9E2DC",
+                        "radius": "12px"
+                    },
+                    "shadow": "var:shadow.md",
+                    "color": {
+                        "overlay": "#00000080"
+                    }
+                }
+            },
+            "css": ".vs-x{box-shadow:inset 0 0 0 100vmax #00000080;border-width:1px;border-style:solid;border-radius:12px;border-color:#d9e2dc;box-shadow:var(--verso-shadow-md)}"
+        },
+        {
+            "name": "heading typography",
+            "attrs": {
+                "design": {
+                    "typography": {
+                        "fontFamily": "var:font.heading",
+                        "fontSize": {
+                            "base": "3rem",
+                            "mobile": "2rem"
+                        },
+                        "fontWeight": 700,
+                        "lineHeight": 1.1,
+                        "letterSpacing": "-0.5px",
+                        "transform": "uppercase"
+                    }
+                }
+            },
+            "css": ".vs-x{font-family:var(--verso-font-heading);font-size:3rem;font-weight:700;line-height:1.1;letter-spacing:-0.5px;text-transform:uppercase}@media (max-width:640px){.vs-x{font-size:2rem}}"
+        },
+        {
+            "name": "sticky header hidden on phones",
+            "attrs": {
+                "design": {
+                    "position": {
+                        "sticky": true,
+                        "top": "0"
+                    },
+                    "visibility": {
+                        "hidden": {
+                            "mobile": true
+                        }
+                    },
+                    "size": {
+                        "maxWidth": "72rem",
+                        "width": "100%",
+                        "minHeight": "4rem"
+                    }
+                }
+            },
+            "css": ".vs-x{width:100%;max-width:72rem;min-height:4rem;position:sticky;top:0}@media (max-width:640px){.vs-x{display:none}}"
+        },
+        {
+            "name": "zero margins as numbers and words",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "margin": {
+                            "top": 0,
+                            "bottom": "auto"
+                        }
+                    }
+                }
+            },
+            "css": ".vs-x{margin-top:0;margin-bottom:auto}"
+        },
+        {
+            "name": "custom css only, with blocked parts removed",
+            "attrs": {
+                "customCss": "outline: 2px dashed #b45309; background: url(https://tracker.example/pixel.gif); Color: #14532d; @import x"
+            },
+            "css": ".vs-x{outline:2px dashed #b45309;color:#14532d}"
+        },
+        {
+            "name": "custom css after design",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "bottom": "1.5rem"
+                        }
+                    }
+                },
+                "customCss": "text-wrap: balance"
+            },
+            "css": ".vs-x{padding-bottom:1.5rem;text-wrap:balance}"
+        },
+        {
+            "name": "invalid value drops every style",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": "12 apples"
+                        }
+                    },
+                    "color": {
+                        "text": "#1F2A24"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "unknown screen size drops every style",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": {
+                                "desktop": "2rem"
+                            }
+                        }
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "unknown option drops every style",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "margins": "2rem"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "only a tablet value",
+            "attrs": {
+                "design": {
+                    "layout": {
+                        "direction": {
+                            "tablet": "column"
+                        },
+                        "wrap": "wrap"
+                    }
+                }
+            },
+            "css": ".vs-x{flex-wrap:wrap}@media (max-width:1024px){.vs-x{flex-direction:column}}"
+        },
+        {
+            "name": "not visible flag false gives nothing",
+            "attrs": {
+                "design": {
+                    "visibility": {
+                        "hidden": false
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "any CSS unit and custom values",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": "clamp(2rem, 1rem + 4vw, 6rem)",
+                            "left": "5cqi"
+                        },
+                        "margin": {
+                            "top": 24
+                        }
+                    },
+                    "size": {
+                        "width": "min(100%, 72rem)",
+                        "minHeight": {
+                            "base": "100dvh",
+                            "mobile": "80svh"
+                        },
+                        "maxWidth": "none",
+                        "height": "fit-content"
+                    },
+                    "typography": {
+                        "fontSize": "CLAMP(1rem,0.9rem + 0.5vw,1.25rem)",
+                        "lineHeight": "normal",
+                        "letterSpacing": "0.02em"
+                    },
+                    "border": {
+                        "radius": "var(--card-radius, 0.75rem)",
+                        "width": "0.5Q"
+                    }
+                }
+            },
+            "css": ".vs-x{margin-top:24px;padding-top:clamp(2rem, 1rem + 4vw, 6rem);padding-left:5cqi;width:min(100%, 72rem);max-width:none;height:fit-content;min-height:100dvh;font-size:clamp(1rem, 0.9rem + 0.5vw, 1.25rem);line-height:normal;letter-spacing:0.02em;border-width:0.5Q;border-radius:var(--card-radius, 0.75rem)}@media (max-width:640px){.vs-x{min-height:80svh}}"
+        },
+        {
+            "name": "line height as a plain number and as a length",
+            "attrs": {
+                "design": {
+                    "typography": {
+                        "lineHeight": {
+                            "base": 1.6,
+                            "mobile": "1.5rem"
+                        }
+                    }
+                }
+            },
+            "css": ".vs-x{line-height:1.6}@media (max-width:640px){.vs-x{line-height:1.5rem}}"
+        },
+        {
+            "name": "sticky footer bar on the bottom edge",
+            "attrs": {
+                "design": {
+                    "position": {
+                        "sticky": true,
+                        "bottom": "calc(env(safe-area-inset-bottom) + 1rem)"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "negative padding drops every style",
+            "attrs": {
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": "-1rem"
+                        }
+                    },
+                    "color": {
+                        "text": "#1F2A24"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "url in a size drops every style",
+            "attrs": {
+                "design": {
+                    "size": {
+                        "width": "calc(100% - url(x))"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "keyword the property does not take drops every style",
+            "attrs": {
+                "design": {
+                    "size": {
+                        "maxWidth": "auto"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "sticky sidebar offset from the top and left",
+            "attrs": {
+                "design": {
+                    "position": {
+                        "sticky": true,
+                        "top": "calc(var(--header-height) + 1rem)",
+                        "left": "auto"
+                    }
+                }
+            },
+            "css": ".vs-x{position:sticky;top:calc(var(--header-height) + 1rem);left:auto}"
+        },
+        {
+            "name": "no styles",
+            "attrs": [],
+            "css": null
+        },
+        {
+            "name": "gradient over a background picture with a focal point",
+            "attrs": {
+                "design": {
+                    "color": {
+                        "gradient": "linear-gradient(180deg, #00000000 40%, #000000B3 100%)"
+                    },
+                    "background": {
+                        "image": "/storage/media/2026/11/harbor-at-dawn.jpg",
+                        "position": "30% 70%",
+                        "size": "cover",
+                        "repeat": "no-repeat"
+                    }
+                }
+            },
+            "css": ".vs-x{background-image:linear-gradient(180deg, #00000000 40%, #000000b3 100%), url(\"/storage/media/2026/11/harbor-at-dawn.jpg\");background-position:30% 70%;background-size:cover;background-repeat:no-repeat}"
+        },
+        {
+            "name": "radial gradient with theme tokens",
+            "attrs": {
+                "design": {
+                    "color": {
+                        "gradient": "radial-gradient(circle, var:color.accent, var:color.surface 80%)"
+                    }
+                }
+            },
+            "css": ".vs-x{background-image:radial-gradient(circle, var(--verso-color-accent), var(--verso-color-surface) 80%)}"
+        },
+        {
+            "name": "full address picture that stays in place while scrolling",
+            "attrs": {
+                "design": {
+                    "background": {
+                        "image": "https://cdn.harborlane.example/img/bakery-counter.webp?w=1600&s=a1b2",
+                        "attachment": {
+                            "base": "fixed",
+                            "mobile": "scroll"
+                        }
+                    }
+                }
+            },
+            "css": ".vs-x{background-image:url(\"https://cdn.harborlane.example/img/bakery-counter.webp?w=1600&s=a1b2\");background-attachment:fixed}@media (max-width:640px){.vs-x{background-attachment:scroll}}"
+        },
+        {
+            "name": "sticky header with a stack order",
+            "attrs": {
+                "design": {
+                    "position": {
+                        "sticky": true,
+                        "top": "0",
+                        "zIndex": 50
+                    }
+                }
+            },
+            "css": ".vs-x{position:sticky;top:0;z-index:50}"
+        },
+        {
+            "name": "card preset under the block styles",
+            "attrs": {
+                "preset": "card",
+                "design": {
+                    "spacing": {
+                        "padding": {
+                            "top": "3rem"
+                        }
+                    },
+                    "color": {
+                        "text": "#1F2A24"
+                    }
+                }
+            },
+            "css": ".vs-x{padding-top:3rem;padding-bottom:1.5rem;color:#1f2a24;background-color:#f7f3ec;border-radius:12px}"
+        },
+        {
+            "name": "hero preset with responsive values merged by screen size",
+            "attrs": {
+                "preset": "hero",
+                "design": {
+                    "size": {
+                        "minHeight": {
+                            "mobile": "30vh"
+                        }
+                    }
+                }
+            },
+            "css": ".vs-x{min-height:60vh;background-position:50% 50%;background-size:cover}@media (max-width:640px){.vs-x{min-height:30vh}}"
+        },
+        {
+            "name": "unknown preset adds nothing",
+            "attrs": {
+                "preset": "lighthouse",
+                "design": {
+                    "border": {
+                        "radius": "4px"
+                    }
+                }
+            },
+            "css": ".vs-x{border-radius:4px}"
+        },
+        {
+            "name": "picture address that could close the url is refused",
+            "attrs": {
+                "design": {
+                    "background": {
+                        "image": "/storage/a.jpg\") ; color: red"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "gradient with a word inside is refused",
+            "attrs": {
+                "design": {
+                    "color": {
+                        "gradient": "linear-gradient(90deg, red, #ffffff)"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "focal point over 100 percent is refused",
+            "attrs": {
+                "design": {
+                    "background": {
+                        "position": "120% 40%"
+                    }
+                }
+            },
+            "css": null
+        },
+        {
+            "name": "stack order as text is refused",
+            "attrs": {
+                "design": {
+                    "position": {
+                        "zIndex": "50"
+                    }
+                }
+            },
+            "css": null
+        }
+    ],
+    "presets": {
+        "card": {
+            "spacing": {
+                "padding": {
+                    "top": "1.5rem",
+                    "bottom": "1.5rem"
+                }
+            },
+            "border": {
+                "radius": "12px"
+            },
+            "color": {
+                "background": "#F7F3EC"
+            }
+        },
+        "hero": {
+            "size": {
+                "minHeight": {
+                    "base": "60vh",
+                    "mobile": "40vh"
+                }
+            },
+            "background": {
+                "size": "cover",
+                "position": "50% 50%"
+            }
+        }
+    }
+}

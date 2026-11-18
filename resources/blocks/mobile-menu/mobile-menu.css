@@ -1,0 +1,60 @@
+/* Mobile menu: a button and a drawer dialog. The button shows only on the screen sizes chosen. */
+.verso-mobile-menu__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-block-size: 2.75rem;
+    padding-inline: 0.75rem;
+    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+    border-radius: var(--verso-radius-base, 6px);
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+.verso-mobile-menu__button:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); outline-offset: 2px; }
+@media (min-width: 641px) { .verso-mobile-menu--phone { display: none; } }
+@media (min-width: 1025px) { .verso-mobile-menu--tablet { display: none; } }
+.verso-mobile-menu__drawer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    inline-size: min(22rem, 100vw - 3rem);
+    max-inline-size: none;
+    block-size: 100dvh;
+    max-block-size: none;
+    background: var(--verso-color-background, Canvas);
+    color: var(--verso-color-text, CanvasText);
+}
+.verso-mobile-menu__drawer--end { margin-inline-start: auto; }
+.verso-mobile-menu__drawer--top { inline-size: 100vw; block-size: auto; max-block-size: 100dvh; }
+.verso-mobile-menu__drawer:modal { overscroll-behavior: contain; }
+.verso-mobile-menu__drawer::backdrop { background: rgb(0 0 0 / 0.5); overflow: hidden; overscroll-behavior: contain; }
+.verso-mobile-menu__drawer[open] { display: flex; flex-direction: column; }
+.verso-mobile-menu__close {
+    align-self: flex-end;
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    margin: 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+.verso-mobile-menu__body { display: grid; gap: 1rem; padding: 0 1.25rem 1.5rem; overflow: auto; }
+.verso-mobile-menu__body .verso-nav__list { display: grid; gap: 0.25rem; }
+@media (prefers-reduced-motion: no-preference) {
+    .verso-mobile-menu__drawer[open] { animation: verso-drawer-in 0.25s ease-out; }
+    .verso-mobile-menu__drawer--start[open] { animation-name: verso-drawer-in-start; }
+    .verso-mobile-menu__drawer--top[open] { animation-name: verso-drawer-in-top; }
+    @keyframes verso-drawer-in { from { translate: 100% 0; } }
+    @keyframes verso-drawer-in-start { from { translate: -100% 0; } }
+    @keyframes verso-drawer-in-top { from { translate: 0 -100%; } }
+    .verso-mobile-menu__drawer[open]:dir(rtl) { animation-name: verso-drawer-in-start; }
+    .verso-mobile-menu__drawer--start[open]:dir(rtl) { animation-name: verso-drawer-in; }
+    .verso-mobile-menu__drawer--top[open]:dir(rtl) { animation-name: verso-drawer-in-top; }
+}
+.verso-mobile-menu__button:hover, .verso-mobile-menu__close:hover { background: color-mix(in srgb, currentColor 8%, transparent); }

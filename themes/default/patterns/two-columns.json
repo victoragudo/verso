@@ -1,0 +1,34 @@
+{
+    "name": "two-columns",
+    "title": "Two columns with headings",
+    "category": "Layout",
+    "description": "Two side by side columns, each with a heading and a paragraph.",
+    "keywords": ["columns", "features", "side by side"],
+    "blocks": [
+        {
+            "type": "columns",
+            "attrs": {},
+            "content": "",
+            "children": [
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "heading", "attrs": { "level": 3 }, "content": "Getting there" },
+                        { "type": "paragraph", "attrs": {}, "content": "<p>Trains leave the central station every hour, and the ride takes about forty minutes.</p>" }
+                    ]
+                },
+                {
+                    "type": "column",
+                    "attrs": {},
+                    "content": "",
+                    "children": [
+                        { "type": "heading", "attrs": { "level": 3 }, "content": "Where to stay" },
+                        { "type": "paragraph", "attrs": {}, "content": "<p>Small guest houses near the harbor fill up early in summer, so book a few weeks ahead.</p>" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

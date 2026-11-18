@@ -1,0 +1,15 @@
+@extends('theme::layouts.app')
+
+@section('title', 'Search')
+
+@section('content')
+    <h1>Search results for "{{ $search ?? '' }}"</h1>
+
+    @forelse ($entries ?? [] as $entry)
+        <article>
+            <h2><a href="{{ $entry->url() }}">{{ $entry->title }}</a></h2>
+        </article>
+    @empty
+        <p>Nothing matched your search.</p>
+    @endforelse
+@endsection

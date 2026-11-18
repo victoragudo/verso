@@ -1,0 +1,12 @@
+@extends('theme::layouts.app')
+
+@section('content')
+    <h1>{{ config('app.name') }}</h1>
+
+    @foreach ($entries ?? [] as $entry)
+        <article>
+            <h2><a href="{{ $entry->url() }}">{{ $entry->title }}</a></h2>
+            <p>{{ $entry->excerpt }}</p>
+        </article>
+    @endforeach
+@endsection

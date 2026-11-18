@@ -1,0 +1,77 @@
+{
+    "name": "Shop",
+    "slug": "shop",
+    "version": "1.0.0",
+    "description": "Sell products with a cart, checkout, orders, bank transfer and Stripe Checkout payments.",
+    "author": "Verso",
+    "provider": "Verso\\Plugins\\Shop\\ShopServiceProvider",
+    "requires": "^0.1",
+    "permissions": [
+        "manage_settings",
+        "edit_any_entry"
+    ],
+    "network": [
+        "api.stripe.com"
+    ],
+    "admin": {
+        "group": "tools",
+        "icon": "shop",
+        "keywords": [
+            "store",
+            "ecommerce",
+            "sell",
+            "tienda"
+        ],
+        "items": [
+            {
+                "key": "orders",
+                "label": "Orders",
+                "route": "admin.shop.orders.index",
+                "icon": "orders",
+                "capability": "shop.manage",
+                "keywords": [
+                    "sales",
+                    "purchases",
+                    "checkout",
+                    "pedidos",
+                    "ventas"
+                ]
+            },
+            {
+                "key": "products",
+                "label": "Products",
+                "route": "admin.shop.products.index",
+                "icon": "product",
+                "capability": "shop.manage",
+                "keywords": [
+                    "inventory",
+                    "stock",
+                    "prices",
+                    "sku",
+                    "productos",
+                    "inventario"
+                ]
+            },
+            {
+                "key": "settings",
+                "label": "Settings",
+                "route": "admin.shop.settings.edit",
+                "icon": "settings",
+                "capability": "shop.manage",
+                "keywords": [
+                    "payments",
+                    "stripe",
+                    "bank transfer",
+                    "currency",
+                    "shipping",
+                    "pagos"
+                ]
+            }
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\Shop\\": "src/"
+        }
+    }
+}

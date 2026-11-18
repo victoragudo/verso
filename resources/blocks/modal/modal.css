@@ -1,0 +1,50 @@
+/* Dialogs of the modal block and of popups. Without JavaScript the content shows under the button. */
+.verso-modal__open {
+    min-block-size: 2.75rem;
+    padding: 0.5rem 1.1rem;
+    border: 0;
+    border-radius: var(--verso-radius-base, 6px);
+    background: var(--verso-color-accent, #1f6f5c);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+.verso-modal:not([data-ready]) > .verso-modal__open { display: none; }
+.verso-modal:not([data-ready]) > .verso-dialog { display: block; position: static; inline-size: auto; }
+.verso-modal:not([data-ready]) .verso-dialog__close { display: none; }
+.verso-dialog {
+    inline-size: min(36rem, 100% - 2rem);
+    max-block-size: min(90dvh, 100% - 2rem);
+    padding: 0;
+    border: 0;
+    border-radius: var(--verso-radius-base, 8px);
+    background: var(--verso-color-background, Canvas);
+    color: var(--verso-color-text, CanvasText);
+    box-shadow: 0 24px 64px rgb(0 0 0 / 0.25);
+}
+.verso-dialog--small { inline-size: min(26rem, 100% - 2rem); }
+.verso-dialog--large { inline-size: min(56rem, 100% - 2rem); }
+.verso-dialog:modal { overscroll-behavior: contain; }
+.verso-dialog::backdrop { background: rgb(0 0 0 / 0.5); overflow: hidden; overscroll-behavior: contain; }
+.verso-dialog[open] { display: flex; flex-direction: column; }
+.verso-dialog__head { display: flex; align-items: center; gap: 1rem; justify-content: space-between; padding-block: 1rem 0; padding-inline: 1.25rem 1rem; }
+.verso-dialog__title { margin: 0; font-size: 1.25rem; }
+.verso-dialog__close {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+.verso-dialog__close:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); }
+.verso-dialog__body { padding: 1rem 1.25rem 1.25rem; overflow: auto; }
+@media (prefers-reduced-motion: no-preference) {
+    .verso-dialog[open] { animation: verso-dialog-in 0.2s ease-out; }
+    @keyframes verso-dialog-in { from { opacity: 0; translate: 0 0.75rem; } }
+}
+.verso-modal__open:hover { filter: brightness(0.92); }
+.verso-dialog__close:hover { background: color-mix(in srgb, currentColor 8%, transparent); }

@@ -1,0 +1,15 @@
+{
+    "name": "Harbor Tides",
+    "slug": "harbor-tides",
+    "version": "1.2.0",
+    "description": "Shows the next high and low tides for your harbour.",
+    "author": "Marta Ibarra",
+    "provider": "Verso\\Plugins\\HarborTides\\HarborTidesServiceProvider",
+    "requires": "^0.1",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\HarborTides\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Faulty Ledger",
+    "slug": "faulty-ledger",
+    "version": "0.4.0",
+    "description": "Keeps a ledger of donations, but its migration always fails.",
+    "provider": "Verso\\Plugins\\FaultyLedger\\FaultyLedgerServiceProvider",
+    "requires": "^0.1",
+    "permissions": [],
+    "autoload": {
+        "psr-4": {
+            "Verso\\Plugins\\FaultyLedger\\": "src/"
+        }
+    }
+}

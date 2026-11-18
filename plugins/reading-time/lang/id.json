@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "Rata-rata kata yang dibaca per menit, digunakan untuk menghitung menit.",
+    "Minutes": "Menit",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "Hanya digunakan saat blok ditampilkan di luar entri. Di dalam entri, waktu dihitung otomatis.",
+    "Reading Time": "Waktu Baca",
+    "Reading speed": "Kecepatan membaca",
+    "Reading time": "Waktu baca",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "Menampilkan berapa menit yang dibutuhkan untuk membaca entri, sebagai blok dan di API publik.",
+    "Shows how many minutes the entry takes to read.": "Menampilkan berapa menit waktu yang dibutuhkan untuk membaca entri.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, other {# menit baca}}"
+}

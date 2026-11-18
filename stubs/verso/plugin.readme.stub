@@ -1,0 +1,16 @@
+# {{ name }}
+
+{{ description }}
+
+## Install
+
+1. Keep this folder in `plugins/{{ slug }}`.
+2. Open the admin, go to Administration > Plugins and themes and enable {{ name }}. You find it in Tools > {{ name }}.
+3. Run `npm run build` so the admin loads `resources/js/index.tsx`.
+
+## Extend
+
+- `src/{{ class }}ServiceProvider.php` adds a typed filter and a dashboard card (an admin slot).
+- `resources/js/index.tsx` registers the React component of that card.
+- `routes/admin.php` holds the admin pages. List them under `admin.items` in `verso.json`: core puts them in the sidebar under Tools, with search words from `keywords`.
+- See `docs/EXTENDING.md` in Verso for every filter and slot.

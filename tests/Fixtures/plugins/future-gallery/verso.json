@@ -1,0 +1,9 @@
+{
+    "name": "Future Gallery",
+    "slug": "future-gallery",
+    "version": "1.0.0",
+    "description": "Needs a Verso version that does not exist yet.",
+    "provider": "Verso\\Plugins\\FutureGallery\\FutureGalleryServiceProvider",
+    "requires": "^9.0",
+    "permissions": []
+}

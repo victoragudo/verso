@@ -1,0 +1,11 @@
+{
+    "Average words read per minute, used to count minutes.": "Média de palavras lidas por minuto, usada para contar os minutos.",
+    "Minutes": "Minutos",
+    "Only used when the block is shown outside an entry. Inside an entry the time is counted for you.": "Usado só quando o bloco aparece fora de um item. Dentro de um item, o tempo é contado para você.",
+    "Reading Time": "Tempo de leitura",
+    "Reading speed": "Velocidade de leitura",
+    "Reading time": "Tempo de leitura",
+    "Shows how many minutes it takes to read an entry, as a block and in the public API.": "Mostra quantos minutos leva para ler um item, como bloco e na API pública.",
+    "Shows how many minutes the entry takes to read.": "Mostra quantos minutos leva para ler o item.",
+    "{minutes, plural, one {# min read} other {# min read}}": "{minutes, plural, one {# min de leitura} other {# min de leitura}}"
+}
