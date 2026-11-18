@@ -877,3 +877,51 @@ dd {
 .card-pad.span-4 > .body {
     margin-bottom: 24px;
 }
+
+/* FAQ: native disclosure widgets, one open at a time (the name attribute). */
+.faq {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+}
+
+.faq details {
+    border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+    padding-block: 18px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::after {
+    content: '+';
+    flex: none;
+    font: 400 24px 'Geist Mono', ui-monospace, monospace;
+    color: var(--accent-text);
+}
+
+.faq details[open] summary::after {
+    content: '−';
+}
+
+.faq summary:hover {
+    color: var(--accent-text);
+}
+
+.faq details .body {
+    padding-bottom: 22px;
+    max-width: 44em;
+}

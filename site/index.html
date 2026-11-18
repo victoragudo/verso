@@ -3,21 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verso, the open source Laravel CMS</title>
-<meta name="description" content="Verso is a free, open source WordPress alternative built on Laravel: a visual site builder, forms, SEO, a shop, newsletters, roles and 15 languages in one install.">
+<title>Verso: open source Laravel CMS, a modern WordPress alternative</title>
+<meta name="description" content="Verso is a free, open source CMS built on Laravel 13. A visual page and theme builder, SEO tools, forms, a shop, newsletters, roles and 15 admin languages in one install. MIT licensed.">
+<link rel="canonical" href="https://verso-cms.pages.dev/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Víctor Agudo">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#09090b">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Verso, the open source Laravel CMS">
-<meta property="og:description" content="WordPress power. Laravel engineering. A visual builder, forms, SEO, a shop and 15 languages in one install.">
-<meta property="og:image" content="assets/dashboard.webp">
+<meta property="og:site_name" content="Verso">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://verso-cms.pages.dev/">
+<meta property="og:title" content="Verso: open source Laravel CMS, a modern WordPress alternative">
+<meta property="og:description" content="WordPress power. Laravel engineering. A visual builder, SEO tools, forms, a shop and 15 languages in one free install.">
+<meta property="og:image" content="https://verso-cms.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Verso: WordPress power. Laravel engineering.">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="twitter:title" content="Verso: open source Laravel CMS">
+<meta name="twitter:description" content="WordPress power. Laravel engineering. A visual builder, SEO tools, forms, a shop and 15 languages in one free install.">
+<meta name="twitter:image" content="https://verso-cms.pages.dev/og-image.png">
+<meta name="twitter:image:alt" content="Verso: WordPress power. Laravel engineering.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="/assets/dashboard.webp" type="image/webp" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://verso-cms.pages.dev/#website",
+      "url": "https://verso-cms.pages.dev/",
+      "name": "Verso",
+      "description": "Open source CMS built on Laravel, a modern WordPress alternative.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://verso-cms.pages.dev/#software",
+      "name": "Verso",
+      "description": "A free, open source content management system built on Laravel 13 with a visual page and theme builder, SEO tools, forms, a shop, newsletters, memberships, roles and permissions, and a 15 language admin.",
+      "applicationCategory": "WebApplication",
+      "applicationSubCategory": "Content management system",
+      "operatingSystem": "Linux, macOS, Windows (PHP 8.4 or newer)",
+      "softwareVersion": "0.1.0",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "url": "https://verso-cms.pages.dev/",
+      "downloadUrl": "https://github.com/victoragudo/verso/releases/latest",
+      "codeRepository": "https://github.com/victoragudo/verso",
+      "programmingLanguage": ["PHP", "TypeScript"],
+      "screenshot": "https://verso-cms.pages.dev/assets/dashboard.webp",
+      "image": "https://verso-cms.pages.dev/og-image.png",
+      "featureList": [
+        "Visual block builder and theme builder",
+        "Easy mode with guided start for non technical users",
+        "SEO analysis, sitemap, structured data and 404 monitor",
+        "Roles and permissions matrix",
+        "Admin in 15 languages with right to left support",
+        "Plugin and theme security scan before install",
+        "Signed one click updates"
+      ],
+      "author": { "@type": "Person", "name": "Víctor Agudo", "url": "https://github.com/victoragudo" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://verso-cms.pages.dev/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Verso free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Verso is open source under the MIT license, with no paid edition. Every feature, including the bundled plugins, is free." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Verso different from WordPress?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Verso is built on Laravel and includes what most WordPress sites add with plugins: a page and theme builder, SEO analysis, forms with spam checks, a roles editor, popups and redirects. Plugins and themes are scanned before they are installed." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Verso need to run?",
+          "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. The release zip includes all dependencies, and a web wizard sets up the database and the admin account." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build my own themes and plugins?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Themes are Blade views with a theme.json file, and plugins are folders with a verso.json manifest and a Laravel service provider. Verso checks both before install." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css">
-<script type="module" src="main.js"></script>
+<link rel="stylesheet" href="/styles.css">
+<script type="module" src="/main.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
@@ -33,6 +120,7 @@ Verso
 <a href="#plugins">Plugins</a>
 <a href="#themes">Themes</a>
 <a href="#stack">Stack</a>
+<a href="#faq">FAQ</a>
 <a href="https://github.com/victoragudo/verso/blob/main/docs/README.md">Docs</a>
 </div>
 <div class="nav-actions">
@@ -58,7 +146,7 @@ Verso
 </div>
 <p class="hero-note mono">MIT licensed · PHP 8.4+ · SQLite, MySQL or PostgreSQL</p>
 <figure class="shot-frame">
-<img src="assets/dashboard.webp" width="1600" height="1000" fetchpriority="high" alt="The Verso admin dashboard with a launch checklist and the main menu">
+<img src="/assets/dashboard.webp" width="1600" height="1000" fetchpriority="high" alt="The Verso admin dashboard with a launch checklist and the main menu">
 </figure>
 </section>
 
@@ -82,7 +170,7 @@ Verso
 <h3>Visual builder and theme builder</h3>
 <p class="body">Drag and drop blocks, tabs, sliders and pricing tables. Design headers, footers, templates and popups that show by condition.</p>
 </div>
-<div class="media"><img src="assets/theme-hero.webp" width="1260" height="530" loading="lazy" alt="A ceramics shop home page built with the Ashgrove theme"></div>
+<div class="media"><img src="/assets/theme-hero.webp" width="1260" height="530" loading="lazy" alt="A ceramics shop home page built with the Ashgrove theme"></div>
 </article>
 
 <article class="card card-pad span-4">
@@ -114,7 +202,7 @@ Verso
 <h3>SEO without an SEO plugin</h3>
 <p class="body">Friendly URLs, sitemap, structured data, live analysis with snippet previews, broken link checks and a 404 monitor that suggests redirects.</p>
 </div>
-<div class="media"><img src="assets/seo.webp" width="1600" height="1000" loading="lazy" alt="Permalinks and SEO settings with URL patterns for posts and products"></div>
+<div class="media"><img src="/assets/seo.webp" width="1600" height="1000" loading="lazy" alt="Permalinks and SEO settings with URL patterns for posts and products"></div>
 </article>
 
 <article class="card card-pad span-3">
@@ -271,6 +359,33 @@ Risk: <span class="ok">low</span></pre></div>
 <li class="card stack-card"><p style="margin: 0; font-weight: 600">Pest · Vitest · Playwright</p><p class="body small" style="margin-top: 6px">Unit, feature and end to end</p></li>
 <li class="card stack-card"><p style="margin: 0; font-weight: 600">PHPStan · Pint</p><p class="body small" style="margin-top: 6px">Strict types, one code style</p></li>
 </ul>
+</div>
+</section>
+
+<section id="faq" class="band" aria-labelledby="faq-title">
+<div class="wrap section split">
+<div>
+<p class="eyebrow">FAQ</p>
+<h2 id="faq-title" class="h2">Questions people ask first.</h2>
+</div>
+<div class="faq">
+<details name="faq" open>
+<summary>Is Verso free?</summary>
+<p class="body">Yes. Verso is open source under the MIT license, with no paid edition. Every feature, including the bundled plugins, is free.</p>
+</details>
+<details name="faq">
+<summary>How is Verso different from WordPress?</summary>
+<p class="body">Verso is built on Laravel and includes what most WordPress sites add with plugins: a page and theme builder, SEO analysis, forms with spam checks, a roles editor, popups and redirects. Plugins and themes are scanned before they are installed.</p>
+</details>
+<details name="faq">
+<summary>What does Verso need to run?</summary>
+<p class="body">PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. The release zip includes all dependencies, and a web wizard sets up the database and the admin account.</p>
+</details>
+<details name="faq">
+<summary>Can I build my own themes and plugins?</summary>
+<p class="body">Yes. Themes are Blade views with a theme.json file, and plugins are folders with a verso.json manifest and a Laravel service provider. Verso checks both before install.</p>
+</details>
+</div>
 </div>
 </section>
 

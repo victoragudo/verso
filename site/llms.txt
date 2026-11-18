@@ -1,0 +1,22 @@
+# Verso
+
+> Verso is a free, open source content management system (CMS) built on Laravel 13. It is a modern alternative to WordPress: a visual page and theme builder, SEO tools, forms, a shop, newsletters, memberships, roles and permissions, and an admin in 15 languages ship in one install. MIT licensed.
+
+- Requirements: PHP 8.4 or newer; SQLite, MySQL or PostgreSQL.
+- Stack: Laravel 13, Inertia 3, React 19, Tailwind 4, shadcn/ui, Tiptap, Blade themes.
+- Install: download the release zip or clone the repository, then follow the web install wizard.
+- Updates: signed releases on GitHub; sites check daily and can update automatically.
+
+## Docs
+
+- [Documentation index](https://github.com/victoragudo/verso/blob/main/docs/README.md): every guide in one list.
+- [Theme guide](https://github.com/victoragudo/verso/blob/main/docs/THEME-GUIDE.md): build a theme without code, as a child theme or from scratch.
+- [Extending Verso](https://github.com/victoragudo/verso/blob/main/docs/EXTENDING.md): plugins, blocks, capabilities and registries.
+- [Architecture](https://github.com/victoragudo/verso/blob/main/docs/ARCHITECTURE.md): how the modules fit together.
+- [Releasing](https://github.com/victoragudo/verso/blob/main/docs/RELEASING.md): CI, releases and how sites update.
+
+## Project
+
+- [Source code](https://github.com/victoragudo/verso)
+- [Latest release](https://github.com/victoragudo/verso/releases/latest)
+- [Issues](https://github.com/victoragudo/verso/issues)
