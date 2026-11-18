@@ -79,9 +79,11 @@ it('keeps visitors on the published copy while a new draft is saved', function (
 });
 
 it('marks a draft equal to the published blocks as published', function () {
-    $this->store->publish('harbor', 'header', $this->headerBlocks);
+    // MySQL gives JSON keys back in its own order, so the keys here are not in that order.
+    $blocks = [['content' => 'Kvarnholmen Bakery', 'type' => 'heading', 'attrs' => ['level' => 2]]];
+    $this->store->publish('harbor', 'header', $blocks);
 
-    expect($this->store->saveDraft('harbor', 'header', $this->headerBlocks)->status)->toBe(SitePartStatus::Published);
+    expect($this->store->saveDraft('harbor', 'header', $blocks)->status)->toBe(SitePartStatus::Published);
 });
 
 it('restores the theme default by removing the edited copy and its revisions', function () {

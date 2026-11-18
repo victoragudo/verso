@@ -6,7 +6,6 @@ use App\Verso\Access\Capabilities\CapabilityRegistry;
 use App\Verso\Access\Models\StoredRole;
 use App\Verso\Core\Enums\Role;
 use Illuminate\Support\Facades\Schema;
-use Throwable;
 
 // Every role of the site: roles from code with the changes saved by admins, plus custom roles.
 class Roles
@@ -117,15 +116,12 @@ class Roles
     /** @return iterable<StoredRole> */
     protected function storedRoles(): iterable
     {
-        try {
-            return StoredRole::query()->orderBy('id')->get();
-        } catch (Throwable $exception) {
-            // Before the migration runs (installer, first update) only the roles from code exist.
-            if (Schema::hasTable('roles')) {
-                throw $exception;
-            }
-
+        // Before the migration runs (installer, first update) only the roles from code exist.
+        // Check first: on Postgres a failed query breaks the open transaction.
+        if (! Schema::hasTable('roles')) {
             return [];
         }
+
+        return StoredRole::query()->orderBy('id')->get();
     }
 }

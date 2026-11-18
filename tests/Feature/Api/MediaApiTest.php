@@ -83,6 +83,8 @@ it('shows one media item', function () {
 });
 
 it('returns 404 when the media table does not exist', function () {
+    // The user avatar points to media, and Postgres and MySQL refuse to drop a table that is still referenced.
+    Schema::table('users', fn (Blueprint $table) => $table->dropForeign(['avatar_media_id']));
     Schema::drop('media');
 
     $this->getJson('/api/v1/media')->assertNotFound();

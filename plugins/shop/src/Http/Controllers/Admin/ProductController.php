@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Verso\Content\Models\Entry;
 use App\Verso\Core\Admin\AdminPreferences;
+use App\Verso\Core\Database\TextSearch;
 use App\Verso\Core\Enums\Capability;
 use App\Verso\Media\Models\Media;
 use App\Verso\Shortcodes\ShortcodeRegistry;
@@ -42,9 +43,8 @@ class ProductController extends Controller
 
         $entries = Entry::query()
             ->ofType(Product::TYPE)
-            ->when($search !== '', fn (Builder $query) => $query->where(fn (Builder $query) => $query
-                ->where('title', 'like', "%{$search}%")
-                ->orWhereIn('id', Product::query()->where('sku', 'like', "%{$search}%")->select('entry_id'))))
+            ->when($search !== '', fn (Builder $query) => $query->where(fn (Builder $query) => TextSearch::apply($query, ['title'], $search)
+                ->orWhereIn('id', TextSearch::apply(Product::query(), ['sku'], $search)->select('entry_id'))))
             ->orderBy('title')
             ->paginate((int) config('verso.admin.per_page'))
             ->withQueryString();

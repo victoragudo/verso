@@ -69,8 +69,8 @@ it('uses the template choice saved in the site editor over theme.json', function
     $choices->saveForTemplate($theme, 'landing', ['header' => 'centered', 'footer' => 'four-columns', 'sidebar' => 'left']);
     $landing = landingTestPage(['template' => 'landing']);
 
-    expect($choices->saved($theme))->toBe(['landing' => ['header' => 'centered', 'footer' => 'four-columns']])
-        ->and($choices->forEntry($landing))->toBe(['header' => 'centered', 'footer' => 'four-columns']);
+    expect($choices->saved($theme))->toEqual(['landing' => ['header' => 'centered', 'footer' => 'four-columns']])
+        ->and($choices->forEntry($landing))->toEqual(['header' => 'centered', 'footer' => 'four-columns']);
 
     $this->get($landing->path())->assertOk()->assertSee('site-header is-centered', false);
 

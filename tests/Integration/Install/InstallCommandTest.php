@@ -131,7 +131,7 @@ it('asks every question in interactive mode', function () {
         ->expectsConfirmation('Set up mail, cache, sessions and queue now?', 'no')
         ->expectsConfirmation('Add demo content (posts, pages, photos and menus)?', 'no')
         ->expectsChoice('Theme', 'ashgrove', array_column(app(WizardOptions::class)->themes(), 'name', 'slug'))
-        ->expectsChoice('Plugins to turn on', ['reading-time'], app(WizardOptions::class)->plugins() |> (fn (array $plugins) => array_column($plugins, 'name', 'slug')))
+        ->expectsChoice('Plugins to turn on', ['reading-time'], array_column(app(WizardOptions::class)->plugins(), 'name', 'slug'))
         ->expectsConfirmation('Install Verso now?', 'yes')
         ->assertSuccessful();
 

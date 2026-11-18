@@ -50,7 +50,7 @@ it('saves linked tokens through the customizer and others in their own setting',
 
     expect($rejected)->toBe(['color.text', 'font.ui'])
         ->and(app(ThemeCustomizer::class)->values($this->theme))->toMatchArray(['accent_color' => '#1f4e79', 'layout_width' => 68])
-        ->and(app(Settings::class)->get('theme.styles.ashgrove'))->toBe(['color.background' => '#fffaf2', 'radius.base' => '8px']);
+        ->and(app(Settings::class)->get('theme.styles.ashgrove'))->toEqual(['color.background' => '#fffaf2', 'radius.base' => '8px']);
 });
 
 it('prints every token as a --verso variable that follows the theme variable', function () {

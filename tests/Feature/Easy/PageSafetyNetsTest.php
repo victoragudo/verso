@@ -87,7 +87,7 @@ it('keeps a draft for the person without changing the page or adding a revision'
 
     $this->page->refresh();
 
-    expect($this->page->blocks)->toBe($this->blocks)
+    expect($this->page->blocks)->toEqual($this->blocks)
         ->and($this->page->revisions()->count())->toBe(0)
         ->and(PageDraft::query()->count())->toBe(1);
 
@@ -298,7 +298,7 @@ it('refuses unknown blocks in the frame and when saving with a plain message', f
         ->assertUnprocessable()
         ->assertJsonValidationErrors('blocks');
 
-    expect($this->page->fresh()->blocks)->toBe($this->blocks);
+    expect($this->page->fresh()->blocks)->toEqual($this->blocks);
 });
 
 it('marks the empty content area in the frame so the editor can put the first section button there', function () {

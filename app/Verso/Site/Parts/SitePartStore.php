@@ -51,9 +51,10 @@ class SitePartStore
     public function saveDraft(string $theme, string $part, array $blocks, ?int $userId = null): SitePart
     {
         $sitePart = $this->find($theme, $part) ?? new SitePart(['theme' => $theme, 'part' => $part]);
+        // Loose compare: MySQL gives JSON keys back in another order, so a strict compare sees a change that is not there.
         $sitePart->fill([
             'blocks' => $blocks,
-            'status' => $sitePart->isLive() && $sitePart->published_blocks === $blocks ? SitePartStatus::Published : SitePartStatus::Draft,
+            'status' => $sitePart->isLive() && $sitePart->published_blocks == $blocks ? SitePartStatus::Published : SitePartStatus::Draft,
             'user_id' => $userId,
         ])->save();
 

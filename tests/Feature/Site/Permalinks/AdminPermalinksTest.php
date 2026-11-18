@@ -73,7 +73,7 @@ it('saves a new structure and lowercases it', function () {
         ->assertSessionHasNoErrors();
 
     $settings = app(Settings::class);
-    expect($settings->get(PermalinkSettings::STRUCTURES))->toBe(['post' => '/articles/{year}/{slug}', 'page' => '/{slug}'])
+    expect($settings->get(PermalinkSettings::STRUCTURES))->toEqual(['post' => '/articles/{year}/{slug}', 'page' => '/{slug}'])
         ->and($settings->get(PermalinkSettings::TRAILING_SLASH))->toBeTrue()
         ->and($settings->get(PermalinkSettings::LOWERCASE))->toBeTrue();
 });

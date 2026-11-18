@@ -3,6 +3,7 @@
 namespace Verso\Plugins\Memberships\Http\Controllers;
 
 use App\Models\User;
+use App\Verso\Core\Database\TextSearch;
 use App\Verso\Core\Support\SiteTime;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
@@ -34,7 +35,7 @@ class MemberController
             ->when($status === 'active', fn (Builder $query) => $query->active())
             ->when($status === 'expired', fn (Builder $query) => $query->where(fn (Builder $q) => $q->where('status', MembershipStatus::Expired)->orWhere(fn (Builder $q) => $q->due())))
             ->when($status === 'cancelled', fn (Builder $query) => $query->where('status', MembershipStatus::Cancelled))
-            ->when($search !== '', fn (Builder $query) => $query->whereHas('user', fn (Builder $q) => $q->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
+            ->when($search !== '', fn (Builder $query) => $query->whereHas('user', fn (Builder $q) => TextSearch::apply($q, ['name', 'email'], $search)))
             ->latest('id')
             ->paginate((int) config('memberships.per_page'))
             ->withQueryString()

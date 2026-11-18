@@ -27,6 +27,8 @@ it('is off by default', function () {
 });
 
 it('creates the usage table when it is enabled', function () {
+    PluginFixtures::withoutTables('ai-assistant');
+
     expect(Schema::hasTable('ai_usage'))->toBeFalse();
 
     AiAssistantFixtures::enable();

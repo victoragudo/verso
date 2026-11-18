@@ -78,7 +78,7 @@ it('only lets people who may change the entry use the editor', function () {
     $this->actingAs($author)->postJson(route('admin.easy.pages.frame', $this->page), ['blocks' => $this->blocks])->assertForbidden();
     $this->actingAs($author)->putJson(route('admin.easy.pages.update', $this->page), ['blocks' => []])->assertForbidden();
 
-    expect($this->page->fresh()->blocks)->toBe($this->blocks);
+    expect($this->page->fresh()->blocks)->toEqual($this->blocks);
 });
 
 it('respects plugins that deny the update', function () {
@@ -103,7 +103,7 @@ it('draws the real page from unsaved blocks with editor markers, never cached an
         ->and($html)->not->toContain('aria-label="Site administration"')
         ->and($response->headers->get('Cache-Control'))->toContain('no-store')
         ->and($response->headers->get('X-Frame-Options'))->toBe('SAMEORIGIN')
-        ->and($this->page->fresh()->blocks)->toBe($this->blocks);
+        ->and($this->page->fresh()->blocks)->toEqual($this->blocks);
 
     $public = (string) $this->get('/bakery')->assertOk()->getContent();
 
@@ -163,7 +163,7 @@ it('saves the blocks through UpdateEntry with a revision and keeps the status', 
     expect($draft->blocks[0]['children'][0]['children'][0]['content'])->toBe('Lemon tarts are back')
         ->and($draft->status)->toBe(EntryStatus::Draft)
         ->and($draft->revisions()->count())->toBe(1)
-        ->and($draft->revisions()->first()->blocks)->toBe($this->blocks);
+        ->and($draft->revisions()->first()->blocks)->toEqual($this->blocks);
 });
 
 it('publishes a draft when asked', function () {
@@ -207,7 +207,7 @@ it('rejects invalid blocks when saving and keeps the page', function (array $blo
         ->assertRedirect(route('admin.easy.pages.edit', $this->page))
         ->assertSessionHasErrors(['blocks' => $message]);
 
-    expect($this->page->fresh()->blocks)->toBe($this->blocks);
+    expect($this->page->fresh()->blocks)->toEqual($this->blocks);
 })->with([
     'unknown type' => [[['id' => 'b_x', 'type' => 'marquee', 'attrs' => [], 'content' => '', 'children' => []]], 'Block 1: the block type is unknown.'],
     'same id twice' => [[

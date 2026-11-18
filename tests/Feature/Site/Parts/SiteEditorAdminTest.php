@@ -242,7 +242,7 @@ it('saves colors and fonts and keeps the customizer in step', function () {
         ->assertInertiaFlash('toast.message', 'Colors and fonts saved.');
 
     expect(app(Settings::class)->get('theme.ashgrove.accent_color'))->toBe('#8a3b12')
-        ->and(app(Settings::class)->get('theme.styles.ashgrove'))->toBe(['color.surface' => '#f2ece2', 'font.ui' => 'system']);
+        ->and(app(Settings::class)->get('theme.styles.ashgrove'))->toEqual(['color.surface' => '#f2ece2', 'font.ui' => 'system']);
 });
 
 it('explains which style value is not allowed', function () {

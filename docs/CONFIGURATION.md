@@ -244,7 +244,7 @@ Why: a wrong value would lock you out, leak secrets, let an attacker who steals 
 | `verso.plugins.config_path` | `VERSO_PLUGINS_CONFIG_PATH` | config |  | Folder inside a plugin that holds its config files. "config/shop.php" becomes the "shop" config key. |
 | `verso.extensions.storage_path` | `VERSO_EXTENSIONS_STORAGE_PATH` | <base>/storage/app/private/extensions |  | Folder for uploaded packages waiting for consent, backups and temporary files. |
 | `verso.extensions.verification.sandbox.php_binary` | `VERSO_VERIFY_PHP_BINARY` |  |  | PHP binary for the sandbox process. Empty finds the PHP command line binary. |
-| `verso.updates.public_key` | `VERSO_UPDATES_PUBLIC_KEY` |  |  | Base64 Ed25519 public key. When set, every package must have a valid signature. |
+| `verso.updates.public_key` | `VERSO_UPDATES_PUBLIC_KEY` | official release key |  | Base64 Ed25519 public key. Every package must have a valid signature from it. Empty turns the check off. |
 | `verso.updates.install_path` | `VERSO_UPDATES_INSTALL_PATH` | <base> |  | Folder the updater replaces. Tests point it to a temporary folder. |
 | `verso.updates.storage_path` | `VERSO_UPDATES_STORAGE_PATH` | <base>/storage/app/private/updates |  | Folder for downloads, backups and the update lock file. |
 | `verso.updates.php_binary` | `VERSO_UPDATES_PHP_BINARY` |  |  | PHP command line program used for artisan steps. Empty finds it on its own. |

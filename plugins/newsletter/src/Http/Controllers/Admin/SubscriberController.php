@@ -2,6 +2,7 @@
 
 namespace Verso\Plugins\Newsletter\Http\Controllers\Admin;
 
+use App\Verso\Core\Database\TextSearch;
 use App\Verso\I18n\Translate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +32,7 @@ class SubscriberController
             ->with('lists:id,name')
             ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
             ->when($listId !== null, fn (Builder $query) => $query->whereHas('lists', fn (Builder $q) => $q->whereKey($listId)))
-            ->when($search !== '', fn (Builder $query) => $query->where(fn (Builder $q) => $q->where('email', 'like', "%{$search}%")->orWhere('name', 'like', "%{$search}%")))
+            ->when($search !== '', fn (Builder $query) => TextSearch::apply($query, ['email', 'name'], $search))
             ->latest('id')
             ->paginate((int) config('newsletter.per_page'))
             ->withQueryString()

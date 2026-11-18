@@ -559,6 +559,28 @@ describe('Site Editor part editor', () => {
         ).toBeInTheDocument();
     });
 
+    it('does not autosave after a quick publish, so the publish is not cancelled', () => {
+        vi.useFakeTimers();
+        renderEditor();
+
+        fireEvent.change(
+            screen.getByDisplayValue('Saffron buns are back for Lucia'),
+            {
+                target: { value: 'Open until 20:00 on Fridays' },
+            },
+        );
+        fireEvent.click(
+            screen.getByRole('button', { name: 'Publish changes' }),
+        );
+        act(() => vi.advanceTimersByTime(1200));
+
+        const [, payload] = vi.mocked(router.post).mock.calls[0];
+        expect(JSON.stringify(payload)).toContain(
+            'Open until 20:00 on Fridays',
+        );
+        expect(router.put).not.toHaveBeenCalled();
+    });
+
     it('asks before restoring the original', async () => {
         renderEditor({ ...header, status: 'published', revisions: 3 });
 

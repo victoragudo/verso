@@ -160,7 +160,12 @@ export default function ThemeBuilderEdit({
             return;
         }
 
-        const timer = window.setTimeout(() => saveDraft(draft), autosaveDelay);
+        // Publish sends the draft too, so a save that waits is skipped after it.
+        const timer = window.setTimeout(() => {
+            if (dirty.current) {
+                saveDraft(draft);
+            }
+        }, autosaveDelay);
 
         return () => window.clearTimeout(timer);
     }, [draft, autosaveDelay, saveDraft]);
@@ -185,17 +190,21 @@ export default function ThemeBuilderEdit({
     };
 
     const publishChanges = () => {
+        // A late autosave would cancel this request, and the user would not see that it is live.
+        dirty.current = false;
         setPublishing(true);
         router.post(publish(layout.id).url, payload(draft), {
             preserveState: true,
             preserveScroll: true,
             onSuccess: () => {
-                dirty.current = false;
                 setStatus('published');
                 setSaveState('idle');
                 setFrameVersion((version) => version + 1);
             },
-            onError: () => setSaveState('error'),
+            onError: () => {
+                dirty.current = true;
+                setSaveState('error');
+            },
             onFinish: () => setPublishing(false),
         });
     };
