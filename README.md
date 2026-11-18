@@ -153,6 +153,8 @@ All six must pass before a change is merged. Code that queries the database must
 
 `npm run test:e2e` runs the browser journeys with Playwright (`tests/e2e`): a fresh install through the web wizard to a finished site built with Easy mode only, at 1440x900 and at 390x844 (touch). Run `npm run build` first, and `npx playwright install chromium` once. Each screen size gets its own server (`scripts/e2e/serve.mjs`, PHP built-in server on a free port) with a throwaway SQLite database, storage folder, `.env` and install lock in the system temp folder, so your `.env` and `database/database.sqlite` are never touched. `E2E_KEEP=1` keeps the temp folder for debugging; traces and screenshots of failures go to `test-results/`.
 
+`npm run test:e2e:install` checks the documented install: it runs `composer create-project` from this checkout (a path repository) in a temp folder, starts `php artisan serve`, goes through the whole web wizard with SQLite (the server restarts when the wizard writes `.env`) and logs in to the admin with the new account. It takes a few minutes because the new project installs its own Composer and npm packages.
+
 ## Roadmap
 
 - More themes.

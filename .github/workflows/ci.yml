@@ -188,3 +188,42 @@ jobs:
 
       - name: Run the Easy mode journey at 1440 and 390 px
         run: npm run test:e2e
+
+  fresh-install:
+    name: Documented install (create-project, artisan serve, wizard)
+    # Only the main Verso repository runs this workflow.
+    if: github.repository == 'victoragudo/verso'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        with:
+          php-version: '8.5'
+          extensions: pdo_sqlite, gd, intl
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+
+      # Only Playwright is needed here. The new project installs its own packages.
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      # composer create-project from this checkout (a path repository), php artisan serve,
+      # then the whole web wizard with SQLite and an admin login.
+      - name: Install Verso like a new user
+        run: npm run test:e2e:install
