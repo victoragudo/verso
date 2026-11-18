@@ -56,6 +56,7 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
       "url": "https://verso-cms.pages.dev/",
       "downloadUrl": "https://github.com/victoragudo/verso/releases/latest",
+      "installUrl": "https://github.com/victoragudo/verso#install",
       "codeRepository": "https://github.com/victoragudo/verso",
       "programmingLanguage": ["PHP", "TypeScript"],
       "screenshot": "https://verso-cms.pages.dev/assets/dashboard.webp",
@@ -88,7 +89,7 @@
         {
           "@type": "Question",
           "name": "What does Verso need to run?",
-          "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. The release zip includes all dependencies, and a web wizard sets up the database and the admin account." }
+          "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. Install it with composer create-project victoragudo/verso, or upload the release zip, which includes all dependencies. A web wizard then sets up the database and the admin account." }
         },
         {
           "@type": "Question",
@@ -379,7 +380,7 @@ Risk: <span class="ok">low</span></pre></div>
 </details>
 <details name="faq">
 <summary>What does Verso need to run?</summary>
-<p class="body">PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. The release zip includes all dependencies, and a web wizard sets up the database and the admin account.</p>
+<p class="body">PHP 8.4 or newer and SQLite, MySQL or PostgreSQL. Install it with composer create-project victoragudo/verso, or upload the release zip, which includes all dependencies. A web wizard then sets up the database and the admin account.</p>
 </details>
 <details name="faq">
 <summary>Can I build my own themes and plugins?</summary>
@@ -391,12 +392,22 @@ Risk: <span class="ok">low</span></pre></div>
 
 <section id="install" class="wrap section install" aria-labelledby="install-title">
 <h2 id="install-title" class="h2">Up and running in five minutes.</h2>
-<p class="lead">Clone it, build it, open the browser. The wizard asks for the database, your admin account and what your site is for.</p>
+<p class="lead">One command, then open the browser. The wizard asks for the database, your admin account and what your site is for.</p>
+<div class="install-options">
 <div class="card">
-<pre class="code"><span class="c">$</span> git clone https://github.com/victoragudo/verso.git
-<span class="c">$</span> cd verso
-<span class="c">$</span> composer install &amp;&amp; npm ci &amp;&amp; npm run build
+<p class="code-title mono" style="margin: 0">Composer · recommended</p>
+<pre class="code"><span class="c">$</span> composer create-project victoragudo/verso my-site
+<span class="c">$</span> cd my-site
 <span class="c">$</span> php artisan serve</pre>
+<p class="body small install-note">Needs PHP 8.4+, Composer and Node.js 22+ once, to build the admin.</p>
+</div>
+<div class="card">
+<p class="code-title mono" style="margin: 0">Release zip · any hosting</p>
+<div class="install-zip">
+<p class="body">Everything included: no Composer or Node.js needed. Upload it, point the web root at <code>public/</code> and open your site.</p>
+<a href="https://github.com/victoragudo/verso/releases/latest" class="btn btn-ghost">Download the latest release</a>
+</div>
+</div>
 </div>
 <div class="btn-row">
 <a href="https://github.com/victoragudo/verso" class="btn btn-primary">Get Verso on GitHub</a>
