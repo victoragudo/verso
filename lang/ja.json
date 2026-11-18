@@ -724,6 +724,7 @@
     "Confirm password": "パスワードの確認",
     "Confirm with passkey": "パスキーで確認",
     "Confirming...": "確認中...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": ":server :versionに接続しました。Versoのテーブルはありますが空なので、インストールはそれを使います。",
     "Connected to :server :version. The database is empty.": ":server :version に接続しました。データベースは空です。",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "{server} {version}に接続しました。データベースには他のテーブルが{count, plural, other {#個}}あります。Versoは独自のテーブルを追加します。",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "接続しましたが、このデータベースにはすでにVersoのテーブル（:tables）があります。テーブル接頭辞を使うか、空のデータベースを使ってください。",

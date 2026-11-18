@@ -180,7 +180,7 @@ it('creates a missing database when asked', function () {
 });
 
 it('asks for a prefix when Verso tables already exist', function () {
-    fakeServer(fn () => FakePdoConnector::server('8.4.3', ['users', 'entries']));
+    fakeServer(fn () => FakePdoConnector::server('8.4.3', ['users', 'entries'], ['select 1 from `users` limit 1' => ['1']]));
 
     $this->withSession(wizardDone(['welcome', 'requirements']))
         ->post('/install/database', mysqlForm())
@@ -189,6 +189,28 @@ it('asks for a prefix when Verso tables already exist', function () {
     $this->withSession(wizardDone(['welcome', 'requirements']))
         ->post('/install/database', mysqlForm(['prefix' => 'lf_']))
         ->assertRedirect('/install/site');
+});
+
+it('accepts the SQLite file of a fresh project, also when an older version migrated it', function () {
+    touch($this->sqlite);
+
+    $this->withSession(wizardDone(['welcome', 'requirements']))
+        ->post('/install/database', ['driver' => 'sqlite', 'database' => $this->sqlite, 'prefix' => ''])
+        ->assertRedirect('/install/site');
+
+    $pdo = new PDO('sqlite:'.$this->sqlite);
+    $pdo->exec('create table users (id integer primary key, email text)');
+    $pdo->exec('create table entries (id integer primary key)');
+
+    $this->withSession(wizardDone(['welcome', 'requirements']))
+        ->post('/install/database', ['driver' => 'sqlite', 'database' => $this->sqlite, 'prefix' => ''])
+        ->assertRedirect('/install/site');
+
+    $pdo->exec("insert into users (email) values ('ines@lisbonfood.example')");
+
+    $this->withSession(wizardDone(['welcome', 'requirements']))
+        ->post('/install/database', ['driver' => 'sqlite', 'database' => $this->sqlite, 'prefix' => ''])
+        ->assertSessionHasErrors('prefix');
 });
 
 it('never sends a saved password back and keeps it when the field stays empty', function () {

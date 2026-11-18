@@ -724,6 +724,7 @@
     "Confirm password": "确认密码",
     "Confirm with passkey": "使用通行密钥确认",
     "Confirming...": "正在确认…",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "已连接到 :server :version。Verso 数据表已存在但为空，安装将使用它们。",
     "Connected to :server :version. The database is empty.": "已连接到 :server :version。数据库为空。",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "已连接到 {server} {version}。数据库中已有 {count, plural, other {# 个其他表}}，Verso 会添加自己的表。",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "已连接，但此数据库中已有 Verso 表（:tables）。请使用表前缀或空数据库。",

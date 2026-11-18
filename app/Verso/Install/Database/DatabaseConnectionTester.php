@@ -76,11 +76,12 @@ class DatabaseConnectionTester
             $pdo = $this->open($settings);
             $version = $this->scalar($pdo, 'select sqlite_version()');
             $tables = $this->tables($pdo, $settings);
+            $filled = $this->filledVersoTables($pdo, $settings, $tables);
         } catch (PDOException $exception) {
             return ConnectionReport::failed(ConnectionProblem::Unknown, $this->clean($exception->getMessage()));
         }
 
-        return $this->success($settings, $version, 'sqlite', $tables);
+        return $this->success($settings, $version, 'sqlite', $tables, $filled);
     }
 
     protected function testServer(DatabaseSettings $settings): ConnectionReport
@@ -110,11 +111,12 @@ class DatabaseConnectionTester
             }
 
             $tables = $this->tables($pdo, $settings);
+            $filled = $this->filledVersoTables($pdo, $settings, $tables);
         } catch (PDOException $exception) {
             return ConnectionReport::failed(ConnectionProblem::Unknown, $this->clean($exception->getMessage()));
         }
 
-        return $this->success($settings, $version, $kind, $tables);
+        return $this->success($settings, $version, $kind, $tables, $filled);
     }
 
     // The server works but the database is missing: check if this user may create it.
@@ -188,19 +190,53 @@ class DatabaseConnectionTester
     }
 
     /**
+     * The Verso tables of this database that hold rows. Empty Verso tables (only migrated, never
+     * installed, as "composer create-project" did in 0.1.1) are safe: the install reuses them.
+     *
      * @param  list<string>  $tables
+     * @return list<string>
      */
-    protected function success(DatabaseSettings $settings, string $version, string $kind, array $tables): ConnectionReport
+    protected function filledVersoTables(PDO $pdo, DatabaseSettings $settings, array $tables): array
     {
-        $found = array_values(array_filter(
-            array_map(fn (string $table): string => $settings->prefix.$table, $this->versoTables),
-            fn (string $table): bool => in_array($table, $tables, true),
+        return array_values(array_filter(
+            $this->versoTablesIn($settings, $tables),
+            fn (string $table): bool => $this->hasRows($pdo, $settings, $table),
         ));
+    }
+
+    /**
+     * @param  list<string>  $tables
+     * @return list<string>
+     */
+    protected function versoTablesIn(DatabaseSettings $settings, array $tables): array
+    {
+        $versoTables = array_map(fn (string $table): string => $settings->prefix.$table, $this->versoTables);
+
+        return array_values(array_intersect($versoTables, $tables));
+    }
+
+    protected function hasRows(PDO $pdo, DatabaseSettings $settings, string $table): bool
+    {
+        $quoted = $settings->isMysqlFamily()
+            ? '`'.str_replace('`', '``', $table).'`'
+            : '"'.str_replace('"', '""', $table).'"';
+
+        return $this->scalar($pdo, 'select 1 from '.$quoted.' limit 1') !== '';
+    }
+
+    /**
+     * @param  list<string>  $tables
+     * @param  list<string>  $filled
+     */
+    protected function success(DatabaseSettings $settings, string $version, string $kind, array $tables, array $filled): ConnectionReport
+    {
+        $server = ['server' => $this->kindLabel($kind), 'version' => $version];
 
         $message = match (true) {
-            $found !== [] => __('Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.', ['tables' => implode(', ', $found)]),
-            $tables !== [] => Translate::icu('Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.', ['server' => $this->kindLabel($kind), 'version' => $version, 'count' => count($tables)]),
-            default => __('Connected to :server :version. The database is empty.', ['server' => $this->kindLabel($kind), 'version' => $version]),
+            $filled !== [] => __('Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.', ['tables' => implode(', ', $filled)]),
+            $this->versoTablesIn($settings, $tables) !== [] => __('Connected to :server :version. The Verso tables are there but empty, so the install will use them.', $server),
+            $tables !== [] => Translate::icu('Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.', [...$server, 'count' => count($tables)]),
+            default => __('Connected to :server :version. The database is empty.', $server),
         };
 
         return new ConnectionReport(
@@ -209,11 +245,10 @@ class DatabaseConnectionTester
             serverVersion: $version,
             serverKind: $kind,
             tableCount: count($tables),
-            versoTables: $found,
+            versoTables: $filled,
         );
     }
 
-    // Maps a PDO error to a problem the user understands.
     protected function problemFrom(DatabaseSettings $settings, PDOException $exception): ConnectionProblem
     {
         $message = $exception->getMessage();

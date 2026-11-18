@@ -724,6 +724,7 @@
     "Confirm password": "Parolayı onayla",
     "Confirm with passkey": "Geçiş anahtarıyla onayla",
     "Confirming...": "Onaylanıyor...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": "Bağlanıldı: :server :version. Verso tabloları mevcut ama boş, bu yüzden kurulum onları kullanacak.",
     "Connected to :server :version. The database is empty.": ":server :version sunucusuna bağlanıldı. Veritabanı boş.",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "{server} {version} sunucusuna bağlanıldı. Veritabanında {count, plural, one {# başka tablo} other {# başka tablo}} var; Verso kendi tablolarını ekleyecek.",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "Bağlanıldı, ancak bu veritabanında zaten Verso tabloları var (:tables). Bir tablo öneki veya boş bir veritabanı kullanın.",

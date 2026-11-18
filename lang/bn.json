@@ -724,6 +724,7 @@
     "Confirm password": "পাসওয়ার্ড নিশ্চিত করুন",
     "Confirm with passkey": "পাসকি দিয়ে নিশ্চিত করুন",
     "Confirming...": "নিশ্চিত করা হচ্ছে...",
+    "Connected to :server :version. The Verso tables are there but empty, so the install will use them.": ":server :version-এ সংযুক্ত হয়েছে। Verso-র টেবিলগুলো আছে কিন্তু খালি, তাই ইনস্টল সেগুলোই ব্যবহার করবে।",
     "Connected to :server :version. The database is empty.": ":server :version এ সংযুক্ত। ডেটাবেস খালি।",
     "Connected to {server} {version}. The database holds {count, plural, one {# other table} other {# other tables}}; Verso will add its own.": "{server} {version} এ সংযুক্ত। ডেটাবেসে {count, plural, one {অন্য #টি টেবিল} other {অন্য #টি টেবিল}} আছে; Verso নিজের টেবিল যোগ করবে।",
     "Connected, but this database already holds Verso tables (:tables). Use a table prefix or an empty database.": "সংযুক্ত হয়েছে, কিন্তু এই ডেটাবেসে আগে থেকেই Verso টেবিল (:tables) আছে। একটি টেবিল প্রিফিক্স বা খালি ডেটাবেস ব্যবহার করুন।",
