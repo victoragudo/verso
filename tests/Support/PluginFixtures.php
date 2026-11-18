@@ -24,6 +24,12 @@ class PluginFixtures
         return app(PluginManager::class);
     }
 
+    // Drops the tables of a bundled plugin, like on a site where it never ran. The test schema has them by default.
+    public static function withoutTables(string $slug): void
+    {
+        app(PluginMigrator::class)->rollback(self::use(base_path('plugins'))->get($slug));
+    }
+
     // Turns on a plugin from the real plugins folder: provider, tables and routes.
     public static function boot(string $slug): PluginManager
     {

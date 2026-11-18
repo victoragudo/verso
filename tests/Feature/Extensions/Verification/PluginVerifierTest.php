@@ -5,6 +5,7 @@ use App\Verso\Extensions\Verification\Finding;
 use App\Verso\Extensions\Verification\PluginVerifier;
 use App\Verso\Extensions\Verification\VerificationReport;
 use Tests\Support\ExtensionSandbox;
+use Tests\Support\PluginFixtures;
 use Tests\Support\VerificationFixtures;
 
 beforeEach(function () {
@@ -142,6 +143,9 @@ it('scans only the configured script extensions', function () {
 });
 
 it('rates the bundled plugins as low or medium risk', function (string $slug) {
+    // A site that never had the plugin: its tables would count as a clash with other code.
+    PluginFixtures::withoutTables($slug);
+
     $report = app(PluginVerifier::class)->verify(base_path('plugins/'.$slug), false);
 
     expect($report->risk)->not->toBe(RiskLevel::High)
