@@ -11,6 +11,7 @@ use App\Verso\Install\Pipeline\InstallProgress;
 use App\Verso\Install\Plan\InstallPlan;
 use Dotenv\Dotenv;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Tests\Support\InstallFixtures;
 
 beforeEach(function () {
@@ -137,6 +138,57 @@ it('runs over the web one step per request and signs the admin in at the end', f
 
     auth()->logout();
     $this->get($link)->assertForbidden();
+});
+
+// Loads the config a restarted server would read from the .env the install wrote.
+function reloadConfigFromEnv(string $envPath): void
+{
+    $env = Dotenv::parse((string) file_get_contents($envPath));
+
+    config([
+        'app.name' => $env['APP_NAME'],
+        'session.driver' => $env['SESSION_DRIVER'],
+        'session.cookie' => Str::slug($env['APP_NAME']).'-session',
+    ]);
+
+    app('session')->forgetDrivers();
+}
+
+it('keeps the wizard answers when writing .env renames the session cookie and changes the session driver', function () {
+    config(['verso.install.redirect' => true, 'app.name' => 'Verso', 'session.cookie' => 'verso-session']);
+    $cookie = (string) config('verso.install.session_cookie');
+
+    $first = $this->get('/install/welcome')->assertOk();
+    $sessionId = (string) $first->getCookie($cookie)?->getValue();
+
+    $answers = InstallFixtures::answers($this->sqlite);
+    $answers['services']['session_driver'] = 'database';
+    $answers['services']['cache_driver'] = 'database';
+    $store = app('session')->driver();
+    $store->setId($sessionId);
+    $store->start();
+    $store->put('verso_install', ['steps' => $answers, 'done' => ['welcome', 'requirements', 'database', 'site', 'services', 'content', 'review']]);
+    $store->save();
+
+    $response = null;
+
+    foreach (range(1, 12) as $request) {
+        $response = $this->withCredentials()->withCookie($cookie, $sessionId)->postJson('/install/run')->assertOk();
+
+        reloadConfigFromEnv($this->paths['env']);
+
+        if ($response->json('finished')) {
+            break;
+        }
+    }
+
+    $env = Dotenv::parse((string) file_get_contents($this->paths['env']));
+
+    expect($sessionId)->not->toBe('')
+        ->and($env['APP_NAME'])->toBe('Lisbon Food Notes')
+        ->and($env['SESSION_DRIVER'])->toBe('database')
+        ->and($response?->json('finished'))->toBeTrue()
+        ->and(User::where('email', 'ines@lisbonfood.example')->exists())->toBeTrue();
 });
 
 it('refuses a sign-in link with a wrong nonce', function () {

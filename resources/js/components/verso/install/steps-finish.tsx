@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { formatPercent, t } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
-import { installRequest } from './install-api';
+import { InstallRequestError, installRequest } from './install-api';
 import { StepFrame } from './step-frame';
 import { useStepForm } from './use-step-form';
 
@@ -96,6 +96,7 @@ export type PipelineStatus = {
 
 const RETRY_DELAY_MS = 1500;
 const MAX_NETWORK_RETRIES = 8;
+const CONFLICT = 409;
 
 const wait = (ms: number) =>
     new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -125,7 +126,12 @@ export function InstallStep({ status: initial }: { status: PipelineStatus }) {
             } catch (error) {
                 networkFailures++;
 
-                if (networkFailures > MAX_NETWORK_RETRIES) {
+                // 409: the wizard answers are gone, so trying again cannot help.
+                if (
+                    networkFailures > MAX_NETWORK_RETRIES ||
+                    (error instanceof InstallRequestError &&
+                        error.status === CONFLICT)
+                ) {
                     setNotice((error as Error).message);
                     break;
                 }
