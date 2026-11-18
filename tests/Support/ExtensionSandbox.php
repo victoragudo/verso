@@ -6,6 +6,7 @@ use App\Verso\Plugins\PluginDiscovery;
 use App\Verso\Plugins\PluginManager;
 use App\Verso\Theme\ThemeManager;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 // A throwaway folder with its own plugins, themes and extension storage, for install tests.
 class ExtensionSandbox
@@ -14,7 +15,7 @@ class ExtensionSandbox
 
     public static function create(): self
     {
-        $sandbox = new self(storage_path('framework/testing/extensions-'.uniqid()));
+        $sandbox = new self(storage_path('framework/testing/extensions-'.Str::lower(Str::random(16))));
 
         File::ensureDirectoryExists($sandbox->pluginsPath());
         File::copyDirectory(base_path('themes/default'), $sandbox->themesPath().'/default');

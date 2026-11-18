@@ -3,6 +3,7 @@
 namespace Tests\Support;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\SplFileInfo;
 
 // Fixture plugins for the verification tests, plus throwaway plugins written on the fly.
@@ -26,7 +27,7 @@ class VerificationFixtures
     public static function make(string $slug, array $files = [], array $manifest = []): string
     {
         $studly = str_replace(' ', '', ucwords(str_replace('-', ' ', $slug)));
-        $root = storage_path('framework/testing/verify-'.uniqid());
+        $root = storage_path('framework/testing/verify-'.Str::lower(Str::random(16)));
         $path = $root.'/'.$slug;
         self::$created[] = $root;
 
