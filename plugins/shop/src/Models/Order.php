@@ -2,6 +2,7 @@
 
 namespace Verso\Plugins\Shop\Models;
 
+use App\Verso\Core\Database\TextSearch;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -145,8 +146,7 @@ class Order extends Model
         $id = ltrim(Str::after($search, (string) config('shop.order_prefix')), '0');
 
         $query->where(function (Builder $query) use ($search, $id): void {
-            $query->where('customer_email', 'like', "%{$search}%")
-                ->orWhere('customer_name', 'like', "%{$search}%");
+            TextSearch::apply($query, ['customer_email', 'customer_name'], $search);
 
             if ($id !== '' && ctype_digit($id)) {
                 $query->orWhere('id', (int) $id);
