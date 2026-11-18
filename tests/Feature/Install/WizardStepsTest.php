@@ -197,28 +197,33 @@ it('never sends a saved password back and keeps it when the field stays empty', 
 
 it('offers working DB_* settings from the environment in one click', function () {
     fakeServer(fn () => FakePdoConnector::server('8.4.3'));
+    // Every DB_* value is set here, so the test does not depend on the DB_* variables of the machine.
     config([
         'database.default' => 'mysql',
         'database.connections.mysql.host' => 'mysql',
+        'database.connections.mysql.port' => '3306',
         'database.connections.mysql.database' => 'verso',
         'database.connections.mysql.username' => 'verso',
         'database.connections.mysql.password' => 'from-docker-secret',
     ]);
 
-    $this->withSession(wizardDone(['welcome', 'requirements']))->get('/install/database')
-        ->assertInertia(fn (Assert $page) => $page
-            ->where('values.driver', 'mysql')
-            ->where('values.host', 'mysql')
-            ->where('detected.settings.host', 'mysql')
-            ->where('detected.settings.has_password', true)
-            ->missing('detected.settings.password'));
+    try {
+        $this->withSession(wizardDone(['welcome', 'requirements']))->get('/install/database')
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('values.driver', 'mysql')
+                ->where('values.host', 'mysql')
+                ->where('detected.settings.host', 'mysql')
+                ->where('detected.settings.has_password', true)
+                ->missing('detected.settings.password'));
 
-    $this->withSession(wizardDone(['welcome', 'requirements']))
-        ->post('/install/database', ['use_detected' => true])
-        ->assertRedirect('/install/site')
-        ->assertSessionHas('verso_install.steps.database.password', 'from-docker-secret');
-
-    config(['database.default' => 'sqlite']);
+        $this->withSession(wizardDone(['welcome', 'requirements']))
+            ->post('/install/database', ['use_detected' => true])
+            ->assertRedirect('/install/site')
+            ->assertSessionHas('verso_install.steps.database.password', 'from-docker-secret');
+    } finally {
+        // Give the test database back even when an assertion fails, so later tests keep working.
+        config(['database.default' => 'sqlite']);
+    }
 });
 
 it('validates the site and admin account', function (array $input, array $errors) {
