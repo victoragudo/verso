@@ -768,7 +768,8 @@ return [
         'max_download_kb' => (int) env('VERSO_UPDATES_MAX_DOWNLOAD_KB', 153600),
 
         // Base64 Ed25519 public key. When set, every package must have a valid signature.
-        'public_key' => env('VERSO_UPDATES_PUBLIC_KEY', ''),
+        // The default is the key that signs the official Verso releases.
+        'public_key' => env('VERSO_UPDATES_PUBLIC_KEY', 'UJVLlIER3fdcrW4BR/LfTFX7z0o9tfbQ/+hBL3pZKnY='),
 
         // Folder the updater replaces. Tests point it to a temporary folder.
         'install_path' => env('VERSO_UPDATES_INSTALL_PATH', base_path()),

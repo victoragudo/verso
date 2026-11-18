@@ -25,6 +25,8 @@ Start with the [project README](../README.md) for the features, requirements and
 
 - [CONTRIBUTING.md](../CONTRIBUTING.md): how to set up, test and send changes.
 
+- [RELEASING.md](RELEASING.md): the CI and CD workflows, how to cut a release and how sites update.
+
 ## Website
 
 - [site/README.md](../site/README.md): the landing page, how to preview it and how it is published.

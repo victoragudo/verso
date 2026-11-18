@@ -1,12 +1,23 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/react-starter-kit",
+    "name": "victoragudo/verso",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "An open source CMS on Laravel: a modern WordPress alternative with a visual builder, SEO, forms, a shop and 15 languages.",
     "keywords": [
         "laravel",
-        "framework"
+        "cms",
+        "wordpress-alternative",
+        "page-builder",
+        "inertia",
+        "react"
     ],
+    "homepage": "https://verso-cms.pages.dev",
+    "support": {
+        "issues": "https://github.com/victoragudo/verso/issues",
+        "source": "https://github.com/victoragudo/verso",
+        "docs": "https://github.com/victoragudo/verso/blob/main/docs/README.md",
+        "security": "https://github.com/victoragudo/verso/security/policy"
+    },
     "license": "MIT",
     "require": {
         "php": "^8.4",
