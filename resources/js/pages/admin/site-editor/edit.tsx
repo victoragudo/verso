@@ -118,7 +118,12 @@ export default function SiteEditorEdit({
             return;
         }
 
-        const timer = window.setTimeout(() => saveDraft(blocks), autosaveDelay);
+        // Publish sends the blocks too, so a save that waits is skipped after it.
+        const timer = window.setTimeout(() => {
+            if (dirty.current) {
+                saveDraft(blocks);
+            }
+        }, autosaveDelay);
 
         return () => window.clearTimeout(timer);
     }, [blocks, autosaveDelay, saveDraft]);
@@ -143,6 +148,8 @@ export default function SiteEditorEdit({
     };
 
     const publishChanges = () => {
+        // A late autosave would cancel this request, and the user would not see that it is live.
+        dirty.current = false;
         setPublishing(true);
         router.post(
             publish(part.key).url,
@@ -151,12 +158,14 @@ export default function SiteEditorEdit({
                 preserveState: true,
                 preserveScroll: true,
                 onSuccess: () => {
-                    dirty.current = false;
                     setStatus('published');
                     setSaveState('idle');
                     setFrameVersion((version) => version + 1);
                 },
-                onError: () => setSaveState('error'),
+                onError: () => {
+                    dirty.current = true;
+                    setSaveState('error');
+                },
                 onFinish: () => setPublishing(false),
             },
         );
