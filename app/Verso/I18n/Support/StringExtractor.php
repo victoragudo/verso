@@ -15,7 +15,7 @@ class StringExtractor
     protected const PHP_CALL = '/(?<![\w>$])(?:__|trans|trans_choice|@lang|Lang::get|Lang::choice|Translate::text|Translate::icu)\(\s*(?:\'((?:[^\'\\\\]|\\\\.)*)\'|"((?:[^"\\\\$]|\\\\.)*)")/s';
 
     // Labels of registries that are translated when they are shown: label: '...', 'label' => '...'.
-    protected const PHP_LABEL = '/(?<![\w$>])\'?(label|pluralLabel|singularLabel|description|title|summary|section|hint|help|placeholder|message|group_label|empty|emptyText|action)\'?\s*(?::|=>)\s*\'((?:[^\'\\\\]|\\\\.)+)\'/';
+    protected const PHP_LABEL = '/(?<![\w$>])\'?(label|pluralLabel|singularLabel|description|title|summary|section|hint|help|placeholder|message|group_label|empty|emptyText|action|sample)\'?\s*(?::|=>)\s*\'((?:[^\'\\\\]|\\\\.)+)\'/';
 
     // Positional labels: new ConfigParameter('key', $group, 'Label', 'Description' ...) and new ConfigGroup(key, 'Label', 'Description' ...).
     protected const PHP_POSITIONAL = '/new\s+(?:ConfigParameter\(\s*\'[^\']*\'\s*,\s*[^,]+|ConfigGroup\(\s*[^,]+)\s*,\s*\'((?:[^\'\\\\]|\\\\.)*)\'\s*,\s*\'((?:[^\'\\\\]|\\\\.)*)\'/';

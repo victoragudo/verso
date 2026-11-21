@@ -10,12 +10,14 @@ final readonly class FontPair
     // Keys look like "classic" or "modern-serif".
     public const KEY_PATTERN = '/^[a-z][a-z0-9-]{0,40}$/';
 
+    public const DEFAULT_SAMPLE = 'Fresh bread every morning, baked by the harbor.';
+
     public function __construct(
         public string $key,
         public string $label,
         public string $heading,
         public string $body,
-        public string $sample = 'Fresh bread every morning, baked by the harbor.',
+        public string $sample = self::DEFAULT_SAMPLE,
         public int $order = 100,
     ) {
         if (preg_match(self::KEY_PATTERN, $key) !== 1) {
@@ -39,7 +41,7 @@ final readonly class FontPair
             label: is_string($data['label'] ?? null) && $data['label'] !== '' ? mb_substr($data['label'], 0, 60) : ucfirst($key),
             heading: $data['heading'],
             body: $data['body'],
-            sample: is_string($data['sample'] ?? null) && $data['sample'] !== '' ? mb_substr($data['sample'], 0, 120) : 'Fresh bread every morning, baked by the harbor.',
+            sample: is_string($data['sample'] ?? null) && $data['sample'] !== '' ? mb_substr($data['sample'], 0, 120) : self::DEFAULT_SAMPLE,
             order: is_int($data['order'] ?? null) ? $data['order'] : 100,
         );
     }

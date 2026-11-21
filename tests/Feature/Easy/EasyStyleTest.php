@@ -56,6 +56,17 @@ it('shows the color roles, presets, font pairs and the preview of the active the
         );
 });
 
+it('sends font pair names, font labels and samples in the admin language', function () {
+    $this->admin->forceFill(['admin_locale' => 'es'])->save();
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.easy.style'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('fontPairs.0.headingLabel', 'Georgia (con serifa)')
+            ->where('fontPairs.0.sample', 'Pan recién hecho cada mañana, horneado junto al puerto.')
+        );
+});
+
 it('picks the style preset of the chosen starter site first, then the saved one', function () {
     app(EasyState::class)->rememberStarter('portfolio');
 

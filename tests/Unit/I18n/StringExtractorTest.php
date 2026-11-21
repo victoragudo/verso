@@ -67,6 +67,14 @@ it('finds help topic summaries and steps in PHP', function () {
     expect($this->extractor->fromPhpLabels($code))->toBe(['Upload photos', 'Keep your pictures in one place.', 'Open Photos and files.', 'Drop your pictures on the page.']);
 });
 
+it('finds font pair samples in PHP', function () {
+    $code = <<<'PHP'
+        new FontPair(key: 'classic', label: 'Classic', heading: 'georgia', body: 'charter', sample: 'Fresh bread every morning.');
+        PHP;
+
+    expect($this->extractor->fromPhpLabels($code))->toBe(['Classic', 'Fresh bread every morning.']);
+});
+
 it('finds menu location labels in PHP', function () {
     $code = <<<'PHP'
         'menus' => ['locations' => ['primary' => 'Primary menu', 'footer' => 'Footer menu', 'side' => $label]],

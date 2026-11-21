@@ -114,6 +114,7 @@ class EasyStyleController extends Controller
         return [
             ...$pair->toArray(),
             'label' => $this->options->fontPairLabel($theme, $pair),
+            'sample' => $this->options->fontPairSample($theme, $pair),
             'headingLabel' => $labels[$pair->heading] ?? $pair->heading,
             'bodyLabel' => $labels[$pair->body] ?? $pair->body,
             'headingStack' => $stacks[$pair->heading] ?? '',
