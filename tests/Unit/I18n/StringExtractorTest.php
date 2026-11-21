@@ -67,6 +67,14 @@ it('finds help topic summaries and steps in PHP', function () {
     expect($this->extractor->fromPhpLabels($code))->toBe(['Upload photos', 'Keep your pictures in one place.', 'Open Photos and files.', 'Drop your pictures on the page.']);
 });
 
+it('finds menu location labels in PHP', function () {
+    $code = <<<'PHP'
+        'menus' => ['locations' => ['primary' => 'Primary menu', 'footer' => 'Footer menu', 'side' => $label]],
+        PHP;
+
+    expect($this->extractor->fromPhpLabels($code))->toBe(['Primary menu', 'Footer menu']);
+});
+
 it('skips sample site content between ignore lines', function () {
     $code = <<<'PHP'
         new StarterSite(key: 'restaurant', label: 'Restaurant or cafe', description: 'Your menu and opening hours.',
