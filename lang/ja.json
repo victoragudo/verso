@@ -2414,6 +2414,7 @@
     "Reset {role} to its defaults?": "{role}を初期状態にリセットしますか？",
     "Resize the editor and the preview": "エディターとプレビューのサイズを変更",
     "Resize the menu. Use the arrow keys, or double click to reset.": "メニューの幅を変更します。矢印キーを使うか、ダブルクリックで元に戻します。",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "パネルの幅を変更します。矢印キーを使うか、ダブルクリックで元に戻します。",
     "Restaurant or cafe": "レストラン・カフェ",
     "Restore": "復元",
     "Restore original": "元に戻す",

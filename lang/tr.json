@@ -2414,6 +2414,7 @@
     "Reset {role} to its defaults?": "{role} rolü varsayılanlarına sıfırlansın mı?",
     "Resize the editor and the preview": "Düzenleyici ile önizlemeyi yeniden boyutlandır",
     "Resize the menu. Use the arrow keys, or double click to reset.": "Menünün genişliğini değiştirin. Ok tuşlarını kullanın veya sıfırlamak için çift tıklayın.",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "Panelin genişliğini değiştirin. Ok tuşlarını kullanın veya sıfırlamak için çift tıklayın.",
     "Restaurant or cafe": "Restoran veya kafe",
     "Restore": "Geri yükle",
     "Restore original": "Orijinali geri yükle",

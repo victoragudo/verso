@@ -2414,6 +2414,7 @@
     "Reset {role} to its defaults?": "{role}을(를) 기본값으로 초기화할까요?",
     "Resize the editor and the preview": "편집기와 미리보기 크기 조정",
     "Resize the menu. Use the arrow keys, or double click to reset.": "메뉴 너비를 조절합니다. 화살표 키를 사용하거나 두 번 클릭하여 초기화하세요.",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "패널 너비를 조절합니다. 화살표 키를 사용하거나 두 번 클릭하여 초기화하세요.",
     "Restaurant or cafe": "식당 또는 카페",
     "Restore": "복원",
     "Restore original": "원래대로 복원",

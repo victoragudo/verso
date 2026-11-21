@@ -10,10 +10,21 @@ import {
     SheetTitle,
 } from '@/components/ui/sheet';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { useResizableWidth } from '@/hooks/use-resizable-width';
+import type { WidthLimits } from '@/hooks/use-resizable-width';
 import { t } from '@/lib/i18n';
+import { ResizeHandle } from '@/components/verso/shell/resize-handle';
 
 // From this width the panel is a column next to the canvas. Below it, it opens as a sheet over the page.
 export const SIDE_PANEL_COLUMN_QUERY = '(min-width: 1024px)';
+
+// Width of the panel column on wide screens. People can drag its edge.
+export const SIDE_PANEL_WIDTH: WidthLimits = {
+    min: 288,
+    max: 640,
+    initial: 320,
+    storageKey: 'verso.editor.side-panel-width',
+};
 
 // The place in the editor frame, left of the canvas, where the panel column goes. Null outside the full screen editor.
 export const EditorPanelSlotContext = createContext<HTMLElement | null>(null);
@@ -44,24 +55,38 @@ export function EditorSidePanel({
 }: Props) {
     const slot = useContext(EditorPanelSlotContext);
     const wide = useMediaQuery(SIDE_PANEL_COLUMN_QUERY);
+    const { width, setWidth, reset } = useResizableWidth(SIDE_PANEL_WIDTH);
 
     if (wide && slot) {
         return open
             ? createPortal(
-                  <aside
-                      id={id}
-                      aria-label={title}
-                      data-test="editor-side-panel"
-                      className="flex w-[clamp(17rem,20vw,24rem)] shrink-0 flex-col gap-3 overflow-y-auto overscroll-contain border-e bg-card p-4"
-                      onKeyDown={(event) => {
-                          if (event.key === 'Escape') {
-                              onClose();
-                          }
-                      }}
-                  >
-                      <PanelHeader title={title} onClose={onClose} />
-                      {children}
-                  </aside>,
+                  // The handle sits on the wrapper, so it stays put while the panel scrolls.
+                  <div className="relative flex shrink-0" style={{ width }}>
+                      <aside
+                          id={id}
+                          aria-label={title}
+                          data-test="editor-side-panel"
+                          className="flex w-full min-w-0 flex-col gap-3 overflow-y-auto overscroll-contain border-e bg-card p-4"
+                          onKeyDown={(event) => {
+                              if (event.key === 'Escape') {
+                                  onClose();
+                              }
+                          }}
+                      >
+                          <PanelHeader title={title} onClose={onClose} />
+                          {children}
+                      </aside>
+                      <ResizeHandle
+                          width={width}
+                          limits={SIDE_PANEL_WIDTH}
+                          label={t(
+                              'Resize the panel. Use the arrow keys, or double click to reset.',
+                          )}
+                          onResize={setWidth}
+                          onReset={reset}
+                          slot="editor-side-panel-resizer"
+                      />
+                  </div>,
                   slot,
               )
             : null;
