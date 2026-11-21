@@ -3645,6 +3645,7 @@
     "Watched field": "监听的字段",
     "Wave": "波浪",
     "We could not find colors in this picture. Pick a palette below.": "我们在这张图片中没有找到颜色。请在下方选择一个配色方案。",
+    "We could not reach your site. Check that it is still running, then press {button}.": "无法连接到你的网站。请确认网站仍在运行，然后点击“{button}”。",
     "We could not read the colors of this picture. Pick a palette below.": "我们无法读取这张图片的颜色。请在下方选择一个配色方案。",
     "We filled in the address you used to open this page.": "已填入你打开此页面时使用的地址。",
     "We found a working database in your environment": "已在你的环境中找到可用的数据库",

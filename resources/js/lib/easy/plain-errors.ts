@@ -41,6 +41,11 @@ export function errorKind(status: number | null): ErrorKind {
     }
 }
 
+// The browser knows when the device has no network. When it has one, the site itself did not answer.
+function browserIsOnline(): boolean {
+    return typeof navigator === 'undefined' || navigator.onLine !== false;
+}
+
 // The plain sentence for a kind of error. Work is never lost, so every message says what to do next.
 export function plainMessage(
     kind: ErrorKind,
@@ -51,10 +56,15 @@ export function plainMessage(
 
     switch (kind) {
         case 'offline':
-            return t(
-                'You seem to be offline. Check your internet connection, then press {button}.',
-                { button },
-            );
+            return browserIsOnline()
+                ? t(
+                      'We could not reach your site. Check that it is still running, then press {button}.',
+                      { button },
+                  )
+                : t(
+                      'You seem to be offline. Check your internet connection, then press {button}.',
+                      { button },
+                  );
         case 'session':
             return t(
                 'Your session ended. Sign in again in a new tab, then come back here and press {button}.',

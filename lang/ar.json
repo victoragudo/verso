@@ -3645,6 +3645,7 @@
     "Watched field": "الحقل المراقَب",
     "Wave": "موجة",
     "We could not find colors in this picture. Pick a palette below.": "لم نجد ألوانًا في هذه الصورة. اختر لوحة ألوان من الأسفل.",
+    "We could not reach your site. Check that it is still running, then press {button}.": "تعذّر الوصول إلى موقعك. تأكد من أنه لا يزال يعمل، ثم اضغط {button}.",
     "We could not read the colors of this picture. Pick a palette below.": "تعذّرت علينا قراءة ألوان هذه الصورة. اختر لوحة ألوان من الأسفل.",
     "We filled in the address you used to open this page.": "ملأنا العنوان الذي استخدمته لفتح هذه الصفحة.",
     "We found a working database in your environment": "عثرنا على قاعدة بيانات عاملة في بيئتك",

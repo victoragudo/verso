@@ -3645,6 +3645,7 @@
     "Watched field": "감시할 필드",
     "Wave": "물결",
     "We could not find colors in this picture. Pick a palette below.": "이 사진에서 색상을 찾지 못했어요. 아래에서 팔레트를 고르세요.",
+    "We could not reach your site. Check that it is still running, then press {button}.": "사이트에 연결할 수 없습니다. 사이트가 아직 실행 중인지 확인한 다음 {button}을(를) 누르세요.",
     "We could not read the colors of this picture. Pick a palette below.": "이 사진의 색상을 읽지 못했어요. 아래에서 팔레트를 고르세요.",
     "We filled in the address you used to open this page.": "이 페이지를 열 때 사용한 주소를 미리 입력했어요.",
     "We found a working database in your environment": "환경에서 사용 가능한 데이터베이스를 찾았어요",

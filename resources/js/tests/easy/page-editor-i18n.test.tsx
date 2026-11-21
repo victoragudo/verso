@@ -53,12 +53,12 @@ describe('page editor translations', () => {
     it('names the button to press again in the translated message', () => {
         setMessages('es', {
             Publish: 'Publicar',
-            'You seem to be offline. Check your internet connection, then press {button}.':
-                'Parece que no tienes conexión. Revisa tu conexión a internet y pulsa {button}.',
+            'We could not reach your site. Check that it is still running, then press {button}.':
+                'No hemos podido conectar con tu sitio. Comprueba que sigue en marcha y pulsa {button}.',
         });
 
         expect(plainMessage('offline', { retry: msg('Publish') })).toBe(
-            'Parece que no tienes conexión. Revisa tu conexión a internet y pulsa Publicar.',
+            'No hemos podido conectar con tu sitio. Comprueba que sigue en marcha y pulsa Publicar.',
         );
     });
 
