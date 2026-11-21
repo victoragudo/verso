@@ -82,6 +82,58 @@ it('keeps the same placeholders and tags as English', function () use ($language
     expect($problems)->toBe([]);
 });
 
+// True when a text has no words once placeholders and tags are removed, like "{count} / {total}".
+function hasNoWords(string $text): bool
+{
+    $words = preg_replace(['/\{[^{}]*\}/', '/<\/?[a-z][a-z0-9]*>/', '/(?<![\w:\/]):[a-z_][a-z0-9_]*/i'], '', $text);
+
+    return preg_match('/\p{L}/u', (string) $words) !== 1;
+}
+
+it('translates texts instead of copying the English', function () use ($languages) {
+    // Texts that are right in English too (brands, units, code, loan words), per catalog: "*" for every language or a list of codes.
+    $allowed = json_decode((string) file_get_contents(__DIR__.'/same-as-english.json'), true, 512, JSON_THROW_ON_ERROR);
+    $problems = [];
+
+    foreach (langCatalogs() as $folder) {
+        $catalog = str_replace(base_path().'/', '', $folder);
+        $english = JsonFile::read($folder.'/en.json');
+
+        foreach ($languages() as $locale) {
+            foreach (JsonFile::read($folder.'/'.$locale.'.json') as $key => $text) {
+                if (($english[$key] ?? null) !== $text || hasNoWords($text)) {
+                    continue;
+                }
+
+                $locales = $allowed[$catalog][$key] ?? [];
+
+                if ($locales !== '*' && ! in_array($locale, $locales, true)) {
+                    $problems[] = "{$catalog}/{$locale}.json: {$key}";
+                }
+            }
+        }
+    }
+
+    expect($problems)->toBe([], 'Translate these texts, or add them to tests/Feature/I18n/same-as-english.json when English is right.');
+});
+
+it('lists only existing keys as allowed English', function () {
+    $allowed = json_decode((string) file_get_contents(__DIR__.'/same-as-english.json'), true, 512, JSON_THROW_ON_ERROR);
+    $stale = [];
+
+    foreach ($allowed as $catalog => $keys) {
+        $english = JsonFile::read(base_path($catalog.'/en.json'));
+
+        foreach (array_keys($keys) as $key) {
+            if (! isset($english[$key])) {
+                $stale[] = "{$catalog}: {$key}";
+            }
+        }
+    }
+
+    expect($stale)->toBe([]);
+});
+
 it('keeps ICU plurals complete', function () use ($languages) {
     $problems = [];
 
