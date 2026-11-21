@@ -299,7 +299,7 @@ class StringExtractor
         $folders = array_filter([$this->basePath.'/resources/js', ...glob($this->basePath.'/plugins/*/resources/js') ?: []], is_dir(...));
 
         $finder = Finder::create()->files()->in($folders)->name(['*.ts', '*.tsx'])
-            ->notPath(['tests', 'actions', 'routes', 'wayfinder'])
+            ->notPath(['#(^|/)(tests|actions|routes|wayfinder)/#'])
             ->notName(['*.test.ts', '*.test.tsx', '*.d.ts']);
 
         foreach ($finder as $file) {

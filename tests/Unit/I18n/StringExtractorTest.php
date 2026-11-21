@@ -135,3 +135,9 @@ it('writes English catalogs and reports missing translations', function () {
 
     File::deleteDirectory($base);
 });
+
+it('reads TypeScript files whose names contain a skipped folder name', function () {
+    expect($this->extractor->extract())
+        ->toHaveKey('Customization file to import')
+        ->toHaveKey('Row actions');
+});
