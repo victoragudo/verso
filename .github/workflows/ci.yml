@@ -223,6 +223,19 @@ jobs:
       - name: Run the Easy mode journey at 1440 and 390 px
         run: npm run test:e2e
 
+      # The report, traces, screenshots and the Laravel log of every throwaway site.
+      - name: Upload the test report and logs
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: e2e-report
+          path: |
+            playwright-report/
+            test-results/
+            storage/logs/
+          if-no-files-found: ignore
+          retention-days: 14
+
   fresh-install:
     name: Documented install (create-project, artisan serve, wizard)
     # Only the main Verso repository runs this workflow.
@@ -250,3 +263,16 @@ jobs:
       # then the whole web wizard with SQLite and an admin login.
       - name: Install Verso like a new user
         run: npm run test:e2e:install
+
+      # The report, traces, screenshots and the Laravel log of the new site.
+      - name: Upload the test report and logs
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: fresh-install-report
+          path: |
+            playwright-report/
+            test-results/
+            storage/logs/
+          if-no-files-found: ignore
+          retention-days: 14
