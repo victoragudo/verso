@@ -1,5 +1,5 @@
 import { t } from '@/lib/i18n';
-import { formatNumber, formatPercent } from './format';
+import { formatPercent } from './format';
 import type { DeviceShare } from './types';
 
 // Share of page views per screen size, one meter per device.

@@ -1,7 +1,8 @@
 // Builds resources/blocks/icons/icons.json, the bundled icon set of the icon blocks, from Lucide (ISC license).
 // Run: node scripts/blocks/build-icons.mjs
-import { readFileSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const ICONS = [
     'heart',
@@ -121,17 +122,19 @@ const root = resolve(import.meta.dirname, '../..');
 const icons = {};
 
 for (const name of ICONS) {
-    const source = readFileSync(
-        resolve(root, `node_modules/lucide-react/dist/esm/icons/${name}.js`),
-        'utf8',
+    const { __iconNode: nodes } = await import(
+        pathToFileURL(
+            resolve(
+                root,
+                `node_modules/lucide-react/dist/esm/icons/${name}.js`,
+            ),
+        ).href
     );
-    const match = source.match(/const __iconNode = (\[[\s\S]*?\]);\n/);
 
-    if (!match) {
+    if (!Array.isArray(nodes)) {
         throw new Error(`No icon data in ${name}`);
     }
 
-    const nodes = Function(`return ${match[1]}`)();
     icons[name] = nodes
         .map(([tag, attrs]) => {
             const parts = Object.entries(attrs)

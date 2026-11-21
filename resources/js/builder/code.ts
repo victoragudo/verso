@@ -46,7 +46,7 @@ export function serializeBlocks(blocks: Block[], depth = 0): string {
 
     return blocks
         .map((block) => {
-            const { attrs = {} } = block;
+            const { attrs } = block;
             const head = `verso:${block.type}#${block.id}${attrsJson(attrs as Record<string, unknown>)}`;
             const inner = innerCode(block);
             const children = block.children ?? [];

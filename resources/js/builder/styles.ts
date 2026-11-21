@@ -305,7 +305,7 @@ export const styleClipboard = {
         listeners.forEach((listener) => listener());
     },
     read: (): Design | null => copiedDesign,
-    subscribe(listener: () => void) {
+    subscribe: (listener: () => void) => {
         listeners.add(listener);
 
         return () => listeners.delete(listener);

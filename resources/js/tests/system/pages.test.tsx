@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { router } from '@inertiajs/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type {
     ServerLimits,
@@ -9,6 +8,7 @@ import type {
 } from '@/components/verso/system';
 import ServerHealthPage from '@/pages/admin/system/health';
 import SystemSettingsPage from '@/pages/admin/system/settings';
+import { router } from '@/tests/mocks/inertia';
 
 const formMocks = vi.hoisted(() => ({ put: vi.fn(), post: vi.fn() }));
 

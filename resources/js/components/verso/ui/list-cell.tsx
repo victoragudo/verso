@@ -1,4 +1,5 @@
 import { formatNumber, msg, t } from '@/lib/i18n';
+import { plainText } from '@/lib/utils';
 import { SiteDate } from './site-date';
 import { StatusBadge } from './status-badge';
 import type { StatusTone } from './status-badge';
@@ -104,13 +105,13 @@ export function ListCell({
                 </span>
             );
         case 'date':
-            return <SiteDate iso={String(value)} />;
+            return <SiteDate iso={plainText(value)} />;
         case 'seo': {
-            const seo = SEO_LABELS[String(value)] ?? SEO_LABELS.missing;
+            const seo = SEO_LABELS[plainText(value)] ?? SEO_LABELS.missing;
 
             return <StatusBadge tone={seo.tone}>{t(seo.label)}</StatusBadge>;
         }
         default:
-            return <span className="tabular-nums">{String(value)}</span>;
+            return <span className="tabular-nums">{plainText(value)}</span>;
     }
 }

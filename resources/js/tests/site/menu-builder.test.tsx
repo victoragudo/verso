@@ -103,11 +103,13 @@ function stackRows() {
 function savedItems(): Record<string, unknown>[] {
     fireEvent.click(screen.getByRole('button', { name: 'Save items' }));
 
-    return (
-        vi.mocked(router.put).mock.calls.at(-1)?.[1] as {
-            items: Record<string, unknown>[];
-        }
-    ).items;
+    const call = vi.mocked(router.put).mock.calls.at(-1);
+
+    if (!call) {
+        throw new Error('The menu was not saved.');
+    }
+
+    return (call[1] as { items: Record<string, unknown>[] }).items;
 }
 
 beforeEach(() => {

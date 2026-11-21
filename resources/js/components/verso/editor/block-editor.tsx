@@ -17,7 +17,6 @@ import {
     Redo2,
     Trash2,
     Undo2,
-    X,
 } from 'lucide-react';
 import {
     createContext,

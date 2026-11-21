@@ -127,7 +127,7 @@ beforeEach(() => {
             );
         }
 
-        const { blocks } = JSON.parse(String(init?.body)) as {
+        const { blocks } = JSON.parse(init?.body as string) as {
             blocks: Block[];
         };
 

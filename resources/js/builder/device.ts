@@ -6,13 +6,13 @@ const listeners = new Set<() => void>();
 
 export const editorDevice = {
     get: (): string => current,
-    set(device: string) {
+    set: (device: string) => {
         if (device !== current) {
             current = device;
             listeners.forEach((listener) => listener());
         }
     },
-    subscribe(listener: () => void) {
+    subscribe: (listener: () => void) => {
         listeners.add(listener);
 
         return () => {

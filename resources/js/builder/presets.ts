@@ -30,7 +30,7 @@ export const stylePresets = {
     designs: (): Record<string, Design> => designs,
     find: (key: string | null): StylePresetItem | undefined =>
         key === null ? undefined : presets.find((item) => item.key === key),
-    subscribe(listener: () => void) {
+    subscribe: (listener: () => void) => {
         listeners.add(listener);
 
         return () => {

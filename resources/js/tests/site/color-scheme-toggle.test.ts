@@ -38,6 +38,7 @@ function run(code: string): void {
             });
     };
     const spies = [add(document), add(window)];
+    // oxlint-disable-next-line typescript/no-implied-eval -- runs the inline head script the way the browser does.
     new Function(code)();
     spies.forEach((spy) => spy.mockRestore());
 }

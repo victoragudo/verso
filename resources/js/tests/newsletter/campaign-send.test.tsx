@@ -1,8 +1,8 @@
-import { router } from '@inertiajs/react';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import CampaignEdit from '@/pages/admin/plugins/newsletter/campaign-edit';
+import { router } from '@/tests/mocks/inertia';
 
 vi.mock('@inertiajs/react', async () => {
     const base = (await import('@/tests/mocks/inertia')).inertiaMock;
@@ -34,7 +34,7 @@ vi.mock('@/components/verso/editor/block-editor', () => ({
 
 afterEach(() => {
     vi.restoreAllMocks();
-    vi.mocked(router.post).mockReset();
+    router.post.mockReset();
 });
 
 function renderCampaign() {
@@ -74,7 +74,7 @@ describe('Campaign editor', () => {
         await user.click(send);
 
         expect(router.post).toHaveBeenCalledTimes(1);
-        const options = vi.mocked(router.post).mock.calls[0][2] as {
+        const options = router.post.mock.calls[0][2] as {
             onStart: () => void;
             onFinish: () => void;
         };

@@ -46,7 +46,7 @@ function stubFetch(versionsResponse: Response) {
             return versionsResponse;
         }
 
-        const { blocks } = JSON.parse(String(init?.body)) as {
+        const { blocks } = JSON.parse(init?.body as string) as {
             blocks: unknown[];
         };
 

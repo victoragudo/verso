@@ -10,7 +10,7 @@ const DEFAULT_TIP = msg(
 
 // Tips shown in the Block tab for the notice block.
 function NoticeTips({ block }: InspectorPanelProps) {
-    const tone = String(block.attrs?.tone ?? 'info');
+    const tone = block.attrs?.tone ?? 'info';
 
     return (
         <p className="text-sm text-muted-foreground">
