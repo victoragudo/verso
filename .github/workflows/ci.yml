@@ -194,8 +194,6 @@ jobs:
     if: github.repository == 'victoragudo/verso'
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # New job: it does not block a merge until it has run green for a while.
-    continue-on-error: true
 
     steps:
       - name: Checkout code
