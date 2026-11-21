@@ -27,7 +27,7 @@ async function send(
     method: 'GET' | 'PUT',
     body?: CustomCodeValue,
 ) {
-    const response = await fetch(url, {
+    const init: RequestInit = {
         method,
         credentials: 'same-origin',
         headers: {
@@ -36,8 +36,14 @@ async function send(
             'X-Requested-With': 'XMLHttpRequest',
             'X-XSRF-TOKEN': xsrfToken(),
         },
-        body: body ? JSON.stringify(body) : undefined,
-    });
+    };
+
+    // A GET request can not have a body.
+    if (method === 'PUT' && body) {
+        init.body = JSON.stringify(body);
+    }
+
+    const response = await fetch(url, init);
 
     if (!response.ok) {
         throw new Error(String(response.status));

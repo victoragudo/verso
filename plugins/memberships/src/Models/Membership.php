@@ -21,6 +21,8 @@ use Verso\Plugins\Memberships\Enums\MembershipStatus;
  * @property string|null $note
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
+ * @property-read User $user
+ * @property-read Plan $plan
  */
 class Membership extends Model
 {

@@ -1,7 +1,11 @@
 // Table of contents: marks the link of the heading being read, with aria-current for screen readers.
 document.querySelectorAll('[data-verso-toc]').forEach((toc) => {
     const links = [...toc.querySelectorAll('a[href^="#"]')];
-    const targets = links.map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+    const targets = links
+        .map((link) =>
+            document.getElementById(decodeURIComponent(link.hash.slice(1))),
+        )
+        .filter(Boolean);
 
     if (targets.length === 0) {
         return;

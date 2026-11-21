@@ -36,9 +36,5 @@ export function I18nRoot({ children }: { children: ReactNode }) {
         };
     }, []);
 
-    return (
-        <DirectionProvider dir={state.dir}>
-            {children}
-        </DirectionProvider>
-    );
+    return <DirectionProvider dir={state.dir}>{children}</DirectionProvider>;
 }

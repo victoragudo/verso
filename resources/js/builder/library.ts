@@ -32,7 +32,7 @@ export const library = {
     // Address of the library page of one item.
     editUrl: (id: number): string =>
         settings ? settings.editUrl.replace(/\/0$/, `/${id}`) : '',
-    subscribe(listener: () => void) {
+    subscribe: (listener: () => void) => {
         listeners.add(listener);
 
         return () => {
@@ -91,12 +91,12 @@ export const libraryDialog = {
         request = { blocks, onSaved };
         dialogListeners.forEach((listener) => listener());
     },
-    close() {
+    close: () => {
         request = null;
         dialogListeners.forEach((listener) => listener());
     },
     read: (): DialogRequest => request,
-    subscribe(listener: () => void) {
+    subscribe: (listener: () => void) => {
         dialogListeners.add(listener);
 
         return () => {

@@ -169,12 +169,10 @@ describe('I18nRoot', () => {
     it('sets the direction for right to left languages', async () => {
         vi.stubGlobal(
             'fetch',
-            vi
-                .fn()
-                .mockResolvedValue({
-                    ok: true,
-                    json: () => Promise.resolve({}),
-                }),
+            vi.fn().mockResolvedValue({
+                ok: true,
+                json: () => Promise.resolve({}),
+            }),
         );
 
         render(
@@ -215,7 +213,9 @@ describe('I18nRoot', () => {
         // The switch redirects back to the same URL: Inertia fires "success" but no "navigate".
         act(() => {
             fireRouterEvent('success', {
-                page: { props: { i18n: i18nProps({ locale: 'en', bundle: null }) } },
+                page: {
+                    props: { i18n: i18nProps({ locale: 'en', bundle: null }) },
+                },
             });
         });
 

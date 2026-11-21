@@ -128,7 +128,7 @@ class FieldGroupRegistry
             return $this->fromJson;
         }
 
-        $this->fromJson = [];
+        $groups = [];
 
         foreach ($this->folders as $folder) {
             $path = $folder instanceof Closure ? $folder() : $folder;
@@ -140,7 +140,7 @@ class FieldGroupRegistry
             foreach (glob(rtrim($path, '/\\').DIRECTORY_SEPARATOR.'*.json') ?: [] as $file) {
                 try {
                     foreach ($this->json->decode((string) file_get_contents($file), FieldGroup::SOURCE_JSON) as $group) {
-                        $this->fromJson[$group->key] = $group;
+                        $groups[$group->key] = $group;
                     }
                 } catch (InvalidFieldDefinition $exception) {
                     $this->problems[basename($file)] = $exception->getMessage();
@@ -149,7 +149,7 @@ class FieldGroupRegistry
             }
         }
 
-        return $this->fromJson;
+        return $this->fromJson = $groups;
     }
 
     /** @return array<string, FieldGroup> */

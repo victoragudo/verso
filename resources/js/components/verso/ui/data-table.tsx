@@ -173,7 +173,7 @@ export function DataTable<T, K extends Key>({
                 {column.header}
                 <ArrowUp
                     aria-hidden="true"
-                    className="size-3.5 shrink-0 opacity-0 transition-[opacity,rotate] motion-reduce:transition-none group-hover/sort:opacity-60 group-focus-visible/sort:opacity-60 in-aria-[sort]:opacity-100 in-aria-[sort=descending]:rotate-180"
+                    className="size-3.5 shrink-0 opacity-0 transition-[opacity,rotate] group-hover/sort:opacity-60 group-focus-visible/sort:opacity-60 in-aria-[sort]:opacity-100 in-aria-[sort=descending]:rotate-180 motion-reduce:transition-none"
                 />
             </button>
         ) : (

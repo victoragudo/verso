@@ -151,7 +151,7 @@ export default function TwoFactorRecoveryCodes({
                                                 (_, index) => (
                                                     <div
                                                         key={index}
-                                                        className="h-4 motion-safe:animate-pulse rounded bg-muted-foreground/20"
+                                                        className="h-4 rounded bg-muted-foreground/20 motion-safe:animate-pulse"
                                                         aria-hidden="true"
                                                     />
                                                 ),

@@ -49,9 +49,11 @@ class ShortcodeMapper
         $definition = $this->shortcodes->find(self::FORM_BLOCK);
         $candidates = array_values(array_filter([Str::slug($title), $id !== '' ? 'contact-form-'.$id : '', $id]));
 
-        foreach ($definition === null ? [] : $candidates as $slug) {
-            if ($definition->validate(['form' => $slug])['errors'] === []) {
-                return $builder->make(self::FORM_BLOCK, ['form' => $slug, 'title' => '', 'text' => '']);
+        if ($definition !== null) {
+            foreach ($candidates as $slug) {
+                if ($definition->validate(['form' => $slug])['errors'] === []) {
+                    return $builder->make(self::FORM_BLOCK, ['form' => $slug, 'title' => '', 'text' => '']);
+                }
             }
         }
 

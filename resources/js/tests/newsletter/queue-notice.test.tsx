@@ -35,7 +35,10 @@ describe('QueueNotice', () => {
     it('shows the time of the last heartbeat in the site time zone', () => {
         render(
             <QueueNotice
-                notice={{ ...stuckQueue, lastSeen: '2026-11-17T08:30:00+00:00' }}
+                notice={{
+                    ...stuckQueue,
+                    lastSeen: '2026-11-17T08:30:00+00:00',
+                }}
             />,
         );
 

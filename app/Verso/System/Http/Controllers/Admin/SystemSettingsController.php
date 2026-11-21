@@ -3,6 +3,7 @@
 namespace App\Verso\System\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Verso\Access\Support\AccessAudit;
 use App\Verso\Core\Enums\Capability;
 use App\Verso\Core\Settings\Settings;
@@ -20,6 +21,7 @@ use App\Verso\System\Server\ManagedIniFile;
 use App\Verso\System\Server\PhpIni;
 use App\Verso\System\Server\ServerAdvisor;
 use App\Verso\System\Server\UploadLimits;
+use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -88,9 +90,9 @@ class SystemSettingsController extends Controller
         ]);
     }
 
-    public function update(SystemSettingsRequest $request, SaveSystemSettings $save): RedirectResponse
+    public function update(SystemSettingsRequest $request, #[CurrentUser] User $user, SaveSystemSettings $save): RedirectResponse
     {
-        $result = $save->handle($request->user(), $request->values());
+        $result = $save->handle($user, $request->values());
         $message = Translate::icu('{count, plural, =0 {Nothing changed.} one {# setting saved.} other {# settings saved.}}', ['count' => count($result['changed'])]);
 
         if ($result['applied'] !== []) {

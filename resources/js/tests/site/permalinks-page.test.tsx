@@ -6,7 +6,6 @@ import {
     previewTitle,
 } from '@/components/verso/site/permalinks/search-engines-form';
 import PermalinksPage from '@/pages/admin/site/permalinks';
-import { setPageProps } from '@/tests/mocks/inertia';
 
 const formPut = vi.fn();
 let currentUrl = '/admin/site/permalinks';

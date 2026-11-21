@@ -23,7 +23,7 @@ function update(next: Partial<PageHelperState>): void {
 
 export const pageHelper = {
     get: (): PageHelperState => state,
-    subscribe(listener: () => void): () => void {
+    subscribe: (listener: () => void): (() => void) => {
         listeners.add(listener);
 
         return () => listeners.delete(listener);

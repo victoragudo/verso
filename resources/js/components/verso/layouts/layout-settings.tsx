@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { OptionSelect } from '@/components/verso/ui/option-select';
 import { msg, t } from '@/lib/i18n';
+import { plainText } from '@/lib/utils';
 import type { LayoutKindName, LayoutSettingsValue } from './types';
 
 type Field =
@@ -312,7 +313,7 @@ export function LayoutSettingsFields({ kind, value, onChange }: Props) {
                         {field.type === 'select' ? (
                             <OptionSelect
                                 id={fieldId}
-                                value={String(value[field.name] ?? '')}
+                                value={plainText(value[field.name])}
                                 onValueChange={(option) =>
                                     set(field.name, option)
                                 }
@@ -344,7 +345,7 @@ export function LayoutSettingsFields({ kind, value, onChange }: Props) {
                                         ? field.max
                                         : undefined
                                 }
-                                value={String(value[field.name] ?? '')}
+                                value={plainText(value[field.name])}
                                 onChange={(event) =>
                                     set(
                                         field.name,

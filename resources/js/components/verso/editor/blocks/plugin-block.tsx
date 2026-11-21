@@ -11,6 +11,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { LengthInput, SearchableSelect } from '@/components/verso/ui';
 import { t } from '@/lib/i18n';
+import { plainText } from '@/lib/utils';
 import type { PluginBlockField } from '@/types';
 import { DateTimePicker } from '@/components/verso/ui/date-time-picker';
 import { ColorField, IconField, MediaField } from './field-inputs';
@@ -158,7 +159,7 @@ function PluginField({
                 placeholder={
                     field.default === null || field.default === undefined
                         ? undefined
-                        : String(field.default)
+                        : plainText(field.default)
                 }
                 onChange={(value) => onChange(value ?? null)}
             />

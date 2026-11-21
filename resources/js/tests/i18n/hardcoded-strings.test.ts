@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { scan, scanSource } from '../../../../scripts/i18n/hardcoded-strings.mjs';
+import {
+    scan,
+    scanSource,
+} from '../../../../scripts/i18n/hardcoded-strings.mjs';
 
 type Finding = { file?: string; line: number; text: string };
 
@@ -49,13 +52,20 @@ describe('hard coded strings scanner', () => {
     });
 });
 
-describe('admin TSX', () => {
-    it('has no English text outside t() and msg()', () => {
-        const found: Finding[] = scan();
-        const lines = found.map(
-            (item) => `${item.file}:${item.line}  ${item.text}`,
-        );
+// The scan reads every admin file, so it needs more than the default 5 seconds on a busy CI runner.
+const FULL_SCAN_TIMEOUT_MS = 30_000;
 
-        expect(lines).toEqual([]);
-    });
+describe('admin TSX', () => {
+    it(
+        'has no English text outside t() and msg()',
+        () => {
+            const found: Finding[] = scan();
+            const lines = found.map(
+                (item) => `${item.file}:${item.line}  ${item.text}`,
+            );
+
+            expect(lines).toEqual([]);
+        },
+        FULL_SCAN_TIMEOUT_MS,
+    );
 });

@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { OptionSelect } from '@/components/verso/ui/option-select';
 import { msg, t } from '@/lib/i18n';
+import { plainText } from '@/lib/utils';
 import type { BlockFieldProps } from './shared';
 import { stringAttr, withAttrs } from './shared';
 
@@ -65,7 +66,7 @@ type Row = [string, string];
 function attributeRows(value: unknown): Row[] {
     return value && typeof value === 'object' && !Array.isArray(value)
         ? Object.entries(value as Record<string, unknown>).map(
-              ([name, item]): Row => [name, String(item ?? '')],
+              ([name, item]): Row => [name, plainText(item)],
           )
         : [];
 }

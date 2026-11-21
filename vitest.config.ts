@@ -31,6 +31,13 @@ export default defineConfig({
                 'resources/js/types/**',
             ],
             reporter: ['text', 'html'],
+            // A few points under the current numbers, so coverage can not drop much unnoticed.
+            thresholds: {
+                statements: 70,
+                branches: 64,
+                functions: 62,
+                lines: 70,
+            },
         },
     },
 });

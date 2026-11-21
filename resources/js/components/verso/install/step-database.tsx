@@ -5,12 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Spinner } from '@/components/ui/spinner';
 import { OptionSelect } from '@/components/verso/ui/option-select';
 import { msg, t } from '@/lib/i18n';
-import {
-    ChoiceCards,
-    Field,
-    ResultBox,
-    SecretInput,
-} from './fields';
+import { ChoiceCards, Field, ResultBox, SecretInput } from './fields';
 import { installRequest } from './install-api';
 import type { TestResult } from './install-api';
 import { StepFrame } from './step-frame';

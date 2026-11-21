@@ -1,5 +1,8 @@
 /* Lightbox of a gallery: a native modal dialog with the full picture and buttons to move. */
-.verso-lightbox__open { display: block; cursor: zoom-in; }
+.verso-lightbox__open {
+    display: block;
+    cursor: zoom-in;
+}
 .verso-lightbox {
     inline-size: min(100% - 1rem, 80rem);
     max-block-size: calc(100dvh - 1rem);
@@ -8,11 +11,32 @@
     background: #111;
     color: #fff;
 }
-.verso-lightbox[open] { display: grid; grid-template-columns: auto 1fr auto; align-items: center; }
-.verso-lightbox:modal { overscroll-behavior: contain; }
-.verso-lightbox::backdrop { background: rgb(0 0 0 / 0.85); overflow: hidden; overscroll-behavior: contain; }
-.verso-lightbox figure { grid-column: 2; margin: 0; display: grid; gap: 0.5rem; justify-items: center; padding: 3rem 0 1rem; }
-.verso-lightbox img { max-inline-size: 100%; max-block-size: calc(100dvh - 8rem); object-fit: contain; }
+.verso-lightbox[open] {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+.verso-lightbox:modal {
+    overscroll-behavior: contain;
+}
+.verso-lightbox::backdrop {
+    background: rgb(0 0 0 / 0.85);
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+.verso-lightbox figure {
+    grid-column: 2;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    padding: 3rem 0 1rem;
+}
+.verso-lightbox img {
+    max-inline-size: 100%;
+    max-block-size: calc(100dvh - 8rem);
+    object-fit: contain;
+}
 .verso-lightbox button {
     display: grid;
     place-items: center;
@@ -27,6 +51,15 @@
     font-size: 1.25rem;
     cursor: pointer;
 }
-.verso-lightbox button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.verso-lightbox [data-close] { position: absolute; inset-block-start: 0; inset-inline-end: 0; }
-.verso-lightbox button:hover { background: rgb(0 0 0 / 0.75); }
+.verso-lightbox button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+.verso-lightbox [data-close] {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+}
+.verso-lightbox button:hover {
+    background: rgb(0 0 0 / 0.75);
+}

@@ -35,7 +35,7 @@ import {
     useListView,
 } from '@/components/verso/ui';
 import type { DataTableColumn, ListViewState } from '@/components/verso/ui';
-import { formatNumber, msg, t } from '@/lib/i18n';
+import { msg, t } from '@/lib/i18n';
 import type { Paginated } from '@/types';
 
 type Tab = 'inbox' | SubmissionStatus;

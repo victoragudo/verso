@@ -11,9 +11,16 @@ const owner = {
     password: 'Stoneware2026',
 };
 
-test.skip(!process.env.E2E_FRESH_URL, 'Run it with node scripts/e2e/fresh-install.mjs');
+test.skip(
+    !process.env.E2E_FRESH_URL,
+    'Run it with node scripts/e2e/fresh-install.mjs',
+);
 
-test('a new user installs Verso with the documented commands and logs in', async ({ page, browser, baseURL }) => {
+test('a new user installs Verso with the documented commands and logs in', async ({
+    page,
+    browser,
+    baseURL,
+}) => {
     await installVerso(page, owner);
     await expect(page).toHaveURL(/\/admin\//);
     await expect(page.getByRole('navigation', { name: 'Admin' })).toBeVisible();
@@ -25,7 +32,11 @@ test('a new user installs Verso with the documented commands and logs in', async
     await login.getByLabel('Password', { exact: true }).fill(owner.password);
     await login.getByRole('button', { name: 'Log in' }).click();
     await expect(login).toHaveURL(/\/admin/);
-    await expect(login.getByRole('navigation', { name: 'Admin' })).toBeVisible();
-    await expect(login.getByRole('link', { name: `${owner.siteName} Site admin` })).toBeVisible();
+    await expect(
+        login.getByRole('navigation', { name: 'Admin' }),
+    ).toBeVisible();
+    await expect(
+        login.getByRole('link', { name: `${owner.siteName} Site admin` }),
+    ).toBeVisible();
     await fresh.close();
 });

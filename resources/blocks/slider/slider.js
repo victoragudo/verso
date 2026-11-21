@@ -27,7 +27,9 @@ document.querySelectorAll('[data-verso-slider]').forEach((slider) => {
 
         slides.forEach((slide, index) => {
             const box = slide.getBoundingClientRect();
-            const gap = Math.abs(rtl ? start.right - box.right : box.left - start.left);
+            const gap = Math.abs(
+                rtl ? start.right - box.right : box.left - start.left,
+            );
 
             if (gap < distance) {
                 distance = gap;
@@ -43,12 +45,20 @@ document.querySelectorAll('[data-verso-slider]').forEach((slider) => {
         const box = target.getBoundingClientRect();
         const start = track.getBoundingClientRect();
         const rtl = getComputedStyle(track).direction === 'rtl';
-        track.scrollBy({ left: rtl ? box.right - start.right : box.left - start.left });
+        track.scrollBy({
+            left: rtl ? box.right - start.right : box.left - start.left,
+        });
     };
 
     const update = (announce) => {
         current = nearest();
-        const atEnd = track.scrollLeft !== 0 && Math.abs(track.scrollWidth - track.clientWidth - Math.abs(track.scrollLeft)) < 2;
+        const atEnd =
+            track.scrollLeft !== 0 &&
+            Math.abs(
+                track.scrollWidth -
+                    track.clientWidth -
+                    Math.abs(track.scrollLeft),
+            ) < 2;
 
         if (previous && next) {
             const focused = document.activeElement;
@@ -71,7 +81,9 @@ document.querySelectorAll('[data-verso-slider]').forEach((slider) => {
         });
 
         if (announce && status && current !== settled) {
-            status.textContent = status.dataset.template.replace(':number', String(current + 1)).replace(':count', String(slides.length));
+            status.textContent = status.dataset.template
+                .replace(':number', String(current + 1))
+                .replace(':count', String(slides.length));
         }
 
         settled = current;
@@ -84,7 +96,10 @@ document.querySelectorAll('[data-verso-slider]').forEach((slider) => {
 
         const dot = document.createElement('button');
         dot.type = 'button';
-        dot.setAttribute('aria-label', slide.dataset.markerName ?? String(index + 1));
+        dot.setAttribute(
+            'aria-label',
+            slide.dataset.markerName ?? String(index + 1),
+        );
         dot.addEventListener('click', () => go(index));
         dots.append(dot);
     });
@@ -109,17 +124,26 @@ document.querySelectorAll('[data-verso-slider]').forEach((slider) => {
     const play = () => {
         stop();
 
-        if (!slider.dataset.autoplay || reduceMotion.matches || pause?.getAttribute('aria-pressed') === 'true') {
+        if (
+            !slider.dataset.autoplay ||
+            reduceMotion.matches ||
+            pause?.getAttribute('aria-pressed') === 'true'
+        ) {
             return;
         }
 
-        timer = setInterval(() => go(current === slides.length - 1 ? 0 : current + 1), Number(slider.dataset.autoplay) * 1000);
+        timer = setInterval(
+            () => go(current === slides.length - 1 ? 0 : current + 1),
+            Number(slider.dataset.autoplay) * 1000,
+        );
     };
 
     pause?.addEventListener('click', () => {
         const paused = pause.getAttribute('aria-pressed') !== 'true';
         pause.setAttribute('aria-pressed', String(paused));
-        pause.textContent = paused ? pause.dataset.playLabel : pause.dataset.pauseLabel;
+        pause.textContent = paused
+            ? pause.dataset.playLabel
+            : pause.dataset.pauseLabel;
         play();
     });
 

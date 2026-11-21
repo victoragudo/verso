@@ -54,7 +54,7 @@ class DemoContactForm
             return;
         }
 
-        $blocks = $page->blocks;
+        $blocks = $page->blocks ?? [];
 
         foreach ($blocks as $block) {
             if (($block['type'] ?? null) === FormsServiceProvider::BLOCK) {

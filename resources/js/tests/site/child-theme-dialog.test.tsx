@@ -27,7 +27,9 @@ describe('ChildThemeDialog', () => {
         expect(screen.getByLabelText('Theme name')).toHaveValue(
             'Ashgrove custom',
         );
-        expect(screen.getByText('The theme is saved in themes/ashgrove-custom.')).toBeInTheDocument();
+        expect(
+            screen.getByText('The theme is saved in themes/ashgrove-custom.'),
+        ).toBeInTheDocument();
 
         await user.clear(screen.getByLabelText('Theme name'));
         await user.type(screen.getByLabelText('Theme name'), 'Café Søndag');

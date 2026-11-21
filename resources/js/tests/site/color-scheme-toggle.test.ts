@@ -15,36 +15,52 @@ const headScript = scriptOf('color-scheme-head.blade.php');
 const clickScript = scriptOf('color-scheme-script.blade.php');
 
 let systemDark = false;
-const listeners: Array<{ type: string; listener: EventListener; target: EventTarget }> = [];
+const listeners: Array<{
+    type: string;
+    listener: EventListener;
+    target: EventTarget;
+}> = [];
 
 function run(code: string): void {
     // Keep track of listeners, so each test starts clean.
     const add = (target: EventTarget) => {
         const original = target.addEventListener.bind(target);
 
-        return vi.spyOn(target, 'addEventListener').mockImplementation((type, listener, options) => {
-            listeners.push({ type, listener: listener as EventListener, target });
-            original(type, listener, options);
-        });
+        return vi
+            .spyOn(target, 'addEventListener')
+            .mockImplementation((type, listener, options) => {
+                listeners.push({
+                    type,
+                    listener: listener as EventListener,
+                    target,
+                });
+                original(type, listener, options);
+            });
     };
     const spies = [add(document), add(window)];
+    // oxlint-disable-next-line typescript/no-implied-eval -- runs the inline head script the way the browser does.
     new Function(code)();
     spies.forEach((spy) => spy.mockRestore());
 }
 
 function meta(): HTMLMetaElement {
-    return document.querySelector('meta[name="color-scheme"]') as HTMLMetaElement;
+    return document.querySelector(
+        'meta[name="color-scheme"]',
+    ) as HTMLMetaElement;
 }
 
 function button(): HTMLButtonElement {
-    return document.querySelector('[data-verso-scheme-toggle]') as HTMLButtonElement;
+    return document.querySelector(
+        '[data-verso-scheme-toggle]',
+    ) as HTMLButtonElement;
 }
 
 beforeEach(() => {
     systemDark = false;
     localStorage.clear();
     document.head.innerHTML = '<meta name="color-scheme" content="light dark">';
-    document.body.innerHTML = '<header><button type="button" data-verso-scheme-toggle hidden>Switch</button></header>';
+    document.body.innerHTML =
+        '<header><button type="button" data-verso-scheme-toggle hidden>Switch</button></header>';
     vi.stubGlobal('matchMedia', (query: string) => ({
         get matches() {
             return query === '(prefers-color-scheme: dark)' && systemDark;
@@ -54,7 +70,11 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    listeners.splice(0).forEach(({ type, listener, target }) => target.removeEventListener(type, listener));
+    listeners
+        .splice(0)
+        .forEach(({ type, listener, target }) =>
+            target.removeEventListener(type, listener),
+        );
     vi.unstubAllGlobals();
 });
 
@@ -152,16 +172,29 @@ describe('dark mode switch click script', () => {
     it('follows a choice made in another tab', () => {
         run(clickScript);
 
-        window.dispatchEvent(new StorageEvent('storage', { key: 'verso-color-scheme', newValue: 'dark' }));
+        window.dispatchEvent(
+            new StorageEvent('storage', {
+                key: 'verso-color-scheme',
+                newValue: 'dark',
+            }),
+        );
         expect(meta().content).toBe('dark');
 
-        window.dispatchEvent(new StorageEvent('storage', { key: 'verso-color-scheme', newValue: null }));
+        window.dispatchEvent(
+            new StorageEvent('storage', {
+                key: 'verso-color-scheme',
+                newValue: null,
+            }),
+        );
         expect(meta().content).toBe('light dark');
     });
 
     it('works for buttons added after the script, like a second switch in the footer', () => {
         run(clickScript);
-        document.body.insertAdjacentHTML('beforeend', '<footer><button type="button" data-verso-scheme-toggle id="footer-switch">Switch</button></footer>');
+        document.body.insertAdjacentHTML(
+            'beforeend',
+            '<footer><button type="button" data-verso-scheme-toggle id="footer-switch">Switch</button></footer>',
+        );
 
         (document.getElementById('footer-switch') as HTMLButtonElement).click();
 

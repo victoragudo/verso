@@ -52,7 +52,7 @@ export function SectionGallery({
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent
-                className="open:flex max-h-[90dvh] w-[calc(100vw-2rem)] flex-col gap-4 sm:max-w-[min(90vw,72rem)]"
+                className="max-h-[90dvh] w-[calc(100vw-2rem)] flex-col gap-4 open:flex sm:max-w-[min(90vw,72rem)]"
                 onCloseAutoFocus={onCloseAutoFocus}
             >
                 <DialogHeader>

@@ -132,10 +132,18 @@ class FieldFormatter
 
         $media = Media::query()->whereKey($ids)->get()->keyBy('id');
 
-        return array_values(array_filter(array_map(
-            fn (int $id): ?FieldImage => $media->has($id) ? $this->imageFor($media->get($id)) : null,
-            $ids,
-        )));
+        $images = [];
+
+        foreach ($ids as $id) {
+            $item = $media->get($id);
+            $image = $item === null ? null : $this->imageFor($item);
+
+            if ($image !== null) {
+                $images[] = $image;
+            }
+        }
+
+        return $images;
     }
 
     /**

@@ -9,10 +9,25 @@
     background: color-mix(in srgb, var(--verso-alert) 8%, transparent);
     --verso-alert: #2563eb;
 }
-.verso-alert--success { --verso-alert: #15803d; }
-.verso-alert--warning { --verso-alert: #b45309; }
-.verso-alert--error { --verso-alert: #b91c1c; }
-.verso-alert__icon { color: var(--verso-alert); margin-block-start: 0.1rem; }
-.verso-alert__body > * { margin: 0; }
-.verso-alert__body > * + * { margin-block-start: 0.4rem; }
-.verso-alert__title { font-weight: 700; }
+.verso-alert--success {
+    --verso-alert: #15803d;
+}
+.verso-alert--warning {
+    --verso-alert: #b45309;
+}
+.verso-alert--error {
+    --verso-alert: #b91c1c;
+}
+.verso-alert__icon {
+    color: var(--verso-alert);
+    margin-block-start: 0.1rem;
+}
+.verso-alert__body > * {
+    margin: 0;
+}
+.verso-alert__body > * + * {
+    margin-block-start: 0.4rem;
+}
+.verso-alert__title {
+    font-weight: 700;
+}

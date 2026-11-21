@@ -26,19 +26,21 @@ class ManifestCache
      */
     public function remember(string $name, array $files, Closure $build): mixed
     {
-        if ($this->cache === null || $this->ttl < 1) {
+        $cache = $this->cache;
+
+        if ($cache === null || $this->ttl < 1) {
             return $build();
         }
 
         $key = $this->prefix.'.'.$name.'.'.$this->fingerprint($files);
-        $cached = $this->cache->get($key);
+        $cached = $cache->get($key);
 
         if (is_array($cached) && array_key_exists('value', $cached)) {
             return $cached['value'];
         }
 
         $value = $build();
-        $this->cache->put($key, ['value' => $value], $this->ttl);
+        $cache->put($key, ['value' => $value], $this->ttl);
 
         return $value;
     }

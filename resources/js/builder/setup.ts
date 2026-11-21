@@ -37,7 +37,10 @@ export function setupBuilder(
     registerCore(builder);
 
     Object.entries(modules)
-        .filter(([path]) => allowed === null || allowed.includes(moduleFolder(path)))
+        .filter(
+            ([path]) =>
+                allowed === null || allowed.includes(moduleFolder(path)),
+        )
         .sort(([a], [b]) => a.localeCompare(b))
         .forEach(([path, module]) => {
             try {

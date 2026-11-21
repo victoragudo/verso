@@ -18,7 +18,9 @@ function tokensFor(scheme: 'light' | 'dark'): Record<string, string> {
     const body = css.slice(start, css.indexOf('\n}', start));
     const tokens: Record<string, string> = {};
 
-    for (const match of body.matchAll(/--([\w-]+?)(-light|-dark)?:\s*(oklch\([^)]+\))/g)) {
+    for (const match of body.matchAll(
+        /--([\w-]+?)(-light|-dark)?:\s*(oklch\([^)]+\))/g,
+    )) {
         const [, name, suffix, value] = match;
 
         if (!suffix || suffix === `-${scheme}`) {

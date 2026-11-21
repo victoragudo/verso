@@ -1,4 +1,15 @@
 /* Counter: tabular numbers, so the width does not jump while it counts. */
-.verso-counter { display: grid; gap: 0.25rem; }
-.verso-counter__value { margin: 0; font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.verso-counter__label { margin: 0; }
+.verso-counter {
+    display: grid;
+    gap: 0.25rem;
+}
+.verso-counter__value {
+    margin: 0;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+.verso-counter__label {
+    margin: 0;
+}

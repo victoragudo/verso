@@ -1,13 +1,16 @@
 /* Tabs: one row of tab buttons that scrolls sideways when it does not fit, then the panels. */
-.verso-tabs { display: grid; }
+.verso-tabs {
+    display: grid;
+}
 .verso-tabs__list {
     display: flex;
     gap: 0.25rem;
     overflow-x: auto;
     scroll-snap-type: inline proximity;
-    border-block-end: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+    border-block-end: 1px solid
+        color-mix(in srgb, currentColor 20%, transparent);
 }
-.verso-tabs__list [role="tab"] {
+.verso-tabs__list [role='tab'] {
     flex: none;
     position: relative;
     padding: 0.6rem 1rem;
@@ -18,13 +21,20 @@
     cursor: pointer;
     scroll-snap-align: start;
 }
-.verso-tabs__list [role="tab"][aria-selected="true"]::after {
-    content: "";
+.verso-tabs__list [role='tab'][aria-selected='true']::after {
+    content: '';
     position: absolute;
     inset-inline: 0.5rem;
     inset-block-end: -1px;
     border-block-end: 3px solid var(--verso-color-accent, currentColor);
 }
-.verso-tabs__list [role="tab"]:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); outline-offset: -2px; }
-.verso-tabs__inner { padding-block: 1rem; }
-.verso-tabs__list [role="tab"]:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+.verso-tabs__list [role='tab']:focus-visible {
+    outline: 2px solid var(--verso-color-accent, currentColor);
+    outline-offset: -2px;
+}
+.verso-tabs__inner {
+    padding-block: 1rem;
+}
+.verso-tabs__list [role='tab']:hover {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+}

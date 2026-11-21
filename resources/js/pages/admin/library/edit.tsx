@@ -50,9 +50,7 @@ export default function LibraryEdit({
     });
     const [processing, setProcessing] = useState(false);
     const [confirm, setConfirm] = useState(false);
-    const [selectedBlockId, setSelectedBlockId] = useState<string | null>(
-        null,
-    );
+    const [selectedBlockId, setSelectedBlockId] = useState<string | null>(null);
     const [settingsTab, setSettingsTab] =
         useState<EditorSettingsTab>('document');
     const errors =

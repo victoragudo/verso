@@ -1,19 +1,23 @@
 // Tabs: arrow keys, Home and End move between tabs and select them; "find in page" opens the tab that holds the match.
 const select = (tabs, tab, focus) => {
-    tabs.querySelectorAll(':scope > [role="tablist"] > [role="tab"]').forEach((item) => {
-        const selected = item === tab;
-        const panel = document.getElementById(item.getAttribute('aria-controls'));
-        item.setAttribute('aria-selected', String(selected));
-        item.tabIndex = selected ? 0 : -1;
+    tabs.querySelectorAll(':scope > [role="tablist"] > [role="tab"]').forEach(
+        (item) => {
+            const selected = item === tab;
+            const panel = document.getElementById(
+                item.getAttribute('aria-controls'),
+            );
+            item.setAttribute('aria-selected', String(selected));
+            item.tabIndex = selected ? 0 : -1;
 
-        if (panel) {
-            if (selected) {
-                panel.removeAttribute('hidden');
-            } else {
-                panel.setAttribute('hidden', 'until-found');
+            if (panel) {
+                if (selected) {
+                    panel.removeAttribute('hidden');
+                } else {
+                    panel.setAttribute('hidden', 'until-found');
+                }
             }
-        }
-    });
+        },
+    );
 
     if (focus) {
         tab.focus();
@@ -38,7 +42,9 @@ document.querySelectorAll('[data-verso-tabs]').forEach((tabs) => {
         const items = all();
         const index = items.indexOf(document.activeElement);
         const rtl = getComputedStyle(list).direction === 'rtl';
-        const step = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[event.key];
+        const step = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[
+            event.key
+        ];
         let next = null;
 
         if (step !== undefined) {
@@ -57,7 +63,11 @@ document.querySelectorAll('[data-verso-tabs]').forEach((tabs) => {
 
     tabs.addEventListener('beforematch', (event) => {
         const panel = event.target.closest('[role="tabpanel"]');
-        const tab = panel && all().find((item) => item.getAttribute('aria-controls') === panel.id);
+        const tab =
+            panel &&
+            all().find(
+                (item) => item.getAttribute('aria-controls') === panel.id,
+            );
 
         if (tab) {
             select(tabs, tab, false);

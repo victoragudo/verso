@@ -20,7 +20,7 @@ import {
     SectionCard,
     StatusBadge,
 } from '@/components/verso/ui';
-import { formatNumber, msg, t } from '@/lib/i18n';
+import { msg, t } from '@/lib/i18n';
 import { customize, index, preview } from '@/routes/admin/themes';
 import { update } from '@/routes/admin/themes/customize';
 import type {

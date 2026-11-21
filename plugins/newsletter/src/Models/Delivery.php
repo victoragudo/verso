@@ -21,6 +21,7 @@ use Verso\Plugins\Newsletter\Enums\DeliveryStatus;
  * @property CarbonImmutable|null $clicked_at
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
+ * @property-read Subscriber $subscriber
  */
 class Delivery extends Model
 {

@@ -1,7 +1,11 @@
 // Popups built with blocks. Each popup says when it shows (on load, after a delay, after some scrolling,
 // when the pointer leaves the page, or on a click), how often, and on which screen sizes. Choices are kept
 // in the browser storage of the visitor only: nothing is sent anywhere.
-const SIZES = { phone: '(max-width: 640px)', tablet: '(min-width: 641px) and (max-width: 1024px)', computer: '(min-width: 1025px)' };
+const SIZES = {
+    phone: '(max-width: 640px)',
+    tablet: '(min-width: 641px) and (max-width: 1024px)',
+    computer: '(min-width: 1025px)',
+};
 
 const read = (key) => {
     try {
@@ -23,7 +27,12 @@ const write = (key, value, session) => {
 const resting = (popup) => {
     const value = read(popup.dataset.key);
 
-    return value !== null && (value === 'dismissed' || value === 'shown' || Number(value) > Date.now());
+    return (
+        value !== null &&
+        (value === 'dismissed' ||
+            value === 'shown' ||
+            Number(value) > Date.now())
+    );
 };
 
 const remember = (popup) => {
@@ -38,14 +47,20 @@ const remember = (popup) => {
     }
 };
 
-const fits = (popup) => (popup.dataset.devices ?? '').split(' ').some((size) => SIZES[size] && matchMedia(SIZES[size]).matches);
+const fits = (popup) =>
+    (popup.dataset.devices ?? '')
+        .split(' ')
+        .some((size) => SIZES[size] && matchMedia(SIZES[size]).matches);
 
 const modalOpen = () => document.querySelector('dialog:modal') !== null;
 
 let returnFocus = null;
 
 const open = (popup, byClick) => {
-    if (popup.classList.contains('is-open') || (!byClick && (modalOpen() || resting(popup) || !fits(popup)))) {
+    if (
+        popup.classList.contains('is-open') ||
+        (!byClick && (modalOpen() || resting(popup) || !fits(popup)))
+    ) {
         return;
     }
 
@@ -53,7 +68,10 @@ const open = (popup, byClick) => {
 
     if (popup instanceof HTMLDialogElement) {
         popup.showModal();
-    } else if (typeof popup.showPopover === 'function' && popup.hasAttribute('popover')) {
+    } else if (
+        typeof popup.showPopover === 'function' &&
+        popup.hasAttribute('popover')
+    ) {
         popup.showPopover();
     }
 
@@ -63,7 +81,10 @@ const open = (popup, byClick) => {
 const close = (popup) => {
     if (popup instanceof HTMLDialogElement) {
         popup.close();
-    } else if (typeof popup.hidePopover === 'function' && popup.matches(':popover-open')) {
+    } else if (
+        typeof popup.hidePopover === 'function' &&
+        popup.matches(':popover-open')
+    ) {
         popup.hidePopover();
     }
 
@@ -97,14 +118,20 @@ document.querySelectorAll('[data-verso-popup]').forEach((popup) => {
     popup.querySelectorAll('[data-consent]').forEach((button) =>
         button.addEventListener('click', () => {
             write('verso-consent', button.dataset.consent, false);
-            document.dispatchEvent(new CustomEvent('verso:consent', { detail: { choice: button.dataset.consent } }));
+            document.dispatchEvent(
+                new CustomEvent('verso:consent', {
+                    detail: { choice: button.dataset.consent },
+                }),
+            );
             close(popup);
         }),
     );
 
     // Any button or link that names the popup opens it, whatever its trigger.
     document.addEventListener('click', (event) => {
-        const opener = event.target.closest(`[data-verso-open-popup="${popup.dataset.versoPopup}"], a[href="#${popup.id}"]`);
+        const opener = event.target.closest(
+            `[data-verso-open-popup="${popup.dataset.versoPopup}"], a[href="#${popup.id}"]`,
+        );
 
         if (opener) {
             event.preventDefault();
@@ -127,12 +154,18 @@ document.querySelectorAll('[data-verso-popup]').forEach((popup) => {
     if (trigger === 'load') {
         open(popup, false);
     } else if (trigger === 'delay') {
-        setTimeout(() => open(popup, false), Number(popup.dataset.delay) * 1000);
+        setTimeout(
+            () => open(popup, false),
+            Number(popup.dataset.delay) * 1000,
+        );
     } else if (trigger === 'scroll') {
         const check = () => {
             const total = document.documentElement.scrollHeight - innerHeight;
 
-            if (total <= 0 || (scrollY / total) * 100 >= Number(popup.dataset.scroll)) {
+            if (
+                total <= 0 ||
+                (scrollY / total) * 100 >= Number(popup.dataset.scroll)
+            ) {
                 removeEventListener('scroll', check);
                 open(popup, false);
             }

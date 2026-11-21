@@ -129,7 +129,7 @@ beforeEach(() => {
                 ? new Response('{"cleared":true}', { status: 200 })
                 : new Response(
                       JSON.stringify({
-                          ...JSON.parse(String(init?.body)),
+                          ...JSON.parse(init?.body as string),
                           savedAt: '2026-11-18T10:00:00Z',
                       }),
                       { status: 200 },
@@ -154,7 +154,7 @@ beforeEach(() => {
             );
         }
 
-        const { blocks } = JSON.parse(String(init?.body)) as {
+        const { blocks } = JSON.parse(init?.body as string) as {
             blocks: Block[];
         };
 

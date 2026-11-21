@@ -547,7 +547,9 @@ describe('Site Editor part editor', () => {
         );
 
         expect(router.put).not.toHaveBeenCalled();
-        act(() => vi.advanceTimersByTime(1200));
+        act(() => {
+            vi.advanceTimersByTime(1200);
+        });
 
         const [, payload] = vi.mocked(router.put).mock.calls[0];
         expect(JSON.stringify(payload)).toContain('Closed on 24 December');
@@ -572,7 +574,9 @@ describe('Site Editor part editor', () => {
         fireEvent.click(
             screen.getByRole('button', { name: 'Publish changes' }),
         );
-        act(() => vi.advanceTimersByTime(1200));
+        act(() => {
+            vi.advanceTimersByTime(1200);
+        });
 
         const [, payload] = vi.mocked(router.post).mock.calls[0];
         expect(JSON.stringify(payload)).toContain(

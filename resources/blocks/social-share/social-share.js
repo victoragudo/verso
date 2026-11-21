@@ -28,6 +28,8 @@ document.querySelectorAll('[data-verso-native-share]').forEach((button) => {
 
     button.hidden = false;
     button.addEventListener('click', () => {
-        navigator.share({ url: button.dataset.url, title: button.dataset.title }).catch(() => {});
+        navigator
+            .share({ url: button.dataset.url, title: button.dataset.title })
+            .catch(() => {});
     });
 });

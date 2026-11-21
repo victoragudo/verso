@@ -1,5 +1,8 @@
 /* Mega menu: a button and a big panel. The panel sits under the button with anchor positioning where it exists. */
-.verso-mega { position: relative; display: inline-block; }
+.verso-mega {
+    position: relative;
+    display: inline-block;
+}
 .verso-mega__button {
     display: inline-flex;
     align-items: center;
@@ -13,8 +16,13 @@
     cursor: pointer;
     anchor-name: --verso-mega;
 }
-.verso-mega__button:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); outline-offset: 2px; }
-.verso-mega__button[aria-expanded="true"] .verso-mega__chevron { rotate: 180deg; }
+.verso-mega__button:focus-visible {
+    outline: 2px solid var(--verso-color-accent, currentColor);
+    outline-offset: 2px;
+}
+.verso-mega__button[aria-expanded='true'] .verso-mega__chevron {
+    rotate: 180deg;
+}
 .verso-mega__panel {
     margin: 0;
     padding: var(--verso-spacing-large, 1.5rem);
@@ -31,8 +39,12 @@
     inset-block-start: 4.5rem;
     inset-inline-start: 1rem;
 }
-.verso-mega__panel--narrow { inline-size: min(22rem, 100vw - 2rem); }
-.verso-mega__panel--full { inline-size: calc(100vw - 2rem); }
+.verso-mega__panel--narrow {
+    inline-size: min(22rem, 100vw - 2rem);
+}
+.verso-mega__panel--full {
+    inline-size: calc(100vw - 2rem);
+}
 @supports (position-area: block-end) {
     .verso-mega__panel {
         position-anchor: --verso-mega;
@@ -42,7 +54,17 @@
         position-try-fallbacks: flip-inline;
         margin-block-start: 0.4rem;
     }
-    .verso-mega__panel--full { position-area: block-end; justify-self: center; }
+    .verso-mega__panel--full {
+        position-area: block-end;
+        justify-self: center;
+    }
 }
-.verso-mega:not([data-ready]) .verso-mega__panel { display: block; position: static; box-shadow: none; inline-size: auto; }
-.verso-mega__button:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+.verso-mega:not([data-ready]) .verso-mega__panel {
+    display: block;
+    position: static;
+    box-shadow: none;
+    inline-size: auto;
+}
+.verso-mega__button:hover {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+}

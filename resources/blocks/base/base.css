@@ -13,4 +13,6 @@
     flex: none;
     vertical-align: -0.2em;
 }
-[data-verso-block-ready] [hidden][data-js-only] { display: none; }
+[data-verso-block-ready] [hidden][data-js-only] {
+    display: none;
+}

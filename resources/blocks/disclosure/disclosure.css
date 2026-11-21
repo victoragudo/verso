@@ -1,6 +1,13 @@
 /* Toggle and accordion items: a <details> with a turning arrow and an optional slide. */
-.verso-accordion { display: grid; border-block-start: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
-.verso-disclosure { border-block-end: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+.verso-accordion {
+    display: grid;
+    border-block-start: 1px solid
+        color-mix(in srgb, currentColor 20%, transparent);
+}
+.verso-disclosure {
+    border-block-end: 1px solid
+        color-mix(in srgb, currentColor 20%, transparent);
+}
 .verso-disclosure__summary {
     display: flex;
     align-items: center;
@@ -10,9 +17,11 @@
     cursor: pointer;
     font-weight: 600;
 }
-.verso-disclosure__summary::-webkit-details-marker { display: none; }
+.verso-disclosure__summary::-webkit-details-marker {
+    display: none;
+}
 .verso-disclosure__summary::before {
-    content: "";
+    content: '';
     flex: none;
     inline-size: 0.6rem;
     block-size: 0.6rem;
@@ -20,17 +29,38 @@
     border-block-end: 2px solid currentColor;
     transform: rotate(-45deg);
 }
-.verso-disclosure__summary:dir(rtl)::before { transform: rotate(135deg); }
-.verso-disclosure[open] > .verso-disclosure__summary::before { transform: rotate(45deg); }
-.verso-disclosure__summary:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); outline-offset: 2px; }
-.verso-disclosure__body { padding-block-end: 1rem; }
-.verso-disclosure::details-content { interpolate-size: allow-keywords; overflow: clip; contain: layout; }
-.verso-disclosure:not([open])::details-content { block-size: 0; }
+.verso-disclosure__summary:dir(rtl)::before {
+    transform: rotate(135deg);
+}
+.verso-disclosure[open] > .verso-disclosure__summary::before {
+    transform: rotate(45deg);
+}
+.verso-disclosure__summary:focus-visible {
+    outline: 2px solid var(--verso-color-accent, currentColor);
+    outline-offset: 2px;
+}
+.verso-disclosure__body {
+    padding-block-end: 1rem;
+}
+.verso-disclosure::details-content {
+    interpolate-size: allow-keywords;
+    overflow: clip;
+    contain: layout;
+}
+.verso-disclosure:not([open])::details-content {
+    block-size: 0;
+}
 @media (prefers-reduced-motion: no-preference) {
-    .verso-disclosure__summary::before { transition: transform 0.2s; }
+    .verso-disclosure__summary::before {
+        transition: transform 0.2s;
+    }
     .verso-disclosure::details-content {
-        transition: block-size 0.3s, content-visibility 0.3s;
+        transition:
+            block-size 0.3s,
+            content-visibility 0.3s;
         transition-behavior: allow-discrete;
     }
 }
-.verso-disclosure__summary:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+.verso-disclosure__summary:hover {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+}

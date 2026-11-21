@@ -226,9 +226,7 @@ describe('EntryEdit header and footer styles', () => {
 
     it('sends no styles when the entry keeps the template or site style', () => {
         screenMatches(WIDE);
-        render(
-            <EntryEdit {...props(savedPost)} partChoices={partChoices} />,
-        );
+        render(<EntryEdit {...props(savedPost)} partChoices={partChoices} />);
 
         expect(screen.getByLabelText('Header style')).toHaveTextContent(
             'Same as the template or the site',

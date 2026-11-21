@@ -11,7 +11,7 @@ parameters:
         - routes/
         - plugins/
 
-    level: 7
+    level: 8
 
     bootstrapFiles:
         - tests/Support/phpstan-bootstrap.php

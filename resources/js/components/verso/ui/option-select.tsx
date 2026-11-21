@@ -55,11 +55,9 @@ function groupOptions(options: SelectOption[]): OptionGroup[] {
     return Array.from(groups, ([name, list]) => ({ name, options: list }));
 }
 
-const toInner = (value: string): string =>
-    value === '' ? EMPTY_VALUE : value;
+const toInner = (value: string): string => (value === '' ? EMPTY_VALUE : value);
 
-const toOuter = (value: string): string =>
-    value === EMPTY_VALUE ? '' : value;
+const toOuter = (value: string): string => (value === EMPTY_VALUE ? '' : value);
 
 // The admin select from a list of options. Short lists use the normal select,
 // long lists the select with a search box. Use it instead of a native select.

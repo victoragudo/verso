@@ -40,8 +40,7 @@ export default function ThemesIndex({ themes, pageCache }: Props) {
     const removeTheme = (theme: ThemeInfo) =>
         setRemoving({ kind: 'theme', slug: theme.slug, name: theme.name });
 
-    const clearCache = () =>
-        router.post(clear.url(), {}, busyWhileSending);
+    const clearCache = () => router.post(clear.url(), {}, busyWhileSending);
 
     return (
         <>

@@ -1,13 +1,26 @@
 /* Timeline: a line on the start side with a dot or icon per step. */
-.verso-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; position: relative; }
+.verso-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+}
 .verso-timeline::before {
-    content: "";
+    content: '';
     position: absolute;
     inset-block: 0.5rem;
     inset-inline-start: 1rem;
-    border-inline-start: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-inline-start: 2px solid
+        color-mix(in srgb, currentColor 25%, transparent);
 }
-.verso-timeline__item { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; position: relative; }
+.verso-timeline__item {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    position: relative;
+}
 .verso-timeline__marker {
     display: grid;
     place-items: center;
@@ -18,6 +31,17 @@
     background: var(--verso-color-background, Canvas);
     color: var(--verso-color-accent, currentColor);
 }
-.verso-timeline__marker .verso-icon { inline-size: 1rem; block-size: 1rem; }
-.verso-timeline__when { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--verso-color-accent, currentColor); }
-.verso-timeline__title { margin: 0.15rem 0 0.4rem; font-size: 1.15rem; }
+.verso-timeline__marker .verso-icon {
+    inline-size: 1rem;
+    block-size: 1rem;
+}
+.verso-timeline__when {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--verso-color-accent, currentColor);
+}
+.verso-timeline__title {
+    margin: 0.15rem 0 0.4rem;
+    font-size: 1.15rem;
+}

@@ -15,9 +15,11 @@ document.querySelectorAll('[data-verso-mobile-menu]').forEach((menu) => {
         button.addEventListener('click', () => {
             drawer.showModal();
         });
-        drawer.querySelector('.verso-mobile-menu__close')?.addEventListener('click', () => {
-            drawer.close();
-        });
+        drawer
+            .querySelector('.verso-mobile-menu__close')
+            ?.addEventListener('click', () => {
+                drawer.close();
+            });
     }
 
     if (!closedBy) {

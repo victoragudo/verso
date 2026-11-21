@@ -17,20 +17,33 @@ document.querySelectorAll('[data-verso-mega]').forEach((mega) => {
 
     if (mega.hasAttribute('data-hover')) {
         mega.addEventListener('pointerenter', (event) => {
-            if (hover.matches && event.pointerType === 'mouse' && !panel.matches(':popover-open')) {
+            if (
+                hover.matches &&
+                event.pointerType === 'mouse' &&
+                !panel.matches(':popover-open')
+            ) {
                 panel.showPopover({ source: button });
                 previewed = true;
             }
         });
         mega.addEventListener('pointerleave', (event) => {
-            if (previewed && event.pointerType === 'mouse' && !panel.contains(event.relatedTarget)) {
+            if (
+                previewed &&
+                event.pointerType === 'mouse' &&
+                !panel.contains(event.relatedTarget)
+            ) {
                 panel.hidePopover();
             }
 
             previewed = false;
         });
         panel.addEventListener('pointerleave', (event) => {
-            if (hover.matches && event.pointerType === 'mouse' && !mega.contains(event.relatedTarget) && panel.matches(':popover-open')) {
+            if (
+                hover.matches &&
+                event.pointerType === 'mouse' &&
+                !mega.contains(event.relatedTarget) &&
+                panel.matches(':popover-open')
+            ) {
                 panel.hidePopover();
             }
         });
@@ -40,7 +53,11 @@ document.querySelectorAll('[data-verso-mega]').forEach((mega) => {
         previewed = false;
     });
     mega.addEventListener('focusout', (event) => {
-        if (!mega.contains(event.relatedTarget) && !panel.contains(event.relatedTarget) && panel.matches(':popover-open')) {
+        if (
+            !mega.contains(event.relatedTarget) &&
+            !panel.contains(event.relatedTarget) &&
+            panel.matches(':popover-open')
+        ) {
             panel.hidePopover();
         }
     });

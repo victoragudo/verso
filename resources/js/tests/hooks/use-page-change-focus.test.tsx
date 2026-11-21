@@ -30,11 +30,13 @@ function page(heading: string | null) {
 
 describe('usePageChangeFocus', () => {
     beforeEach(() => {
-        vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
-            callback(0);
+        vi.spyOn(window, 'requestAnimationFrame').mockImplementation(
+            (callback) => {
+                callback(0);
 
-            return 1;
-        });
+                return 1;
+            },
+        );
         window.history.replaceState({}, '', '/admin/entries/post');
     });
 
@@ -44,7 +46,9 @@ describe('usePageChangeFocus', () => {
 
     it('moves focus to the new page heading after a visit to another page', () => {
         render(page('Pages'));
-        const { unmount } = renderHook(() => usePageChangeFocus('admin-content'));
+        const { unmount } = renderHook(() =>
+            usePageChangeFocus('admin-content'),
+        );
 
         navigate('/admin/entries/page');
 
@@ -56,7 +60,9 @@ describe('usePageChangeFocus', () => {
 
     it('keeps focus in a search box when only the query changes', () => {
         render(page('Posts'));
-        const { unmount } = renderHook(() => usePageChangeFocus('admin-content'));
+        const { unmount } = renderHook(() =>
+            usePageChangeFocus('admin-content'),
+        );
         const search = screen.getByLabelText('Search posts');
         search.focus();
 
@@ -75,7 +81,9 @@ describe('usePageChangeFocus', () => {
                 </div>
             </>,
         );
-        const { unmount } = renderHook(() => usePageChangeFocus('admin-content'));
+        const { unmount } = renderHook(() =>
+            usePageChangeFocus('admin-content'),
+        );
         const button = screen.getByRole('button', { name: 'Choose files' });
         button.focus();
 
@@ -87,7 +95,9 @@ describe('usePageChangeFocus', () => {
 
     it('falls back to the content area when the page has no heading', () => {
         render(page(null));
-        const { unmount } = renderHook(() => usePageChangeFocus('admin-content'));
+        const { unmount } = renderHook(() =>
+            usePageChangeFocus('admin-content'),
+        );
 
         navigate('/admin/site-editor/header');
 
@@ -98,7 +108,9 @@ describe('usePageChangeFocus', () => {
     it('stops listening when unmounted', () => {
         render(page('Comments'));
         const search = screen.getByLabelText('Search posts');
-        const { unmount } = renderHook(() => usePageChangeFocus('admin-content'));
+        const { unmount } = renderHook(() =>
+            usePageChangeFocus('admin-content'),
+        );
         unmount();
         search.focus();
 

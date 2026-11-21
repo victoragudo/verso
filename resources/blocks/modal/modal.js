@@ -17,7 +17,12 @@ export function wireDialog(dialog) {
         const isOut = (event) => {
             const box = dialog.getBoundingClientRect();
 
-            return event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
+            return (
+                event.clientX < box.left ||
+                event.clientX > box.right ||
+                event.clientY < box.top ||
+                event.clientY > box.bottom
+            );
         };
         dialog.addEventListener('pointerdown', (event) => {
             down = isOut(event);

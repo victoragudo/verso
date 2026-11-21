@@ -4,17 +4,22 @@ if (!Object.hasOwn(HTMLDetailsElement.prototype, 'name')) {
         'toggle',
         (event) => {
             const details = event.target;
-            const group = details instanceof HTMLDetailsElement ? details.getAttribute('name') : null;
+            const group =
+                details instanceof HTMLDetailsElement
+                    ? details.getAttribute('name')
+                    : null;
 
             if (!group || !details.open) {
                 return;
             }
 
-            document.querySelectorAll(`details[name="${CSS.escape(group)}"]`).forEach((other) => {
-                if (other !== details) {
-                    other.open = false;
-                }
-            });
+            document
+                .querySelectorAll(`details[name="${CSS.escape(group)}"]`)
+                .forEach((other) => {
+                    if (other !== details) {
+                        other.open = false;
+                    }
+                });
         },
         { capture: true },
     );
