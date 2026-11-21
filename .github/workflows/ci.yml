@@ -184,9 +184,9 @@ jobs:
         run: php artisan test --parallel
 
       # The JavaScript tests do not depend on PHP or the database, so they run in one cell only.
-      - name: Run JavaScript tests
+      - name: Run JavaScript tests with coverage
         if: matrix.php == '8.4' && matrix.database == 'sqlite'
-        run: npm test
+        run: npm run test:coverage -- --coverage.reporter=text-summary
 
   e2e:
     name: Browser journey (Playwright)
