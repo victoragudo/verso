@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part আবার থিমের মূল সংস্করণে ফিরেছে।",
     ":part published. Visitors see it now.": ":part প্রকাশিত। ভিজিটররা এখন এটি দেখছেন।",
     ":part style changed to :style.": ":part এর স্টাইল :style এ বদলানো হয়েছে।",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path লেখার যোগ্য",
     ":path: is not a style option.": ":path: কোনো স্টাইল অপশন নয়।",
     ":path: screen sizes must be base, tablet or mobile.": ":path: স্ক্রিনের মাপ base, tablet বা mobile হতে হবে।",

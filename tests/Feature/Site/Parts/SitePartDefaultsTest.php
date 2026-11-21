@@ -40,9 +40,26 @@ it('falls back to a simple starter for the header and footer', function () {
 });
 
 it('names parts in plain words', function (string $key, string $label) {
-    expect($this->defaults->label($key, ['header', 'footer', 'footer-minimal', 'author-box']))->toBe($label);
+    expect($this->defaults->label($this->theme, $key, ['header', 'footer', 'footer-minimal', 'author-box']))->toBe($label);
 })->with([
     ['header', 'Header'],
     ['footer-minimal', 'Footer: Minimal'],
-    ['author-box', 'Author Box'],
+    ['author-box', 'Author box'],
 ]);
+
+it('names parts with the theme labels in the admin language', function () {
+    $this->sandbox->theme('lighthouse', ['parts' => [
+        'header' => ['label' => 'Header', 'default' => 'classic', 'variants' => ['classic' => ['label' => 'Classic'], 'minimal' => ['label' => 'Minimal']]],
+        'aside' => ['label' => 'Sidebar'],
+    ]], [
+        'views/parts/header.blade.php' => '<header>Lighthouse</header>',
+        'views/parts/header-minimal.blade.php' => '<header>Lighthouse</header>',
+        'views/parts/aside.blade.php' => '<aside>Lighthouse</aside>',
+    ]);
+    $theme = app(ThemeManager::class)->find('lighthouse');
+    app()->setLocale('es');
+
+    expect($this->defaults->label($theme, 'header'))->toBe('Cabecera')
+        ->and($this->defaults->label($theme, 'header-minimal'))->toBe('Cabecera: '.__('Minimal'))
+        ->and($this->defaults->label($theme, 'aside'))->toBe('Barra lateral');
+});

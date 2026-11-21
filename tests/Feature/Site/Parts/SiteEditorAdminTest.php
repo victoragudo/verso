@@ -33,7 +33,7 @@ it('lists the parts of the active theme in plain words', function () {
         ->assertInertia(fn (Assert $page) => $page
             ->component('admin/site-editor/index')
             ->where('theme.name', 'Ashgrove')
-            ->where('parts', fn ($parts) => collect($parts)->pluck('label', 'key')->all() === ['author-box' => 'Author Box', 'footer' => 'Footer', 'footer-four-columns' => 'Footer: Four Columns', 'header' => 'Header', 'header-centered' => 'Header: Centered', 'header-minimal' => 'Header: Minimal'])
+            ->where('parts', fn ($parts) => collect($parts)->pluck('label', 'key')->all() === ['author-box' => 'Author box', 'footer' => 'Footer', 'footer-four-columns' => 'Footer: Four columns', 'header' => 'Header', 'header-centered' => 'Header: Centered', 'header-minimal' => 'Header: Minimal'])
             ->where('parts.0.status', 'original')
             ->where('parts.1.status', 'unpublished')
             ->where('parts.3.status', 'published')

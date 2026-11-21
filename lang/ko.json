@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part이(가) 테마 원본으로 돌아갔어요.",
     ":part published. Visitors see it now.": ":part을(를) 게시했어요. 이제 방문자에게 보여요.",
     ":part style changed to :style.": ":part 스타일을 :style(으)로 바꿨어요.",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path에 쓸 수 있어요",
     ":path: is not a style option.": ":path: 스타일 옵션이 아니에요.",
     ":path: screen sizes must be base, tablet or mobile.": ":path: 화면 크기는 base, tablet, mobile 중 하나여야 해요.",

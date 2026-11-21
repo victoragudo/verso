@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part voltou ao original do tema.",
     ":part published. Visitors see it now.": ":part publicado. Os visitantes já veem.",
     ":part style changed to :style.": "Estilo de :part alterado para :style.",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path é gravável",
     ":path: is not a style option.": ":path: não é uma opção de estilo.",
     ":path: screen sizes must be base, tablet or mobile.": ":path: os tamanhos de tela devem ser base, tablet ou mobile.",

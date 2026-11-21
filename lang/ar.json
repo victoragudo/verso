@@ -100,6 +100,7 @@
     ":part is back to the theme original.": "عاد :part إلى أصل القالب.",
     ":part published. Visitors see it now.": "نُشر :part. يراه الزوار الآن.",
     ":part style changed to :style.": "تغيّر نمط :part إلى :style.",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path قابل للكتابة",
     ":path: is not a style option.": ":path: ليس خيار نمط.",
     ":path: screen sizes must be base, tablet or mobile.": ":path: يجب أن تكون أحجام الشاشة base أو tablet أو mobile.",

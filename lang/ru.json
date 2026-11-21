@@ -100,6 +100,7 @@
     ":part is back to the theme original.": "Для «:part» восстановлен оригинал темы.",
     ":part published. Visitors see it now.": "«:part» опубликовано. Теперь это видят посетители.",
     ":part style changed to :style.": "Стиль «:part» изменён на :style.",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path доступен для записи",
     ":path: is not a style option.": ":path: не является параметром стиля.",
     ":path: screen sizes must be base, tablet or mobile.": ":path: размер экрана должен быть base, tablet или mobile.",

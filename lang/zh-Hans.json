@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part 已恢复为主题原始版本。",
     ":part published. Visitors see it now.": ":part 已发布，访客现在可以看到。",
     ":part style changed to :style.": ":part 样式已更改为 :style。",
+    ":part: :variant": ":part：:variant",
     ":path is writable": ":path 可写",
     ":path: is not a style option.": ":path：不是样式选项。",
     ":path: screen sizes must be base, tablet or mobile.": ":path：屏幕尺寸必须为 base、tablet 或 mobile。",

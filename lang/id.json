@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part kembali ke versi asli tema.",
     ":part published. Visitors see it now.": ":part diterbitkan. Pengunjung sekarang dapat melihatnya.",
     ":part style changed to :style.": "Gaya :part diubah menjadi :style.",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path dapat ditulis",
     ":path: is not a style option.": ":path: bukan opsi gaya.",
     ":path: screen sizes must be base, tablet or mobile.": ":path: ukuran layar harus base, tablet, atau mobile.",

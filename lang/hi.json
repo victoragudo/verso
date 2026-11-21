@@ -100,6 +100,7 @@
     ":part is back to the theme original.": ":part फिर से थीम के मूल रूप में है।",
     ":part published. Visitors see it now.": ":part प्रकाशित हुआ। विज़िटर अब इसे देखते हैं।",
     ":part style changed to :style.": ":part का स्टाइल :style में बदला गया।",
+    ":part: :variant": ":part: :variant",
     ":path is writable": ":path में लिखा जा सकता है",
     ":path: is not a style option.": ":path: यह कोई स्टाइल विकल्प नहीं है।",
     ":path: screen sizes must be base, tablet or mobile.": ":path: स्क्रीन साइज़ base, tablet या mobile होना चाहिए।",
