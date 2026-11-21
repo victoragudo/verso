@@ -53,7 +53,8 @@ class EntryFieldsForm
         $input = is_array($meta['fields'] ?? null) ? $meta['fields'] : [];
         $result = $this->validator->validate(array_values($fields), $input);
 
-        $stored = is_array($entry?->meta['fields'] ?? null) ? $entry->meta['fields'] : [];
+        $stored = $entry?->meta['fields'] ?? null;
+        $stored = is_array($stored) ? $stored : [];
         $kept = array_diff_key($stored, $fields);
 
         return new FieldValidation([...$kept, ...$result->values], $result->errors);

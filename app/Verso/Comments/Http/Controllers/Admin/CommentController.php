@@ -27,7 +27,7 @@ class CommentController extends Controller
 
         $comments = Comment::query()
             ->with('entry:id,type,title,slug,status,published_at,parent_id,deleted_at')
-            ->when($status !== null, fn (Builder $query) => $query->withStatus($status), fn (Builder $query) => $query->active())
+            ->when($status, fn (Builder $query, CommentStatus $status) => $query->withStatus($status), fn (Builder $query) => $query->active())
             ->when($search !== '', fn (Builder $query) => TextSearch::apply($query, ['body', 'author_name', 'author_email'], $search))
             ->latest()
             ->latest('id')

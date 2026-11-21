@@ -15,9 +15,10 @@ final readonly class CartLine
         public int $quantity,
     ) {}
 
+    // The entry is null when it is in the trash.
     public function name(): string
     {
-        return $this->product->entry->title;
+        return $this->product->entry->title ?? '';
     }
 
     public function variantLabel(): ?string
@@ -37,7 +38,7 @@ final readonly class CartLine
 
     public function url(): string
     {
-        return $this->product->entry->url();
+        return $this->product->entry?->url() ?? '';
     }
 
     // The most that fits in the cart: the stock, or the shop limit.

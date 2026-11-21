@@ -29,7 +29,7 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            ...$this->profileRules($this->user()->id),
+            ...$this->profileRules($this->user()?->id),
             // The "Show admin bar on the site" choice. Forms without it keep the saved value.
             'show_admin_bar' => ['sometimes', 'boolean'],
         ];
