@@ -62,6 +62,17 @@ export default defineConfig({
             'composer.json',
             'resources/js/components/ui/*',
             'resources/views/mail/*',
+            // Prose and the static landing page keep their own layout.
+            '**/*.md',
+            'site/**',
+            // Theme, plugin and icon JSON is also written by PHP or by a script, so keep their output as is.
+            'themes/**',
+            'plugins/*/verso.json',
+            'resources/blocks/icons/icons.json',
+            // Test fixtures copy those files, and broken-json is invalid on purpose.
+            'tests/Fixtures/**',
+            // Formatted after PR #8 lands, to avoid a conflict with it.
+            'tests/e2e/easy-journey.spec.ts',
         ],
         sortTailwindcss: {
             functions: ['clsx', 'cn', 'cva'],
