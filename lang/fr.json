@@ -3645,6 +3645,7 @@
     "Watched field": "Champ observé",
     "Wave": "Vague",
     "We could not find colors in this picture. Pick a palette below.": "Nous n’avons pas trouvé de couleurs dans cette image. Choisissez une palette ci-dessous.",
+    "We could not reach your site. Check that it is still running, then press {button}.": "Impossible de joindre votre site. Vérifiez qu'il fonctionne toujours, puis appuyez sur {button}.",
     "We could not read the colors of this picture. Pick a palette below.": "Nous n’avons pas pu lire les couleurs de cette image. Choisissez une palette ci-dessous.",
     "We filled in the address you used to open this page.": "Nous avons rempli l’adresse utilisée pour ouvrir cette page.",
     "We found a working database in your environment": "Nous avons trouvé une base de données fonctionnelle dans votre environnement",

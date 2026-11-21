@@ -184,7 +184,7 @@ describe('Guided start page', () => {
         );
 
         expect(screen.getByRole('alert')).toHaveTextContent(
-            'You seem to be offline. Check your internet connection, then press Build my site.',
+            'We could not reach your site. Check that it is still running, then press Build my site.',
         );
     });
 });

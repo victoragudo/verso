@@ -32,8 +32,24 @@ describe('plain error messages', () => {
         );
         expect(messageForStatus(413)).toContain('too big');
         expect(messageForStatus(500)).toContain('Your changes are still here.');
-        expect(messageForStatus(null)).toContain('You seem to be offline.');
+        expect(messageForStatus(null)).toContain(
+            'We could not reach your site.',
+        );
         expect(messageForStatus(404)).toContain('That did not work.');
+    });
+
+    it('blames the connection only when the browser is offline', () => {
+        vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(false);
+
+        expect(messageForStatus(null, { retry: 'Publish' })).toBe(
+            'You seem to be offline. Check your internet connection, then press Publish.',
+        );
+
+        vi.restoreAllMocks();
+
+        expect(messageForStatus(null, { retry: 'Publish' })).toBe(
+            'We could not reach your site. Check that it is still running, then press Publish.',
+        );
     });
 
     it('names the button to press again', () => {
@@ -81,7 +97,7 @@ describe('plain error messages', () => {
         );
         expect(handlers.onNetworkError()).toBe(false);
         expect(onMessage).toHaveBeenLastCalledWith(
-            expect.stringContaining('You seem to be offline.'),
+            expect.stringContaining('We could not reach your site.'),
         );
     });
 });

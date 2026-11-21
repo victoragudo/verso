@@ -12,6 +12,7 @@ final readonly class PipelineStatus
     public function __construct(
         public array $steps,
         public ?array $error = null,
+        public bool $waitingForRestart = false,
     ) {}
 
     public function finished(): bool

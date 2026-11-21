@@ -861,6 +861,9 @@ return [
         // Permissions for the written .env file (octal). It holds secrets.
         'env_permissions' => (int) octdec((string) env('VERSO_INSTALL_ENV_PERMISSIONS', '0640')),
 
+        // Seconds the wizard waits for "php artisan serve" to restart after it writes .env.
+        'restart_wait_seconds' => (int) env('VERSO_INSTALL_RESTART_WAIT_SECONDS', 5),
+
         // Send every web request to /install while Verso is not installed.
         'redirect' => (bool) env('VERSO_INSTALL_REDIRECT', true),
 

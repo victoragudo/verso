@@ -38,6 +38,8 @@ class InstallPipeline
         protected Container $container,
         protected InstallProgress $progress,
         protected RuntimeConfig $runtime,
+        protected DevelopmentServer $server,
+        protected int $restartWaitSeconds,
     ) {}
 
     /**
@@ -69,6 +71,10 @@ class InstallPipeline
             return $this->status();
         }
 
+        if (! $step instanceof WriteEnvironment && $this->waitsForRestart()) {
+            return new PipelineStatus($this->status()->steps, waitingForRestart: true);
+        }
+
         if (! $step->shouldRun($plan)) {
             $this->progress->mark($step->key(), InstallProgress::SKIPPED);
 
@@ -81,6 +87,10 @@ class InstallPipeline
             $this->runtime->apply($plan);
             $step->handle($plan);
             $this->progress->mark($step->key(), InstallProgress::DONE);
+
+            if ($step instanceof WriteEnvironment) {
+                $this->progress->rememberEnvironmentWrite($this->server->processId(), time());
+            }
         } catch (Throwable $exception) {
             $message = $plan->redact($exception->getMessage());
             Log::error('Verso install step "'.$step->key().'" failed: '.$message);
@@ -126,6 +136,19 @@ class InstallPipeline
             ], $this->steps()),
             error: $this->progress->error(),
         );
+    }
+
+    // "php artisan serve" restarts soon after .env changes and stops the running request.
+    // A step that is cut in half (like half the migrations) cannot be retried, so wait for the
+    // new server process first. Without a restart, go on after a few seconds.
+    protected function waitsForRestart(): bool
+    {
+        $write = $this->progress->environmentWrite();
+
+        return $this->server->restartsOnEnvChange()
+            && $write !== null
+            && $write['process'] === $this->server->processId()
+            && time() - $write['at'] < $this->restartWaitSeconds;
     }
 
     protected function nextStep(): ?InstallStep

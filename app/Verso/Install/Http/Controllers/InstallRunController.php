@@ -29,6 +29,11 @@ class InstallRunController extends Controller
         $plan = $this->store->plan();
         $status = $this->pipeline->runNext($plan);
 
+        // The page waits and asks again, the same as when the server does not answer.
+        if ($status->waitingForRestart) {
+            return response()->json(['message' => __('The server is restarting with the new settings. Trying again...')], 503);
+        }
+
         if (! $status->finished()) {
             return response()->json($status->toArray());
         }

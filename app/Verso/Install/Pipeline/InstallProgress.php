@@ -84,6 +84,25 @@ class InstallProgress
         return $this->read()['error'] ?? null;
     }
 
+    // Remember which server process wrote .env and when, to know if the server restarted since.
+    public function rememberEnvironmentWrite(int $processId, int $writtenAt): void
+    {
+        $data = $this->read();
+        $data['environment_write'] = ['process' => $processId, 'at' => $writtenAt];
+
+        $this->save($data);
+    }
+
+    /**
+     * @return array{process: int, at: int}|null
+     */
+    public function environmentWrite(): ?array
+    {
+        $write = $this->read()['environment_write'] ?? null;
+
+        return is_array($write) ? ['process' => (int) ($write['process'] ?? 0), 'at' => (int) ($write['at'] ?? 0)] : null;
+    }
+
     // Keep the hash of the one-time sign-in link for the new admin.
     public function rememberLogin(int $userId, string $nonce): void
     {
