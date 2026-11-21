@@ -25,9 +25,20 @@ it('lists plugins with their permissions and problems', function () {
             ->where('plugins.2.status', 'incompatible')
             ->where('plugins.0.status', 'invalid')
             ->has('plugins.0.problems', 1)
-            ->where('capabilities.manage_terms', 'Manage terms')
+            ->where('capabilities.manage_terms', 'Manage categories and tags')
             ->where('capabilities', fn ($labels) => $labels['ai.use'] === 'Use the AI assistant')
             ->where('versoVersion', config('verso.version'))
+        );
+});
+
+it('names plugin permissions in the admin language', function () {
+    $this->admin->forceFill(['admin_locale' => 'es'])->save();
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.plugins.index'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('capabilities.manage_terms', 'Gestionar categorías y etiquetas')
+            ->where('capabilities.manage_settings', 'Gestionar todos los ajustes')
         );
 });
 

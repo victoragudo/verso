@@ -74,7 +74,7 @@ it('uploads a plugin and opens the consent screen', function () {
             ->where('staged.package.slug', 'tour-dates')
             ->where('staged.package.permissions', ['manage_terms', 'upload_files'])
             ->where('staged.isUpdate', false)
-            ->where('capabilities.upload_files', 'Upload files')
+            ->where('capabilities.upload_files', 'Upload and use media')
         );
 
     expect(File::exists($this->sandbox->pluginsPath().'/tour-dates'))->toBeFalse();

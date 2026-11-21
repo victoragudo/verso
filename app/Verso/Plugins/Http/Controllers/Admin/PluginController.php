@@ -3,6 +3,7 @@
 namespace App\Verso\Plugins\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Verso\Access\Capabilities\CapabilityRegistry;
 use App\Verso\Core\Admin\AdminNav;
 use App\Verso\Core\Enums\Capability;
 use App\Verso\Extensions\Actions\VerifyInstalledPlugin;
@@ -32,6 +33,8 @@ class PluginController extends Controller
     // Tabs of the Plugins and themes page.
     public const TABS = ['plugins', 'themes', 'add', 'browse'];
 
+    public function __construct(protected CapabilityRegistry $capabilities) {}
+
     // One page for plugins and themes: installed plugins, installed themes, upload and the registry.
     public function index(Request $request, PluginManager $plugins, ExtensionInstaller $installer, ExtensionsPageProps $extensions, ThemeManager $themes, PluginTranslations $texts): Response
     {
@@ -58,7 +61,7 @@ class PluginController extends Controller
             'themes' => $tab === 'themes' ? $this->themes($themes, $installer) : [],
             'add' => in_array($tab, ['add', 'browse'], true) ? $extensions->add($user) : null,
             'registry' => $tab === 'browse' ? $extensions->browse($user) : null,
-            'capabilities' => Capability::labels(),
+            'capabilities' => $this->capabilities->labels(),
             'versoVersion' => (string) config('verso.version'),
         ]);
     }
@@ -75,7 +78,7 @@ class PluginController extends Controller
                 'network' => $found->manifest !== null ? $found->manifest->network : [],
             ],
             'verification' => PluginVerification::latestFor($found->slug)?->toReportArray(),
-            'capabilities' => Capability::labels(),
+            'capabilities' => $this->capabilities->labels(),
             'versoVersion' => (string) config('verso.version'),
         ]);
     }
