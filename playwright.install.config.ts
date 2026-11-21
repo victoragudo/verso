@@ -7,11 +7,12 @@ export default defineConfig({
     testMatch: /fresh-install\.spec\.ts/,
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
+    // No retries: the first try already ran the wizard, so a second one can not pass on the same site.
     retries: 0,
     workers: 1,
     timeout: 300_000,
     expect: { timeout: 15_000 },
-    reporter: 'list',
+    reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
     use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1440, height: 900 },

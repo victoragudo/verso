@@ -6,9 +6,11 @@
 import { execFileSync, spawn, spawnSync } from 'node:child_process';
 import {
     copyFileSync,
+    cpSync,
     existsSync,
     mkdirSync,
     mkdtempSync,
+    readFileSync,
     rmSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -20,6 +22,10 @@ const host = '127.0.0.1';
 const keep = process.env.E2E_KEEP === '1';
 const localVersion = 'dev-fresh-install-e2e';
 const bootTimeoutMs = 60_000;
+// The Laravel log of the new site is copied here when the test fails.
+const logDir = resolve(
+    process.env.E2E_LOG_DIR ?? join(repo, 'test-results/laravel-logs'),
+);
 
 const root = mkdtempSync(
     join(process.env.E2E_FRESH_ROOT ?? tmpdir(), 'verso-fresh-'),
@@ -137,6 +143,34 @@ function stopServer() {
     }
 }
 
+// Keeps the Laravel log of the new site and prints its end, so a failure can be read in CI.
+function saveLogs() {
+    const logs = join(site, 'storage/logs');
+
+    if (!existsSync(logs)) {
+        return;
+    }
+
+    try {
+        const target = join(logDir, 'fresh-install');
+        cpSync(logs, target, { recursive: true });
+        log(`Laravel logs saved in ${target}`);
+
+        const laravelLog = join(logs, 'laravel.log');
+
+        if (existsSync(laravelLog)) {
+            const lines = readFileSync(laravelLog, 'utf8')
+                .trimEnd()
+                .split('\n');
+            console.error(lines.slice(-40).join('\n'));
+        }
+    } catch (error) {
+        console.error(
+            `[fresh-install] could not save the logs: ${error.message}`,
+        );
+    }
+}
+
 function cleanUp() {
     stopServer();
 
@@ -208,6 +242,7 @@ async function main() {
 
 for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
     process.on(signal, () => {
+        saveLogs();
         cleanUp();
         process.exit(1);
     });
@@ -218,6 +253,7 @@ try {
     cleanUp();
 } catch (error) {
     console.error(`[fresh-install] ${error.message}`);
+    saveLogs();
     cleanUp();
     process.exit(1);
 }

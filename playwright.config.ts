@@ -49,6 +49,7 @@ export default defineConfig({
     testDir: 'tests/e2e',
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
+    // No retries: each project runs one journey on its own install, and a second try would find it already installed.
     retries: 0,
     workers: projects.length,
     timeout: 240_000,
