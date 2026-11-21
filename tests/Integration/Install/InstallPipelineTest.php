@@ -6,6 +6,7 @@ use App\Verso\Core\Enums\Role;
 use App\Verso\Core\Settings\Settings;
 use App\Verso\Easy\Simple\SimpleMode;
 use App\Verso\Install\InstallState;
+use App\Verso\Install\Pipeline\DevelopmentServer;
 use App\Verso\Install\Pipeline\InstallPipeline;
 use App\Verso\Install\Pipeline\InstallProgress;
 use App\Verso\Install\Plan\InstallPlan;
@@ -198,4 +199,60 @@ it('refuses a sign-in link with a wrong nonce', function () {
 
     $this->get(URL::temporarySignedRoute('verso.welcome', now()->addMinutes(5), ['user' => $admin->id, 'nonce' => 'wrong-nonce'], absolute: false))->assertForbidden();
     $this->get(route('verso.welcome', ['user' => $admin->id, 'nonce' => 'right-nonce']))->assertForbidden();
+});
+
+// A built-in server whose process id the test controls, like "php artisan serve" before and after a restart.
+function fakeDevelopmentServer(int $processId): DevelopmentServer
+{
+    return new class($processId) extends DevelopmentServer
+    {
+        public function __construct(public int $id) {}
+
+        public function restartsOnEnvChange(): bool
+        {
+            return true;
+        }
+
+        public function processId(): int
+        {
+            return $this->id;
+        }
+    };
+}
+
+it('waits for php artisan serve to restart after writing .env before it creates the tables', function () {
+    $server = fakeDevelopmentServer(4100);
+    app()->instance(DevelopmentServer::class, $server);
+    $pipeline = app(InstallPipeline::class);
+
+    $pipeline->runNext($this->plan);
+    $waiting = $pipeline->runNext($this->plan);
+
+    expect($waiting->waitingForRestart)->toBeTrue()
+        ->and(array_column($waiting->steps, 'status', 'key'))->toMatchArray(['environment' => 'done', 'database' => 'pending', 'migrations' => 'pending']);
+
+    $server->id = 4101;
+    $next = $pipeline->runNext($this->plan);
+
+    expect($next->waitingForRestart)->toBeFalse()
+        ->and(array_column($next->steps, 'status', 'key'))->toMatchArray(['database' => 'done']);
+});
+
+it('goes on after a few seconds when the server does not restart', function () {
+    app()->instance(DevelopmentServer::class, fakeDevelopmentServer(4100));
+    config(['verso.install.restart_wait_seconds' => 0]);
+    $pipeline = app(InstallPipeline::class);
+
+    $pipeline->runNext($this->plan);
+
+    expect($pipeline->runNext($this->plan)->waitingForRestart)->toBeFalse();
+});
+
+it('answers 503 over the web while the server restarts, so the page asks again', function () {
+    app()->instance(DevelopmentServer::class, fakeDevelopmentServer(4100));
+    $this->withSession(['verso_install' => ['steps' => InstallFixtures::answers($this->sqlite), 'done' => ['welcome', 'requirements', 'database', 'site', 'services', 'content', 'review']]]);
+    $this->post('/install/review');
+
+    $this->postJson('/install/run')->assertOk();
+    $this->postJson('/install/run')->assertStatus(503)->assertJsonPath('message', 'The server is restarting with the new settings. Trying again...');
 });

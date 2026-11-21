@@ -12,6 +12,7 @@ use App\Verso\Install\Env\EnvWriter;
 use App\Verso\Install\Http\Controllers\WelcomeController;
 use App\Verso\Install\Http\Middleware\EnsureNotInstalled;
 use App\Verso\Install\Http\Middleware\RedirectToInstaller;
+use App\Verso\Install\Pipeline\InstallPipeline;
 use App\Verso\Install\Pipeline\InstallProgress;
 use App\Verso\Install\Pipeline\RuntimeConfig;
 use App\Verso\Install\Pipeline\Steps\WriteEnvironment;
@@ -53,6 +54,8 @@ class InstallServiceProvider extends ServiceProvider
         ));
 
         $this->app->singleton(InstallerMode::class);
+
+        $this->app->when(InstallPipeline::class)->needs('$restartWaitSeconds')->giveConfig('verso.install.restart_wait_seconds', 5);
 
         $this->app->bind(Requirements::class, fn (Application $app): Requirements => new Requirements(
             phpVersion: (string) config('verso.install.php_version'),
