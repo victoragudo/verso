@@ -1,8 +1,16 @@
 # Verso
 
-[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml)
+[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml) [![Website](https://img.shields.io/badge/website-verso--cms.pages.dev-black)](https://verso-cms.pages.dev)
 
 Verso is a free and open source content management system built on Laravel 13. It is a fast, modern and safe alternative to WordPress, released under the MIT license. There is no paid edition and no locked feature.
+
+**Website:** [verso-cms.pages.dev](https://verso-cms.pages.dev)
+
+![The Verso dashboard](docs/screenshots/dashboard.webp)
+
+| Block editor | Make it yours | Site Editor |
+| --- | --- | --- |
+| [![The block editor with a gallery and the post settings](docs/screenshots/editor.webp)](docs/screenshots/editor.webp) | [![Make it yours: logo, colors and a live preview of the site](docs/screenshots/make-it-yours.webp)](docs/screenshots/make-it-yours.webp) | [![The Site Editor with template parts and header styles](docs/screenshots/site-editor.webp)](docs/screenshots/site-editor.webp) |
 
 ## Features
 
