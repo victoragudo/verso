@@ -7,6 +7,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { I18nRoot } from '@/components/verso/i18n/i18n-root';
+import { LocaleBoundary } from '@/components/verso/i18n/locale-boundary';
 import { LanguageMenu } from '@/components/verso/i18n/language-menu';
 import { LanguageSelect } from '@/components/verso/i18n/language-select';
 import { currentLocale, setMessages, t } from '@/lib/i18n';
@@ -148,7 +149,9 @@ describe('I18nRoot', () => {
 
         render(
             <I18nRoot>
-                <Title />
+                <LocaleBoundary>
+                    <Title />
+                </LocaleBoundary>
             </I18nRoot>,
         );
 
@@ -189,6 +192,37 @@ describe('I18nRoot', () => {
         );
 
         await waitFor(() => expect(document.documentElement.dir).toBe('rtl'));
+    });
+
+    it('goes back to English after a switch on the same page, without a reload', async () => {
+        vi.stubGlobal('fetch', vi.fn());
+        setMessages('es', { Dashboard: 'Panel' });
+
+        function Title() {
+            return <h1>{t('Dashboard')}</h1>;
+        }
+
+        render(
+            <I18nRoot>
+                <LocaleBoundary>
+                    <Title />
+                </LocaleBoundary>
+            </I18nRoot>,
+        );
+
+        expect(screen.getByRole('heading')).toHaveTextContent('Panel');
+
+        // The switch redirects back to the same URL: Inertia fires "success" but no "navigate".
+        act(() => {
+            fireRouterEvent('success', {
+                page: { props: { i18n: i18nProps({ locale: 'en', bundle: null }) } },
+            });
+        });
+
+        await waitFor(() =>
+            expect(screen.getByRole('heading')).toHaveTextContent('Dashboard'),
+        );
+        expect(currentLocale()).toBe('en');
     });
 
     it('does nothing when the language stays the same', () => {
