@@ -91,7 +91,13 @@ test('a bakery owner builds and launches a site with Easy mode only', async ({ p
         const accent = await page.getByRole('textbox', { name: 'Accent', exact: true }).inputValue();
         const frame = page.frameLocator('[data-test="style-preview"]');
         await expect
-            .poll(() => frame.locator('html').evaluate((html) => getComputedStyle(html).getPropertyValue('--verso-color-accent')))
+            // The preview reloads after each pick, so a read during a reload counts as "not yet".
+            .poll(() =>
+                frame
+                    .locator('html')
+                    .evaluate((html) => getComputedStyle(html).getPropertyValue('--verso-color-accent'))
+                    .catch(() => ''),
+            )
             .toContain(accent);
         await expect(frame.getByRole('img', { name: site.name })).toBeVisible();
 
