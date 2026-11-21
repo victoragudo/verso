@@ -180,11 +180,11 @@ class PermissionInspector
     protected function checkDebug(): HealthCheck
     {
         if ($this->debug && $this->production) {
-            return new HealthCheck('debug', 'web', 'Debug mode is off in production', HealthStatus::Danger,
+            return new HealthCheck('debug', 'web', __('Debug mode is off in production'), HealthStatus::Danger,
                 __('Error pages show code, settings and secrets to visitors.'), command: __('Set APP_DEBUG=false in .env, then run php artisan config:cache'));
         }
 
-        return new HealthCheck('debug', 'web', 'Debug mode is off in production', $this->debug ? HealthStatus::Info : HealthStatus::Ok,
+        return new HealthCheck('debug', 'web', __('Debug mode is off in production'), $this->debug ? HealthStatus::Info : HealthStatus::Ok,
             $this->debug ? __('Debug mode is on, which is fine outside production.') : __('Debug mode is off.'));
     }
 

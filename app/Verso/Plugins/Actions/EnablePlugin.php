@@ -33,7 +33,7 @@ class EnablePlugin
                 $this->plugins->disable($slug);
             }
 
-            throw PluginCannotBeEnabled::because($slug, ['Its database migrations failed ('.$exception->getMessage().').']);
+            throw PluginCannotBeEnabled::because($slug, [__('Its database migrations failed (:error).', ['error' => $exception->getMessage()])]);
         }
 
         if (! $wasEnabled) {

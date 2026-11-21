@@ -158,7 +158,7 @@ class BlockRenderer
     {
         return '<div data-verso-block="'.e($block->id).'" data-verso-type="'.e($block->type).'" data-verso-broken role="note"'
             .' style="margin:1rem 0;padding:1rem;border:2px dashed #d97706;border-radius:8px;background:#fffbeb;color:#78350f;font:500 15px/1.4 system-ui,sans-serif">'
-            .'This part could not be shown. Delete it, or undo your last change. Visitors do not see it.</div>';
+            .e(__('This part could not be shown. Delete it, or undo your last change. Visitors do not see it.')).'</div>';
     }
 
     // Turns edit mode on or off for the next renders of this request.
