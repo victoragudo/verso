@@ -169,12 +169,10 @@ describe('I18nRoot', () => {
     it('sets the direction for right to left languages', async () => {
         vi.stubGlobal(
             'fetch',
-            vi
-                .fn()
-                .mockResolvedValue({
-                    ok: true,
-                    json: () => Promise.resolve({}),
-                }),
+            vi.fn().mockResolvedValue({
+                ok: true,
+                json: () => Promise.resolve({}),
+            }),
         );
 
         render(

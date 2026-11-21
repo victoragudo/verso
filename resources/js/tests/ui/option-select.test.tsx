@@ -163,7 +163,11 @@ describe('OptionSelect', () => {
 
     it('posts the value with the form through a hidden input', async () => {
         render(
-            <Picker options={ENCRYPTIONS} initial="tls" name="mail_encryption" />,
+            <Picker
+                options={ENCRYPTIONS}
+                initial="tls"
+                name="mail_encryption"
+            />,
         );
 
         expect(formValues()).toMatchObject({ mail_encryption: 'tls' });
@@ -190,6 +194,8 @@ describe('OptionSelect', () => {
         const trigger = screen.getByRole('combobox', { name: 'SSL mode' });
 
         expect(trigger).toHaveAttribute('aria-invalid', 'true');
-        expect(trigger).toHaveAccessibleDescription('Ask your host. Pick a mode.');
+        expect(trigger).toHaveAccessibleDescription(
+            'Ask your host. Pick a mode.',
+        );
     });
 });

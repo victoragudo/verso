@@ -4,7 +4,13 @@ import { update as saveListView } from '@/routes/admin/list-views';
 
 // From which list width an optional column shows when the user did not pick columns.
 export type ColumnDefault =
-    'always' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'never';
+    | 'always'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | 'never';
 
 export type Density = 'comfortable' | 'compact';
 

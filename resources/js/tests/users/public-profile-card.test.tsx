@@ -59,7 +59,9 @@ describe('PublicProfileCard', () => {
             screen.getByLabelText('Social link 3'),
             'https://clara.example',
         );
-        expect(screen.queryByLabelText('Social link 4')).not.toBeInTheDocument();
+        expect(
+            screen.queryByLabelText('Social link 4'),
+        ).not.toBeInTheDocument();
 
         await user.click(
             screen.getByRole('button', { name: 'Save public profile' }),
@@ -82,7 +84,9 @@ describe('PublicProfileCard', () => {
     it('uploads a photo as form data and refuses one that is too big', () => {
         render(<PublicProfileCard profile={profile} />);
         const input = screen.getByLabelText('Profile photo');
-        const photo = new File(['portrait'], 'clara.jpg', { type: 'image/jpeg' });
+        const photo = new File(['portrait'], 'clara.jpg', {
+            type: 'image/jpeg',
+        });
 
         fireEvent.change(input, { target: { files: [photo] } });
 
@@ -116,18 +120,24 @@ describe('PublicProfileCard', () => {
             'src',
             '/img/clara.jpg?w=192',
         );
-        expect(screen.getByText(/ask an admin to add a photo/)).toBeInTheDocument();
+        expect(
+            screen.getByText(/ask an admin to add a photo/),
+        ).toBeInTheDocument();
 
         const confirm = vi
             .spyOn(window, 'confirm')
             .mockReturnValueOnce(false)
             .mockReturnValueOnce(true);
 
-        await userEvent.click(screen.getByRole('button', { name: 'Remove photo' }));
+        await userEvent.click(
+            screen.getByRole('button', { name: 'Remove photo' }),
+        );
         expect(confirm).toHaveBeenCalledWith('Remove your profile photo?');
         expect(router.delete).not.toHaveBeenCalled();
 
-        await userEvent.click(screen.getByRole('button', { name: 'Remove photo' }));
+        await userEvent.click(
+            screen.getByRole('button', { name: 'Remove photo' }),
+        );
 
         expect(router.delete).toHaveBeenCalledWith(destroy.url(), {
             preserveScroll: true,
@@ -138,10 +148,9 @@ describe('PublicProfileCard', () => {
 describe('profile helpers', () => {
     it('adds one empty row below the limit', () => {
         expect(linkRows([], 2)).toEqual(['']);
-        expect(linkRows(['https://a.example', 'https://b.example'], 2)).toEqual([
-            'https://a.example',
-            'https://b.example',
-        ]);
+        expect(linkRows(['https://a.example', 'https://b.example'], 2)).toEqual(
+            ['https://a.example', 'https://b.example'],
+        );
     });
 
     it('maps link errors to their row', () => {

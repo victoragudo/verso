@@ -218,14 +218,18 @@ describe('System settings page', () => {
             />,
         );
 
-        await user.click(screen.getByRole('button', { name: 'Reset to default' }));
+        await user.click(
+            screen.getByRole('button', { name: 'Reset to default' }),
+        );
         expect(confirm).toHaveBeenCalledWith(
             'Go back to the default value of this setting?',
         );
         expect(router.post).not.toHaveBeenCalled();
 
         confirm.mockReturnValueOnce(true);
-        await user.click(screen.getByRole('button', { name: 'Reset to default' }));
+        await user.click(
+            screen.getByRole('button', { name: 'Reset to default' }),
+        );
         expect(router.post).toHaveBeenCalledWith(
             expect.any(String),
             { key: 'verso.media.per_page' },

@@ -3,8 +3,15 @@ import { defineConfig, devices } from '@playwright/test';
 
 // End to end tests: every project gets its own server with a fresh, throwaway install, and runs one journey.
 // The Easy mode journey runs at 1440 and 390 pixels, the builder journey at 1440, 1024 and 390.
-const computer = { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } };
-const tablet = { ...devices['Desktop Chrome'], viewport: { width: 1024, height: 768 }, hasTouch: true };
+const computer = {
+    ...devices['Desktop Chrome'],
+    viewport: { width: 1440, height: 900 },
+};
+const tablet = {
+    ...devices['Desktop Chrome'],
+    viewport: { width: 1024, height: 768 },
+    hasTouch: true,
+};
 const phone = {
     ...devices['Desktop Chrome'],
     viewport: { width: 390, height: 844 },
@@ -28,7 +35,10 @@ const freePortScript =
 function portFor(name: string): string {
     const key = `E2E_PORT_${name.toUpperCase()}`;
 
-    process.env[key] ??= execFileSync(process.execPath, ['-e', freePortScript]).toString();
+    process.env[key] ??= execFileSync(process.execPath, [
+        '-e',
+        freePortScript,
+    ]).toString();
 
     return process.env[key];
 }
@@ -54,7 +64,10 @@ export default defineConfig({
     },
     projects: projects.map((project) => ({
         ...project,
-        use: { ...project.use, baseURL: `http://${host}:${portFor(project.name)}` },
+        use: {
+            ...project.use,
+            baseURL: `http://${host}:${portFor(project.name)}`,
+        },
     })),
     webServer: projects.map((project) => ({
         command: `node scripts/e2e/serve.mjs ${project.name} ${portFor(project.name)}`,

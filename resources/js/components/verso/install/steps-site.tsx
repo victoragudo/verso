@@ -946,7 +946,7 @@ export function ContentStep({
                     {plugins.map((plugin) => (
                         <label
                             key={plugin.slug}
-                            className="flex min-h-11 cursor-pointer gap-3 rounded-lg border border-zinc-200 bg-white p-3 text-sm shadow-xs transition-colors hover:border-zinc-400 dark:hover:border-zinc-600 has-[:checked]:border-zinc-900 has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/50 dark:border-zinc-800 dark:bg-zinc-900 dark:has-[:checked]:border-zinc-100"
+                            className="flex min-h-11 cursor-pointer gap-3 rounded-lg border border-zinc-200 bg-white p-3 text-sm shadow-xs transition-colors hover:border-zinc-400 has-[:checked]:border-zinc-900 has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600 dark:has-[:checked]:border-zinc-100"
                         >
                             <input
                                 type="checkbox"

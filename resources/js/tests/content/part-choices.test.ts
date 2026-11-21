@@ -20,7 +20,9 @@ const header = {
 describe('part choices', () => {
     it('reads only text styles from meta', () => {
         expect(
-            partsFromMeta({ parts: { header: 'minimal', footer: '', side: 3 } }),
+            partsFromMeta({
+                parts: { header: 'minimal', footer: '', side: 3 },
+            }),
         ).toEqual({ header: 'minimal' });
         expect(partsFromMeta({ parts: ['minimal'] })).toEqual({});
         expect(partsFromMeta(undefined)).toEqual({});

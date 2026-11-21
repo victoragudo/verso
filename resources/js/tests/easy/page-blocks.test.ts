@@ -200,8 +200,12 @@ describe('page blocks', () => {
         blocks[0].attrs.label = 'Welcome banner';
 
         expect(
-            setText(blocks, 'b_title001', 'content', 'Sourdough every morning')[0]
-                .attrs.label,
+            setText(
+                blocks,
+                'b_title001',
+                'content',
+                'Sourdough every morning',
+            )[0].attrs.label,
         ).toBe('Welcome banner');
         expect(
             setText(blocks, 'b_text0001', 'content', '<p>Fresh rolls.</p>')[0]

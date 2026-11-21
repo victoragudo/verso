@@ -48,7 +48,7 @@ export function MediaPicker({
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent
-                className="open:flex max-h-[90vh] flex-col sm:max-w-4xl"
+                className="max-h-[90vh] flex-col open:flex sm:max-w-4xl"
                 onCloseAutoFocus={onCloseAutoFocus}
             >
                 <DialogHeader>

@@ -7,7 +7,10 @@ document.querySelectorAll('[data-verso-counter]').forEach((counter) => {
     const to = Number(counter.dataset.to);
     const decimals = Number(counter.dataset.decimals) || 0;
     const duration = Number(counter.dataset.duration) || 0;
-    const format = new Intl.NumberFormat(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    const format = new Intl.NumberFormat(locale, {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
     const final = format.format(to);
 
     // The width of the final number is kept from the start, so nothing moves while it counts.
@@ -25,7 +28,10 @@ document.querySelectorAll('[data-verso-counter]').forEach((counter) => {
         }
 
         observer.disconnect();
-        counter.setAttribute('aria-label', `${counter.querySelector('.verso-counter__prefix').textContent}${final}${counter.querySelector('.verso-counter__suffix').textContent}`);
+        counter.setAttribute(
+            'aria-label',
+            `${counter.querySelector('.verso-counter__prefix').textContent}${final}${counter.querySelector('.verso-counter__suffix').textContent}`,
+        );
         number.setAttribute('aria-hidden', 'true');
         const start = performance.now();
         const tick = (now) => {

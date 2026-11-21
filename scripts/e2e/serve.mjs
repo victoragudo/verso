@@ -6,14 +6,22 @@ import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-const [name = 'site', port = process.env.E2E_PORT ?? '8700'] = process.argv.slice(2);
+const [name = 'site', port = process.env.E2E_PORT ?? '8700'] =
+    process.argv.slice(2);
 const host = process.env.E2E_HOST ?? '127.0.0.1';
 const workers = process.env.E2E_PHP_WORKERS ?? '4';
 const keep = process.env.E2E_KEEP === '1';
 
 const root = mkdtempSync(join(tmpdir(), `verso-e2e-${name}-`));
 const storage = join(root, 'storage');
-const storageFolders = ['app/public', 'app/private', 'framework/cache/data', 'framework/sessions', 'framework/views', 'logs'];
+const storageFolders = [
+    'app/public',
+    'app/private',
+    'framework/cache/data',
+    'framework/sessions',
+    'framework/views',
+    'logs',
+];
 
 for (const folder of storageFolders) {
     mkdirSync(join(storage, folder), { recursive: true });
@@ -49,7 +57,15 @@ console.log(`[e2e:${name}] ${env.APP_URL} using ${root}`);
 
 const server = spawn(
     'php',
-    ['-d', 'variables_order=EGPCS', '-S', `${host}:${port}`, '-t', 'public', 'scripts/e2e/router.php'],
+    [
+        '-d',
+        'variables_order=EGPCS',
+        '-S',
+        `${host}:${port}`,
+        '-t',
+        'public',
+        'scripts/e2e/router.php',
+    ],
     { env, stdio: ['ignore', 'inherit', 'pipe'] },
 );
 

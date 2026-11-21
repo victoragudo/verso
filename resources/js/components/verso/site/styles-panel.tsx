@@ -10,11 +10,7 @@ import {
 } from '@/components/ui/collapsible';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-    LengthInput,
-    OptionSelect,
-    SectionCard,
-} from '@/components/verso/ui';
+import { LengthInput, OptionSelect, SectionCard } from '@/components/verso/ui';
 import { msg, t } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 import { globalStyles as saveGlobalStyles } from '@/routes/admin/site-editor';

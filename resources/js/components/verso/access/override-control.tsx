@@ -76,7 +76,7 @@ export const OverrideControl = memo(function OverrideControl({
                         <label
                             key={option.value}
                             className={cn(
-                                'relative inline-flex min-h-10 cursor-pointer items-center rounded px-2.5 text-xs transition-colors hover:bg-accent/60 font-medium whitespace-nowrap text-muted-foreground has-[:checked]:bg-card has-[:checked]:text-foreground has-[:checked]:shadow-xs has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50 has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/50 md:min-h-8',
+                                'relative inline-flex min-h-10 cursor-pointer items-center rounded px-2.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors hover:bg-accent/60 has-[:checked]:bg-card has-[:checked]:text-foreground has-[:checked]:shadow-xs has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50 has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/50 md:min-h-8',
                                 option.value === 'grant' &&
                                     'has-[:checked]:text-success-text',
                                 option.value === 'deny' &&

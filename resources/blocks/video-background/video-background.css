@@ -1,12 +1,42 @@
 /* Video background: the video covers the box, the blocks sit on top. */
-.verso-video-bg { position: relative; isolation: isolate; overflow: hidden; display: grid; }
-.verso-video-bg__video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; z-index: -2; }
-.verso-video-bg::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(0 0 0 / 0.4); }
-.verso-video-bg--none::before { background: none; }
-.verso-video-bg--light::before { background: rgb(0 0 0 / 0.2); }
-.verso-video-bg--strong::before { background: rgb(0 0 0 / 0.6); }
-.verso-video-bg__content { position: relative; padding: var(--verso-spacing-x-large, 3rem) var(--verso-spacing-medium, 1rem); }
-.verso-video-bg:not(.verso-video-bg--none) .verso-video-bg__content { color: #fff; }
+.verso-video-bg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+}
+.verso-video-bg__video {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+.verso-video-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(0 0 0 / 0.4);
+}
+.verso-video-bg--none::before {
+    background: none;
+}
+.verso-video-bg--light::before {
+    background: rgb(0 0 0 / 0.2);
+}
+.verso-video-bg--strong::before {
+    background: rgb(0 0 0 / 0.6);
+}
+.verso-video-bg__content {
+    position: relative;
+    padding: var(--verso-spacing-x-large, 3rem)
+        var(--verso-spacing-medium, 1rem);
+}
+.verso-video-bg:not(.verso-video-bg--none) .verso-video-bg__content {
+    color: #fff;
+}
 .verso-video-bg__pause {
     position: absolute;
     inset-block-end: 0.75rem;
@@ -21,5 +51,10 @@
     font: inherit;
     cursor: pointer;
 }
-.verso-video-bg__pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.verso-video-bg__pause:hover { background: rgb(0 0 0 / 0.75); }
+.verso-video-bg__pause:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+.verso-video-bg__pause:hover {
+    background: rgb(0 0 0 / 0.75);
+}

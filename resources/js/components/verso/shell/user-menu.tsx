@@ -21,7 +21,7 @@ export function UserMenu() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger
-                className="flex size-10 items-center justify-center rounded-full outline-none transition-colors hover:bg-accent data-[state=open]:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                className="flex size-10 items-center justify-center rounded-full transition-colors outline-none hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50 data-[state=open]:bg-accent"
                 aria-label={t('Open the account menu')}
                 data-test="sidebar-menu-button"
             >

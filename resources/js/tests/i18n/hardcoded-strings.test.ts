@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { scan, scanSource } from '../../../../scripts/i18n/hardcoded-strings.mjs';
+import {
+    scan,
+    scanSource,
+} from '../../../../scripts/i18n/hardcoded-strings.mjs';
 
 type Finding = { file?: string; line: number; text: string };
 

@@ -157,7 +157,10 @@ describe('PageEditor', () => {
             screen.getByRole('heading', { name: 'Harbor Lane Bakery' }),
         ).toBeInTheDocument();
         expect(screen.getByText('Draft')).toBeInTheDocument();
-        expect(saveStates()).toEqual(['All changes saved', 'All changes saved']);
+        expect(saveStates()).toEqual([
+            'All changes saved',
+            'All changes saved',
+        ]);
         expect(screen.getByRole('link', { name: 'Back' })).toHaveAttribute(
             'href',
             '/admin/entries/page',
@@ -211,7 +214,10 @@ describe('PageEditor', () => {
                 'b_gall0001',
             ]),
         );
-        expect(saveStates()).toEqual(['All changes saved', 'All changes saved']);
+        expect(saveStates()).toEqual([
+            'All changes saved',
+            'All changes saved',
+        ]);
 
         await user.click(screen.getByRole('button', { name: 'Redo' }));
         await waitFor(() => expect(lastDrawnIds()[0]).toBe('b_serv0001'));
@@ -433,10 +439,16 @@ describe('PageEditor', () => {
 
         act(() => frame.bridge.onSectionAction('b_serv0001', 'move-up'));
         await waitFor(() =>
-            expect(saveStates()).toEqual(['Unsaved changes', 'Unsaved changes']),
+            expect(saveStates()).toEqual([
+                'Unsaved changes',
+                'Unsaved changes',
+            ]),
         );
         await user.click(screen.getByRole('button', { name: 'Save draft' }));
-        expect(saveStates()).toEqual(['All changes saved', 'All changes saved']);
+        expect(saveStates()).toEqual([
+            'All changes saved',
+            'All changes saved',
+        ]);
 
         vi.mocked(router.put).mockImplementationOnce((_url, _data, options) => {
             options?.onError?.({

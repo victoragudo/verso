@@ -1,11 +1,47 @@
 /* Icon block and icon list. */
-.verso-icon-block { display: inline-flex; line-height: 1; color: inherit; }
-.verso-icon-block .verso-icon { inline-size: 2rem; block-size: 2rem; }
-.verso-icon-block--small .verso-icon { inline-size: 1.25rem; block-size: 1.25rem; }
-.verso-icon-block--large .verso-icon { inline-size: 3rem; block-size: 3rem; }
-.verso-icon-block--x-large .verso-icon { inline-size: 4.5rem; block-size: 4.5rem; }
-a.verso-icon-block { min-inline-size: 24px; min-block-size: 24px; }
-.verso-icon-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-.verso-icon-list--inline { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-.verso-icon-list__item { display: flex; align-items: flex-start; gap: 0.6rem; }
-.verso-icon-list__item .verso-icon { margin-block-start: 0.15em; color: var(--verso-color-accent, currentColor); }
+.verso-icon-block {
+    display: inline-flex;
+    line-height: 1;
+    color: inherit;
+}
+.verso-icon-block .verso-icon {
+    inline-size: 2rem;
+    block-size: 2rem;
+}
+.verso-icon-block--small .verso-icon {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+}
+.verso-icon-block--large .verso-icon {
+    inline-size: 3rem;
+    block-size: 3rem;
+}
+.verso-icon-block--x-large .verso-icon {
+    inline-size: 4.5rem;
+    block-size: 4.5rem;
+}
+a.verso-icon-block {
+    min-inline-size: 24px;
+    min-block-size: 24px;
+}
+.verso-icon-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+.verso-icon-list--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+.verso-icon-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+.verso-icon-list__item .verso-icon {
+    margin-block-start: 0.15em;
+    color: var(--verso-color-accent, currentColor);
+}

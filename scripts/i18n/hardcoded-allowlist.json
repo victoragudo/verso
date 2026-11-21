@@ -31,7 +31,5 @@
         "IndexNow",
         "Aa"
     ],
-    "files": [
-        "resources/js/components/verso/icons/index.tsx"
-    ]
+    "files": ["resources/js/components/verso/icons/index.tsx"]
 }

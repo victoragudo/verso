@@ -14,7 +14,9 @@ document.querySelectorAll('[data-verso-video-bg]').forEach((box) => {
 
     const apply = () => {
         button.setAttribute('aria-pressed', String(paused));
-        button.textContent = paused ? button.dataset.playLabel : button.dataset.pauseLabel;
+        button.textContent = paused
+            ? button.dataset.playLabel
+            : button.dataset.pauseLabel;
 
         if (!paused && visible) {
             video.play().catch(() => {});

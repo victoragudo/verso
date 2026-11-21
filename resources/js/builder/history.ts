@@ -42,7 +42,8 @@ export function typingKey(previous: Block[], next: Block[]): string | null {
 
         const sameAttrs =
             before.attrs === after.attrs ||
-            JSON.stringify(before.attrs ?? {}) === JSON.stringify(after.attrs ?? {});
+            JSON.stringify(before.attrs ?? {}) ===
+                JSON.stringify(after.attrs ?? {});
 
         if (!sameAttrs) {
             return null;

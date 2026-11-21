@@ -1,7 +1,20 @@
 /* Share links. */
-.verso-share { display: grid; gap: 0.5rem; }
-.verso-share__heading { margin: 0; font-weight: 600; }
-.verso-share__list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.verso-share {
+    display: grid;
+    gap: 0.5rem;
+}
+.verso-share__heading {
+    margin: 0;
+    font-weight: 600;
+}
+.verso-share__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .verso-share__link {
     display: inline-flex;
     align-items: center;
@@ -16,15 +29,25 @@
     text-decoration: none;
     cursor: pointer;
 }
-.verso-share__link:hover { border-color: currentColor; }
-.verso-share__link:focus-visible { outline: 2px solid var(--verso-color-accent, currentColor); outline-offset: 2px; }
-.verso-share__copy { position: relative; display: inline-flex; }
+.verso-share__link:hover {
+    border-color: currentColor;
+}
+.verso-share__link:focus-visible {
+    outline: 2px solid var(--verso-color-accent, currentColor);
+    outline-offset: 2px;
+}
+.verso-share__copy {
+    position: relative;
+    display: inline-flex;
+}
 .verso-share__tip {
     position: absolute;
     inset-block-end: calc(100% + 0.4rem);
     inset-inline-start: 50%;
     translate: -50% 0;
-    &:dir(rtl) { translate: 50% 0; }
+    &:dir(rtl) {
+        translate: 50% 0;
+    }
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     background: #111;
@@ -34,4 +57,6 @@
     opacity: 0;
     pointer-events: none;
 }
-.verso-share__tip:not(:empty) { opacity: 1; }
+.verso-share__tip:not(:empty) {
+    opacity: 1;
+}

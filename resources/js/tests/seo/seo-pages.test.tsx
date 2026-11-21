@@ -364,18 +364,16 @@ describe('Add alt text', () => {
     it('shows a suggestion as a preview until it is accepted', async () => {
         vi.stubGlobal(
             'fetch',
-            vi
-                .fn()
-                .mockResolvedValue(
-                    new Response(
-                        JSON.stringify({
-                            result: {
-                                alt: 'A bakery window with bread on shelves',
-                            },
-                        }),
-                        { status: 200 },
-                    ),
+            vi.fn().mockResolvedValue(
+                new Response(
+                    JSON.stringify({
+                        result: {
+                            alt: 'A bakery window with bread on shelves',
+                        },
+                    }),
+                    { status: 200 },
                 ),
+            ),
         );
         render(<AltTextPage {...props} />);
 
@@ -396,18 +394,16 @@ describe('Add alt text', () => {
     it('shows the error of a failed suggestion', async () => {
         vi.stubGlobal(
             'fetch',
-            vi
-                .fn()
-                .mockImplementation(
-                    async () =>
-                        new Response(
-                            JSON.stringify({
-                                message:
-                                    'Too many requests. Try again in a minute.',
-                            }),
-                            { status: 429 },
-                        ),
-                ),
+            vi.fn().mockImplementation(
+                async () =>
+                    new Response(
+                        JSON.stringify({
+                            message:
+                                'Too many requests. Try again in a minute.',
+                        }),
+                        { status: 429 },
+                    ),
+            ),
         );
 
         await expect(

@@ -267,36 +267,93 @@
 
 @supports (color: light-dark(white, black)) {
     :root {
-        --background: light-dark(var(--background-light), var(--background-dark));
-        --foreground: light-dark(var(--foreground-light), var(--foreground-dark));
+        --background: light-dark(
+            var(--background-light),
+            var(--background-dark)
+        );
+        --foreground: light-dark(
+            var(--foreground-light),
+            var(--foreground-dark)
+        );
         --body: light-dark(var(--body-light), var(--body-dark));
         --card: light-dark(var(--card-light), var(--card-dark));
-        --card-foreground: light-dark(var(--card-foreground-light), var(--card-foreground-dark));
+        --card-foreground: light-dark(
+            var(--card-foreground-light),
+            var(--card-foreground-dark)
+        );
         --popover: light-dark(var(--popover-light), var(--popover-dark));
-        --popover-foreground: light-dark(var(--popover-foreground-light), var(--popover-foreground-dark));
+        --popover-foreground: light-dark(
+            var(--popover-foreground-light),
+            var(--popover-foreground-dark)
+        );
         --primary: light-dark(var(--primary-light), var(--primary-dark));
-        --primary-foreground: light-dark(var(--primary-foreground-light), var(--primary-foreground-dark));
+        --primary-foreground: light-dark(
+            var(--primary-foreground-light),
+            var(--primary-foreground-dark)
+        );
         --secondary: light-dark(var(--secondary-light), var(--secondary-dark));
-        --secondary-foreground: light-dark(var(--secondary-foreground-light), var(--secondary-foreground-dark));
+        --secondary-foreground: light-dark(
+            var(--secondary-foreground-light),
+            var(--secondary-foreground-dark)
+        );
         --muted: light-dark(var(--muted-light), var(--muted-dark));
-        --muted-foreground: light-dark(var(--muted-foreground-light), var(--muted-foreground-dark));
+        --muted-foreground: light-dark(
+            var(--muted-foreground-light),
+            var(--muted-foreground-dark)
+        );
         --accent: light-dark(var(--accent-light), var(--accent-dark));
-        --accent-foreground: light-dark(var(--accent-foreground-light), var(--accent-foreground-dark));
+        --accent-foreground: light-dark(
+            var(--accent-foreground-light),
+            var(--accent-foreground-dark)
+        );
         --brand: light-dark(var(--brand-light), var(--brand-dark));
-        --brand-soft: light-dark(var(--brand-soft-light), var(--brand-soft-dark));
-        --destructive: light-dark(var(--destructive-light), var(--destructive-dark));
-        --destructive-foreground: light-dark(var(--destructive-foreground-light), var(--destructive-foreground-dark));
+        --brand-soft: light-dark(
+            var(--brand-soft-light),
+            var(--brand-soft-dark)
+        );
+        --destructive: light-dark(
+            var(--destructive-light),
+            var(--destructive-dark)
+        );
+        --destructive-foreground: light-dark(
+            var(--destructive-foreground-light),
+            var(--destructive-foreground-dark)
+        );
         --border: light-dark(var(--border-light), var(--border-dark));
         --input: light-dark(var(--input-light), var(--input-dark));
         --ring: light-dark(var(--ring-light), var(--ring-dark));
-        --success-soft: light-dark(var(--success-soft-light), var(--success-soft-dark));
-        --success-text: light-dark(var(--success-text-light), var(--success-text-dark));
-        --warning-soft: light-dark(var(--warning-soft-light), var(--warning-soft-dark));
-        --warning-text: light-dark(var(--warning-text-light), var(--warning-text-dark));
-        --danger-soft: light-dark(var(--danger-soft-light), var(--danger-soft-dark));
-        --danger-text: light-dark(var(--danger-text-light), var(--danger-text-dark));
-        --neutral-soft: light-dark(var(--neutral-soft-light), var(--neutral-soft-dark));
-        --neutral-text: light-dark(var(--neutral-text-light), var(--neutral-text-dark));
+        --success-soft: light-dark(
+            var(--success-soft-light),
+            var(--success-soft-dark)
+        );
+        --success-text: light-dark(
+            var(--success-text-light),
+            var(--success-text-dark)
+        );
+        --warning-soft: light-dark(
+            var(--warning-soft-light),
+            var(--warning-soft-dark)
+        );
+        --warning-text: light-dark(
+            var(--warning-text-light),
+            var(--warning-text-dark)
+        );
+        --danger-soft: light-dark(
+            var(--danger-soft-light),
+            var(--danger-soft-dark)
+        );
+        --danger-text: light-dark(
+            var(--danger-text-light),
+            var(--danger-text-dark)
+        );
+        --neutral-soft: light-dark(
+            var(--neutral-soft-light),
+            var(--neutral-soft-dark)
+        );
+        --neutral-text: light-dark(
+            var(--neutral-text-light),
+            var(--neutral-text-dark)
+        );
         --info-soft: light-dark(var(--info-soft-light), var(--info-soft-dark));
         --info-text: light-dark(var(--info-text-light), var(--info-text-dark));
         --chart-1: light-dark(var(--chart-1-light), var(--chart-1-dark));
@@ -305,13 +362,34 @@
         --chart-4: light-dark(var(--chart-4-light), var(--chart-4-dark));
         --chart-5: light-dark(var(--chart-5-light), var(--chart-5-dark));
         --sidebar: light-dark(var(--sidebar-light), var(--sidebar-dark));
-        --sidebar-foreground: light-dark(var(--sidebar-foreground-light), var(--sidebar-foreground-dark));
-        --sidebar-primary: light-dark(var(--sidebar-primary-light), var(--sidebar-primary-dark));
-        --sidebar-primary-foreground: light-dark(var(--sidebar-primary-foreground-light), var(--sidebar-primary-foreground-dark));
-        --sidebar-accent: light-dark(var(--sidebar-accent-light), var(--sidebar-accent-dark));
-        --sidebar-accent-foreground: light-dark(var(--sidebar-accent-foreground-light), var(--sidebar-accent-foreground-dark));
-        --sidebar-border: light-dark(var(--sidebar-border-light), var(--sidebar-border-dark));
-        --sidebar-ring: light-dark(var(--sidebar-ring-light), var(--sidebar-ring-dark));
+        --sidebar-foreground: light-dark(
+            var(--sidebar-foreground-light),
+            var(--sidebar-foreground-dark)
+        );
+        --sidebar-primary: light-dark(
+            var(--sidebar-primary-light),
+            var(--sidebar-primary-dark)
+        );
+        --sidebar-primary-foreground: light-dark(
+            var(--sidebar-primary-foreground-light),
+            var(--sidebar-primary-foreground-dark)
+        );
+        --sidebar-accent: light-dark(
+            var(--sidebar-accent-light),
+            var(--sidebar-accent-dark)
+        );
+        --sidebar-accent-foreground: light-dark(
+            var(--sidebar-accent-foreground-light),
+            var(--sidebar-accent-foreground-dark)
+        );
+        --sidebar-border: light-dark(
+            var(--sidebar-border-light),
+            var(--sidebar-border-dark)
+        );
+        --sidebar-ring: light-dark(
+            var(--sidebar-ring-light),
+            var(--sidebar-ring-dark)
+        );
     }
 }
 
@@ -390,22 +468,28 @@
 
     /* Everything you can click shows a hand; disabled controls show a "not allowed" sign. */
     :where(
-            button,
-            [role='button'],
-            [role='tab'],
-            [role='menuitem'],
-            [role='menuitemcheckbox'],
-            [role='menuitemradio'],
-            [role='option'],
-            [role='switch'],
-            [role='checkbox'],
-            [role='radio'],
-            [role='combobox'],
-            summary,
-            label[for],
-            select,
-            input:is([type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='range'])
-        ) {
+        button,
+        [role='button'],
+        [role='tab'],
+        [role='menuitem'],
+        [role='menuitemcheckbox'],
+        [role='menuitemradio'],
+        [role='option'],
+        [role='switch'],
+        [role='checkbox'],
+        [role='radio'],
+        [role='combobox'],
+        summary,
+        label[for],
+        select,
+        input:is(
+            [type='checkbox'],
+            [type='radio'],
+            [type='color'],
+            [type='file'],
+            [type='range']
+        )
+    ) {
         cursor: pointer;
     }
 
@@ -414,10 +498,10 @@
     }
 
     :where(
-            :disabled,
-            [aria-disabled='true'],
-            [data-disabled]:not([data-disabled='false'])
-        ) {
+        :disabled,
+        [aria-disabled='true'],
+        [data-disabled]:not([data-disabled='false'])
+    ) {
         cursor: not-allowed;
     }
 
@@ -426,7 +510,15 @@
     }
 
     /* A clear ring for keyboard focus on controls that do not draw their own. */
-    :where(a[href], button, summary, [role='button'], [role='tab'], [role='option'], [tabindex]:not([tabindex='-1'])):focus-visible {
+    :where(
+        a[href],
+        button,
+        summary,
+        [role='button'],
+        [role='tab'],
+        [role='option'],
+        [tabindex]:not([tabindex='-1'])
+    ):focus-visible {
         outline: 2px solid var(--ring);
         outline-offset: 2px;
     }
@@ -670,11 +762,18 @@ dialog.verso-dialog::backdrop {
     }
 }
 
-:where(.dark) :where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content'])::backdrop {
+:where(.dark)
+    :where(
+        dialog[data-slot='dialog-content'],
+        dialog[data-slot='sheet-content']
+    )::backdrop {
     background-color: rgb(0 0 0 / 0.6);
 }
 
-:where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content'])[data-state='open']::backdrop {
+:where(
+        dialog[data-slot='dialog-content'],
+        dialog[data-slot='sheet-content']
+    )[data-state='open']::backdrop {
     @starting-style {
         background-color: transparent;
     }
@@ -730,7 +829,10 @@ dialog.verso-dialog::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    :where(dialog[data-slot='dialog-content'], dialog[data-slot='sheet-content']),
+    :where(
+        dialog[data-slot='dialog-content'],
+        dialog[data-slot='sheet-content']
+    ),
     :where(dialog[data-slot='sheet-content'])[data-state='closed'] {
         transition-duration: 100ms;
     }

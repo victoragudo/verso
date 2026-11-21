@@ -34,39 +34,41 @@ registerEasySlots();
 loadPluginModules();
 
 // The strings of the admin language load before the first render.
-void bootI18n().then(() => createInertiaApp({
-    title: pageTitle,
-    // LocaleBoundary comes first, so a language change renders the page again.
-    layout: (name) => {
-        switch (true) {
-            case name.startsWith('install/'):
-            case FULL_SCREEN_PAGES.includes(name):
-                return LocaleBoundary;
-            case name.startsWith('auth/'):
-                return [LocaleBoundary, AuthLayout];
-            case WORKSPACE_PAGES.includes(name):
-                return [LocaleBoundary, WorkspaceLayout];
-            case name.startsWith('settings/'):
-                return [LocaleBoundary, AppLayout, SettingsLayout];
-            default:
-                return [LocaleBoundary, AppLayout];
-        }
-    },
-    strictMode: true,
-    withApp(app) {
-        return (
-            <I18nRoot>
-                <TooltipProvider delayDuration={0}>
-                    {app}
-                    <Toaster />
-                </TooltipProvider>
-            </I18nRoot>
-        );
-    },
-    progress: {
-        color: '#4B5563',
-    },
-}));
+void bootI18n().then(() =>
+    createInertiaApp({
+        title: pageTitle,
+        // LocaleBoundary comes first, so a language change renders the page again.
+        layout: (name) => {
+            switch (true) {
+                case name.startsWith('install/'):
+                case FULL_SCREEN_PAGES.includes(name):
+                    return LocaleBoundary;
+                case name.startsWith('auth/'):
+                    return [LocaleBoundary, AuthLayout];
+                case WORKSPACE_PAGES.includes(name):
+                    return [LocaleBoundary, WorkspaceLayout];
+                case name.startsWith('settings/'):
+                    return [LocaleBoundary, AppLayout, SettingsLayout];
+                default:
+                    return [LocaleBoundary, AppLayout];
+            }
+        },
+        strictMode: true,
+        withApp(app) {
+            return (
+                <I18nRoot>
+                    <TooltipProvider delayDuration={0}>
+                        {app}
+                        <Toaster />
+                    </TooltipProvider>
+                </I18nRoot>
+            );
+        },
+        progress: {
+            color: '#4B5563',
+        },
+    }),
+);
 
 // This will set light / dark mode on load...
 initializeTheme();

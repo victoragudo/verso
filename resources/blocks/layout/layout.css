@@ -2,46 +2,130 @@
 .verso-grid {
     --verso-grid-min: 16rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--verso-grid-min), 100%), 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(var(--verso-grid-min), 100%), 1fr)
+    );
     gap: var(--verso-spacing-large, 1.5rem);
 }
-.verso-grid > * { min-inline-size: 0; margin-block: 0; }
-.verso-grid--min-8 { --verso-grid-min: 8rem; }
-.verso-grid--min-10 { --verso-grid-min: 10rem; }
-.verso-grid--min-12 { --verso-grid-min: 12rem; }
-.verso-grid--min-14 { --verso-grid-min: 14rem; }
-.verso-grid--min-16 { --verso-grid-min: 16rem; }
-.verso-grid--min-18 { --verso-grid-min: 18rem; }
-.verso-grid--min-20 { --verso-grid-min: 20rem; }
-.verso-grid--min-24 { --verso-grid-min: 24rem; }
-.verso-grid--min-28 { --verso-grid-min: 28rem; }
-.verso-grid--min-32 { --verso-grid-min: 32rem; }
-.verso-grid--gap-0 { gap: 0; }
-.verso-grid--gap-0_5 { gap: 0.5rem; }
-.verso-grid--gap-1 { gap: 1rem; }
-.verso-grid--gap-1_5 { gap: 1.5rem; }
-.verso-grid--gap-2 { gap: 2rem; }
-.verso-grid--gap-3 { gap: 3rem; }
+.verso-grid > * {
+    min-inline-size: 0;
+    margin-block: 0;
+}
+.verso-grid--min-8 {
+    --verso-grid-min: 8rem;
+}
+.verso-grid--min-10 {
+    --verso-grid-min: 10rem;
+}
+.verso-grid--min-12 {
+    --verso-grid-min: 12rem;
+}
+.verso-grid--min-14 {
+    --verso-grid-min: 14rem;
+}
+.verso-grid--min-16 {
+    --verso-grid-min: 16rem;
+}
+.verso-grid--min-18 {
+    --verso-grid-min: 18rem;
+}
+.verso-grid--min-20 {
+    --verso-grid-min: 20rem;
+}
+.verso-grid--min-24 {
+    --verso-grid-min: 24rem;
+}
+.verso-grid--min-28 {
+    --verso-grid-min: 28rem;
+}
+.verso-grid--min-32 {
+    --verso-grid-min: 32rem;
+}
+.verso-grid--gap-0 {
+    gap: 0;
+}
+.verso-grid--gap-0_5 {
+    gap: 0.5rem;
+}
+.verso-grid--gap-1 {
+    gap: 1rem;
+}
+.verso-grid--gap-1_5 {
+    gap: 1.5rem;
+}
+.verso-grid--gap-2 {
+    gap: 2rem;
+}
+.verso-grid--gap-3 {
+    gap: 3rem;
+}
 
-.verso-stack { display: flex; flex-wrap: wrap; }
-.verso-stack > * { margin-block: 0; }
-.verso-stack--vertical { flex-direction: column; }
-.verso-stack--horizontal { flex-direction: row; align-items: center; }
-.verso-stack--nowrap { flex-wrap: nowrap; }
-.verso-stack--space-none { gap: 0; }
-.verso-stack--space-small { gap: var(--verso-spacing-small, 0.5rem); }
-.verso-stack--space-medium { gap: var(--verso-spacing-medium, 1rem); }
-.verso-stack--space-large { gap: var(--verso-spacing-large, 1.5rem); }
+.verso-stack {
+    display: flex;
+    flex-wrap: wrap;
+}
+.verso-stack > * {
+    margin-block: 0;
+}
+.verso-stack--vertical {
+    flex-direction: column;
+}
+.verso-stack--horizontal {
+    flex-direction: row;
+    align-items: center;
+}
+.verso-stack--nowrap {
+    flex-wrap: nowrap;
+}
+.verso-stack--space-none {
+    gap: 0;
+}
+.verso-stack--space-small {
+    gap: var(--verso-spacing-small, 0.5rem);
+}
+.verso-stack--space-medium {
+    gap: var(--verso-spacing-medium, 1rem);
+}
+.verso-stack--space-large {
+    gap: var(--verso-spacing-large, 1.5rem);
+}
 
-.verso-spacer { block-size: var(--verso-spacing-large, 1.5rem); }
-.verso-spacer--small { block-size: var(--verso-spacing-small, 0.5rem); }
-.verso-spacer--large { block-size: var(--verso-spacing-x-large, 3rem); }
-.verso-spacer--x-large { block-size: calc(var(--verso-spacing-x-large, 3rem) * 2); }
+.verso-spacer {
+    block-size: var(--verso-spacing-large, 1.5rem);
+}
+.verso-spacer--small {
+    block-size: var(--verso-spacing-small, 0.5rem);
+}
+.verso-spacer--large {
+    block-size: var(--verso-spacing-x-large, 3rem);
+}
+.verso-spacer--x-large {
+    block-size: calc(var(--verso-spacing-x-large, 3rem) * 2);
+}
 
-.verso-shape { display: block; line-height: 0; color: var(--verso-color-background, #fff); }
-.verso-shape svg { display: block; inline-size: 100%; block-size: 4rem; }
-.verso-shape--small svg { block-size: 2rem; }
-.verso-shape--large svg { block-size: 7rem; }
-.verso-shape--flip svg { transform: scaleX(-1); }
-.verso-shape--upside-down svg { transform: scaleY(-1); }
-.verso-shape--flip.verso-shape--upside-down svg { transform: scale(-1, -1); }
+.verso-shape {
+    display: block;
+    line-height: 0;
+    color: var(--verso-color-background, #fff);
+}
+.verso-shape svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 4rem;
+}
+.verso-shape--small svg {
+    block-size: 2rem;
+}
+.verso-shape--large svg {
+    block-size: 7rem;
+}
+.verso-shape--flip svg {
+    transform: scaleX(-1);
+}
+.verso-shape--upside-down svg {
+    transform: scaleY(-1);
+}
+.verso-shape--flip.verso-shape--upside-down svg {
+    transform: scale(-1, -1);
+}
