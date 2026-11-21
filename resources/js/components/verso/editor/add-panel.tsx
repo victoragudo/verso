@@ -193,7 +193,7 @@ export function AddPanel({ types, patterns, editor, onInsert }: Props) {
                 <div
                     role="group"
                     aria-label={t('What to add')}
-                    className="flex gap-1 rounded-md bg-muted p-1"
+                    className="grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] gap-1 rounded-md bg-muted p-1"
                 >
                     {sources.map((item) => (
                         <button
@@ -201,7 +201,7 @@ export function AddPanel({ types, patterns, editor, onInsert }: Props) {
                             type="button"
                             aria-pressed={item.name === source?.name}
                             onClick={() => setSourceName(item.name)}
-                            className="flex-1 rounded px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-background aria-pressed:text-foreground aria-pressed:shadow-xs"
+                            className="min-w-0 truncate rounded px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-background aria-pressed:text-foreground aria-pressed:shadow-xs"
                         >
                             {t(item.label)}
                         </button>
@@ -248,7 +248,7 @@ export function AddPanel({ types, patterns, editor, onInsert }: Props) {
                             >
                                 {t('Recently used')}
                             </h3>
-                            <ul className="grid grid-cols-3 gap-1">
+                            <ul className="grid grid-cols-[repeat(auto-fill,minmax(5rem,1fr))] gap-1">
                                 {recentItems.map(renderItem)}
                             </ul>
                         </section>
@@ -265,7 +265,7 @@ export function AddPanel({ types, patterns, editor, onInsert }: Props) {
                         >
                             {t(group.label)}
                         </h3>
-                        <ul className="grid grid-cols-3 gap-1">
+                        <ul className="grid grid-cols-[repeat(auto-fill,minmax(5rem,1fr))] gap-1">
                             {group.items.map(renderItem)}
                         </ul>
                     </section>

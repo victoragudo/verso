@@ -2416,6 +2416,7 @@
     "Reset {role} to its defaults?": "¿Restablecer {role} a sus valores predeterminados?",
     "Resize the editor and the preview": "Cambiar el tamaño del editor y de la vista previa",
     "Resize the menu. Use the arrow keys, or double click to reset.": "Cambia el ancho del menú. Usa las flechas o haz doble clic para restablecerlo.",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "Cambia el ancho del panel. Usa las flechas o haz doble clic para restablecerlo.",
     "Restaurant or cafe": "Restaurante o cafetería",
     "Restore": "Restaurar",
     "Restore original": "Restaurar original",

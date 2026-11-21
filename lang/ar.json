@@ -2416,6 +2416,7 @@
     "Reset {role} to its defaults?": "هل تريد إعادة تعيين {role} إلى الإعدادات الافتراضية؟",
     "Resize the editor and the preview": "تغيير حجم المحرر والمعاينة",
     "Resize the menu. Use the arrow keys, or double click to reset.": "غيّر عرض القائمة. استخدم مفاتيح الأسهم، أو انقر نقرًا مزدوجًا لإعادة الضبط.",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "غيّر عرض اللوحة. استخدم مفاتيح الأسهم، أو انقر نقرًا مزدوجًا لإعادة الضبط.",
     "Restaurant or cafe": "مطعم أو مقهى",
     "Restore": "استعادة",
     "Restore original": "استعادة الأصل",

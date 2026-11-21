@@ -2416,6 +2416,7 @@
     "Reset {role} to its defaults?": "Сбросить роль «{role}» к значениям по умолчанию?",
     "Resize the editor and the preview": "Изменить размер редактора и предпросмотра",
     "Resize the menu. Use the arrow keys, or double click to reset.": "Измените ширину меню. Используйте клавиши со стрелками или дважды щёлкните, чтобы сбросить.",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "Измените ширину панели. Используйте клавиши со стрелками или дважды щёлкните, чтобы сбросить.",
     "Restaurant or cafe": "Ресторан или кафе",
     "Restore": "Восстановить",
     "Restore original": "Восстановить оригинал",

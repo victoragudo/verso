@@ -2416,6 +2416,7 @@
     "Reset {role} to its defaults?": "将{role}恢复为默认设置？",
     "Resize the editor and the preview": "调整编辑器和预览的大小",
     "Resize the menu. Use the arrow keys, or double click to reset.": "调整菜单宽度。使用方向键，或双击恢复默认。",
+    "Resize the panel. Use the arrow keys, or double click to reset.": "调整面板宽度。使用方向键，或双击恢复默认。",
     "Restaurant or cafe": "餐厅或咖啡馆",
     "Restore": "恢复",
     "Restore original": "恢复原始版本",
