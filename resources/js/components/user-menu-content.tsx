@@ -1,14 +1,13 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import { LogOut, Settings } from 'lucide-react';
 import {
-    DropdownMenuCheckboxItem,
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { UserInfo } from '@/components/user-info';
-import { saveSimpleMode } from '@/components/verso/easy/simple-mode-switch';
+import { AdminModeMenu } from '@/components/verso/easy/admin-mode-menu';
 import { LanguageMenu } from '@/components/verso/i18n/language-menu';
 import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
 import { t } from '@/lib/i18n';
@@ -40,38 +39,30 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                     <Link
-                        className="block w-full cursor-pointer"
+                        className="w-full cursor-pointer"
                         href={edit()}
                         prefetch
                         onClick={cleanup}
                     >
-                        <Settings className="me-2" />
+                        <Settings aria-hidden="true" />
                         {t('Settings')}
                     </Link>
                 </DropdownMenuItem>
                 {simpleMode != null && (
-                    <DropdownMenuCheckboxItem
-                        checked={simpleMode}
-                        onCheckedChange={(checked) =>
-                            saveSimpleMode(checked === true)
-                        }
-                        className="min-h-10 md:min-h-8"
-                    >
-                        {t('Simple mode')}
-                    </DropdownMenuCheckboxItem>
+                    <AdminModeMenu simpleMode={simpleMode} />
                 )}
                 <LanguageMenu />
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
                 <Link
-                    className="block w-full cursor-pointer"
+                    className="w-full cursor-pointer"
                     href={logout()}
                     as="button"
                     onClick={handleLogout}
                     data-test="logout-button"
                 >
-                    <LogOut className="me-2" />
+                    <LogOut aria-hidden="true" />
                     {t('Log out')}
                 </Link>
             </DropdownMenuItem>
