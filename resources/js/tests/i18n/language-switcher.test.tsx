@@ -213,7 +213,9 @@ describe('I18nRoot', () => {
         // The switch redirects back to the same URL: Inertia fires "success" but no "navigate".
         act(() => {
             fireRouterEvent('success', {
-                page: { props: { i18n: i18nProps({ locale: 'en', bundle: null }) } },
+                page: {
+                    props: { i18n: i18nProps({ locale: 'en', bundle: null }) },
+                },
             });
         });
 
