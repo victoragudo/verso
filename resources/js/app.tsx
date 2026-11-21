@@ -2,6 +2,7 @@ import { createInertiaApp } from '@inertiajs/react';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { I18nRoot } from '@/components/verso/i18n/i18n-root';
+import { LocaleBoundary } from '@/components/verso/i18n/locale-boundary';
 import { registerEasySlots } from '@/components/verso/easy/slots';
 import { loadPluginModules, registerCoreSlots } from '@/components/verso/slots';
 import { initializeTheme } from '@/hooks/use-appearance';
@@ -35,20 +36,20 @@ loadPluginModules();
 // The strings of the admin language load before the first render.
 void bootI18n().then(() => createInertiaApp({
     title: pageTitle,
+    // LocaleBoundary comes first, so a language change renders the page again.
     layout: (name) => {
         switch (true) {
             case name.startsWith('install/'):
-                return undefined;
-            case name.startsWith('auth/'):
-                return AuthLayout;
             case FULL_SCREEN_PAGES.includes(name):
-                return null;
+                return LocaleBoundary;
+            case name.startsWith('auth/'):
+                return [LocaleBoundary, AuthLayout];
             case WORKSPACE_PAGES.includes(name):
-                return WorkspaceLayout;
+                return [LocaleBoundary, WorkspaceLayout];
             case name.startsWith('settings/'):
-                return [AppLayout, SettingsLayout];
+                return [LocaleBoundary, AppLayout, SettingsLayout];
             default:
-                return AppLayout;
+                return [LocaleBoundary, AppLayout];
         }
     },
     strictMode: true,
