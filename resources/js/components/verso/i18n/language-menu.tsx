@@ -23,7 +23,7 @@ export function LanguageMenu() {
     return (
         <DropdownMenuSub>
             <DropdownMenuSubTrigger disabled={saving}>
-                <Languages className="me-2 size-4" aria-hidden="true" />
+                <Languages aria-hidden="true" />
                 <span className="flex-1">{t('Language')}</span>
                 <span className="ms-2 truncate text-xs text-muted-foreground">
                     {currentName}

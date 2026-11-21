@@ -206,16 +206,22 @@ describe('the account menu', () => {
         );
     }
 
-    it('has a simple mode item that shows all tools when turned off', async () => {
+    it('shows the admin mode and switches to advanced mode', async () => {
         setPageProps({ simpleMode: true });
         renderMenu();
 
-        const item = screen.getByRole('menuitemcheckbox', {
+        const trigger = screen.getByRole('menuitem', { name: /Admin mode/ });
+        expect(trigger).toHaveTextContent('Simple');
+
+        await userEvent.click(trigger);
+        const simple = await screen.findByRole('menuitemradio', {
             name: 'Simple mode',
         });
-        expect(item).toHaveAttribute('aria-checked', 'true');
+        expect(simple).toHaveAttribute('aria-checked', 'true');
 
-        await userEvent.click(item);
+        await userEvent.click(
+            screen.getByRole('menuitemradio', { name: 'Advanced mode' }),
+        );
 
         expect(router.put).toHaveBeenCalledWith(
             '/admin/easy/simple-mode',
@@ -224,10 +230,21 @@ describe('the account menu', () => {
         );
     });
 
-    it('has no simple mode item outside the admin', () => {
+    it('names advanced mode when simple mode is off', () => {
+        setPageProps({ simpleMode: false });
         renderMenu();
 
-        expect(screen.queryByRole('menuitemcheckbox')).toBeNull();
+        expect(
+            screen.getByRole('menuitem', { name: /Admin mode/ }),
+        ).toHaveTextContent('Advanced');
+    });
+
+    it('has no admin mode item outside the admin', () => {
+        renderMenu();
+
+        expect(
+            screen.queryByRole('menuitem', { name: /Admin mode/ }),
+        ).toBeNull();
     });
 });
 
