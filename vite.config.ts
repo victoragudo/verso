@@ -44,6 +44,8 @@ export default defineConfig({
             'resources/js/components/ui/*',
             'resources/js/routes/**',
             'resources/js/wayfinder/**',
+            // Fixture plugins hold sample code that the tests look at on purpose.
+            'tests/Fixtures/**',
         ],
         options: {
             denyWarnings: true,
