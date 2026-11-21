@@ -31,6 +31,9 @@
         "legal": "Legal links"
     },
     "parts": {
+        "author-box": {
+            "label": "Author box"
+        },
         "header": {
             "label": "Header",
             "default": "classic",

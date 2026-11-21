@@ -84,6 +84,22 @@ class CapabilityRegistry
         return $all;
     }
 
+    /**
+     * The label of every capability in the admin language, keyed by capability.
+     *
+     * @return array<string, string>
+     */
+    public function labels(): array
+    {
+        $labels = [];
+
+        foreach ($this->all() as $definition) {
+            $labels[$definition->key] = $definition->displayLabel();
+        }
+
+        return $labels;
+    }
+
     /** @return list<string> */
     public function keys(): array
     {

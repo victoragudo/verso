@@ -20,7 +20,7 @@ final readonly class DashboardPanel
         public string $label,
         public Closure $items,
         public string $icon = 'dot',
-        public string $emptyText = 'Nothing here yet.',
+        public string $emptyText = '',
         public int $order = 100,
         public Capability|string|Closure|null $capability = null,
         public ?string $route = null,
@@ -44,7 +44,7 @@ final readonly class DashboardPanel
             'key' => $this->key,
             'label' => Translate::text($this->label, plugin: $this->plugin),
             'icon' => $this->icon,
-            'emptyText' => Translate::text($this->emptyText, plugin: $this->plugin),
+            'emptyText' => $this->emptyText === '' ? __('Nothing here yet.') : Translate::text($this->emptyText, plugin: $this->plugin),
             'href' => $this->route === null ? null : route($this->route, $this->parameters, false),
             'items' => ($this->items)($user),
         ];

@@ -102,7 +102,7 @@ class SiteEditorController extends Controller
         $key = $this->partKey($theme, $part);
         $this->store->publish($theme->slug, $key, $this->validatedBlocks($request, $theme, $key), $request->user()?->id);
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => __(':part published. Visitors see it now.', ['part' => $this->defaults->label($key, $this->parts->available($theme))])]);
+        Inertia::flash('toast', ['type' => 'success', 'message' => __(':part published. Visitors see it now.', ['part' => $this->defaults->label($theme, $key, $this->parts->available($theme))])]);
 
         return back();
     }
@@ -116,7 +116,7 @@ class SiteEditorController extends Controller
         $key = $this->partKey($theme, $part);
         $this->store->restoreDefault($theme->slug, $key);
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => __(':part is back to the theme original.', ['part' => $this->defaults->label($key, $this->parts->available($theme))])]);
+        Inertia::flash('toast', ['type' => 'success', 'message' => __(':part is back to the theme original.', ['part' => $this->defaults->label($theme, $key, $this->parts->available($theme))])]);
 
         return to_route('admin.site-editor.edit', $key);
     }
@@ -340,7 +340,7 @@ class SiteEditorController extends Controller
 
         return [
             'key' => $key,
-            'label' => $this->defaults->label($key, $this->parts->available($this->themes->active())),
+            'label' => $this->defaults->label($this->themes->active(), $key, $this->parts->available($this->themes->active())),
             'status' => $status,
             'editedAt' => $sitePart?->updated_at?->toIso8601String(),
             'revisions' => (int) ($sitePart->revisions_count ?? ($sitePart?->revisions()->count() ?? 0)),

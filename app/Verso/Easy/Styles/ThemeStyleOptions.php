@@ -53,6 +53,14 @@ class ThemeStyleOptions
             : $this->fontPairs->text($pair->key, $pair->label);
     }
 
+    // The sample line of a font pair in the admin language.
+    public function fontPairSample(Theme $theme, FontPair $pair): string
+    {
+        return isset($this->themeList($theme, 'fontPairs')[$pair->key])
+            ? $this->themeText->text($theme, $pair->sample)
+            : $this->fontPairs->text($pair->key, $pair->sample);
+    }
+
     /**
      * Presets for this theme: the registry ones plus the theme.json ones (easy.presets), with only the tokens the theme accepts.
      *

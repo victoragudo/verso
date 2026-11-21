@@ -40,15 +40,15 @@ class ChildThemeFromChanges
     public function slugProblem(string $slug): ?string
     {
         if (preg_match(ThemeManager::SLUG_PATTERN, $slug) !== 1) {
-            return 'Use lowercase letters, numbers and dashes for the folder name.';
+            return __('Use lowercase letters, numbers and dashes for the folder name.');
         }
 
         if ($this->files->exists($this->folder($slug)) || $this->themes->exists($slug)) {
-            return 'A theme with this folder name already exists.';
+            return __('A theme with this folder name already exists.');
         }
 
         if (! $this->files->isWritable($this->themes->basePath())) {
-            return 'The themes folder cannot be written. Check its permissions.';
+            return __('The themes folder cannot be written. Check its permissions.');
         }
 
         return null;

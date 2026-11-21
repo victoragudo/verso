@@ -3,6 +3,7 @@
 namespace App\Verso\Extensions\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Verso\Access\Capabilities\CapabilityRegistry;
 use App\Verso\Core\Enums\Capability;
 use App\Verso\Extensions\Actions\StageRegistryPackage;
 use App\Verso\Extensions\Actions\VerifyStagedPackage;
@@ -22,6 +23,8 @@ use Inertia\Response;
 // Admin pages to upload, browse, review, install and remove plugins and themes.
 class ExtensionController extends Controller
 {
+    public function __construct(protected CapabilityRegistry $capabilities) {}
+
     // The old extensions page is now part of Plugins and themes. Old links still work.
     public function index(Request $request): RedirectResponse
     {
@@ -92,7 +95,7 @@ class ExtensionController extends Controller
 
         return Inertia::render('admin/extensions/review', [
             'staged' => $staged->toArray(),
-            'capabilities' => Capability::labels(),
+            'capabilities' => $this->capabilities->labels(),
             'verification' => $verification->toReportArray(),
             'blockHighRisk' => $settings->blocksHighRisk(),
         ]);

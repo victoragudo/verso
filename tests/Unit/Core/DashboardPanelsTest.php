@@ -58,3 +58,11 @@ it('replaces a panel with the same key', function () {
     expect($panels)->toHaveCount(1)
         ->and($panels[0]['label'])->toBe('Latest writing');
 });
+
+it('shows a translated empty text when a panel sets none', function () {
+    app()->setLocale('es');
+    $dashboard = new Dashboard;
+    $dashboard->addPanel(new DashboardPanel(key: 'drafts', label: 'Recent entries', items: fn (User $user) => []));
+
+    expect($dashboard->panelsFor(User::factory()->make(['role' => Role::Admin]))[0]['emptyText'])->toBe('Aún no hay nada aquí.');
+});

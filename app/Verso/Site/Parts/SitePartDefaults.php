@@ -2,6 +2,8 @@
 
 namespace App\Verso\Site\Parts;
 
+use App\Verso\Theme\Support\ThemeText;
+use App\Verso\Theme\Templates\PartVariants;
 use App\Verso\Theme\Theme;
 use App\Verso\Theme\ThemeManager;
 use Illuminate\Support\Str;
@@ -13,7 +15,11 @@ class SitePartDefaults
     // Folder of the starter block files inside a theme.
     public const FOLDER = 'parts';
 
-    public function __construct(protected ThemeManager $themes) {}
+    public function __construct(
+        protected ThemeManager $themes,
+        protected PartVariants $variants,
+        protected ThemeText $text,
+    ) {}
 
     /**
      * @return list<array<string, mixed>>
@@ -31,20 +37,45 @@ class SitePartDefaults
     }
 
     /**
-     * A friendly name for a part key: "header" is "Header", "footer-minimal" is "Footer: Minimal"
-     * when the theme also has "footer", and "author-box" is "Author Box".
+     * The name of a part in the admin language. It uses the labels in theme.json ("parts"), so
+     * "header-centered" is "Header: Centered". Without a label, "author-box" is "Author box".
      *
      * @param  list<string>  $available  part keys of the theme
      */
-    public function label(string $key, array $available = []): string
+    public function label(Theme $theme, string $key, array $available = []): string
     {
+        foreach ($this->variants->definitions($theme) as $name => $definition) {
+            foreach ($definition['variants'] as $variant) {
+                if ($variant['part'] === $key) {
+                    return $key === $name ? $definition['label'] : $this->joined($definition['label'], $variant['label']);
+                }
+            }
+        }
+
+        $own = $theme->parts[$key]['label'] ?? null;
+
+        if (is_string($own) && $own !== '') {
+            return $this->text->text($theme, $own);
+        }
+
         $name = Str::before($key, '-');
 
         if ($name !== $key && in_array($name, $available, true)) {
-            return Str::headline($name).': '.Str::headline(Str::after($key, '-'));
+            return $this->joined($this->plain($theme, $name), $this->plain($theme, Str::after($key, '-')));
         }
 
-        return Str::headline($key);
+        return $this->plain($theme, $key);
+    }
+
+    // "footer-minimal" as "Footer minimal", translated when a theme or the core has the text.
+    protected function plain(Theme $theme, string $key): string
+    {
+        return $this->text->text($theme, Str::ucfirst(str_replace('-', ' ', $key)));
+    }
+
+    protected function joined(string $part, string $variant): string
+    {
+        return __(':part: :variant', ['part' => $part, 'variant' => $variant]);
     }
 
     /**

@@ -67,6 +67,22 @@ it('finds help topic summaries and steps in PHP', function () {
     expect($this->extractor->fromPhpLabels($code))->toBe(['Upload photos', 'Keep your pictures in one place.', 'Open Photos and files.', 'Drop your pictures on the page.']);
 });
 
+it('finds font pair samples in PHP', function () {
+    $code = <<<'PHP'
+        new FontPair(key: 'classic', label: 'Classic', heading: 'georgia', body: 'charter', sample: 'Fresh bread every morning.');
+        PHP;
+
+    expect($this->extractor->fromPhpLabels($code))->toBe(['Classic', 'Fresh bread every morning.']);
+});
+
+it('finds menu location labels in PHP', function () {
+    $code = <<<'PHP'
+        'menus' => ['locations' => ['primary' => 'Primary menu', 'footer' => 'Footer menu', 'side' => $label]],
+        PHP;
+
+    expect($this->extractor->fromPhpLabels($code))->toBe(['Primary menu', 'Footer menu']);
+});
+
 it('skips sample site content between ignore lines', function () {
     $code = <<<'PHP'
         new StarterSite(key: 'restaurant', label: 'Restaurant or cafe', description: 'Your menu and opening hours.',
@@ -118,4 +134,10 @@ it('writes English catalogs and reports missing translations', function () {
         ->and(JsonFile::read($base.'/lang/es.json'))->toBe(['Drafts' => 'Borradores']);
 
     File::deleteDirectory($base);
+});
+
+it('reads TypeScript files whose names contain a skipped folder name', function () {
+    expect($this->extractor->extract())
+        ->toHaveKey('Customization file to import')
+        ->toHaveKey('Row actions');
 });

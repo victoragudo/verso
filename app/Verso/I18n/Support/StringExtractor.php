@@ -15,13 +15,16 @@ class StringExtractor
     protected const PHP_CALL = '/(?<![\w>$])(?:__|trans|trans_choice|@lang|Lang::get|Lang::choice|Translate::text|Translate::icu)\(\s*(?:\'((?:[^\'\\\\]|\\\\.)*)\'|"((?:[^"\\\\$]|\\\\.)*)")/s';
 
     // Labels of registries that are translated when they are shown: label: '...', 'label' => '...'.
-    protected const PHP_LABEL = '/(?<![\w$>])\'?(label|pluralLabel|singularLabel|description|title|summary|section|hint|help|placeholder|message|group_label|empty|emptyText|action)\'?\s*(?::|=>)\s*\'((?:[^\'\\\\]|\\\\.)+)\'/';
+    protected const PHP_LABEL = '/(?<![\w$>])\'?(label|pluralLabel|singularLabel|description|title|summary|section|hint|help|placeholder|message|group_label|empty|emptyText|action|sample)\'?\s*(?::|=>)\s*\'((?:[^\'\\\\]|\\\\.)+)\'/';
 
     // Positional labels: new ConfigParameter('key', $group, 'Label', 'Description' ...) and new ConfigGroup(key, 'Label', 'Description' ...).
     protected const PHP_POSITIONAL = '/new\s+(?:ConfigParameter\(\s*\'[^\']*\'\s*,\s*[^,]+|ConfigGroup\(\s*[^,]+)\s*,\s*\'((?:[^\'\\\\]|\\\\.)*)\'\s*,\s*\'((?:[^\'\\\\]|\\\\.)*)\'/';
 
     // Lists of words or steps, like keywords: [...] and 'steps' => [...].
     protected const PHP_KEYWORDS = '/\'?(?:keywords|steps)\'?\s*(?::|=>)\s*\[([^\]]*)\]/';
+
+    // Maps of name => label, like the menu locations in config/verso.php.
+    protected const PHP_LABEL_MAP = '/\'locations\'\s*=>\s*\[([^\]]*)\]/';
 
     // Sample site content between these lines is written in the site language, so its labels are not admin text.
     protected const PHP_CONTENT_BLOCK = '#//\s*i18n-ignore-start.*?//\s*i18n-ignore-end#s';
@@ -122,6 +125,18 @@ class StringExtractor
 
             foreach ($words[1] as $word) {
                 $keys[] = $this->unescapePhp($word);
+            }
+        }
+
+        preg_match_all(self::PHP_LABEL_MAP, $code, $maps, PREG_SET_ORDER);
+
+        foreach ($maps as $match) {
+            preg_match_all('/=>\s*\'((?:[^\'\\\\]|\\\\.)*)\'/', $match[1], $values);
+
+            foreach ($values[1] as $value) {
+                if ($this->looksLikeText($text = $this->unescapePhp($value))) {
+                    $keys[] = $text;
+                }
             }
         }
 
@@ -284,7 +299,7 @@ class StringExtractor
         $folders = array_filter([$this->basePath.'/resources/js', ...glob($this->basePath.'/plugins/*/resources/js') ?: []], is_dir(...));
 
         $finder = Finder::create()->files()->in($folders)->name(['*.ts', '*.tsx'])
-            ->notPath(['tests', 'actions', 'routes', 'wayfinder'])
+            ->notPath(['#(^|/)(tests|actions|routes|wayfinder)/#'])
             ->notName(['*.test.ts', '*.test.tsx', '*.d.ts']);
 
         foreach ($finder as $file) {
@@ -299,9 +314,11 @@ class StringExtractor
     {
         $folders = array_filter([
             $this->basePath.'/app',
+            $this->basePath.'/config',
             $this->basePath.'/routes',
             $this->basePath.'/resources/views',
             ...glob($this->basePath.'/plugins/*/src') ?: [],
+            ...glob($this->basePath.'/plugins/*/config') ?: [],
             ...glob($this->basePath.'/plugins/*/resources/views') ?: [],
             ...glob($this->basePath.'/plugins/*/routes') ?: [],
         ], is_dir(...));
