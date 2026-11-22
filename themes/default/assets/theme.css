@@ -146,7 +146,7 @@ a:hover {
 
 .skip-link {
     position: absolute;
-    left: 1rem;
+    inset-inline-start: 1rem;
     top: -4rem;
     padding: 0.5rem 1rem;
     background: var(--text);
@@ -454,7 +454,7 @@ article.entry--wide {
 
 .breadcrumbs li + li::before {
     content: '/';
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
     color: var(--muted);
 }
 
@@ -494,8 +494,8 @@ article.entry--wide {
 }
 
 .prose blockquote {
-    padding-left: 1.25rem;
-    border-left: 3px solid var(--accent);
+    padding-inline-start: 1.25rem;
+    border-inline-start: 3px solid var(--accent);
     color: var(--muted);
     font-style: italic;
 }
@@ -546,7 +546,7 @@ article.entry--wide {
 .prose td {
     padding: 0.5rem 0.75rem;
     border-bottom: 1px solid var(--border);
-    text-align: left;
+    text-align: start;
 }
 
 .prose mark {
@@ -654,7 +654,7 @@ article.entry--wide {
 .site-nav .verso-menu__list--depth-2 {
     position: absolute;
     top: 100%;
-    left: 0;
+    inset-inline-start: 0;
     z-index: 10;
     display: none;
     flex-direction: column;
@@ -668,7 +668,7 @@ article.entry--wide {
 
 .site-nav .verso-menu__list--depth-2 {
     top: 0;
-    left: 100%;
+    inset-inline-start: 100%;
 }
 
 .site-nav .verso-menu__item:hover > .verso-menu__list,
@@ -719,8 +719,8 @@ article.entry--wide {
 
 .verso-comment__replies {
     margin-top: 1.25rem;
-    padding-left: 1.25rem;
-    border-left: 2px solid var(--border);
+    padding-inline-start: 1.25rem;
+    border-inline-start: 2px solid var(--border);
 }
 
 .verso-comment {
