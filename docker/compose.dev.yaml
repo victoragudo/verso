@@ -1,0 +1,9 @@
+# For contributors: builds the image from this checkout instead of pulling it.
+# From the repository root:
+#   docker compose -f docker/compose.yaml -f docker/compose.dev.yaml up -d --build
+services:
+    verso:
+        image: verso:dev
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile
