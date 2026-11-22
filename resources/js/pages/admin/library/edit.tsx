@@ -1,6 +1,6 @@
 import type { RequestPayload } from '@inertiajs/core';
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { Trash2 } from 'lucide-react';
+import { Trash } from 'lucide-react';
 import { useId, useState } from 'react';
 import type { EditorManifest } from '@/builder';
 import { findBlock, replaceBlock } from '@/builder/tree';
@@ -211,7 +211,7 @@ export default function LibraryEdit({
                         variant="destructive"
                         onSelect={() => setConfirm(true)}
                     >
-                        <Trash2 aria-hidden="true" />
+                        <Trash aria-hidden="true" />
                         {t('Delete')}
                     </DropdownMenuItem>
                 }

@@ -1,4 +1,4 @@
-import { Save, Trash2, Undo2 } from 'lucide-react';
+import { Save, Trash, Undo2 } from 'lucide-react';
 import { useId, useState, useSyncExternalStore } from 'react';
 import { deletePreset, savePreset, stylePresets } from '@/builder/presets';
 import {
@@ -230,7 +230,7 @@ export function StylePresetsBar({ block, onChange, canEdit }: Props) {
                                 disabled={busy}
                                 onClick={() => void remove()}
                             >
-                                {preset.changed ? <Undo2 /> : <Trash2 />}
+                                {preset.changed ? <Undo2 /> : <Trash />}
                                 {preset.changed
                                     ? t('Back to original')
                                     : t('Delete preset')}

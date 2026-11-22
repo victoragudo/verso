@@ -1,4 +1,4 @@
-import { CheckCircle2, CircleAlert } from 'lucide-react';
+import { CheckCircle2, CircleExclamationPoint } from 'lucide-react';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, useId } from 'react';
 import PasswordInput from '@/components/password-input';
@@ -179,7 +179,7 @@ type ResultProps = { ok: boolean; title?: string; children: ReactNode };
 
 // The answer of a test button, read out by screen readers.
 export function ResultBox({ ok, title, children }: ResultProps) {
-    const Icon = ok ? CheckCircle2 : CircleAlert;
+    const Icon = ok ? CheckCircle2 : CircleExclamationPoint;
 
     return (
         <div

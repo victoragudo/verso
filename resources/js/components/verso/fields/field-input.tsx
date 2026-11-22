@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, Plus, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Plus, Trash } from 'lucide-react';
 import { useId } from 'react';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -525,7 +525,7 @@ export function RepeaterInput({
                                     )
                                 }
                             >
-                                <Trash2 />
+                                <Trash />
                             </Button>
                         </div>
                     </div>

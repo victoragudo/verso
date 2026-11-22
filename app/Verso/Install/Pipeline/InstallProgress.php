@@ -103,6 +103,31 @@ class InstallProgress
         return is_array($write) ? ['process' => (int) ($write['process'] ?? 0), 'at' => (int) ($write['at'] ?? 0)] : null;
     }
 
+    /**
+     * Remember the tables that were there before the first try at the migrations.
+     *
+     * @param  list<string>  $tables
+     */
+    public function rememberTablesBeforeMigrations(array $tables): void
+    {
+        $data = $this->read();
+        $data['tables_before_migrations'] = $tables;
+
+        $this->save($data);
+    }
+
+    /**
+     * The tables that were there before the first try at the migrations, or null before that try.
+     *
+     * @return list<string>|null
+     */
+    public function tablesBeforeMigrations(): ?array
+    {
+        $tables = $this->read()['tables_before_migrations'] ?? null;
+
+        return is_array($tables) ? array_values(array_map(strval(...), $tables)) : null;
+    }
+
     // Keep the hash of the one-time sign-in link for the new admin.
     public function rememberLogin(int $userId, string $nonce): void
     {

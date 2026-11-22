@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-import { Plus, RotateCcw, Search, Trash2 } from 'lucide-react';
+import { Plus, RotateCcw, Search, Trash } from 'lucide-react';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -288,7 +288,7 @@ export default function EntriesIndex({
                             className="text-destructive-foreground"
                             onClick={() => runBulk('trash')}
                         >
-                            <Trash2 />
+                            <Trash />
                             {t('Move to trash')}
                         </Button>
                     )}

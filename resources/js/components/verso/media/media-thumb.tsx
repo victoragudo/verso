@@ -1,10 +1,10 @@
-import { FileText, Film, Music } from 'lucide-react';
+import { FileText, Film, EighthNotes } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { MediaLibraryItem } from '@/types';
 
 const ICONS = {
     video: Film,
-    audio: Music,
+    audio: EighthNotes,
     document: FileText,
 };
 

@@ -256,3 +256,24 @@ it('answers 503 over the web while the server restarts, so the page asks again',
     $this->postJson('/install/run')->assertOk();
     $this->postJson('/install/run')->assertStatus(503)->assertJsonPath('message', 'The server is restarting with the new settings. Trying again...');
 });
+
+it('removes the tables a cut off migration left behind before it tries again', function () {
+    $this->pipeline->runNext($this->plan);
+    $this->pipeline->runNext($this->plan);
+
+    // The database had one table of its own before the install.
+    $schema = app('db')->connection()->getSchemaBuilder();
+    $schema->create('lisbon_markets', fn ($table) => $table->id());
+
+    // The first try records the tables, then the server stops it after "roles" was created.
+    app(InstallProgress::class)->rememberTablesBeforeMigrations($schema->getTableListing());
+    $schema->create('roles', fn ($table) => $table->id());
+    app(InstallProgress::class)->fail('migrations', 'The request was cut off.');
+
+    $status = $this->pipeline->runNext($this->plan);
+
+    expect($status->failed())->toBeFalse()
+        ->and(array_column($status->steps, 'status', 'key'))->toMatchArray(['migrations' => 'done'])
+        ->and($schema->hasTable('lisbon_markets'))->toBeTrue()
+        ->and($schema->hasColumn('roles', 'capabilities'))->toBeTrue();
+});

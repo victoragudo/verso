@@ -46,11 +46,10 @@ export function TopBar({
             <button
                 type="button"
                 onClick={onOpenSearch}
-                aria-label={t('Search admin pages')}
                 className="flex size-10 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground md:h-9 md:w-64 md:justify-start md:gap-2 md:border md:bg-background md:px-3 md:text-sm pointer-coarse:min-h-11"
             >
                 <VersoIcon name="search" size={18} className="shrink-0" />
-                <span className="hidden flex-1 text-start md:inline">
+                <span className="sr-only flex-1 text-start md:not-sr-only">
                     {t('Search pages')}
                 </span>
                 <kbd className="hidden rounded border bg-card px-1.5 py-0.5 font-sans text-[11px] font-medium md:inline">
