@@ -8,7 +8,7 @@ The public page of the project. Plain HTML, CSS and a small script: no build ste
 | --- | --- |
 | `index.html` | The page. |
 | `styles.css` | All styles. Container widths and the type scale change at 640, 768, 1024, 1280, 1600, 1920 and 2560 px. |
-| `main.js` | The tabs of the theme code card. Arrow keys move between tabs. |
+| `main.js` | The tabs of the install card and the theme code card. Arrow keys move between tabs. |
 | `favicon.svg` | The Verso mark. |
 | `assets/` | Screenshots in WebP. |
 

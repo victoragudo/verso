@@ -5,6 +5,7 @@
 - Requirements: PHP 8.4 or newer; SQLite, MySQL or PostgreSQL.
 - Stack: Laravel 13, Inertia 3, React 19, Tailwind 4, shadcn/ui, Tiptap, Blade themes.
 - Install: `composer create-project victoragudo/verso my-site`, or upload the release zip (dependencies included), then follow the web install wizard.
+- Try it with Docker (no PHP, Composer or Node.js): `curl -fsSL https://raw.githubusercontent.com/victoragudo/verso/main/docker/compose.yaml -o compose.yaml && docker compose up -d`, then open http://localhost:8000. The image is `ghcr.io/victoragudo/verso` (linux/amd64 and linux/arm64).
 - Updates: signed releases on GitHub; sites check daily and can update automatically.
 
 ## Docs
@@ -12,6 +13,7 @@
 - [Documentation index](https://github.com/victoragudo/verso/blob/main/docs/README.md): every guide in one list.
 - [Theme guide](https://github.com/victoragudo/verso/blob/main/docs/THEME-GUIDE.md): build a theme without code, as a child theme or from scratch.
 - [Extending Verso](https://github.com/victoragudo/verso/blob/main/docs/EXTENDING.md): plugins, blocks, capabilities and registries.
+- [Docker](https://github.com/victoragudo/verso/blob/main/docs/DOCKER.md): run Verso locally with Docker Compose, the wizard database values, updates and resets.
 - [Architecture](https://github.com/victoragudo/verso/blob/main/docs/ARCHITECTURE.md): how the modules fit together.
 - [Releasing](https://github.com/victoragudo/verso/blob/main/docs/RELEASING.md): CI, releases and how sites update.
 

@@ -1,0 +1,44 @@
+# Verso quick start. Download this file, then run: docker compose up -d
+# Open http://localhost:8000 and follow the install wizard.
+# For MariaDB in the wizard use host "mariadb", port 3306, database "verso", user "verso"
+# and the password below. SQLite needs no setup at all.
+# The passwords are examples: change them (or set VERSO_DB_PASSWORD and VERSO_DB_ROOT_PASSWORD)
+# before the first start if anyone else can reach this machine.
+name: verso
+
+services:
+    verso:
+        image: ${VERSO_IMAGE:-ghcr.io/victoragudo/verso:latest}
+        restart: unless-stopped
+        ports:
+            - '${VERSO_PORT:-8000}:8000'
+        environment:
+            # Fills in the database host in the install wizard.
+            VERSO_INSTALL_DB_HOST: mariadb
+        volumes:
+            - site:/var/www/verso
+        depends_on:
+            mariadb:
+                condition: service_healthy
+
+    mariadb:
+        image: mariadb:11.4
+        restart: unless-stopped
+        environment:
+            MARIADB_DATABASE: verso
+            MARIADB_USER: verso
+            MARIADB_PASSWORD: ${VERSO_DB_PASSWORD:-quill-harbor-7421}
+            MARIADB_ROOT_PASSWORD: ${VERSO_DB_ROOT_PASSWORD:-lantern-root-9036}
+        volumes:
+            - database:/var/lib/mysql
+        healthcheck:
+            test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+            interval: 5s
+            timeout: 5s
+            retries: 30
+
+volumes:
+    # The whole site: code, .env, storage (uploads, logs), the SQLite database, plugins and themes.
+    site:
+    # The MariaDB data.
+    database:
