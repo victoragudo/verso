@@ -3,6 +3,7 @@
 namespace App\Verso\Theme\Support;
 
 use App\Models\User;
+use App\Verso\Content\Admin\ContentLabels;
 use App\Verso\Content\ContentType;
 use App\Verso\Content\Models\Entry;
 use App\Verso\Content\Models\Term;
@@ -35,6 +36,7 @@ class ThemeResponse
         protected TemplateResolver $resolver,
         protected AdminBarContext $adminBar,
         protected TemplatePartChoices $partChoices,
+        protected ContentLabels $labels,
     ) {}
 
     /**
@@ -112,7 +114,7 @@ class ThemeResponse
      */
     public function term(Taxonomy $taxonomy, Term $term, array $data): Response
     {
-        return $this->render($this->hierarchy->forTerm($taxonomy, $term), ['taxonomy' => $taxonomy, 'term' => $term, ...$data]);
+        return $this->render($this->hierarchy->forTerm($taxonomy, $term), ['taxonomy' => $this->labels->translatedTaxonomy($taxonomy), 'term' => $term, ...$data]);
     }
 
     /**
@@ -122,7 +124,7 @@ class ThemeResponse
      */
     public function archive(ContentType $contentType, array $data): Response
     {
-        return $this->render($this->hierarchy->forArchive($contentType), ['contentType' => $contentType, ...$data]);
+        return $this->render($this->hierarchy->forArchive($contentType), ['contentType' => $this->labels->translatedType($contentType), ...$data]);
     }
 
     /**
