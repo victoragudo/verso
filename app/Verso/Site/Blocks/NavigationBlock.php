@@ -70,10 +70,10 @@ class NavigationBlock extends SiteBlock
         $collapse = $this->flag($attrs, 'collapse', true);
         $list = '<ul id="'.e($id).'" class="verso-nav__list"'.($collapse ? ' popover="auto"' : '').'>'.$this->items($links, $id).'</ul>';
         $button = $collapse
-            ? '<button class="verso-nav__toggle" type="button" popovertarget="'.e($id).'" aria-controls="'.e($id).'">'.self::MENU_ICON.'<span>Menu</span></button>'
+            ? '<button class="verso-nav__toggle" type="button" popovertarget="'.e($id).'" aria-controls="'.e($id).'">'.self::MENU_ICON.'<span>'.e(__('Menu')).'</span></button>'
             : '';
 
-        return '<nav class="verso-nav'.($collapse ? '' : ' is-wide').'" aria-label="'.e($this->text($attrs, 'label', 'Main')).'"'.($collapse ? ' data-verso-nav' : '').'>'
+        return '<nav class="verso-nav'.($collapse ? '' : ' is-wide').'" aria-label="'.e($this->textOrTranslated($attrs, 'label', 'Main', __('Main'))).'"'.($collapse ? ' data-verso-nav' : '').'>'
             .$button.$list.'</nav>'.($collapse ? $this->script() : '');
     }
 
@@ -110,7 +110,7 @@ class NavigationBlock extends SiteBlock
 
             $submenu = $prefix.'-'.$index;
             $more = $children === [] ? '' : '<button class="verso-nav__more" type="button" aria-expanded="false" aria-controls="'.e($submenu).'" data-verso-submenu>'
-                .'<span class="visually-hidden">More in '.e($link['label']).'</span>'.self::CHEVRON_ICON.'</button>'
+                .'<span class="visually-hidden">'.e(__('More in :name', ['name' => $link['label']])).'</span>'.self::CHEVRON_ICON.'</button>'
                 .'<ul id="'.e($submenu).'" class="verso-nav__submenu">'.$this->items(array_values($children), $submenu).'</ul>';
 
             $classes = trim(($children !== [] ? 'has-children' : '').(($link['mega'] ?? false) === true ? ' is-mega' : ''));
