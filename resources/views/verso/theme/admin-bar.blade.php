@@ -2,7 +2,16 @@
 <style>
 :root {
     --verso-adminbar-height: {{ $height }}px;
+    /* Room that sticky headers leave above them: the bar stays fixed at the top, so they stop under it. */
+    --verso-adminbar-offset: var(--verso-adminbar-height);
     padding-block-start: var(--verso-adminbar-height);
+}
+
+/* On narrow screens the bar scrolls away with the page, so sticky headers go to the very top. */
+@media (max-width: 600px) {
+    :root {
+        --verso-adminbar-offset: 0px;
+    }
 }
 
 .verso-adminbar,
@@ -19,7 +28,7 @@
     --verso-adminbar-border: #3f3f46;
     --verso-adminbar-ring: #60a5fa;
 
-    position: absolute;
+    position: fixed;
     inset-block-start: 0;
     inset-inline: 0;
     z-index: 99999;
@@ -257,6 +266,12 @@
                 translate: 0 -0.25rem;
             }
         }
+    }
+}
+
+@media (max-width: 600px) {
+    .verso-adminbar {
+        position: absolute;
     }
 }
 

@@ -22,6 +22,9 @@ updates:
       - dependency-name: typescript
         update-types:
           - version-update:semver-major
+      # vite-plus pins the exact vitest version it runs. Update vitest together with vite-plus, by hand.
+      - dependency-name: vitest
+      - dependency-name: "@vitest/*"
     groups:
       npm-minor-and-patch:
         update-types:

@@ -228,8 +228,11 @@ test('a designer builds a landing page from scratch with the builder', async ({
     });
 
     await clock.step('Visit the page as a visitor', async () => {
+        // Leave the admin first: a request still running there could set the session cookie again.
+        await page.goto('about:blank');
         await page.context().clearCookies();
         await page.goto('/spring-opening-at-harbor-lane');
+        await expect(page.locator('.verso-adminbar')).toHaveCount(0);
         await expect(page.getByRole('tablist')).toBeVisible();
         await expect(page.locator('header.verso-header--sticky')).toBeVisible();
         expect(await layoutShift(page)).toBeLessThan(0.1);
@@ -282,10 +285,16 @@ test('a designer builds a landing page from scratch with the builder', async ({
             await expect(page.locator('header.verso-header')).toHaveClass(
                 /is-scrolled/,
             );
-            const top = await page
-                .locator('header.verso-header')
-                .evaluate((header) => header.getBoundingClientRect().top);
-            expect(top).toBeLessThanOrEqual(1);
+            // The wheel scroll can still be moving when the class lands, so wait for the header to settle at the top.
+            await expect
+                .poll(() =>
+                    page
+                        .locator('header.verso-header')
+                        .evaluate(
+                            (header) => header.getBoundingClientRect().top,
+                        ),
+                )
+                .toBeLessThanOrEqual(1);
             await page.mouse.wheel(0, -2400);
         },
     );
