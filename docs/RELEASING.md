@@ -8,6 +8,7 @@ Everything after the tag is automatic.
 | --- | --- | --- |
 | `ci.yml` | Every pull request and push to `main` | Pest on PHP 8.4 and 8.5 with SQLite, MySQL and PostgreSQL, Pint, PHPStan, types, Vitest, the build and the Playwright journeys. |
 | `release.yml` | A `v*` tag | Builds `verso-<version>.zip` with `vendor` and the built assets, its `.sha256` and its Ed25519 `.sig`, and attaches them to a GitHub release with generated notes. |
+| `docker.yml` | A `v*` tag (and pull requests that change `docker/`, as a build only) | Builds `docker/Dockerfile` for `linux/amd64` and `linux/arm64` and pushes `ghcr.io/victoragudo/verso:<version>`, `:<major>.<minor>` and `:latest`. A pre-release tag only gets its own tag. |
 | `pages.yml` | A change in `site/` on `main` | Deploys the landing page to Cloudflare Pages, project `verso-cms` (https://verso-cms.pages.dev). |
 
 `main` is protected: changes go in through pull requests approved by the maintainer.
@@ -23,8 +24,12 @@ Everything after the tag is automatic.
    git push origin v0.2.0
    ```
 
-4. `release` builds and publishes the release. A tag with a dash (`v0.2.0-beta.1`) becomes a pre-release, which only sites on the beta channel see.
+4. `release` builds and publishes the release, and `docker` publishes the image to GHCR. A tag with a dash (`v0.2.0-beta.1`) becomes a pre-release, which only sites on the beta channel see.
 5. Put `[security]` in the release title or notes for a security fix. Sites show it as urgent, and sites with automatic updates on install it on their own.
+
+## Docker image
+
+`docker.yml` builds the image from the tagged code, with `vendor` and the built assets inside, and pushes it to `ghcr.io/victoragudo/verso` with the `GITHUB_TOKEN` (no extra secret). The first time a package is published, GitHub makes it private: open the package settings on GitHub once and set its visibility to public. A manual run (**Actions > docker > Run workflow**) builds both platforms without pushing. Users update with `docker compose pull && docker compose up -d`, see [DOCKER.md](DOCKER.md).
 
 ## How sites update
 

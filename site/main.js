@@ -1,4 +1,4 @@
-// Tabs for the theme code card. Selection follows focus, like native radio groups.
+// Tabs for the install card and the theme code card. Selection follows focus, like native radio groups.
 // Browsers with `focusgroup` handle arrow keys themselves; others use the small fallback below.
 
 const nativeFocusgroup = Object.hasOwn(HTMLElement.prototype, 'focusGroup');
