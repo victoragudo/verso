@@ -85,6 +85,22 @@ class Form extends Model
         return $settings[$key] ?? self::DEFAULT_SETTINGS[$key] ?? null;
     }
 
+    // A text visitors read. A default that was never changed shows in the site language.
+    public function visitorText(string $key): string
+    {
+        $value = (string) $this->setting($key);
+
+        if ($value !== (self::DEFAULT_SETTINGS[$key] ?? null)) {
+            return $value;
+        }
+
+        return match ($key) {
+            'submit_label' => __('forms::Send'),
+            'success_message' => __('forms::Thank you! Your message was sent.'),
+            default => $value,
+        };
+    }
+
     /**
      * @return array<string, mixed>
      */

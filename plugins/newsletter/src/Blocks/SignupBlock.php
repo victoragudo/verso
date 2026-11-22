@@ -87,10 +87,11 @@ class SignupBlock implements EmbeddableBlock, HasBlockFields, PluginBlock
         $attrs = is_array($block['attrs'] ?? null) ? $block['attrs'] : [];
         $text = fn (string $key, string $default = ''): string => is_string($attrs[$key] ?? null) && $attrs[$key] !== '' ? $attrs[$key] : $default;
 
+        // English defaults that were saved unchanged show in the site language.
         return view('newsletter::signup', [
-            'title' => $text('title'),
+            'title' => $text('title') === 'Get the newsletter' ? __('newsletter::Get the newsletter') : $text('title'),
             'text' => $text('text'),
-            'button' => $text('button', __('newsletter::Subscribe')),
+            'button' => in_array($text('button'), ['', 'Subscribe'], true) ? __('newsletter::Subscribe') : $text('button'),
             'list' => $text('list') === self::NO_LIST ? '' : $text('list'),
             'askName' => (bool) ($attrs['askName'] ?? false),
             'headingTag' => $this->headingLevel($attrs['headingLevel'] ?? null),

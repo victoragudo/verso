@@ -23,7 +23,7 @@
     @endif
 
     @if ($sent)
-        <p class="verso-form__success" role="status" tabindex="-1" autofocus>{{ $form->setting('success_message') }}</p>
+        <p class="verso-form__success" role="status" tabindex="-1" autofocus>{{ $form->visitorText('success_message') }}</p>
     @else
         @if ($errors->isNotEmpty())
             <div class="verso-form__summary" role="alert">
@@ -153,7 +153,7 @@
             @endif
 
             <p class="verso-form__submit">
-                <button type="submit">{{ $form->setting('submit_label') }}</button>
+                <button type="submit">{{ $form->visitorText('submit_label') }}</button>
             </p>
         </form>
     @endif
