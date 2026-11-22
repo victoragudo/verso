@@ -1,4 +1,4 @@
-import { KeyRound, Trash2 } from 'lucide-react';
+import { KeyRound, Trash } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -66,7 +66,7 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                         size="sm"
                         className="text-destructive-foreground hover:bg-destructive/10 hover:text-destructive-foreground"
                     >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash className="h-4 w-4" />
                         <span className="sr-only">{t('Remove')}</span>
                     </Button>
                 </DialogTrigger>

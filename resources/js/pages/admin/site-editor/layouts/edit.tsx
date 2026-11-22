@@ -1,6 +1,6 @@
 import type { RequestPayload } from '@inertiajs/core';
 import { Head, router } from '@inertiajs/react';
-import { Power, RotateCcw, Trash2, Undo2 } from 'lucide-react';
+import { Power, RotateCcw, Trash, Undo2 } from 'lucide-react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import type { EditorManifest } from '@/builder';
 import { findBlock, replaceBlock } from '@/builder/tree';
@@ -343,7 +343,7 @@ export default function ThemeBuilderEdit({
                             variant="destructive"
                             onSelect={() => setConfirmDelete(true)}
                         >
-                            <Trash2 aria-hidden="true" />
+                            <Trash aria-hidden="true" />
                             {t('Delete')}
                         </DropdownMenuItem>
                     </>

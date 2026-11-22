@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Copy, ExternalLink, Trash2 } from 'lucide-react';
+import { Copy, ExternalLink, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { toast } from 'sonner';
@@ -310,7 +310,7 @@ function MediaDetails({
                             onClick={remove}
                             disabled={deleting || detail === null}
                         >
-                            <Trash2 />
+                            <Trash />
                             {t('Delete file')}
                         </Button>
                     )}

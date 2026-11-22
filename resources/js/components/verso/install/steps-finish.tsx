@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import {
     Check,
-    CircleAlert,
+    CircleExclamationPoint,
     ExternalLink,
     LayoutDashboard,
     RotateCcw,
@@ -322,7 +322,7 @@ function StepIcon({
 
     if (status === 'failed') {
         return (
-            <CircleAlert
+            <CircleExclamationPoint
                 className="size-4 text-red-600"
                 aria-label={t('Failed')}
             />

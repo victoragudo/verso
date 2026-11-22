@@ -5,7 +5,7 @@ import {
     Copy,
     Group,
     LibraryBig,
-    Trash2,
+    Trash,
     X,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -77,7 +77,7 @@ export function SelectionBar({
                 />
             )}
             <BarButton
-                icon={Trash2}
+                icon={Trash}
                 label={t('Delete')}
                 onClick={actions.remove}
             />

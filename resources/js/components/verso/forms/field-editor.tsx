@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Trash } from 'lucide-react';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -117,7 +117,7 @@ export function FieldEditor({
                             label: field.label,
                         })}
                     >
-                        <Trash2 className="size-4" />
+                        <Trash className="size-4" />
                     </Button>
                 </div>
             </div>

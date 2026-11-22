@@ -8,10 +8,10 @@ import type { Editor } from '@tiptap/react';
 import {
     Copy,
     ExternalLink,
-    History,
+    RotateCcwClock,
     Keyboard,
     Save,
-    Trash2,
+    Trash,
 } from 'lucide-react';
 import { Fragment, useMemo, useRef, useState } from 'react';
 import type { FormEvent, KeyboardEvent, ReactNode } from 'react';
@@ -988,7 +988,7 @@ function EntryEditor({
                         )}
                         {entry && (
                             <DropdownMenuItem onSelect={showRevisions}>
-                                <History />
+                                <RotateCcwClock />
                                 {t('View revisions')}
                             </DropdownMenuItem>
                         )}
@@ -1008,7 +1008,7 @@ function EntryEditor({
                                     variant="destructive"
                                     onSelect={moveToTrash}
                                 >
-                                    <Trash2 />
+                                    <Trash />
                                     {t('Move to trash')}
                                 </DropdownMenuItem>
                             </>

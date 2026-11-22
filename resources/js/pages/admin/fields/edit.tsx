@@ -1,5 +1,5 @@
 import { Head, router, useForm } from '@inertiajs/react';
-import { Download, Trash2 } from 'lucide-react';
+import { Download, Trash } from 'lucide-react';
 import type { FormEvent } from 'react';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -215,7 +215,7 @@ export default function FieldGroupEdit({
                                             }
                                         }}
                                     >
-                                        <Trash2 />
+                                        <Trash />
                                         {t('Delete')}
                                     </Button>
                                 )}

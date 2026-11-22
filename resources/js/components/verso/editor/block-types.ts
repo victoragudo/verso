@@ -2,7 +2,7 @@ import {
     Code,
     Columns2,
     Film,
-    Heading,
+    LetterH,
     Images,
     Image as ImageIcon,
     List,
@@ -14,7 +14,7 @@ import {
     Quote,
     Table,
     FileCode,
-    Youtube,
+    SquarePlay,
 } from 'lucide-react';
 import { msg, t } from '@/lib/i18n';
 import type {
@@ -78,7 +78,7 @@ export const BLOCK_TYPES: BlockTypeDefinition[] = [
         type: 'heading',
         label: msg('Heading'),
         description: msg('A section title.'),
-        icon: Heading,
+        icon: LetterH,
         keywords: ['title', 'h1', 'h2', 'h3'],
         create: () => block('heading', { level: 2 }),
     },
@@ -134,7 +134,7 @@ export const BLOCK_TYPES: BlockTypeDefinition[] = [
         type: 'embed',
         label: msg('Embed'),
         description: msg('A YouTube or Vimeo video.'),
-        icon: Youtube,
+        icon: SquarePlay,
         keywords: ['youtube', 'vimeo', 'video', 'iframe'],
         create: () => block('embed', { url: '', caption: '' }),
     },

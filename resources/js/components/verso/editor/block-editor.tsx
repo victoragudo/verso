@@ -15,7 +15,7 @@ import {
     ZoomOut,
     Plus,
     Redo2,
-    Trash2,
+    Trash,
     Undo2,
 } from 'lucide-react';
 import {
@@ -1703,7 +1703,7 @@ function BlockMenu({
                 )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive" onSelect={onRemove}>
-                    <Trash2 /> {t('Delete')}
+                    <Trash /> {t('Delete')}
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -1,6 +1,6 @@
 // Builds resources/blocks/icons/icons.json, the bundled icon set of the icon blocks, from Lucide (ISC license).
 // Run: node scripts/blocks/build-icons.mjs
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -119,17 +119,27 @@ const ICONS = [
 ];
 
 const root = resolve(import.meta.dirname, '../..');
+const iconsDir = resolve(root, 'node_modules/lucide-react/dist/esm/icons');
 const icons = {};
 
-for (const name of ICONS) {
-    const { __iconNode: nodes } = await import(
-        pathToFileURL(
-            resolve(
-                root,
-                `node_modules/lucide-react/dist/esm/icons/${name}.js`,
-            ),
-        ).href
+// Lucide 1.x keeps old names as small files that point to the new name, so follow that link.
+async function iconNodes(name) {
+    const file = resolve(iconsDir, `${name}.mjs`);
+    const { __iconData: iconData } = await import(pathToFileURL(file).href);
+
+    if (iconData) {
+        return iconData.node;
+    }
+
+    const target = readFileSync(file, 'utf8').match(
+        /from '\.\/([a-z0-9-]+)\.mjs'/,
     );
+
+    return target ? iconNodes(target[1]) : undefined;
+}
+
+for (const name of ICONS) {
+    const nodes = await iconNodes(name);
 
     if (!Array.isArray(nodes)) {
         throw new Error(`No icon data in ${name}`);

@@ -4,7 +4,7 @@ import {
     ChevronDown,
     ChevronRight,
     Plus,
-    Trash2,
+    Trash,
 } from 'lucide-react';
 import { useId, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -242,7 +242,7 @@ function FieldCard({
                     aria-label={t('Remove {label}', { label: field.label })}
                     onClick={onRemove}
                 >
-                    <Trash2 />
+                    <Trash />
                 </Button>
             </div>
 

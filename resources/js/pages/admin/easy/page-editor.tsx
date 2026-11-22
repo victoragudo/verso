@@ -2,7 +2,7 @@ import type { RequestPayload } from '@inertiajs/core';
 import { Head, router } from '@inertiajs/react';
 import {
     ArrowLeft,
-    History,
+    RotateCcwClock,
     MoreVertical,
     Redo2,
     RotateCcw,
@@ -851,7 +851,7 @@ export default function PageEditor({
                                     onSelect={() => setRestoring(true)}
                                     data-test="open-restore"
                                 >
-                                    <History aria-hidden="true" />
+                                    <RotateCcwClock aria-hidden="true" />
                                     {t('Restore this page')}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
