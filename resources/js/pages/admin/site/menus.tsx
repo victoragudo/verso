@@ -7,7 +7,7 @@ import {
     GripVertical,
     Pencil,
     Plus,
-    Trash2,
+    Trash,
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, FormEvent, ReactNode } from 'react';
@@ -526,7 +526,7 @@ function MenuBuilder({
                             className="me-auto min-h-10 text-destructive-foreground md:min-h-8"
                             onClick={removeMenu}
                         >
-                            <Trash2 />
+                            <Trash />
                             {t('Delete menu')}
                         </Button>
                     }
@@ -920,7 +920,7 @@ function MenuItemRow({
                         onClick={onRemove}
                         className="text-destructive-foreground"
                     >
-                        <Trash2 />
+                        <Trash />
                     </IconButton>
                 </div>
             </div>

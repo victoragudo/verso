@@ -111,7 +111,7 @@ describe('AdminShell overlays', () => {
         renderShell();
 
         const trigger = screen.getByRole('button', {
-            name: 'Search admin pages',
+            name: /^Search pages/,
         });
         await user.click(trigger);
         expect(await screen.findByRole('dialog')).toBeInTheDocument();

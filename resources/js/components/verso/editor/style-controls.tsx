@@ -1,4 +1,4 @@
-import { Eraser, ImageIcon, Plus, Trash2 } from 'lucide-react';
+import { Eraser, ImageIcon, Plus, Trash } from 'lucide-react';
 import { useId, useState } from 'react';
 import type { BuilderStyleProperty, InspectorPanelProps } from '@/builder';
 import type { StyleValue } from '@/builder/styles';
@@ -226,7 +226,7 @@ export function GradientControl({
                                 })
                             }
                         >
-                            <Trash2 />
+                            <Trash />
                         </Button>
                     </li>
                 ))}

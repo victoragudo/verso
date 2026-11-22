@@ -1,4 +1,9 @@
-import { Monitor, Smartphone, Tablet, TriangleAlert } from 'lucide-react';
+import {
+    Monitor,
+    Smartphone,
+    Tablet,
+    TriangleExclamationPoint,
+} from 'lucide-react';
 import { useId, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -139,7 +144,7 @@ export function PreviewPane({
                     className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 border-b bg-warning-soft px-3 py-2 text-sm text-warning-text"
                     data-test="preview-target-notice"
                 >
-                    <TriangleAlert
+                    <TriangleExclamationPoint
                         className="size-4 shrink-0"
                         aria-hidden="true"
                     />

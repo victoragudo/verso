@@ -22,7 +22,6 @@ export function UserMenu() {
         <DropdownMenu>
             <DropdownMenuTrigger
                 className="flex size-10 items-center justify-center rounded-full transition-colors outline-none hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50 data-[state=open]:bg-accent"
-                aria-label={t('Open the account menu')}
                 data-test="sidebar-menu-button"
             >
                 <Avatar className="size-8 overflow-hidden rounded-full">
@@ -31,6 +30,7 @@ export function UserMenu() {
                         {getInitials(auth.user.name)}
                     </AvatarFallback>
                 </Avatar>
+                <span className="sr-only">{t('Open the account menu')}</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-60" align="end" sideOffset={6}>
                 <UserMenuContent user={auth.user} />

@@ -1,4 +1,4 @@
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash } from 'lucide-react';
 import { useId } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -191,7 +191,7 @@ export function ElementBlockFields({ block, onChange }: BlockFieldProps) {
                                         )
                                     }
                                 >
-                                    <Trash2 />
+                                    <Trash />
                                 </Button>
                             </div>
                             {warning && (

@@ -1,4 +1,4 @@
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash } from 'lucide-react';
 import { useId } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -121,7 +121,7 @@ export function ConditionsEditor({ rules, definitions, onChange }: Props) {
                                         )
                                     }
                                 >
-                                    <Trash2 />
+                                    <Trash />
                                 </Button>
                             </div>
                         </li>

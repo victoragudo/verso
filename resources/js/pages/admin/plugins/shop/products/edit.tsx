@@ -1,12 +1,5 @@
 import { Head, Link, useForm } from '@inertiajs/react';
-import {
-    ArrowDown,
-    ArrowUp,
-    ExternalLink,
-    Plus,
-    Trash2,
-    X,
-} from 'lucide-react';
+import { ArrowDown, ArrowUp, ExternalLink, Plus, Trash, X } from 'lucide-react';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import InputError from '@/components/input-error';
@@ -329,7 +322,7 @@ export default function ShopProductEdit({
                                                 )}
                                                 className="size-10 text-muted-foreground md:size-9"
                                             >
-                                                <Trash2 className="size-4" />
+                                                <Trash className="size-4" />
                                             </Button>
                                         </div>
                                     </li>

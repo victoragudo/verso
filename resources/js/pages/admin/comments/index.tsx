@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-import { Search, Trash2 } from 'lucide-react';
+import { Search, Trash } from 'lucide-react';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -300,7 +300,7 @@ export default function CommentsIndex({
                             }
                             onClick={() => run(action, selected)}
                         >
-                            {action === 'delete' && <Trash2 />}
+                            {action === 'delete' && <Trash />}
                             {t(ACTION_LABELS[action])}
                         </Button>
                     ))}

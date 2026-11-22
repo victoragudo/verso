@@ -1,5 +1,5 @@
 import { type Editor, useEditorState } from '@tiptap/react';
-import { Bold, Code, Italic, Link2, Link2Off } from 'lucide-react';
+import { LetterB, Code, Italic, Link2, Link2Off } from 'lucide-react';
 import { type FormEvent, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -95,7 +95,7 @@ export function MarkToolbar({
                     editor?.chain().focus().toggleBold().run()
                 }
             >
-                <Bold />
+                <LetterB />
             </Toggle>
             <Toggle
                 size="sm"
