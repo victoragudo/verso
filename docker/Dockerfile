@@ -8,8 +8,9 @@ ARG NODE_IMAGE=node:22-bookworm-slim
 ARG COMPOSER_IMAGE=composer:2.11
 ARG EXTENSION_INSTALLER_IMAGE=mlocati/php-extension-installer:2.13.1
 
-FROM ${COMPOSER_IMAGE} AS composer
-FROM ${NODE_IMAGE} AS node
+# Composer and Node.js are only used in the build stages, so they match the build machine.
+FROM --platform=$BUILDPLATFORM ${COMPOSER_IMAGE} AS composer
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS node
 FROM ${EXTENSION_INSTALLER_IMAGE} AS extension-installer
 
 # 1. Composer dependencies. PHP code does not depend on the CPU, so this runs on the build machine.
