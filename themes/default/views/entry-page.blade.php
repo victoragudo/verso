@@ -12,7 +12,7 @@
     <article class="entry">
         <header class="entry-header">
             @if ($ancestors !== [])
-                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <nav class="breadcrumbs" aria-label="{{ __('default::Breadcrumb') }}">
                     <ol>
                         @foreach ($ancestors as $ancestor)
                             <li><a href="{{ $ancestor->url() }}">{{ $ancestor->title }}</a></li>
@@ -32,7 +32,7 @@
 
         @if ($children->isNotEmpty())
             <nav class="child-pages" aria-labelledby="child-pages-title">
-                <h2 id="child-pages-title">In this section</h2>
+                <h2 id="child-pages-title">{{ __('default::In this section') }}</h2>
                 <ul>
                     @foreach ($children as $child)
                         <li><a href="{{ $child->url() }}">{{ $child->title }}</a></li>

@@ -49,7 +49,7 @@
 
         @if ($toc->isUseful((int) config('verso.themes.toc_min_headings')))
             <nav class="toc measure" aria-labelledby="toc-title">
-                <h2 id="toc-title" class="toc-title">In this post</h2>
+                <h2 id="toc-title" class="toc-title">{{ __('ashgrove::In this post') }}</h2>
                 <ol>
                     @foreach ($toc->items as $item)
                         <li><a href="#{{ $item['id'] }}">{{ $item['text'] }}</a></li>
@@ -64,7 +64,7 @@
 
         <footer class="post-footer measure">
             @if ($tags->isNotEmpty())
-                <ul class="tags" aria-label="Tags">
+                <ul class="tags" aria-label="{{ __('ashgrove::Tags') }}">
                     @foreach ($tags as $tag)
                         <li><a href="{{ $tag->url() }}" rel="tag">{{ $tag->name }}</a></li>
                     @endforeach
@@ -78,12 +78,12 @@
     </article>
 
     @if ($previous || $next)
-        <nav class="post-nav measure" aria-label="More posts">
+        <nav class="post-nav measure" aria-label="{{ __('ashgrove::More posts') }}">
             @if ($previous)
-                <a class="post-nav-link post-nav-link--previous" href="{{ $previous->url() }}" rel="prev"><span class="post-nav-label">Previous post</span> {{ $previous->title }}</a>
+                <a class="post-nav-link post-nav-link--previous" href="{{ $previous->url() }}" rel="prev"><span class="post-nav-label">{{ __('ashgrove::Previous post') }}</span> {{ $previous->title }}</a>
             @endif
             @if ($next)
-                <a class="post-nav-link post-nav-link--next" href="{{ $next->url() }}" rel="next"><span class="post-nav-label">Next post</span> {{ $next->title }}</a>
+                <a class="post-nav-link post-nav-link--next" href="{{ $next->url() }}" rel="next"><span class="post-nav-label">{{ __('ashgrove::Next post') }}</span> {{ $next->title }}</a>
             @endif
         </nav>
     @endif
@@ -94,7 +94,7 @@
 
     @if ($related->isNotEmpty())
         <section class="related wrap" aria-labelledby="related-title">
-            <h2 id="related-title" class="section-title">More in {{ $category?->name }}</h2>
+            <h2 id="related-title" class="section-title">{{ __('ashgrove::More in :name', ['name' => $category?->name]) }}</h2>
             <ol class="post-grid" role="list">
                 @foreach ($related as $relatedEntry)
                     <li>@include('theme::partials.post-card', ['entry' => $relatedEntry])</li>

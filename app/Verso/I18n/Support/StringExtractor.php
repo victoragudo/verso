@@ -4,7 +4,7 @@ namespace App\Verso\I18n\Support;
 
 use Symfony\Component\Finder\Finder;
 
-// Finds translatable strings in code: t() and msg() in TypeScript, __() and friends in PHP,
+// Finds translatable strings in code: t() and msg() in TypeScript, __() and friends in PHP and Blade (theme views too),
 // UI labels of registries (nav items, settings, stats) and plugin and theme manifests.
 class StringExtractor
 {
@@ -321,6 +321,7 @@ class StringExtractor
             ...glob($this->basePath.'/plugins/*/config') ?: [],
             ...glob($this->basePath.'/plugins/*/resources/views') ?: [],
             ...glob($this->basePath.'/plugins/*/routes') ?: [],
+            ...glob($this->basePath.'/themes/*/views') ?: [],
         ], is_dir(...));
 
         foreach (Finder::create()->files()->in($folders)->name('*.php') as $file) {

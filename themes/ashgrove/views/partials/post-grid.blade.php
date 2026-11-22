@@ -1,6 +1,6 @@
 {{-- A grid of posts with pagination, or a short message when it is empty. Only the first image loads right away. --}}
 @if ($entries->isEmpty())
-    <p class="empty">{{ $empty ?? 'Nothing has been published here yet.' }}</p>
+    <p class="empty">{{ $empty ?? __('ashgrove::Nothing has been published here yet.') }}</p>
 @else
     @php($entries->getCollection()->loadMissing('terms'))
     <ol class="post-grid" role="list">

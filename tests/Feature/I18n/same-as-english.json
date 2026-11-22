@@ -732,26 +732,38 @@
     "themes/ashgrove/lang": {
         "Accent": ["fr"],
         "Ashgrove": "*",
+        "Blog": ["es", "pt-BR", "fr", "de", "id", "tr", "it"],
         "Footer": ["de", "id", "it"],
         "Header": ["de", "id", "it"],
         "Intro": ["de"],
         "Landing page": ["it"],
         "Layout": ["pt-BR", "de", "it"],
         "Logo": ["es", "pt-BR", "fr", "de", "id", "tr", "it"],
+        "Menu": ["pt-BR", "fr", "id", "it"],
         "Minimal": ["fr", "de", "id", "tr"],
+        "Page": ["fr"],
+        "Pages": ["fr"],
+        "Pagination": ["fr"],
         "Panels": ["de"],
         "Simple": ["fr"],
+        "Tags": ["pt-BR"],
         "Text": ["de"]
     },
     "themes/default/lang": {
         "Accent": ["fr"],
+        "Blog": ["es", "pt-BR", "fr", "de", "id", "tr", "it"],
+        "Error 404": ["es"],
+        "Footer": ["de", "id", "it"],
         "Header": ["de", "id", "it"],
         "Landing page": ["it"],
         "Layout": ["pt-BR", "de", "it"],
         "Logo": ["es", "pt-BR", "fr", "de", "id", "tr", "it"],
         "Minimal": ["fr", "de", "id", "tr"],
+        "Pagination": ["fr"],
         "Panels": ["de"],
+        "RSS": "*",
         "Standard": ["fr", "de", "it"],
+        "Tags": ["pt-BR"],
         "Text": ["de"]
     }
 }

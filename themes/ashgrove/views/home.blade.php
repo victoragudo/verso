@@ -7,7 +7,7 @@
     @if ($entries->onFirstPage() && $entries->isNotEmpty())
         @php($entries->getCollection()->loadMissing('terms'))
         @php($lead = $entries->getCollection()->shift())
-        <section class="lead-story wrap" aria-label="Latest post">
+        <section class="lead-story wrap" aria-label="{{ __('ashgrove::Latest post') }}">
             @include('theme::partials.post-card', ['entry' => $lead, 'variant' => 'lead', 'eager' => true])
         </section>
     @endif
@@ -18,7 +18,7 @@
 
     @if (! isset($lead) || $entries->isNotEmpty() || $entries->hasPages())
         <section class="wrap recent" aria-labelledby="recent-title">
-            <h2 id="recent-title" class="section-title">{{ $entries->onFirstPage() ? 'Recent posts' : 'More posts' }}</h2>
+            <h2 id="recent-title" class="section-title">{{ $entries->onFirstPage() ? __('ashgrove::Recent posts') : __('ashgrove::More posts') }}</h2>
             @include('theme::partials.post-grid', ['entries' => $entries, 'eagerFirst' => ! isset($lead)])
         </section>
     @endif

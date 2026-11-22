@@ -13,5 +13,5 @@
         @endif
     </header>
 
-    @include('theme::partials.entry-list', ['entries' => $entries, 'empty' => 'Nothing has been published in '.$term->name.' yet.'])
+    @include('theme::partials.entry-list', ['entries' => $entries, 'empty' => __('default::Nothing has been published in :term yet.', ['term' => $term->name])])
 @endsection

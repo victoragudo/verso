@@ -2,9 +2,9 @@
 @inject('siteTime', 'App\Verso\Core\Support\SiteTime')
 <p class="meta">
     @if ($entry->published_at)
-        <time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->format($entry->published_at, 'F j, Y') }}</time>
+        <time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->date($entry->published_at) }}</time>
     @endif
     @if ($entry->author)
-        <span>· by <a href="{{ $entry->author->authorUrl() }}" rel="author">{{ $entry->author->name }}</a></span>
+        <span>· {!! __('default::by :author', ['author' => '<a href="'.e($entry->author->authorUrl()).'" rel="author">'.e($entry->author->name).'</a>']) !!}</span>
     @endif
 </p>

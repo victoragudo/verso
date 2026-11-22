@@ -25,7 +25,7 @@
     <style>@include('theme::partials.font-faces'){!! $themeStyles !!}</style>
 </head>
 <body class="{{ $bodyClass ?? '' }}">
-    <a class="skip-link" href="#content">Skip to content</a>
+    <a href="#content" class="skip-link">{{ __('ashgrove::Skip to content') }}</a>
 
     @templatePart('header')
 

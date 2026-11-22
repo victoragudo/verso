@@ -1,7 +1,7 @@
 {{-- Search form and results. The words of the search are marked in titles and excerpts. --}}
 @extends('theme::layouts.app')
 
-@section('title', $searching ? 'Search results for “'.$search.'”' : 'Search')
+@section('title', $searching ? __('ashgrove::Search results for “:search”', ['search' => $search]) : __('ashgrove::Search'))
 
 @push('head')
     <meta name="robots" content="noindex">
@@ -12,14 +12,15 @@
     <header class="page-header wrap">
         <h1 class="page-title">
             @if ($searching)
-                Results for “{{ $search }}”
+                {{ __('ashgrove::Results for “:search”', ['search' => $search]) }}
             @else
-                Search
+                {{ __('ashgrove::Search') }}
             @endif
         </h1>
         @if ($searching)
             <p class="page-intro" role="status">
-                {{ trans_choice('{0} Nothing matched your search. Try fewer or different words.|{1} One result.|[2,*] :count results.', $entries->total(), ['count' => $entries->total()]) }}
+                @php($resultCount = App\Verso\I18n\Translate::icu('ashgrove::{count, plural, =0 {Nothing matched your search. Try fewer or different words.} one {One result.} other {# results.}}', ['count' => $entries->total()]))
+                {{ $resultCount }}
             </p>
         @endif
         @include('theme::partials.search-form', ['search' => $search, 'inputId' => 'page-search'])
@@ -35,7 +36,7 @@
                         @if ($category)
                             <a class="post-category" href="{{ $category->url() }}">{{ $category->name }}</a>
                         @elseif ($entry->type === 'page')
-                            <span class="post-category">Page</span>
+                            <span class="post-category">{{ __('ashgrove::Page') }}</span>
                         @endif
                         <h2 class="search-result-title"><a href="{{ $entry->url() }}">{{ $highlighter->mark($entry->title, $search) }}</a></h2>
                         @if ($entry->excerpt)

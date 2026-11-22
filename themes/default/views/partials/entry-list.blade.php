@@ -1,6 +1,6 @@
 {{-- A paginated list of entries, or a short message when it is empty. Only the first image loads right away. --}}
 @if ($entries->isEmpty())
-    <p class="empty">{{ $empty ?? 'Nothing has been published here yet.' }}</p>
+    <p class="empty">{{ $empty ?? __('default::Nothing has been published here yet.') }}</p>
 @else
     <ol class="entry-list" role="list">
         @foreach ($entries as $entry)
