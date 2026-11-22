@@ -9,13 +9,13 @@
         </a>
 
         @if ($hasPrimaryMenu)
-            <x-verso-menu :location="App\Verso\Theme\Support\ThemeComposer::PRIMARY_MENU" label="Main" class="site-nav" />
+            <x-verso-menu :location="App\Verso\Theme\Support\ThemeComposer::PRIMARY_MENU" :label="__('default::Main')" class="site-nav" />
         @else
-            <nav class="site-nav" aria-label="Main">
+            <nav class="site-nav" aria-label="{{ __('default::Main') }}">
                 <ul>
                     @php($blogUrl = app(App\Verso\Site\Permalinks\Permalinks::class)->archiveUrl('post'))
                     @if ($blogUrl !== null)
-                        <li><a href="{{ $blogUrl }}" @if (rtrim(url()->current(), '/') === rtrim($blogUrl, '/')) aria-current="page" @endif>Blog</a></li>
+                        <li><a href="{{ $blogUrl }}" @if (rtrim(url()->current(), '/') === rtrim($blogUrl, '/')) aria-current="page" @endif>{{ __('default::Blog') }}</a></li>
                     @endif
                     @foreach ($navigation as $page)
                         <li><a href="{{ $page->url() }}" @if (url()->current() === $page->url()) aria-current="page" @endif>{{ $page->title }}</a></li>

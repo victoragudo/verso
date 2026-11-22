@@ -59,8 +59,8 @@ class ColorSchemeToggleBlock extends SiteBlock
 
         // Hidden until the script runs, because without JavaScript the button cannot do anything.
         return '<button type="button" class="verso-scheme-toggle" data-verso-scheme-toggle hidden>'
-            .$option('dark', self::MOON_ICON, $this->text($attrs, 'darkLabel', 'Switch to dark mode'))
-            .$option('light', self::SUN_ICON, $this->text($attrs, 'lightLabel', 'Switch to light mode'))
+            .$option('dark', self::MOON_ICON, $this->textOrTranslated($attrs, 'darkLabel', 'Switch to dark mode', __('Switch to dark mode')))
+            .$option('light', self::SUN_ICON, $this->textOrTranslated($attrs, 'lightLabel', 'Switch to light mode', __('Switch to light mode')))
             .'</button>'.$this->script();
     }
 

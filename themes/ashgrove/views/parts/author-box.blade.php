@@ -8,7 +8,7 @@
         <span class="author-avatar author-avatar--initials" aria-hidden="true">{{ mb_substr($author->name, 0, 1) }}</span>
     @endif
     <div>
-        <p class="author-label">Written by</p>
+        <p class="author-label">{{ __('ashgrove::Written by') }}</p>
         <p id="author-box-name" class="author-name"><a href="{{ $author->authorUrl() }}" rel="author">{{ $author->name }}</a></p>
         @if ($author->bio)
             <p class="author-bio">{{ $author->bio }}</p>

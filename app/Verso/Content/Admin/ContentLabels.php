@@ -33,6 +33,18 @@ class ContentLabels
         return Translate::text($taxonomy->pluralLabel, plugin: $this->taxonomyPlugin($taxonomy));
     }
 
+    // The content type with its labels in the current language, for theme views.
+    public function translatedType(ContentType $type): ContentType
+    {
+        return $type->withLabels($this->typeLabel($type), $this->typePluralLabel($type));
+    }
+
+    // The taxonomy with its labels in the current language, for theme views.
+    public function translatedTaxonomy(Taxonomy $taxonomy): Taxonomy
+    {
+        return $taxonomy->withLabels($this->taxonomyLabel($taxonomy), $this->taxonomyPluralLabel($taxonomy));
+    }
+
     /**
      * @return array{name: string, label: string, pluralLabel: string, hierarchical: bool, hasArchive: bool, taxonomies: list<string>, icon: string}
      */

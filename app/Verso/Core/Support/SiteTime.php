@@ -45,6 +45,13 @@ class SiteTime
         return $this->local($date)->format($format);
     }
 
+    // A date in the site time zone and the current language, like "20 de noviembre de 2026".
+    // $format uses the Carbon isoFormat tokens: "LL" is a long date, "LLL" adds the time.
+    public function date(CarbonInterface $date, string $format = 'LL'): string
+    {
+        return $this->local($date)->settings(['locale' => app()->getLocale()])->isoFormat($format);
+    }
+
     // Reads a date typed in the site time zone and returns it in UTC.
     // A value with its own offset (or "Z") keeps that offset.
     public function toUtc(CarbonInterface|string $value): CarbonImmutable

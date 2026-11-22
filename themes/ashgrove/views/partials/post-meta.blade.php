@@ -6,7 +6,7 @@
         <span class="post-author">{{ $entry->author->name }}</span>
     @endif
     @if ($entry->published_at)
-        <time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->format($entry->published_at, 'F j, Y') }}</time>
+        <time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->date($entry->published_at) }}</time>
     @endif
     @if ($readingTime)
         <span class="reading-minutes">{{ $readingTime->text($readingTime->minutes($entry)) }}</span>

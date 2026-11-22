@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Verso\Content\Models\Entry;
+use App\Verso\Core\Settings\Settings;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Tests\Support\PluginFixtures;
@@ -160,4 +161,18 @@ it('limits signups per minute', function () {
     }
 
     $this->post(route('newsletter.subscribe'), ['email' => 'eva@example.pt'])->assertTooManyRequests();
+});
+
+it('shows the saved default title and button of the signup block in the site language', function () {
+    app(Settings::class)->set('site.locale', 'es');
+    $page = Entry::factory()->page()->published()->create([
+        'slug' => 'join-the-bakery-list',
+        'blocks' => [['id' => 'b_signup', 'type' => 'newsletter-signup', 'attrs' => ['title' => 'Get the newsletter', 'button' => 'Subscribe'], 'content' => '', 'children' => []]],
+    ]);
+
+    $this->get($page->path())
+        ->assertOk()
+        ->assertSee('Recibe el boletín')
+        ->assertSee('>Suscribirse</button>', false)
+        ->assertDontSee('Get the newsletter');
 });

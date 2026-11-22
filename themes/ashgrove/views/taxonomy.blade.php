@@ -17,6 +17,6 @@
         @if ($taxonomy->name === 'category')
             @include('theme::partials.category-strip', ['term' => $term])
         @endif
-        @include('theme::partials.post-grid', ['entries' => $entries, 'empty' => 'Nothing has been published in '.$term->name.' yet.'])
+        @include('theme::partials.post-grid', ['entries' => $entries, 'empty' => __('ashgrove::Nothing has been published in :term yet.', ['term' => $term->name])])
     </div>
 @endsection

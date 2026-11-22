@@ -39,6 +39,18 @@ abstract class SiteBlock implements HasBlockFields, PluginBlock
     }
 
     /**
+     * A text field with an English default. The default shows in the site language, also when it was saved unchanged.
+     *
+     * @param  array<mixed>  $attrs
+     */
+    protected function textOrTranslated(array $attrs, string $name, string $english, string $translated): string
+    {
+        $value = $this->text($attrs, $name);
+
+        return $value === '' || $value === $english ? $translated : $value;
+    }
+
+    /**
      * @param  array<mixed>  $attrs
      */
     protected function flag(array $attrs, string $name, bool $default = false): bool

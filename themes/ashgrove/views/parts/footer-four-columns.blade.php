@@ -10,19 +10,19 @@
             @endif
         </div>
         <div class="footer-column">
-            <h2 class="footer-heading">Pages</h2>
-            <x-verso-menu location="footer" label="Footer" class="footer-nav" />
+            <h2 class="footer-heading">{{ __('ashgrove::Pages') }}</h2>
+            <x-verso-menu location="footer" :label="__('ashgrove::Footer')" class="footer-nav" />
         </div>
         <div class="footer-column">
-            <h2 class="footer-heading">Read</h2>
+            <h2 class="footer-heading">{{ __('ashgrove::Read') }}</h2>
             <ul class="footer-links">
-                <li><a href="{{ app(App\Verso\Site\Permalinks\Permalinks::class)->archiveUrl('post') }}">All posts</a></li>
-                <li><a href="{{ route('theme.search') }}">Search</a></li>
-                <li><a href="{{ url('/feed') }}">RSS feed</a></li>
+                <li><a href="{{ app(App\Verso\Site\Permalinks\Permalinks::class)->archiveUrl('post') }}">{{ __('ashgrove::All posts') }}</a></li>
+                <li><a href="{{ route('theme.search') }}">{{ __('ashgrove::Search') }}</a></li>
+                <li><a href="{{ url('/feed') }}">{{ __('ashgrove::RSS feed') }}</a></li>
             </ul>
         </div>
         <div class="footer-column">
-            <h2 class="footer-heading">About</h2>
+            <h2 class="footer-heading">{{ __('ashgrove::About') }}</h2>
             <p class="footer-legal"><small>© {{ now()->year }} {{ $site['name'] }}</small></p>
         </div>
     </div>

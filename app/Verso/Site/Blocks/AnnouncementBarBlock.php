@@ -55,6 +55,6 @@ class AnnouncementBarBlock extends SiteBlock
         $label = $this->text($attrs, 'linkLabel');
         $link = $url !== null && $label !== '' ? ' '.$this->link($url, $label) : '';
 
-        return '<div class="verso-announcement verso-announcement--'.$tone.'" role="region" aria-label="Announcement"><p>'.e($text).$link.'</p></div>';
+        return '<div class="verso-announcement verso-announcement--'.$tone.'" role="region" aria-label="'.e(__('Announcement')).'"><p>'.e($text).$link.'</p></div>';
     }
 }

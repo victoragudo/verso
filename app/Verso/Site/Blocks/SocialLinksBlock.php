@@ -50,7 +50,7 @@ class SocialLinksBlock extends SiteBlock
             $items .= '<li>'.$this->link($link['url'], $this->network($link['url']) ?? $link['label'], newTab: true).'</li>';
         }
 
-        return $items === '' ? '' : '<ul class="verso-social" aria-label="Social links">'.$items.'</ul>';
+        return $items === '' ? '' : '<ul class="verso-social" aria-label="'.e(__('Social links')).'">'.$items.'</ul>';
     }
 
     protected function network(string $url): ?string

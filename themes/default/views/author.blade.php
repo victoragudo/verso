@@ -2,7 +2,7 @@
 @extends('theme::layouts.app')
 
 @section('title', $author->name)
-@section('description', $author->bio ? Str::limit($author->bio, 155) : 'Posts by '.$author->name)
+@section('description', $author->bio ? Str::limit($author->bio, 155) : __('default::Posts by :name', ['name' => $author->name]))
 
 @section('content')
     @php($avatar = $author->avatar)
@@ -11,7 +11,7 @@
             <img class="author-avatar" src="{{ $avatar->imageUrl(['w' => 192, 'h' => 192, 'fit' => 'crop']) }}" alt="" width="96" height="96" decoding="async">
         @endif
         <div>
-            <p class="eyebrow">Author</p>
+            <p class="eyebrow">{{ __('default::Author') }}</p>
             <h1 class="page-title">{{ $author->name }}</h1>
             @if ($author->bio)
                 <p class="page-intro">{{ $author->bio }}</p>

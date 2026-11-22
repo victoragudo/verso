@@ -19,6 +19,12 @@ final readonly class Taxonomy
         public int $menuOrder = 50,
     ) {}
 
+    // The same taxonomy with other labels, like the labels in the site language.
+    public function withLabels(string $label, string $pluralLabel): self
+    {
+        return new self($this->name, $label, $pluralLabel, $this->hierarchical, $this->contentTypes, $this->routeBase, $this->icon, $this->menuOrder);
+    }
+
     public function appliesTo(string $contentType): bool
     {
         return in_array($contentType, $this->contentTypes, true);

@@ -33,11 +33,11 @@ class SearchBlock extends SiteBlock
 
     protected function html(array $attrs): string
     {
-        $button = e($this->text($attrs, 'buttonLabel', 'Search'));
+        $button = e($this->textOrTranslated($attrs, 'buttonLabel', 'Search', __('Search')));
 
         return '<form class="verso-search" role="search" action="'.e(route('theme.search')).'" method="get">'
             .'<label><span class="visually-hidden">'.$button.'</span>'
-            .'<input type="search" name="q" placeholder="'.e($this->text($attrs, 'placeholder', 'Search')).'" autocomplete="off"></label>'
+            .'<input type="search" name="q" placeholder="'.e($this->textOrTranslated($attrs, 'placeholder', 'Search', __('Search'))).'" autocomplete="off"></label>'
             .'<button type="submit">'.$button.'</button></form>';
     }
 }

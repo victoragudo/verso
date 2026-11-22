@@ -20,6 +20,12 @@ final readonly class ContentType
         public array $taxonomies = [],
     ) {}
 
+    // The same content type with other labels, like the labels in the site language.
+    public function withLabels(string $label, string $pluralLabel): self
+    {
+        return new self($this->name, $label, $pluralLabel, $this->hierarchical, $this->hasArchive, $this->routeBase, $this->icon, $this->menuOrder, $this->taxonomies);
+    }
+
     // The URL path for an entry slug path, like "/blog/my-post" or "/about/team".
     public function pathFor(string $slugPath): string
     {

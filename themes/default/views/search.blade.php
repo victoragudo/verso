@@ -1,7 +1,7 @@
 {{-- Search form and results. --}}
 @extends('theme::layouts.app')
 
-@section('title', $searching ? 'Search results for “'.$search.'”' : 'Search')
+@section('title', $searching ? __('default::Search results for “:search”', ['search' => $search]) : __('default::Search'))
 
 @push('head')
     <meta name="robots" content="noindex">
@@ -11,14 +11,15 @@
     <header class="page-header">
         <h1 class="page-title">
             @if ($searching)
-                Results for “{{ $search }}”
+                {{ __('default::Results for “:search”', ['search' => $search]) }}
             @else
-                Search
+                {{ __('default::Search') }}
             @endif
         </h1>
         @if ($searching)
             <p class="page-intro" role="status">
-                {{ trans_choice('{0} No entries found.|{1} One entry found.|[2,*] :count entries found.', $entries->total(), ['count' => $entries->total()]) }}
+                @php($resultCount = App\Verso\I18n\Translate::icu('default::{count, plural, =0 {No entries found.} one {One entry found.} other {# entries found.}}', ['count' => $entries->total()]))
+                {{ $resultCount }}
             </p>
         @endif
     </header>

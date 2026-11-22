@@ -4,7 +4,7 @@
 <article @class(['page', 'page--wide' => $wide ?? false])>
     <header class="post-header measure">
         @if ($ancestors !== [])
-            <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <nav class="breadcrumbs" aria-label="{{ __('ashgrove::Breadcrumb') }}">
                 <ol>
                     @foreach ($ancestors as $ancestor)
                         <li><a href="{{ $ancestor->url() }}">{{ $ancestor->title }}</a></li>
@@ -27,7 +27,7 @@
 
     @if ($children->isNotEmpty())
         <nav class="child-pages measure" aria-labelledby="child-pages-title">
-            <h2 id="child-pages-title" class="section-title">In this section</h2>
+            <h2 id="child-pages-title" class="section-title">{{ __('ashgrove::In this section') }}</h2>
             <ul>
                 @foreach ($children as $child)
                     <li><a href="{{ $child->url() }}">{{ $child->title }}</a></li>

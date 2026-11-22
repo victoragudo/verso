@@ -34,7 +34,7 @@
         </div>
 
         @if ($tags->isNotEmpty())
-            <ul class="terms" aria-label="Tags">
+            <ul class="terms" aria-label="{{ __('default::Tags') }}">
                 @foreach ($tags as $tag)
                     <li><a href="{{ $tag->url() }}" rel="tag">#{{ $tag->name }}</a></li>
                 @endforeach

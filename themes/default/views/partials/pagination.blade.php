@@ -1,14 +1,14 @@
 {{-- Newer and older links for a list of entries. --}}
 @if ($paginator->hasPages())
-    <nav class="pagination" aria-label="Pagination">
+    <nav class="pagination" aria-label="{{ __('default::Pagination') }}">
         @if ($paginator->onFirstPage())
             <span></span>
         @else
-            <a href="{{ $paginator->previousPageUrl() }}" rel="prev">← Newer</a>
+            <a href="{{ $paginator->previousPageUrl() }}" rel="prev">{{ __('default::← Newer') }}</a>
         @endif
-        <span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span>
+        <span>{{ __('default::Page :current of :last', ['current' => $paginator->currentPage(), 'last' => $paginator->lastPage()]) }}</span>
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}" rel="next">Older →</a>
+            <a href="{{ $paginator->nextPageUrl() }}" rel="next">{{ __('default::Older →') }}</a>
         @else
             <span></span>
         @endif

@@ -46,7 +46,7 @@ class PublicController
         }
 
         // Bots that were dropped get the same answer as people, so they learn nothing.
-        $message = (string) $form->setting('success_message');
+        $message = $form->visitorText('success_message');
         $redirect = trim((string) $form->setting('redirect_url'));
 
         if ($request->expectsJson()) {

@@ -461,7 +461,7 @@ To see every block on one page, open the editor, insert each block and preview t
 
 ### Translations and right to left languages
 
-Public pages use the site language (Settings, General). Put translations in `lang/<code>.json` inside the theme, with plain keys:
+Public pages use the site language (Settings, General), also for signed in admins who use the admin in another language. Every text a visitor reads or hears goes through `__()` with the theme prefix: headings, links, buttons, `aria-label`, `placeholder`, `alt` and `title`, empty states, the `<title>` of search and 404 pages. Put the translations in `lang/<code>.json` inside the theme, with plain keys:
 
 ```json
 { "Skip to content": "Saltar al contenido" }
@@ -469,14 +469,19 @@ Public pages use the site language (Settings, General). Put translations in `lan
 
 Verso loads the files of the active theme and its parents with the `<slug>::` prefix. In views write `{{ __('lighthouse::Skip to content') }}`. Always ship `lang/en.json` with every key: a key that is found in no file prints with its prefix, like `lighthouse::Skip to content`.
 
-The same files translate the labels in `theme.json` (template, setting, part, token and pattern labels and help texts) in the admin. For those, write the English label as the key; no prefix is needed in `theme.json`.
+- **Values.** Write the whole sentence with `:name` placeholders, never join pieces: `__('lighthouse::Page :current of :last', ['current' => $page, 'last' => $last])`.
+- **Plurals.** Use an ICU message: `App\Verso\I18n\Translate::icu('lighthouse::{count, plural, =0 {No results.} one {One result.} other {# results.}}', ['count' => $total])`. Blade ends `{{ }}` at the first `}}`, so put the call in `@php($text = ...)` and print `{{ $text }}`. Languages like Arabic and Russian add their own `few` and `many` forms.
+- **Links inside a sentence.** Keep the link in the text and pass the escaped URL: `{!! __('lighthouse::Go back to the <a href=":url">home page</a>.', ['url' => e(url('/'))]) !!}`. Escape every value with `e()`, because `{!! !!}` prints HTML as it is.
+- **Dates.** `$siteTime->date($entry->published_at)` prints a long date in the site time zone and language, like "20 de noviembre de 2026". Pass a Carbon `isoFormat` format for other styles: `$siteTime->date($date, 'LLL')`. Do not use `format('F j, Y')`, which always prints English month names.
+- **Content type and taxonomy names.** `$contentType->pluralLabel` on archive pages and `$taxonomy->label` on term pages are already in the site language.
+- **Keys.** `php artisan verso:lang-extract` finds the `__()` keys in `themes/<slug>/views` and writes them to `themes/<slug>/lang/en.json`. Then add the same keys to each language file. A guard test (`tests/Feature/I18n/ThemeViewStringsTest.php`) fails when a bundled theme prints English text outside `__()`.
 
 Right to left languages (like Arabic) get `dir="rtl"` from `$site['dir']`. Use logical CSS properties so the layout flips by itself: `margin-inline-start` instead of `margin-left`, `padding-inline`, `inset-inline-start`, `border-inline-start`, `text-align: start`. Leave room for longer text: German and Russian are often 30% longer than English.
 
 ### Accessibility checklist
 
 - [ ] `<html lang dir>` from `$site`.
-- [ ] A skip link as the first focusable element: `<a href="#content" class="skip-link">Skip to content</a>`, and `<main id="content" tabindex="-1">`. The check looks for a link to `#...` with `skip` in its class (written after `href`) or text that starts with "Skip".
+- [ ] A skip link as the first focusable element: `<a href="#content" class="skip-link">{{ __('lighthouse::Skip to content') }}</a>`, and `<main id="content" tabindex="-1">`. The check looks for a link to `#...` with `skip` in its class (written after `href`) or text that starts with "Skip".
 - [ ] One `<h1>` per page, then headings in order.
 - [ ] Landmarks: `<header>`, `<nav aria-label="...">`, `<main>`, `<footer>`. Each `nav` has its own label.
 - [ ] A visible focus style on everything people can click: `:focus-visible { outline: 3px solid ...; outline-offset: 2px; }`. Never `outline: none` without a replacement.
@@ -1134,7 +1139,7 @@ main:focus {
                     <x-verso-featured-image :entry="$entry" :eager="$loop->first" sizes="(min-width: 48rem) 42rem, 100vw" />
                     <h2><a href="{{ $entry->url() }}">{{ $entry->title }}</a></h2>
                     @if ($entry->published_at)
-                        <p class="meta"><time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->format($entry->published_at, 'F j, Y') }}</time></p>
+                        <p class="meta"><time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->date($entry->published_at) }}</time></p>
                     @endif
                     @if ($settings['show_excerpts'] && $entry->excerpt)
                         <p>{{ $entry->excerpt }}</p>

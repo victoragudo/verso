@@ -9,10 +9,10 @@
                 <p>{{ $site['tagline'] }}</p>
             @endif
         </div>
-        <x-verso-menu location="footer" label="Footer" class="footer-nav" />
+        <x-verso-menu location="footer" :label="__('ashgrove::Footer')" class="footer-nav" />
         <p class="footer-legal">
             <small>© {{ now()->year }} {{ $site['name'] }}</small>
-            <a href="{{ url('/feed') }}">RSS feed</a>
+            <a href="{{ url('/feed') }}">{{ __('ashgrove::RSS feed') }}</a>
         </p>
     </div>
 </footer>

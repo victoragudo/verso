@@ -12,7 +12,7 @@
                     <x-verso-featured-image :entry="$entry" :eager="$loop->first" sizes="(min-width: 48rem) 42rem, 100vw" />
                     <h2><a href="{{ $entry->url() }}">{{ $entry->title }}</a></h2>
                     @if ($entry->published_at)
-                        <p class="meta"><time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->format($entry->published_at, 'F j, Y') }}</time></p>
+                        <p class="meta"><time datetime="{{ $siteTime->iso($entry->published_at) }}">{{ $siteTime->date($entry->published_at) }}</time></p>
                     @endif
                     @if ($settings['show_excerpts'] && $entry->excerpt)
                         <p>{{ $entry->excerpt }}</p>

@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Verso\Content\Models\Entry;
+use App\Verso\Core\Settings\Settings;
 use App\Verso\Theme\Cache\PageCache;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Mail;
@@ -196,4 +197,18 @@ it('describes the form block for the editor with a searchable list of forms', fu
                 && $block['fields'][0]['searchable'] === true
                 && $block['fields'][0]['options'][0] === ['value' => 'bakery-contact', 'label' => 'Contact the bakery']))
         );
+});
+
+it('shows untouched default texts in the site language and keeps custom ones', function () {
+    app(Settings::class)->set('site.locale', 'es');
+
+    $page = pageWithForm();
+
+    $this->get($page->path())->assertOk()->assertSee('>Enviar</button>', false);
+    $this->postJson(route('forms.submit', $this->form), bakeryAnswers())->assertJson(['message' => '¡Gracias! Tu mensaje se ha enviado.']);
+
+    bakeryContactForm(['submit_label' => 'Pedir presupuesto']);
+    app(PageCache::class)->flush();
+
+    $this->get($page->path())->assertOk()->assertSee('>Pedir presupuesto</button>', false);
 });

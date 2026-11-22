@@ -7,7 +7,7 @@ use App\Verso\I18n\Support\CatalogWriter;
 use App\Verso\I18n\Support\StringExtractor;
 use Illuminate\Console\Command;
 
-// Collects every admin string into lang/en.json (core, plugins, themes) and reports missing translations.
+// Collects every admin and public site string into lang/en.json (core, plugins, themes) and reports missing translations.
 class ExtractTranslationsCommand extends Command
 {
     protected $signature = 'verso:lang-extract
@@ -15,7 +15,7 @@ class ExtractTranslationsCommand extends Command
         {--prune : Remove keys that the code no longer uses from every language}
         {--missing : List the missing keys of each language file}';
 
-    protected $description = 'Extract admin strings into lang/en.json files and check the translations';
+    protected $description = 'Extract admin and public site strings into lang/en.json files and check the translations';
 
     public function handle(Locales $locales): int
     {

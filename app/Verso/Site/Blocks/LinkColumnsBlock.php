@@ -46,7 +46,7 @@ class LinkColumnsBlock extends SiteBlock
             }
         }
 
-        return $html === '' ? '' : '<nav class="verso-link-columns" aria-label="Footer">'.$html.'</nav>';
+        return $html === '' ? '' : '<nav class="verso-link-columns" aria-label="'.e(__('Footer')).'">'.$html.'</nav>';
     }
 
     /**
