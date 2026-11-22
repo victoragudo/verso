@@ -71,6 +71,17 @@ php artisan serve
 
 Composer downloads Verso and its dependencies, creates `.env`, links the storage folder and builds the admin assets (this step needs Node.js 22 or newer). Then open http://localhost:8000: the install wizard asks for the database, your admin account and what your site is for.
 
+### With Docker (try it in a minute)
+
+No PHP, Composer or Node.js needed, only Docker:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/victoragudo/verso/main/docker/compose.yaml -o compose.yaml
+docker compose up -d
+```
+
+Open http://localhost:8000 and follow the wizard. SQLite works with no setup. For MariaDB use the host `mariadb` and the values in `compose.yaml`. See [docs/DOCKER.md](docs/DOCKER.md) for updates, resets and troubleshooting.
+
 ### Download a release (shared hosting)
 
 Download `verso-<version>.zip` from the [latest release](https://github.com/victoragudo/verso/releases/latest). It already includes `vendor` and the built assets, so no Composer or Node.js is needed. Upload it, point the web root at the `public` folder and open the site to start the wizard.
