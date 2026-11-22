@@ -205,7 +205,6 @@ Plugins and themes:
 - Theme checks: the preview is an iframe of the rendered HTML, not a real screenshot, and theme fonts and images do not load in it. A Blade error points to the view file but not the line. The sandbox renders home, entry and archive only.
 - The Themes pages do not show the theme screenshot image; the check report only names the file.
 - There is no download or export of a theme folder as a zip in the admin (for example after "Create child theme"); it has to be zipped on the server (see docs/THEME-GUIDE.md).
-- The text in the views of the default and Ashgrove themes (like "Skip to content" or "Recent posts") is English only; their `lang/` files translate only the admin labels from `theme.json`. Themes can translate views with `__('<slug>::Text')`.
 - The default theme has no styles for the `button`, `columns` and `gallery` content blocks (Ashgrove has them).
 - A child theme made from the Site Editor keeps the part style choices as saved settings, not in its `theme.json`; menus and the logo are not copied.
 - Ashgrove post cards print the author name without a link.
@@ -224,6 +223,7 @@ SEO:
 
 Translations:
 
+- [ ] The site language picker offers `pt`, `nl`, `pl`, `ca` and `zh`, which have no catalogs, so the public site falls back to English for them. Either remove them from the picker (about 15 minutes) or translate core, plugins and themes into them (1 to 2 hours, 20 languages in total).
 - Translations were written by language models with a glossary and automatic checks; a native review per language is still worth doing. New builder terms (style preset, synced block, theme builder) are not in the glossary yet.
 - Log entries, console output, shop order history notes and content people typed stay in the language they were written in. The Builder Example block category and the AI Assistant alt text suggester name are not translated. The date picker week always starts on Monday. Mixed direction sentences built on the server do not isolate inserted names.
 
