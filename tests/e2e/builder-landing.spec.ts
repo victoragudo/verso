@@ -282,10 +282,16 @@ test('a designer builds a landing page from scratch with the builder', async ({
             await expect(page.locator('header.verso-header')).toHaveClass(
                 /is-scrolled/,
             );
-            const top = await page
-                .locator('header.verso-header')
-                .evaluate((header) => header.getBoundingClientRect().top);
-            expect(top).toBeLessThanOrEqual(1);
+            // The wheel scroll can still be moving when the class lands, so wait for the header to settle at the top.
+            await expect
+                .poll(() =>
+                    page
+                        .locator('header.verso-header')
+                        .evaluate(
+                            (header) => header.getBoundingClientRect().top,
+                        ),
+                )
+                .toBeLessThanOrEqual(1);
             await page.mouse.wheel(0, -2400);
         },
     );
