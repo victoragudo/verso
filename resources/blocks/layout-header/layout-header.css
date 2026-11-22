@@ -11,7 +11,7 @@
     z-index: 40;
 }
 .verso-header--sticky {
-    inset-block-start: var(--verso-adminbar-height, 0px);
+    inset-block-start: var(--verso-adminbar-offset, 0px);
 }
 .verso-footer--sticky {
     inset-block-end: 0;
@@ -23,7 +23,7 @@
 }
 .verso-header--transparent.verso-header--sticky {
     position: fixed;
-    inset-block-start: var(--verso-adminbar-height, 0px);
+    inset-block-start: var(--verso-adminbar-offset, 0px);
 }
 .verso-header.is-scrolled[data-scroll='solid'],
 .verso-header.is-scrolled[data-scroll='shrink'] {

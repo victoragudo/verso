@@ -54,6 +54,15 @@ it('shows the bar right after body to admins', function () {
         ->and($content)->toContain('--verso-adminbar-height: 36px');
 });
 
+it('keeps the bar at the top while scrolling and gives sticky headers its height as offset', function () {
+    $content = (string) $this->actingAs($this->admin)->get('/')->assertOk()->getContent();
+
+    expect($content)->toMatch('/\\.verso-adminbar \\{[^}]*position: fixed;/')
+        ->and($content)->toContain('--verso-adminbar-offset: var(--verso-adminbar-height);')
+        ->and($content)->toContain('--verso-adminbar-offset: 0px;')
+        ->and(file_get_contents(resource_path('blocks/layout-header/layout-header.css')))->toContain('var(--verso-adminbar-offset, 0px)');
+});
+
 it('puts the bar after the real body tag, never inside the theme styles', function () {
     $content = (string) $this->actingAs($this->admin)->get($this->page->path())->assertOk()->getContent();
     $head = substr($content, 0, (int) strpos($content, '</head>'));

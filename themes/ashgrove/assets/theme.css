@@ -242,7 +242,7 @@ mark {
 }
 
 .skip-link:focus {
-    inset-block-start: calc(var(--verso-adminbar-height, 0px) + 0.75rem);
+    inset-block-start: calc(var(--verso-adminbar-offset, 0px) + 0.75rem);
 }
 
 .visually-hidden {
