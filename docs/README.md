@@ -12,6 +12,7 @@ Start with the [project README](../README.md) for the features, requirements and
 
 ## Run Verso
 
+- [DOCKER.md](DOCKER.md): try Verso with Docker: the quick start, the wizard database values, updates, resets and troubleshooting.
 - [CONFIGURATION.md](CONFIGURATION.md): every setting and environment variable, what the admin may change, and the PHP and web server limits.
 - [PERFORMANCE.md](PERFORMANCE.md): how Verso stays fast, the caches, and how to measure pages with `verso:benchmark`.
 
