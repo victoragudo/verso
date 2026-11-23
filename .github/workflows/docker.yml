@@ -72,7 +72,7 @@ jobs:
             org.opencontainers.image.title=Verso
             org.opencontainers.image.description=Verso, an open source CMS on Laravel, ready to try locally.
             org.opencontainers.image.licenses=MIT
-            org.opencontainers.image.url=https://verso-cms.pages.dev
+            org.opencontainers.image.url=https://victoragudo.github.io/verso/
             org.opencontainers.image.documentation=https://github.com/victoragudo/verso/blob/main/docs/DOCKER.md
 
       - name: Log in to GitHub Container Registry

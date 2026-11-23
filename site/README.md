@@ -23,8 +23,12 @@ Then open http://localhost:8099.
 
 ## Publish
 
-- **GitHub Pages:** `.github/workflows/pages.yml` deploys this folder on every push to `main` that changes `site/`. Turn on Pages in the repository settings with "GitHub Actions" as the source. Pages and Actions are free for public repositories.
-- **Cloudflare Pages:** connect the repository, leave the build command empty and set the output folder to `site`.
+`.github/workflows/pages.yml` deploys this folder on every push to `main` that changes `site/`, to two hosts:
+
+- **GitHub Pages** at https://victoragudo.github.io/verso/, the canonical address. Pages uses "GitHub Actions" as its source.
+- **Cloudflare Pages** at https://verso-cms.pages.dev, project `verso-cms`. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
+
+The site lives under `/verso/` on GitHub Pages, so links to files in this folder must be relative (`styles.css`, not `/styles.css`). `404.html` uses full URLs because it is served from any path.
 
 ## Updating screenshots
 

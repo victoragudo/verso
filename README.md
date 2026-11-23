@@ -1,10 +1,10 @@
 # Verso
 
-[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml) [![Website](https://img.shields.io/badge/website-verso--cms.pages.dev-black)](https://verso-cms.pages.dev) [![Docker image](https://img.shields.io/badge/docker-ghcr.io%2Fvictoragudo%2Fverso-2496ED?logo=docker&logoColor=white)](https://github.com/victoragudo/verso/pkgs/container/verso)
+[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml) [![Website](https://img.shields.io/badge/website-victoragudo.github.io%2Fverso-black)](https://victoragudo.github.io/verso/) [![Docker image](https://img.shields.io/badge/docker-ghcr.io%2Fvictoragudo%2Fverso-2496ED?logo=docker&logoColor=white)](https://github.com/victoragudo/verso/pkgs/container/verso)
 
 Verso is a free and open source content management system built on Laravel 13. It is a fast, modern and safe alternative to WordPress, released under the MIT license. There is no paid edition and no locked feature.
 
-**Website:** [verso-cms.pages.dev](https://verso-cms.pages.dev)
+**Website:** [victoragudo.github.io/verso](https://victoragudo.github.io/verso/)
 
 ![The Verso dashboard](docs/screenshots/dashboard.webp)
 

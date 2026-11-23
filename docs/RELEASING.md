@@ -9,7 +9,7 @@ Everything after the tag is automatic.
 | `ci.yml` | Every pull request and push to `main` | Pest on PHP 8.4 and 8.5 with SQLite, MySQL and PostgreSQL, Pint, PHPStan, types, Vitest, the build and the Playwright journeys. |
 | `release.yml` | A `v*` tag | Builds `verso-<version>.zip` with `vendor` and the built assets, its `.sha256` and its Ed25519 `.sig`, and attaches them to a GitHub release with generated notes. |
 | `docker.yml` | A `v*` tag (and pull requests that change `docker/`, as a build only) | Builds `docker/Dockerfile` for `linux/amd64` and `linux/arm64` and pushes `ghcr.io/victoragudo/verso:<version>`, `:<major>.<minor>` and `:latest`. A pre-release tag only gets its own tag. |
-| `pages.yml` | A change in `site/` on `main` | Deploys the landing page to Cloudflare Pages, project `verso-cms` (https://verso-cms.pages.dev). |
+| `pages.yml` | A change in `site/` on `main` | Deploys the landing page to GitHub Pages (https://victoragudo.github.io/verso/) and to Cloudflare Pages, project `verso-cms` (https://verso-cms.pages.dev). |
 
 `main` is protected: changes go in through pull requests approved by the maintainer.
 
