@@ -50,8 +50,8 @@
       "description": "A free, open source content management system built on Laravel 13 with a visual page and theme builder, SEO tools, forms, a shop, newsletters, memberships, roles and permissions, and a 15 language admin.",
       "applicationCategory": "WebApplication",
       "applicationSubCategory": "Content management system",
-      "operatingSystem": "Linux, macOS, Windows (PHP 8.4 or newer)",
-      "softwareVersion": "0.1.0",
+      "operatingSystem": "Linux, macOS, Windows (PHP 8.4 or newer, or Docker)",
+      "softwareVersion": "0.1.5",
       "license": "https://opensource.org/licenses/MIT",
       "isAccessibleForFree": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -69,7 +69,8 @@
         "Roles and permissions matrix",
         "Admin in 15 languages with right to left support",
         "Plugin and theme security scan before install",
-        "Signed one click updates"
+        "Signed one click updates",
+        "Official Docker image for linux/amd64 and linux/arm64"
       ],
       "author": { "@type": "Person", "name": "Víctor Agudo", "url": "https://github.com/victoragudo" }
     },
@@ -96,6 +97,11 @@
           "@type": "Question",
           "name": "Can I build my own themes and plugins?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. Themes are Blade views with a theme.json file, and plugins are folders with a verso.json manifest and a Laravel service provider. Verso checks both before install." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run Verso with Docker?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Download one compose file and run docker compose up -d. It starts the official image ghcr.io/victoragudo/verso, built for amd64 and arm64, and MariaDB, with no PHP, Composer or Node.js on your computer. Your site lives in Docker volumes, and docker compose pull updates it to the latest version." }
         }
       ]
     }
@@ -146,7 +152,7 @@ Verso
 </a>
 <a href="https://github.com/victoragudo/verso" class="btn btn-ghost">Star on GitHub</a>
 </div>
-<p class="hero-note mono">MIT licensed · PHP 8.4+ · SQLite, MySQL or PostgreSQL</p>
+<p class="hero-note mono">MIT licensed · PHP 8.4+ · SQLite, MySQL or PostgreSQL · Docker</p>
 <figure class="shot-frame">
 <img src="/assets/dashboard.webp" width="1600" height="1000" fetchpriority="high" alt="The Verso admin dashboard with a launch checklist and the main menu">
 </figure>
@@ -358,8 +364,8 @@ Risk: <span class="ok">low</span></pre></div>
 <li class="card stack-card"><p style="margin: 0; font-weight: 600">Tiptap · CodeMirror 6</p><p class="body small" style="margin-top: 6px">Visual and code editing</p></li>
 <li class="card stack-card"><p style="margin: 0; font-weight: 600">Blade themes</p><p class="body small" style="margin-top: 6px">Server rendered, cache friendly</p></li>
 <li class="card stack-card"><p style="margin: 0; font-weight: 600">SQLite · MySQL · Postgres</p><p class="body small" style="margin-top: 6px">Picked in the install wizard</p></li>
-<li class="card stack-card"><p style="margin: 0; font-weight: 600">Pest · Vitest · Playwright</p><p class="body small" style="margin-top: 6px">Unit, feature and end to end</p></li>
-<li class="card stack-card"><p style="margin: 0; font-weight: 600">PHPStan · Pint</p><p class="body small" style="margin-top: 6px">Strict types, one code style</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Pest · Playwright · PHPStan</p><p class="body small" style="margin-top: 6px">Tests and types on every change</p></li>
+<li class="card stack-card"><p style="margin: 0; font-weight: 600">Docker · amd64 and arm64</p><p class="body small" style="margin-top: 6px">Official image, one compose file</p></li>
 </ul>
 </div>
 </section>
@@ -387,6 +393,10 @@ Risk: <span class="ok">low</span></pre></div>
 <summary>Can I build my own themes and plugins?</summary>
 <p class="body">Yes. Themes are Blade views with a theme.json file, and plugins are folders with a verso.json manifest and a Laravel service provider. Verso checks both before install.</p>
 </details>
+<details name="faq">
+<summary>Can I run Verso with Docker?</summary>
+<p class="body">Yes. Download one compose file and run <code>docker compose up -d</code>. It starts the official image <code>ghcr.io/victoragudo/verso</code>, built for amd64 and arm64, and MariaDB, with no PHP, Composer or Node.js on your computer. Your site lives in Docker volumes, and <code>docker compose pull</code> updates it to the latest version.</p>
+</details>
 </div>
 </div>
 </section>
@@ -398,7 +408,7 @@ Risk: <span class="ok">low</span></pre></div>
 <div class="card tabs">
 <div class="tablist" role="tablist" data-tabs focusgroup="tablist nomemory" aria-label="Install commands">
 <button type="button" role="tab" id="tab-composer" data-panel="panel-composer" aria-selected="true" focusgroupstart>Composer · recommended</button>
-<button type="button" role="tab" id="tab-docker" data-panel="panel-docker" aria-selected="false">Docker</button>
+<button type="button" role="tab" id="tab-docker" data-panel="panel-docker" aria-selected="false">Docker · no PHP needed</button>
 </div>
 <div class="panels">
 <div role="tabpanel" id="panel-composer" aria-labelledby="tab-composer" tabindex="0"><pre class="code"><span class="c">$</span> composer create-project victoragudo/verso my-site
@@ -408,8 +418,9 @@ Risk: <span class="ok">low</span></pre></div>
 </div>
 <div role="tabpanel" id="panel-docker" aria-labelledby="tab-docker" hidden="until-found"><pre class="code code-wrap"><span class="c">$</span> curl -fsSL https://raw.githubusercontent.com/victoragudo/verso/main/docker/compose.yaml -o compose.yaml
 <span class="c">$</span> docker compose up -d
-<span class="c"># open http://localhost:8000</span></pre>
-<p class="body small install-note">No PHP or Node.js, only Docker. SQLite works as is; for MariaDB the wizard uses the host <code>mariadb</code>. <a href="https://github.com/victoragudo/verso/blob/main/docs/DOCKER.md">Docker guide</a></p>
+<span class="c"># open http://localhost:8000</span>
+<span class="c"># update later: docker compose pull &amp;&amp; docker compose up -d</span></pre>
+<p class="body small install-note">Only Docker: the official image for amd64 and arm64 plus MariaDB. In the wizard keep SQLite, or use the host <code>mariadb</code> with the database and user <code>verso</code>. <a href="https://github.com/victoragudo/verso/blob/main/docs/DOCKER.md">Docker guide</a></p>
 </div>
 </div>
 </div>
@@ -445,6 +456,7 @@ Verso
 <li><a href="https://github.com/victoragudo/verso/blob/main/docs/THEME-GUIDE.md">Theme guide</a></li>
 <li><a href="https://github.com/victoragudo/verso/blob/main/docs/EXTENDING.md">Extending Verso</a></li>
 <li><a href="https://github.com/victoragudo/verso/blob/main/docs/ARCHITECTURE.md">Architecture</a></li>
+<li><a href="https://github.com/victoragudo/verso/blob/main/docs/DOCKER.md">Run with Docker</a></li>
 </ul>
 </div>
 <div>
