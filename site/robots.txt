@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /README.md
 
-Sitemap: https://verso-cms.pages.dev/sitemap.xml
+Sitemap: https://victoragudo.github.io/verso/sitemap.xml
