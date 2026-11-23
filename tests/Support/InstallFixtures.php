@@ -57,7 +57,7 @@ class InstallFixtures
                 'site_name' => 'Lisbon Food Notes',
                 'tagline' => 'Where to eat in Lisbon, street by street',
                 'site_url' => 'https://lisbonfood.example',
-                'locale' => 'pt',
+                'locale' => 'pt-BR',
                 'timezone' => 'Europe/Lisbon',
                 'admin_name' => 'Inês Duarte',
                 'admin_email' => 'ines@lisbonfood.example',

@@ -9,9 +9,9 @@ beforeEach(function () {
 });
 
 it('uses the site locale setting for web requests', function () {
-    app(Settings::class)->set('site.locale', 'pt');
+    app(Settings::class)->set('site.locale', 'pt-BR');
 
-    $this->get('/_locale-probe')->assertOk()->assertContent('pt');
+    $this->get('/_locale-probe')->assertOk()->assertContent('pt-BR');
 });
 
 it('ignores locales that are not in the allowed list', function () {

@@ -168,3 +168,11 @@ it('has the Laravel message files in every language', function () use ($language
 it('keeps the English catalogs in step with the code', function () {
     $this->artisan('verso:lang-extract', ['--check' => true])->assertSuccessful();
 });
+
+it('offers only site languages that have a catalog', function () {
+    foreach ((array) config('verso.site.locales') as $locale) {
+        expect(is_file(base_path("lang/{$locale}.json")) || $locale === 'en')->toBeTrue("lang/{$locale}.json is missing for a site language");
+    }
+
+    expect(config('verso.site.locales'))->toEqualCanonicalizing(config('verso.i18n.admin_locales'));
+});
