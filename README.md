@@ -1,6 +1,6 @@
 # Verso
 
-[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml) [![Website](https://img.shields.io/badge/website-verso--cms.pages.dev-black)](https://verso-cms.pages.dev)
+[![CI](https://github.com/victoragudo/verso/actions/workflows/ci.yml/badge.svg)](https://github.com/victoragudo/verso/actions/workflows/ci.yml) [![Website](https://img.shields.io/badge/website-verso--cms.pages.dev-black)](https://verso-cms.pages.dev) [![Docker image](https://img.shields.io/badge/docker-ghcr.io%2Fvictoragudo%2Fverso-2496ED?logo=docker&logoColor=white)](https://github.com/victoragudo/verso/pkgs/container/verso)
 
 Verso is a free and open source content management system built on Laravel 13. It is a fast, modern and safe alternative to WordPress, released under the MIT license. There is no paid edition and no locked feature.
 
@@ -59,6 +59,8 @@ All are off by default. Turn them on in **Admin > Plugins**; their tables are cr
 
 Verso runs on ordinary PHP-FPM hosting. Octane is optional.
 
+To try Verso you only need Docker. See [With Docker](#with-docker-try-it-in-a-minute).
+
 ## Install
 
 ### With Composer (recommended)
@@ -73,14 +75,40 @@ Composer downloads Verso and its dependencies, creates `.env`, links the storage
 
 ### With Docker (try it in a minute)
 
-No PHP, Composer or Node.js needed, only Docker:
+No PHP, Composer or Node.js needed, only Docker (Docker Desktop on macOS and Windows, or Docker Engine with the Compose plugin on Linux):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/victoragudo/verso/main/docker/compose.yaml -o compose.yaml
 docker compose up -d
 ```
 
-Open http://localhost:8000 and follow the wizard. SQLite works with no setup. For MariaDB use the host `mariadb` and the values in `compose.yaml`. See [docs/DOCKER.md](docs/DOCKER.md) for updates, resets and troubleshooting.
+Open http://localhost:8000 and follow the wizard. The compose file starts two containers:
+
+- `verso`: the official image [`ghcr.io/victoragudo/verso`](https://github.com/victoragudo/verso/pkgs/container/verso), built for `linux/amd64` and `linux/arm64` with every release.
+- `mariadb`: MariaDB 11.4, ready for the wizard.
+
+In the database step of the wizard, keep **SQLite** (no setup), or pick **MySQL / MariaDB** with these values:
+
+| Field | Value |
+| --- | --- |
+| Host | `mariadb` (already filled in) |
+| Port | `3306` |
+| Database name | `verso` |
+| Username | `verso` |
+| Password | `quill-harbor-7421`, or your `VERSO_DB_PASSWORD` |
+
+The passwords in `compose.yaml` are examples. Change them before the first start, or put `VERSO_DB_PASSWORD` and `VERSO_DB_ROOT_PASSWORD` in a `.env` file next to `compose.yaml`. `VERSO_PORT` changes the port, and `VERSO_IMAGE` pins a version, for example `ghcr.io/victoragudo/verso:0.1.5`.
+
+Your site, uploads and database live in two named volumes, so they stay when you stop or update:
+
+```bash
+docker compose pull && docker compose up -d   # update to the latest version
+docker compose logs -f verso                  # follow the logs
+docker compose down                           # stop, keep everything
+docker compose down -v                        # start again from zero (deletes the site)
+```
+
+This setup uses `php artisan serve`, so it is for trying Verso and building a site locally, not for production. See [docs/DOCKER.md](docs/DOCKER.md) for backups and troubleshooting.
 
 ### Download a release (shared hosting)
 
@@ -147,6 +175,12 @@ This starts the Laravel development server, a queue worker, the log viewer (Pail
 
 The code is organised in modules under `app/Verso/<Module>`. Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before you change anything: it describes the contracts between modules, the block format and the admin design rules.
 
+To run your checkout in Docker, build the image from it (rebuild after each change):
+
+```bash
+docker compose -f docker/compose.yaml -f docker/compose.dev.yaml up -d --build
+```
+
 Useful generators:
 
 ```bash
@@ -189,6 +223,7 @@ See [docs/PROGRESS.md](docs/PROGRESS.md) for the current status.
 - [docs/THEMES.md](docs/THEMES.md): the theme reference.
 - [docs/EXTENDING.md](docs/EXTENDING.md): plugins, filters, admin slots, capabilities and builder registries.
 - [docs/CONFIGURATION.md](docs/CONFIGURATION.md): every setting and environment variable.
+- [docs/DOCKER.md](docs/DOCKER.md): run Verso with Docker Compose, updates, backups and troubleshooting.
 - [docs/I18N.md](docs/I18N.md): translations of the admin, plugins and themes.
 - [docs/PERFORMANCE.md](docs/PERFORMANCE.md): caches and query budgets.
 
