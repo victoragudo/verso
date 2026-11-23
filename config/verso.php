@@ -328,8 +328,9 @@ return [
     ],
 
     'site' => [
-        // Lists the admin settings page offers. Free values are not allowed.
-        'locales' => ['en', 'es', 'fr', 'de', 'it', 'pt', 'pt-BR', 'nl', 'pl', 'ca', 'ja', 'zh', 'zh-Hans', 'hi', 'ar', 'bn', 'ru', 'id', 'tr', 'ko'],
+        // Site languages the settings page and the install wizard offer. Free values are not allowed.
+        // Each one needs lang/<code>.json, so the public site, plugins and themes are really translated.
+        'locales' => ['en', 'es', 'zh-Hans', 'hi', 'ar', 'pt-BR', 'bn', 'ru', 'ja', 'fr', 'de', 'id', 'tr', 'ko', 'it'],
 
         // Highest number of posts per page a user can pick.
         'max_posts_per_page' => (int) env('VERSO_MAX_POSTS_PER_PAGE', 100),

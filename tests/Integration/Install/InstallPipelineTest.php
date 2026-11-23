@@ -48,7 +48,7 @@ it('installs Verso on SQLite in a temporary folder', function () {
         ->and(password_verify('sardines-and-vinho-2026', $admin->password))->toBeTrue()
         ->and($settings->get('site.name'))->toBe('Lisbon Food Notes')
         ->and($settings->get('site.timezone'))->toBe('Europe/Lisbon')
-        ->and($settings->get('site.locale'))->toBe('pt')
+        ->and($settings->get('site.locale'))->toBe('pt-BR')
         ->and($settings->get('plugins.enabled'))->toBe(['reading-time'])
         ->and($settings->get(SimpleMode::DEFAULT_SETTING))->toBeTrue()
         ->and($settings->get(InstallState::SETTING))->not->toBeNull()

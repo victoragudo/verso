@@ -13,7 +13,7 @@ function validSiteSettings(array $overrides = []): array
         'name' => 'Lisbon Food Journal',
         'tagline' => 'Recipes and markets from the Portuguese coast',
         'url' => 'https://lisbonfood.example.org/',
-        'locale' => 'pt',
+        'locale' => 'pt-BR',
         'timezone' => 'Europe/Lisbon',
         'posts_per_page' => 12,
         'front_page' => null,
@@ -65,7 +65,7 @@ it('saves the settings', function () {
 
     expect($settings->get('site.name'))->toBe('Lisbon Food Journal')
         ->and($settings->get('site.url'))->toBe('https://lisbonfood.example.org')
-        ->and($settings->get('site.locale'))->toBe('pt')
+        ->and($settings->get('site.locale'))->toBe('pt-BR')
         ->and($settings->get('site.timezone'))->toBe('Europe/Lisbon')
         ->and($settings->get('reading.posts_per_page'))->toBe(12)
         ->and($settings->get('reading.front_page'))->toBe($about->id)

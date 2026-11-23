@@ -223,7 +223,6 @@ SEO:
 
 Translations:
 
-- [ ] The site language picker offers `pt`, `nl`, `pl`, `ca` and `zh`, which have no catalogs, so the public site falls back to English for them. Either remove them from the picker (about 15 minutes) or translate core, plugins and themes into them (1 to 2 hours, 20 languages in total).
 - Translations were written by language models with a glossary and automatic checks; a native review per language is still worth doing. New builder terms (style preset, synced block, theme builder) are not in the glossary yet.
 - Log entries, console output, shop order history notes and content people typed stay in the language they were written in. The Builder Example block category and the AI Assistant alt text suggester name are not translated. The date picker week always starts on Monday. Mixed direction sentences built on the server do not isolate inserted names.
 
