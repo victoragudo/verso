@@ -48,7 +48,7 @@ Put them in a `.env` file next to `compose.yaml`, or before the command (`VERSO_
 | Variable | Default | What it does |
 | --- | --- | --- |
 | `VERSO_PORT` | `8000` | Port on your computer. |
-| `VERSO_IMAGE` | `ghcr.io/victoragudo/verso:latest` | The image. Use a version, for example `ghcr.io/victoragudo/verso:0.1.3`, to stay on it. |
+| `VERSO_IMAGE` | `ghcr.io/victoragudo/verso:latest` | The image. Use a version, for example `ghcr.io/victoragudo/verso:0.1.5`, to stay on it. |
 | `VERSO_DB_PASSWORD` | `quill-harbor-7421` | Password of the `verso` MariaDB user. |
 | `VERSO_DB_ROOT_PASSWORD` | `lantern-root-9036` | Password of the MariaDB `root` user. |
 
